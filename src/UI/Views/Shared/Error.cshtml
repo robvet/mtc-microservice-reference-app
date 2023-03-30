@@ -1,0 +1,25 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+@{
+    Layout = "~/Views/Shared/_LayoutError.cshtml";
+}
+
+<h1 class="text-danger">Error...</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+@if (Model.CorrelationIdPresent)
+{
+ <p>
+    Please report this error to RetroTunes support with the following code:<br/>
+    <strong>Request ID:</strong><code>@Model.CorrelationId</code>
+ </p>
+}
+
+<h3>Error Information</h3>
+<p>
+    <strong>@Model.ErrorMessage</strong>
+
+</p>

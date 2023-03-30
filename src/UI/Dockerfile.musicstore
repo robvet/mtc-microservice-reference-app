@@ -1,0 +1,17 @@
+﻿# Pulls Dotnet Image from Docker Hub 
+FROM microsoft/aspnetcore:2.0 
+
+# Creates a Working Directory 
+WORKDIR dockerdemo 
+
+# Add all the required applications artifacts inside the container.  
+# Note the two periods that follow the Add command. 
+ADD . . 
+
+#Command to Run when container is up and running 
+
+ENTRYPOINT ["dotnet","bin/Debug/netcoreapp2.0/publish/MusicStore.dll"] 
+# Exposes the Container Port 
+EXPOSE 80
+
+ENV ASPNETCORE_URLS http://0.0.0.0:80

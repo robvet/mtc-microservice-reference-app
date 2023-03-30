@@ -1,0 +1,73 @@
+﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model IEnumerable<MusicStore.Models.AlbumDTO>
+
+
+<h2>Index</h2>
+
+@if(Model == null)
+{
+    <h1 class="text-danger">Error Processing request</h1>
+    <h2 class="text-danger">@ViewData["ErrorMessage"]</h2>
+}
+else 
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GenreName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtistName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GenreName)
+                </td>
+                <td>
+                    @if (item.ArtistName.Length <= 25)
+                    {
+                        @item.ArtistName
+                    }
+                    else
+                    {
+                        @item.ArtistName.Substring(0, 25)<text>...</text>
+                    }
+                </td>
+                <td>
+                    @if (item.Title.Length <= 25)
+                    {
+                        @item.Title
+                    }
+                    else
+                    {
+                        @item.Title.Substring(0, 25)<text>...</text>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "RemoveAlbum", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+

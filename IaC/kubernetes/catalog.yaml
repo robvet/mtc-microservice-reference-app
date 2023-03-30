@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog
+  namespace: api
+  labels:
+    deploy: catalog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: catalog
+  template:
+    metadata:
+      labels:
+        app: catalog
+    spec:
+      containers:
+      - image: "aks0demo0acr.azurecr.io/catalogapi:latest"
+        imagePullPolicy: Always
+        name: catalog
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 443
+          name: https
+          protocol: TCP
+        env:
+        - name: PORT
+          value: '80'
+        - name: OPENAPI_DOCS_URI
+          value: 'http://localhost'
+        - name: DEBUG_LOGGING
+          value: 'true'
+        envFrom:
+        - secretRef:
+            name: sql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalog
+  namespace: api
+spec:
+  type: ClusterIP
+  selector:
+    app: catalog
+  ports:
+  - protocol: TCP
+    name: http
+    port: 80
+    targetPort: 80
+  - protocol: TCP
+    name: https
+    port: 443
+    targetPort: 443

@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <UserSecretsId>v3c4694b-984b-4f1b-b37f-9983ebed511</UserSecretsId>
+    <!--<ApplicationInsightsResourceId>/subscriptions/c9f3e3b7-b2f8-4bbf-8cbd-43351fc29576/resourcegroups/rgServices-lwa01y/providers/microsoft.insights/components/Catalog.API</ApplicationInsightsResourceId>-->
+    <!--<ApplicationInsightsAnnotationResourceId>/subscriptions/c2c53b88-db9f-4780-8318-af2f14b5c1dd/resourcegroups/ActivateAzureLearn/providers/microsoft.insights/components/ActivateAzureLearn</ApplicationInsightsAnnotationResourceId>-->
+    <Configurations>Debug;Release;FullApp</Configurations>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+    <!--<DockerfileContext>..\..</DockerfileContext>-->
+    <!--<DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>-->
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='FullApp|AnyCPU'">
+    <DocumentationFile />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infrastructure\DataStore\DataInitializer - Copy.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.4" />
+    <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.6.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.4.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\CommandBus\CommandBus.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\RestCommunication\RestCommunication.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\ServiceDiscovery\ServiceDiscovery.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Snowflake\Snowflake.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Utilities\Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+</Project>

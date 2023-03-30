@@ -1,0 +1,17 @@
+testName: Get_vetdemo-ca.jollytree-1e0c39d0.eastus.azurecontainerapps.io
+testPlan: quick_test.jmx
+description: 
+engineInstances: 1
+env:
+- name: domain
+  value: vetdemo-ca.jollytree-1e0c39d0.eastus.azurecontainerapps.io
+- name: protocol
+  value: https
+- name: path
+  value: status
+- name: threads_per_engine
+  value: 5
+- name: ramp_up_time
+  value: 0
+- name: duration_in_sec
+  value: 120

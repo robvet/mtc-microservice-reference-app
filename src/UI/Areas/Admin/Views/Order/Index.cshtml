@@ -1,0 +1,60 @@
+﻿@using MusicStore.Models
+@model List<OrderDto>
+
+
+<h2>Orders</h2>
+
+@if (Model == null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                <h1>Sorry, but no orders exist</h1>
+            </th>
+        </tr>
+    </table>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().OrderDate)
+            </th>
+            <th>
+                @Html.DisplayName("Buyer")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Total)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.BuyerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Total)
+                </td>
+                <td>
+                    @if(item.OrderId != "Empty")
+                    {
+                         <a asp-controller="Order" asp-action="Details" asp-route-orderId="@item.Id">View</a>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}

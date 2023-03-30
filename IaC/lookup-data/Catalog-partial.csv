@@ -1,0 +1,31 @@
+PartitionKey,RowKey,Timestamp,ArtistName,ArtistName@type,GenreName,GenreName@type,Id,Id@type,Price,Price@type,Title,Title@type
+MusicProduct,1,2023-01-28T02:14:42.148128Z,Hank Williams,String,Country,String,1,Int32,0.99,String,Your Cheatin' Heart,String
+MusicProduct,11,2023-01-27T04:02:54.4182817Z,Berliner Philharmoniker & Herbert Von Karajan,String,Classical,String,11,Int32,0.99,String,Mozart: Symphonies Nos. 40 & 41,String
+MusicProduct,12,2023-01-27T04:09:44.4090681Z,Barry Wordsworth & BBC Concert Orchestra,String,Classical,String,12,Int32,0.99,String,The Last Night of the Proms,String
+MusicProduct,140,2023-03-24T17:43:27.3186642Z,Iron Maiden,String,Metal,String,140,Int32,0.99,String,The Wicker Man,String
+MusicProduct,153,2023-03-21T03:19:58.6203878Z,Gilberto Gil,String,Latin,String,153,Int32,0.99,String,Quanta Gente Veio Ver (Live),String
+MusicProduct,190,2022-11-30T18:07:43.5852458Z,Rolling Stones,String,Rock,String,190,Int32,0.99,String,Street Fighting Man,String
+MusicProduct,193,2023-03-01T15:40:55.7023852Z,Rolling Stones,String,Rock,String,193,Int32,0.99,String,Gimme Shelter,String
+MusicProduct,200,2023-02-25T04:20:35.3656791Z,Beatles,String,Rock,String,200,Int32,0.99,String,Penny Lane,String
+MusicProduct,201,2023-03-01T15:39:55.4234869Z,Rolling Stones,String,Rock,String,201,Int32,0.99,String,You Can't Always Get What You,String
+MusicProduct,214,2023-02-25T18:57:06.3485991Z,Lynyrd Skynyrd,String,Rock,String,214,Int32,0.99,String,Free Bird,String
+MusicProduct,23,2023-02-25T03:56:30.1566035Z,Calexico,String,Alternative,String,23,Int32,0.99,String,Carried to Dust,String
+MusicProduct,284,2023-03-01T00:37:54.4171418Z,Buffalo Springfield,String,Rock,String,284,Int32,0.99,String,For What It's Worth,String
+MusicProduct,289,2023-03-01T00:36:57.0914427Z,Fleetwood Mac,String,Rock,String,289,Int32,0.99,String,Dreams,String
+MusicProduct,3,2023-03-17T23:25:51.4198719Z,"Britten Sinfonia, Ivor Bolton & Lesley Garrett",String,Classical,String,3,Int32,0.99,String,A Soprano Inspired,String
+MusicProduct,304,2022-11-30T18:07:11.3267484Z,Steely Dan,String,Rock,String,304,Int32,0.99,String,Reeling In The Years,String
+MusicProduct,327,2023-03-17T23:15:12.7458814Z,Boston,String,Rock,String,327,Int32,0.99,String,Don't Look Back,String
+MusicProduct,340,2023-03-01T15:38:39.3777917Z,Kansas,String,Rock,String,340,Int32,0.99,String,Dust in the Wind,String
+MusicProduct,44,2023-02-25T18:57:44.6189609Z,Eric Clapton,String,Blues,String,44,Int32,0.99,String,Bell Bottom Blues,String
+MusicProduct,47,2022-11-30T18:08:17.4868006Z,BTO,String,Rock,String,47,Int32,0.99,String,You Ain't Seen Nothing Yet,String
+MusicProduct,50,2022-11-30T18:08:41.1852066Z,Ted Nugent,String,Rock,String,50,Int32,0.99,String,Hey Baby,String
+MusicProduct,58,2022-11-22T23:57:34.7677014Z,CSN&Y,String,Rock,String,58,Int32,0.99,String,Ohio,String
+MusicProduct,60,2022-11-30T18:07:52.3352267Z,Doobie Brothers,String,Rock,String,60,Int32,0.99,String,Long Train Running,String
+MusicProduct,62,2023-02-25T03:52:12.9848592Z,Free,String,Rock,String,62,Int32,0.99,String,All Right Now,String
+MusicProduct,63,2023-03-17T01:17:39.2975016Z,Bob Seger,String,Rock,String,63,Int32,0.99,String,Night Moves,String
+MusicProduct,70,2023-02-28T23:37:12.3168734Z,Pat Benatar,String,Rock,String,70,Int32,0.99,String,Heartbreaker,String
+MusicProduct,71,2023-03-01T15:39:20.3569137Z,Don Henley,String,Rock,String,71,Int32,0.99,String,Dirty Laundry,String
+MusicProduct,79,2023-03-24T17:43:42.8178418Z,Bruce Springsteen,String,Rock,String,79,Int32,0.99,String,Born To Run,String
+MusicProduct,83,2023-02-25T04:20:18.3805397Z,Styx,String,Rock,String,83,Int32,0.99,String,The Grand Illusion,String
+MusicProduct,85,2023-02-28T23:34:14.2772362Z,Cream,String,Rock,String,85,Int32,0.99,String,Sunshine of Your Love,String
+MusicProduct,98,2023-03-17T01:17:26.3999914Z,Ozzy Osbourne,String,Metal,String,98,Int32,0.99,String,Paranoid,String

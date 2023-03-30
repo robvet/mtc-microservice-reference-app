@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+
+  musicstore:
+    image: musicstore:1.0
+    build:
+      context: ./UI
+      dockerfile: Dockerfile
+    environment:
+      - "ApiGateway=http://apigateway.api:8084"
+    depends_on:
+      - apigateway.api
+
+  apigateway.api:
+    image: gateway:1.0
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    depends_on:
+      - catalog.api
+      - basket.api
+      - ordering.api
+    environment:
+      - "Catalog=http://catalog.api:8082"
+      - "Basket=http://basket.api:8083"
+      - "Ordering=http://ordering.api:8085"
+
+  catalog.api:
+    image: catalog:1.0
+    build:
+      context: ./Catalog.Service
+      dockerfile: Dockerfile
+    
+      - ServiceBusPublisherConnectionString=Endpoint=sb://learn-activateazure.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=B8ckcCZKJA31xvmL/MmMQdkjhnimcKOMlksFqcNrsqw=;EntityPath=eventbustopic
+
+  basket.api:
+    image: basket:1.0
+    build:
+      context: ./Basket.Service
+      dockerfile: Dockerfile
+    depends_on:
+      - catalog.api
+    environment:
+      - "Catalog=http://catalog.api:8082"
+      - StorageAccount=learnactivateazure
+      - StorageKey=T+o5YKeN0DsMrbaSILYrT7EtKWo6E3atW/Tnz0xmCqbMscyw12UfJUWpTiZtzATuzOWDHRNIoVXW6vUN7PMNNQ==
+      - ServiceBusPublisherConnectionString=Endpoint=sb://learn-activateazure.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=B8ckcCZKJA31xvmL/MmMQdkjhnimcKOMlksFqcNrsqw=;EntityPath=eventbustopic
+
+  ordering.api:
+    image: ordering:1.0
+    build:
+      context: ./Ordering.Service
+      dockerfile: Dockerfile
+    environment:
+      - CosmosEndpoint=https://learn-activateazure.documents.azure.com:443
+      - CosmosPrimaryKey=bJpXrdkKt4aDjajx0yBFKIOc8eUI8mpotMgnXz9yw364CKbXRXVSOgRfvM09NoA30NSO7O2pxfeMZA0QCrtppg==
+      - ServiceBusPublisherConnectionString=Endpoint=sb://learn-activateazure.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=B8ckcCZKJA31xvmL/MmMQdkjhnimcKOMlksFqcNrsqw=;EntityPath=eventbustopic

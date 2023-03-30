@@ -1,0 +1,439 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "yourInitials": {
+      "type": "string",
+      "minLength": 5
+    },
+    "location": {
+      "type" : "string"
+    }
+  },
+  "variables": {
+    "sbNamespaceAuthRule": "[toLower(concat(variables('serviceBusNamespaceName'),concat('/',toLower(parameters('yourInitials')),'nsrule')))]",
+    "topicNamespaceAuthRule": "[toLower(concat(variables('serviceBusNamespaceName'),concat('/',toLower(parameters('yourInitials')),'topicrule')))]",
+    "serviceBusNamespaceName": "[toLower(concat(toLower(parameters('yourInitials')),'-sbns'))]",
+    "sbVersion": "2017-04-01",
+    "enableNonSslPort": "true",
+    "azAppConfigVersion": "2019-11-01-preview",
+    "dbserver-Name": "[toLower(concat(parameters('yourInitials'),'-dbsvr'))]",
+    "dbserver-AdminLogin": "[concat(toLower(parameters('yourInitials')),'sqllogin')]",
+    "dbserver-AdminLoginPassword": "[concat(toLower(parameters('yourInitials')),'pass@word1$')]",
+    "storageAcctName": "[toLower(concat(toLower(parameters('yourInitials')),'storage'))]",
+    "cosmosAcctName": "[concat(toLower(parameters('yourInitials')),'-cosmosdb')]",
+    "storageAcctType": "Standard_LRS",
+    "catalog-Name": "Services.Catalog",
+    "order-Name": "Services.Orders",
+    "catalog-Collation": "SQL_Latin1_General_CP1_CI_AS",
+    "catalog-Edition": "Basic",
+    "catalog-RequestedServiceObjectiveName": "Basic",
+    "serviceBusTopicName": "eventbustopic",
+    "acrName": "[concat(toLower(parameters('yourInitials')),'acr')]",
+    "acrAdminUserEnabled": "true",
+    "redisName": "[toLower(concat(toLower(parameters('yourInitials')),'-redis'))]",
+    "appInsightsName": "[toLower(concat(toLower(parameters('yourInitials')), '-appInsights'))]",
+    "appConfigName": "[toLower(concat(toLower(parameters('yourInitials')), '-appConfig'))]",
+    "functionHostName": "[toLower(concat(toLower(parameters('yourInitials')), '-funcPlan'))]",
+    "functionAppName": "[toLower(concat(toLower(parameters('yourInitials')), '-functApp'))]"
+
+  },
+
+  "resources": [
+    {
+      "type": "Microsoft.AppConfiguration/configurationStores",
+      "apiVersion": "[variables('azAppConfigVersion')]",
+      "name": "[variables('appConfigName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "standard"
+      },
+      "properties": {
+        
+      }
+    },
+    {
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2017-10-01",
+      "name": "[variables('acrName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Basic"
+      },
+      "properties": {
+        "adminUserEnabled": "[variables('acrAdminUserEnabled')]"
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "kind": "GlobalDocumentDB",
+      "name": "[variables('cosmosAcctName')]",
+      "apiVersion": "2015-04-08",
+      "location": "[parameters('location')]",
+      "tags": {
+        "defaultExperience": "DocumentDB"
+      },
+      "scale": null,
+      "properties": {
+        "databaseAccountOfferType": "Standard",
+        "consistencyPolicy": {
+          "defaultConsistencyLevel": "Session",
+          "maxIntervalInSeconds": 5,
+          "maxStalenessPrefix": 100
+        },
+        "name": "[variables('cosmosAcctName')]"
+      },
+      "dependsOn": []
+    },
+    {
+      "name": "[variables('dbserver-Name')]",
+      "type": "Microsoft.Sql/servers",
+      "location": "[parameters('location')]",
+      "apiVersion": "2014-04-01-preview",
+      "dependsOn": [],
+      "tags": {
+        "displayName": "database-server-name"
+      },
+      "properties": {
+        "administratorLogin": "[variables('dbserver-AdminLogin')]",
+        "administratorLoginPassword": "[variables('dbserver-AdminLoginPassword')]"
+      },
+      "resources": [
+        {
+          "name": "AllowAllWindowsAzureIps",
+          "type": "firewallrules",
+          "location": "[parameters('location')]",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', variables('dbserver-Name'))]"
+          ],
+          "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "255.255.255.255"
+          }
+        },
+        {
+          "name": "[variables('catalog-Name')]",
+          "type": "databases",
+          "location": "[parameters('location')]",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', variables('dbserver-Name'))]"
+          ],
+          "tags": {
+            "displayName": "ActivateAzure.Catalog"
+          },
+          "properties": {
+            "collation": "[variables('catalog-Collation')]",
+            "edition": "[variables('catalog-Edition')]",
+            "maxSizeBytes": "1073741824",
+            "requestedServiceObjectiveName": "[variables('catalog-RequestedServiceObjectiveName')]"
+          }
+        },
+        {
+          "name": "[variables('order-Name')]",
+          "type": "databases",
+          "location": "[parameters('location')]",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', variables('dbserver-Name'))]"
+          ],
+          "tags": {
+            "displayName": "ActivateAzure.Orders"
+          },
+          "properties": {
+            "collation": "[variables('catalog-Collation')]",
+            "edition": "[variables('catalog-Edition')]",
+            "maxSizeBytes": "1073741824",
+            "requestedServiceObjectiveName": "[variables('catalog-RequestedServiceObjectiveName')]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "[variables('storageAcctName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "location": "[parameters('location')]",
+      "apiVersion": "2016-01-01",
+      "sku": {
+        "name": "[variables('storageAcctType')]"
+      },
+      "dependsOn": [],
+      "tags": {
+        "displayName": "azurestorage"
+      },
+      "kind": "Storage"
+    },
+    {
+      "apiVersion": "2018-02-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('functionAppName')]",
+      "location": "[resourceGroup().location]",
+      "kind": "functionapp",
+      "properties": {
+        "name": "[variables('functionAppName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('functionHostName'))]",
+        "clientAffinityEnabled": false,
+        "siteConfig": {
+          "alwaysOn": false
+         }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('functionHostName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAcctName'))]"
+      ],
+      "resources": [
+        {
+          "apiVersion": "2018-02-01",
+          "name": "appsettings",
+          "type": "config",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAcctName'))]"
+          ],
+          "properties": {
+            "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAcctName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAcctName')), '2015-05-01-preview').key1,';')]",
+            "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAcctName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAcctName')), '2015-05-01-preview').key1,';')]",
+            "FUNCTIONS_EXTENSION_VERSION": "~3",
+            "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+            "WEBSITE_RUN_FROM_PACKAGE": "https://lwworkstorage.blob.core.windows.net/mswsfunction/host.zip?sv=2019-02-02&st=2020-06-18T00%3A34%3A37Z&se=2021-06-03T00%3A34%3A00Z&sr=b&sp=r&sig=DbE2d%2Bs4ExkhMu9iMNg%2BuaHxQhBQ9WZwswscmN02l2A%3D",
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('microsoft.insights/components/', variables('appInsightsName')), '2015-05-01').InstrumentationKey]"
+          }
+
+        }
+      ]
+    },
+    {
+      "apiVersion": "2017-04-01",
+      "name": "[variables('serviceBusNamespaceName')]",
+      "type": "Microsoft.ServiceBus/namespaces",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard"
+      },
+      "properties": {},
+      "resources": [
+        {
+          "type": "Microsoft.ServiceBus/namespaces/queues",
+          "apiVersion": "[variables('sbVersion')]",
+          "name": "[concat(variables('serviceBusNamespaceName'), '/syncorderreadmodelqueue')]",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.ServiceBus/namespaces', variables('serviceBusNamespaceName'))]"
+          ],
+          "properties": {
+            "lockDuration": "PT30S",
+            "maxSizeInMegabytes": 1024,
+            "requiresDuplicateDetection": false,
+            "requiresSession": false,
+            "defaultMessageTimeToLive": "P14D",
+            "deadLetteringOnMessageExpiration": false,
+            "enableBatchedOperations": true,
+            "duplicateDetectionHistoryTimeWindow": "PT10M",
+            "maxDeliveryCount": 10,
+            "status": "Active",
+            "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+            "enablePartitioning": false,
+            "enableExpress": false
+          }
+        },
+        {
+          "apiVersion": "[variables('sbVersion')]",
+          "name": "[variables('serviceBusTopicName')]",
+          "type": "Topics",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', variables('serviceBusNamespaceName'))]"
+          ],
+          "properties": {
+            "path": "[variables('serviceBusTopicName')]"
+          },
+          "resources": [
+            {
+              "apiVersion": "[variables('sbVersion')]",
+              "name": "BasketServiceSubscription",
+              "type": "Subscriptions",
+              "dependsOn": [
+                "[variables('serviceBusTopicName')]"
+              ],
+              "properties": {
+                "maxDeliveryCount": 2,
+                "lockDuration": "PT3M"
+              },
+              "resources": [
+                {
+                  "apiVersion": "[variables('sbVersion')]",
+                  "name": "InvokeEmptyBasketEvent",
+                  "type": "Rules",
+                  "dependsOn": [
+                    "BasketServiceSubscription"
+                  ],
+                  "properties": {
+                    "filterType": "SqlFilter",
+                    "sqlFilter": {
+                      "sqlExpression": "Event = 'InvokeEmptyBasketEvent'",
+                      "requiresPreprocessing": "false"
+                    }
+                  }
+                },
+                {
+                  "apiVersion": "[variables('sbVersion')]",
+                  "name": "ProductChangedEvent",
+                  "type": "Rules",
+                  "dependsOn": [
+                    "BasketServiceSubscription"
+                  ],
+                  "properties": {
+                    "filterType": "SqlFilter",
+                    "sqlFilter": {
+                      "sqlExpression": "Event = 'ProductChangedEvent'",
+                      "requiresPreprocessing": "false"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "apiVersion": "[variables('sbVersion')]",
+              "name": "CatalogServiceSubscription",
+              "type": "Subscriptions",
+              "dependsOn": [
+                "[variables('serviceBusTopicName')]"
+              ],
+              "properties": {
+                "maxDeliveryCount": 2,
+                "deadLetteringOnMessageExpiration": true,
+                "lockDuration": "PT3M"
+              },
+              "resources": [
+              ]
+            },
+            {
+              "apiVersion": "[variables('sbVersion')]",
+              "name": "AllSubscription",
+              "type": "Subscriptions",
+              "dependsOn": [
+                "[variables('serviceBusTopicName')]"
+              ],
+              "properties": {
+                "maxDeliveryCount": 2,
+                "deadLetteringOnMessageExpiration": true,
+                "lockDuration": "PT3M"
+              },
+              "resources": [
+                {
+                  "apiVersion": "[variables('sbVersion')]",
+                  "name": "AllEvents",
+                  "type": "Rules",
+                  "dependsOn": [
+                    "AllSubscription"
+                  ],
+                  "properties": {
+                    "filterType": "SqlFilter",
+                    "sqlFilter": {
+                      "sqlExpression": "1=1",
+                      "requiresPreprocessing": "false"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "apiVersion": "[variables('sbVersion')]",
+              "name": "OrderingServiceSubscription",
+              "type": "Subscriptions",
+              "dependsOn": [
+                "[variables('serviceBusTopicName')]"
+              ],
+              "properties": {
+                "maxDeliveryCount": 2,
+                "deadLetteringOnMessageExpiration": true,
+                "lockDuration": "PT3M"
+              },
+              "resources": [
+                {
+                  "apiVersion": "[variables('sbVersion')]",
+                  "name": "UserCheckoutEvent",
+                  "type": "Rules",
+                  "dependsOn": [
+                    "OrderingServiceSubscription"
+                  ],
+                  "properties": {
+                    "filterType": "SqlFilter",
+                    "sqlFilter": {
+                      "sqlExpression": "Event = 'UserCheckoutEvent'",
+                      "requiresPreprocessing": "false"
+                    }
+                  }
+                }
+              ]
+            }
+
+          ]
+        }
+      ]
+    },
+    {
+      "apiVersion": "2017-04-01",
+      "name": "[variables('sbNamespaceAuthRule')]",
+      "type": "Microsoft.ServiceBus/namespaces/authorizationRules",
+      "dependsOn": [ "[concat('Microsoft.ServiceBus/namespaces/', variables('serviceBusNamespaceName'))]" ],
+      "location": "[parameters('location')]",
+      "properties": {
+        "rights": [ "Send" ]
+      }
+    },
+    {
+      "name": "[variables('redisName')]",
+      "type": "Microsoft.Cache/Redis",
+      "location": "[parameters('location')]",
+      "apiVersion": "2016-04-01",
+      "dependsOn": [],
+      "tags": {
+        "displayName": "msRedis"
+      },
+      "properties": {
+        "enableNonSslPort": "[variables('enableNonSslPort')]",
+        "sku": {
+          "name": "Basic",
+          "family": "C",
+          "capacity": 1
+        },
+        "redisVersion": "2019-07-01"
+      }
+    },
+    {
+      "type": "microsoft.insights/components",
+      "apiVersion": "2015-05-01",
+      "name": "[variables('appInsightsName')]",
+      "location": "[parameters('location')]",
+      "kind": "Web",
+      "properties": {
+        "Application_Type": "web",
+        "Flow_Type": "Brownfield",
+        "Request_Source": "VSIX16.0.0.0"
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2018-02-01",
+      "name": "[variables('functionHostName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Y1",
+        "tier": "Dynamic"
+      },
+      "properties": {
+        "name": "[variables('functionHostName')]",
+        "computeMode": "Dynamic"
+      }
+    }
+  ],
+  "outputs": {
+
+    //"appconfigconnstr": {
+    //  "type": "string",
+    //  "value": "[listKeys(resourceId('Microsoft.AppConfiguration/configurationStores',variables('appConfigName')),variables('azAppConfigVersion')).value[0].connectionString]"
+    //}
+  }
+}

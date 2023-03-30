@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "applicationName": {
+      "value": "[format('{0}', replace(parameters('resourceGroupName'), '-rg', ''))]"
+    },
+    "sqlServerName": {
+      "value": "[format('{0}-sqldb', parameters('applicationName'))]"
+    },
+    "sqlDatabaseName": {
+      "value": "catalogservices"
+    },
+    "sqlAdminLogin": {
+      "value": "micr0tunessqllogin"
+    },
+    "sqlAdminLoginPassword": {
+      "value": "micr0tunespass@word1"
+    }
+  }
+}
