@@ -85,6 +85,7 @@ namespace Basket.API.Domain.BusinessServices
             //* Returns a ProductTableEntity class
             ProductTableEntity productTableEntity = null;
 
+            // Query Catalog Read store (materialized view) for information about the selected product
             try
             {
                 productTableEntity = await _productRepository.GetItem(ProductPartitionKey, productId.ToString(), correlationToken);

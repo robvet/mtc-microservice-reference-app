@@ -16,7 +16,7 @@ namespace MusicStore.Controllers
         private readonly CookieLogic _cookieLogic;
         private readonly ILogger<ShoppingCartController> _logger;
         private readonly IRestClient _IRestClient;
-        private readonly string baseUrl = "basket/api/Basket";
+        private readonly string baseUrl = "basket/api/basket";
 
         public ShoppingCartController(ILogger<ShoppingCartController> logger,
                                       CookieLogic cookieLogic,
@@ -43,6 +43,8 @@ namespace MusicStore.Controllers
 
             var response =
                     await _IRestClient.GetAsync<BasketDto>($"{baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
+                    //await _IRestClient.GetAsync<BasketDto>($"{baseUrl}/{_cookieLogic.GetBasketId()}");
+
 
             basket = response.Data;
 
@@ -81,15 +83,11 @@ namespace MusicStore.Controllers
         //var basket = await _IRestClient.PostAsync<BasketDto>($"{baseUrl}/Basket/{shoppingCartId}/item/{id}");
 
         
-            
-
-
-            // Here's what needs to be sent
+                        // Here's what needs to be sent
             //http://localhost:8083/api/Basket/?productId=258&basketId=Basket-3.29.2023-9:42PM-0277211917
 
-            var basket = await _IRestClient.PostAsync<BasketSummaryDto>($"api/Basket/?productId={id}&basketId={shoppingCartId}");
-
-            //var basket = await _IRestClient.PostAsync<BasketSummaryDto>($"{baseUrl}/Basket/{shoppingCartId}/item/{id}");
+            var basket = await _IRestClient.PostAsync<BasketSummaryDto>($"{baseUrl}/?productId={id}&basketId={shoppingCartId}");
+            //var basket = await _IRestClient.PostAsync<BasketSummaryDto>($"{baseUrl}/{shoppingCartId}/item/{id}");
 
             _logger.LogInformation($"Song {id} was added to the cart.");
 
@@ -106,7 +104,7 @@ namespace MusicStore.Controllers
         public async Task<IActionResult> RemoveFromCart(int id, CancellationToken requestAborted)
         {
             // Remove from cart
-            await _IRestClient.DeleteAsync($"{baseUrl}/Basket/{_cookieLogic.GetBasketId()}/item/{id}");
+            await _IRestClient.DeleteAsync($"{baseUrl}/{_cookieLogic.GetBasketId()}/lineitem/{id}");
 
             TempData[ToastrMessage.Success] = "Successfully Removed Song";
 
@@ -115,7 +113,7 @@ namespace MusicStore.Controllers
 
         public async Task<IActionResult> RemoveCart(CancellationToken requestAborted)
         {
-            await _IRestClient.DeleteAsync($"{baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
+            await _IRestClient.DeleteAsync($"{baseUrl}?basketId={_cookieLogic.GetBasketId()}");
 
             // Remove cookie
             _cookieLogic.RemoveBasketId();
