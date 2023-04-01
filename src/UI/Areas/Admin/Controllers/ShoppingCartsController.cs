@@ -16,7 +16,7 @@ namespace MusicStore.Areas.Admin.Controllers
     public class ShoppingCartsController : Controller
     {
         private readonly IRestClient _IRestClient;
-        private readonly string baseUrl = "basket/api/Basket/Baskets";
+        private readonly string baseUrl = "basket/api/Basket";
         private readonly ILogger<ShoppingCartController> _logger;
 
         public ShoppingCartsController(ILogger<ShoppingCartController> logger,
@@ -56,7 +56,7 @@ namespace MusicStore.Areas.Admin.Controllers
         {
             var basketId = Request.Query["id"];
             
-            await _IRestClient.DeleteAsync($"{baseUrl}/Basket/{basketId}");
+            await _IRestClient.DeleteAsync($"{baseUrl}/?basketId={basketId}");
 
             TempData[ToastrMessage.Success] = "Successfully Removed Shopping Cart";
 

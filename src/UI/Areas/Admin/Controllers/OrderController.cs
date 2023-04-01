@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MusicStore.Helper;
@@ -10,7 +11,9 @@ namespace MusicStore.Areas.Admin.Controllers
     public class OrderController : Controller
     {
         private readonly IRestClient _IRestClient;
-        private readonly string baseUrl = "order/api/Ordering/Orders";
+        private const string baseUrl = "order/api/Ordering";
+        private const string version = "v1";
+        //private readonly string baseUrl = "order/api/Ordering/Orders";
 
         public OrderController(IRestClient iuiRestClient)
         {
@@ -25,7 +28,7 @@ namespace MusicStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Details(string orderId)
         {
-            var response = await _IRestClient.GetAsync<OrderIndexDto>($"{baseUrl}/v1/Order/{orderId}");
+            var response = await _IRestClient.GetAsync<OrderIndexDto>($"{baseUrl}/{version}/Order/{orderId}");
             return View(response.Data);
         }
     }

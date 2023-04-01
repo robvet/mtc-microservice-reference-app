@@ -61,7 +61,8 @@ namespace MusicStore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _IRestClient.PostAsync<AlbumDTO>($"{baseUrl}/Music", album);
+                var result = await _IRestClient.PostAsync<AlbumDTO>($"{baseUrl}", album);
+                //var result = await _IRestClient.PostAsync<AlbumDTO>($"{baseUrl}/Music", album);
                 return RedirectToAction("Index");
             }
 
@@ -88,7 +89,8 @@ namespace MusicStore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _IRestClient.PutAsync<AlbumDTO>($"{baseUrl}/Music", album);
+                await _IRestClient.PutAsync<AlbumDTO>($"{baseUrl}", album);
+                //await _IRestClient.PutAsync<AlbumDTO>($"{baseUrl}/Music", album);
                 return RedirectToAction("Index");
             }
 
