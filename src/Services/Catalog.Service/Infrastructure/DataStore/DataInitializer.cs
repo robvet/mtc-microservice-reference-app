@@ -354,7 +354,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Hank Williams"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -367,7 +367,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "George Jones"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -380,7 +380,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bill Monroe"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -393,7 +393,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The Carter Family"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -406,7 +406,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tammy Wynette"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -419,7 +419,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Hank Williams"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -432,7 +432,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Patsy Cline"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -445,7 +445,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Randy Travis"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -458,7 +458,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eddy Arnold"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -471,7 +471,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Johnny Cash"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -484,7 +484,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Dolly Parton"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -497,7 +497,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Roy Acuff"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -510,7 +510,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Willie Nelson"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -523,7 +523,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Garth Brooks"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -536,7 +536,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Patsy Cline"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -549,7 +549,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Loretta Lynn"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -562,7 +562,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Hank Snow"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -575,7 +575,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Johnny Cash"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -588,7 +588,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Wills"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -601,7 +601,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kitty Wells"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -614,7 +614,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Merle Haggard"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -627,7 +627,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Garth Brooks"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -640,7 +640,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Willie Nelson"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -653,7 +653,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Conway Twitty"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
 
                     // Rock Albums
@@ -669,7 +669,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -682,7 +682,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -695,7 +695,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -708,7 +708,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -721,7 +721,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Dylan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -734,7 +734,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -747,7 +747,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Who"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -760,7 +760,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eagles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -773,7 +773,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Derek And The Dominos"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -786,7 +786,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Lynyrd Skynyrd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -799,7 +799,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Queen"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -812,7 +812,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doors"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -825,7 +825,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -838,7 +838,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Heart"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -851,7 +851,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ZZ Top"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -864,7 +864,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aerosmith"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -877,7 +877,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Van Halen"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -890,7 +890,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -903,7 +903,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Dire Straits"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -916,7 +916,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "AC/DC"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -929,7 +929,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -942,7 +942,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kinks"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -955,7 +955,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kansas"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -968,7 +968,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -981,7 +981,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jethro Tull"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -994,7 +994,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "U2"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1007,7 +1007,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steppenwolf"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1020,7 +1020,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Lynyrd Skynyrd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1033,7 +1033,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1046,7 +1046,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rush"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1059,7 +1059,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1072,7 +1072,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Who"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1085,7 +1085,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steve Miller"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1098,7 +1098,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Police"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1111,7 +1111,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1124,7 +1124,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "AC/DC"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1137,7 +1137,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1150,7 +1150,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1163,7 +1163,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yes"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1176,7 +1176,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Buffalo Springfield"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1189,7 +1189,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Santana"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1202,7 +1202,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Moody Blues"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1215,7 +1215,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1228,7 +1228,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1241,7 +1241,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1254,7 +1254,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1267,7 +1267,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Don McLean"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1280,7 +1280,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bad Company"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1293,7 +1293,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ZZ Top"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1306,7 +1306,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1319,7 +1319,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yes"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1332,7 +1332,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Supertramp"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1345,7 +1345,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1358,7 +1358,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aerosmith"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1371,7 +1371,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1384,7 +1384,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "George Harrison"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1397,7 +1397,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Dylan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1410,7 +1410,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cars"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1423,7 +1423,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Blue Oyster Cult"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1436,7 +1436,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Who"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1449,7 +1449,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steely Dan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1462,7 +1462,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "George Thorogood"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1475,7 +1475,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ELP"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1488,7 +1488,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eagles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1501,7 +1501,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1514,7 +1514,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "U2"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1527,7 +1527,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Joe Walsh"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1540,7 +1540,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tom Petty"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1553,7 +1553,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1566,7 +1566,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1579,7 +1579,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ten Years After"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1592,7 +1592,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1605,7 +1605,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Van Morrison"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1618,7 +1618,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "AC/DC"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1631,7 +1631,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1644,7 +1644,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eagles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1657,7 +1657,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1670,7 +1670,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Queen"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1683,7 +1683,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1696,7 +1696,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Seger"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1709,7 +1709,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Free"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1722,7 +1722,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doobie Brothers"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1735,7 +1735,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1748,7 +1748,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Janis Joplin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1761,7 +1761,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1774,7 +1774,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CSN&Y"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1787,7 +1787,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kinks"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1800,7 +1800,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Supertramp"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1813,7 +1813,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "AC/DC"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1826,7 +1826,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jethro Tull"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1839,7 +1839,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1852,7 +1852,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Blue Oyster Cult"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1865,7 +1865,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cars"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1878,7 +1878,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Animals"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1891,7 +1891,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Who"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1904,7 +1904,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Paul McCartney"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1917,7 +1917,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1930,7 +1930,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kansas"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1943,7 +1943,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rick Derringer"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1956,7 +1956,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Heart"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1969,7 +1969,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Peter Frampton"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1982,7 +1982,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The Kingsmen"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -1995,7 +1995,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Allman Brothers"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2008,7 +2008,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doobie Brothers"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2021,7 +2021,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Police"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2034,7 +2034,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ted Nugent"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2047,7 +2047,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2060,7 +2060,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ZZ Top"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2073,7 +2073,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bad Company"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2086,7 +2086,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2099,7 +2099,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Stevie Ray Vaughan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2112,7 +2112,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "BTO"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2125,7 +2125,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Deep Purple"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2138,7 +2138,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Marshall Tucker Band"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2151,7 +2151,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Seger"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2164,7 +2164,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doors"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2177,7 +2177,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Van Halen"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2190,7 +2190,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2203,7 +2203,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2216,7 +2216,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2229,7 +2229,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2242,7 +2242,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2255,7 +2255,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2268,7 +2268,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2281,7 +2281,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steve Miller"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2294,7 +2294,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rod Stewart"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2307,7 +2307,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steppenwolf"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2320,7 +2320,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cream"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2333,7 +2333,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ELP"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2346,7 +2346,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Lynyrd Skynyrd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2359,7 +2359,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cars"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2372,7 +2372,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pete Townshend"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2385,7 +2385,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Dire Straits"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2398,7 +2398,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Supertramp"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2411,7 +2411,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2424,7 +2424,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bad Company"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2437,7 +2437,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yes"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2450,7 +2450,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Styx"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2463,7 +2463,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2476,7 +2476,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2489,7 +2489,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2502,7 +2502,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2515,7 +2515,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tom Petty"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2528,7 +2528,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2541,7 +2541,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Traffic"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2554,7 +2554,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2567,7 +2567,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ELO"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2580,7 +2580,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2593,7 +2593,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Robin Trower"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2606,7 +2606,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2619,7 +2619,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aerosmith"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2632,7 +2632,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2645,7 +2645,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cars"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2658,7 +2658,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2671,7 +2671,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2684,7 +2684,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bruce Springsteen"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2697,7 +2697,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Santana"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2710,7 +2710,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steely Dan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2723,7 +2723,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Police"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2736,7 +2736,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Dylan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2749,7 +2749,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Edgar Winter Group"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2762,7 +2762,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tom Petty"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2775,7 +2775,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2788,7 +2788,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rush"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2801,7 +2801,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2814,7 +2814,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doors"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2827,7 +2827,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2840,7 +2840,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2853,7 +2853,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jefferson Airplane"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2866,7 +2866,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Golden Earring"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2879,7 +2879,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Head East"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2892,7 +2892,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2905,7 +2905,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Foreigner"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2918,7 +2918,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ELP"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2931,7 +2931,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rush"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2944,7 +2944,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bruce Springsteen"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2957,7 +2957,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Joe Walsh"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2970,7 +2970,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "U2"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2983,7 +2983,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Heart"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -2996,7 +2996,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eagles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3009,7 +3009,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bad Company"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3022,7 +3022,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doors"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3035,7 +3035,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3048,7 +3048,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pretenders"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3061,7 +3061,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cream"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3074,7 +3074,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3087,7 +3087,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Don Henley"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3100,7 +3100,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3113,7 +3113,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Queen"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3126,7 +3126,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steve Miller"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3139,7 +3139,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jethro Tull"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3152,7 +3152,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pat Benatar"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3165,7 +3165,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3178,7 +3178,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3191,7 +3191,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ted Nugent"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3204,7 +3204,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3217,7 +3217,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "David Bowie"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3230,7 +3230,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3243,7 +3243,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Van Morrison"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3256,7 +3256,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Stevie Ray Vaughan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3269,7 +3269,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aaron Copland & London Symphony Orchestra"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3282,7 +3282,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aaron Goldberg"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3295,7 +3295,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Adrian Leaper & Doreen de Feis"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3308,7 +3308,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aisha Duo"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3321,7 +3321,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Pop"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Amy Winehouse"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3334,7 +3334,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Disco"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Anita Ward"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3347,7 +3347,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Antônio Carlos Jobim"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3360,7 +3360,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Antônio Carlos Jobim"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3373,7 +3373,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Apocalyptica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3386,7 +3386,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Audioslave"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3399,7 +3399,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Audioslave"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3412,7 +3412,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Barry Wordsworth & BBC Concert Orchestra"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3425,7 +3425,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Berliner Philharmoniker & Hans Rosbaud"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3438,7 +3438,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Berliner Philharmoniker & Herbert Von Karajan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3451,7 +3451,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Billy Cobham"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3464,7 +3464,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Black Label Society"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3477,7 +3477,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Black Label Society"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3490,7 +3490,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Black Sabbath"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3503,7 +3503,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Black Sabbath"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3516,7 +3516,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston Symphony Orchestra & Seiji Ozawa"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3529,7 +3529,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Britten Sinfonia, Ivor Bolton & Lesley Garrett"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3542,7 +3542,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bruce Dickinson"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3555,7 +3555,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Caetano Veloso"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3568,7 +3568,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Caetano Veloso"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3581,7 +3581,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cake"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3594,7 +3594,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Calexico"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3607,7 +3607,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cássia Eller"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3620,7 +3620,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Disco"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chic"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3633,7 +3633,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chicago Symphony Orchestra & Fritz Reiner"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3646,7 +3646,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chico Buarque"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3659,7 +3659,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chico Science & Nação Zumbi"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3672,7 +3672,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chico Science & Nação Zumbi"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3685,7 +3685,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chris Cornell"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3698,7 +3698,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Christopher O'Riley"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3711,7 +3711,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Reggae"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cidade Negra"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3724,7 +3724,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Reggae"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cidade Negra"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3737,7 +3737,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cláudio Zoli"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3750,7 +3750,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Dennis Chambers"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3763,7 +3763,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Djavan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3776,7 +3776,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Djavan"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3789,7 +3789,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Disco"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Donna Summer"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3802,7 +3802,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ed Motta"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3815,7 +3815,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Edo de Waart & San Francisco Symphony"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3828,7 +3828,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elis Regina"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3841,7 +3841,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "English Concert & Trevor Pinnock"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3854,7 +3854,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3867,7 +3867,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3880,7 +3880,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eugene Ormandy"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3893,7 +3893,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eugene Ormandy"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3906,7 +3906,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Falamansa"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3919,7 +3919,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Funk Como Le Gusta"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3932,7 +3932,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Gilberto Gil"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3945,7 +3945,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Gilberto Gil"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3958,7 +3958,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Godsmack"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3971,7 +3971,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Gonzaguinha"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3984,7 +3984,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Göteborgs Symfoniker & Neeme Järvi"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -3997,7 +3997,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Guns N' Roses"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4010,7 +4010,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Incognito"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4023,7 +4023,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4036,7 +4036,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4049,7 +4049,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4062,7 +4062,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4075,7 +4075,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4088,7 +4088,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4101,7 +4101,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4114,7 +4114,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4127,7 +4127,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4140,7 +4140,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4153,7 +4153,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4166,7 +4166,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4179,7 +4179,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "James Levine"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4192,7 +4192,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jorge Ben"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4205,7 +4205,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jota Quest"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4218,7 +4218,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Judas Priest"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4231,7 +4231,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kent Nagano and Orchestre de l'Opéra de Lyon"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4244,7 +4244,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Legião Urbana"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4257,7 +4257,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "London Symphony Orchestra & Sir Charles Mackerras"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4270,7 +4270,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Luciana Souza/Romero Lubambo"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4283,7 +4283,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Marcos Valle"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4296,7 +4296,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Marisa Monte"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4309,7 +4309,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Martin Roscoe"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4322,7 +4322,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4335,7 +4335,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4348,7 +4348,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4361,7 +4361,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4374,7 +4374,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4387,7 +4387,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4400,7 +4400,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4413,7 +4413,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4426,7 +4426,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4439,7 +4439,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Michael Tilson Thomas & San Francisco Symphony"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4452,7 +4452,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Michael Tilson Thomas & San Francisco Symphony"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4465,7 +4465,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Miles Davis"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4478,7 +4478,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Miles Davis"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4491,7 +4491,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Miles Davis"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4504,7 +4504,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Milton Nascimento"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4517,7 +4517,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Milton Nascimento"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4530,7 +4530,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Mötley Crüe"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4543,7 +4543,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Motörhead"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4556,7 +4556,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Nash Ensemble"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4569,7 +4569,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Nicolaus Esterhazy Sinfonia"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4582,7 +4582,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Olodum"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4595,7 +4595,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Orchestra of The Age of Enlightenment"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4608,7 +4608,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Os Paralamas Do Sucesso"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4621,7 +4621,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Os Paralamas Do Sucesso"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4634,7 +4634,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Os Paralamas Do Sucesso"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4647,7 +4647,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4660,7 +4660,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4673,7 +4673,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4686,7 +4686,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4699,7 +4699,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4712,7 +4712,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4725,7 +4725,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Roger Norrington, London Classical Players"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4738,7 +4738,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Royal Philharmonic Orchestra & Sir Thomas Beecham"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4751,7 +4751,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Scholars Baroque Ensemble"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4764,7 +4764,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Sergei Prokofiev & Yuri Temirkanov"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4777,7 +4777,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Sir Georg Solti & Wiener Philharmoniker"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4790,7 +4790,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Spyro Gyra"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4803,7 +4803,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Spyro Gyra"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4816,7 +4816,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Stevie Ray Vaughan & Double Trouble"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4829,7 +4829,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "System Of A Down"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4842,7 +4842,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Temple of the Dog"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4855,7 +4855,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The 12 Cellists of The Berlin Philharmonic"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4868,7 +4868,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The Black Crowes"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4881,7 +4881,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The Black Crowes"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4894,7 +4894,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The King's Singers"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4907,7 +4907,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tim Maia"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4920,7 +4920,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tim Maia"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4933,7 +4933,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ton Koopman"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4946,7 +4946,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Reggae"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "UB40"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4959,7 +4959,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Pop"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Various Artists"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4972,7 +4972,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Various Artists"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4985,7 +4985,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Various Artists"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -4998,7 +4998,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Vinícius De Moraes"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -5011,7 +5011,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Wilhelm Kempff"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -5024,7 +5024,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yehudi Menuhin"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -5037,7 +5037,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yo-Yo Ma"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     },
                     new Product
                     {
@@ -5050,7 +5050,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Zeca Pagodinho"),
-                        AlbumArtUrl = "/Content/Images/placeholder.gif"
+                        AlbumArtUrl = "/Images/placeholder.gif"
                     }
                 }.ForEach(a => context.Products.Add(a));
 

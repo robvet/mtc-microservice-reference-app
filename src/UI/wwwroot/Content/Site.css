@@ -22,6 +22,10 @@ body {
     padding: 0px 6%;
 }
 
+.divlogocolor {
+    background-color: rgb(255, 255, 255);
+}
+
 
 #container {
     float: left;thin;

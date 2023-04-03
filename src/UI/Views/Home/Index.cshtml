@@ -5,9 +5,9 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron" class=”divlogocolor”>*@
+<div class=”divlogocolor”>
     <h1>@AppSettings.Value.SiteTitle</h1>
-    @*<img src="~/Images/home-showcase.png" />*@
     <img src="~/Images/retro.png" />
 </div>
 
@@ -18,17 +18,33 @@
         {
             <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
                 <a asp-controller="Store" asp-action="Details" asp-route-id="@album.Id">
-                    @if (!string.IsNullOrEmpty(album.AlbumArtUrl))
-                    {
-                        <img alt="@album.Title" src="@Url.Content(@album.AlbumArtUrl)" />
-                    }
-                    else
-                    {
-                        <img alt="@album.Title" src="~/images/placeholder.png" class="img-responsive" />
-                    }
+                    <img src="~/Images/placeholder.png" class="img-responsive" />
                     <h4>@album.Title</h4>
+
+                    @*
+                        // Outrageous Bug
+                        // Will not render image when wrapped in If conditional
+                        // @if (!string.IsNullOrEmpty(album.AlbumArtUrl))
+                        //{
+                        //    <img alt="@album.Title" src="@Url.Content(@album.AlbumArtUrl)" />
+                        //}
+                        //else
+                        //{
+                        //    @*<img src="~/images/placeholder.jpg" width"100" height="100" />
+                        //    @*<img alt="@album.Title" src="@Url.Content("/images/placeholder.jpg")" />
+                        //    @*<img alt="@album.Title" src="~/images/placeholder.png" class="img-responsive" />
+                        //}
+                    *@
+                    
                 </a>
             </li>
         }
     </ul>
 }
+
+
+
+
+
+
+

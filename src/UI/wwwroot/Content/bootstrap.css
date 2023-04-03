@@ -386,7 +386,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #FFFFFF;
 }
 
 .sr-only {
@@ -557,9 +557,9 @@ h4 small,
 }
 
 .page-header {
-  padding-bottom: 9px;
-  margin: 40px 0 20px;
-  border-bottom: 1px solid #eeeeee;
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #FFFFFF;
 }
 
 ul,
@@ -651,9 +651,9 @@ abbr.initialism {
 }
 
 blockquote {
-  padding: 10px 20px;
-  margin: 0 0 20px;
-  border-left: 5px solid #eeeeee;
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    border-left: 5px solid #FFFFFF;
 }
 
 blockquote p {
@@ -676,12 +676,12 @@ blockquote small:before {
   content: '\2014 \00A0';
 }
 
-blockquote.pull-right {
-  padding-right: 15px;
-  padding-left: 0;
-  border-right: 5px solid #eeeeee;
-  border-left: 0;
-}
+    blockquote.pull-right {
+        padding-right: 15px;
+        padding-left: 0;
+        border-right: 5px solid#FFFFFF;
+        border-left: 0;
+    }
 
 blockquote.pull-right p,
 blockquote.pull-right small {
@@ -1754,7 +1754,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .form-control[readonly],
 fieldset[disabled] .form-control {
   cursor: not-allowed;
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
 }
 
 textarea.form-control {
@@ -3727,13 +3727,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-weight: normal;
   line-height: 1;
   text-align: center;
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
+  padding: 5px 10px;
 
 .input-group-addon.input-sm {
-  padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
 }
@@ -3833,7 +3833,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
 }
 
 .nav > li.disabled > a {
@@ -3851,7 +3851,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
   border-color: #428bca;
 }
 
@@ -3883,7 +3883,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #dddddd;
+  border-color: #FFFFFF #FFFFFF;
 }
 
 .nav-tabs > li.active > a,
@@ -4690,7 +4690,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
 }
 
 .pagination > .active > a,
@@ -4795,7 +4795,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
 }
 
 .pager .next > a,
@@ -4943,8 +4943,8 @@ a.list-group-item.active > .badge,
     font-size: 21px;
     font-weight: 200;
     line-height: 2.1428571435;
-    color: inherit;
-    /*background-color: #eeeeee;*/
+    color: #FFFFFF;
+    /*color: inherit;*/
     background-color: #FFFFFF;
 }
 

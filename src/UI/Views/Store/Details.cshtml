@@ -6,15 +6,21 @@
 
 <h2>@Model.Title</h2>
 
+@*
+    <p>
+        @if (!string.IsNullOrEmpty(Model.AlbumArtUrl))
+        {
+            <img alt="@Model.Title" src="@Url.Content(Model.AlbumArtUrl)" />
+        }
+        else
+        {
+            @*<img alt="@Model.Title" src="~/images/placeholder.png" class="img-responsive" />
+        }
+    </p>
+*@
+
 <p>
-    @if (!string.IsNullOrEmpty(Model.AlbumArtUrl))
-    {
-        <img alt="@Model.Title" src="@Url.Content(Model.AlbumArtUrl)" />
-    }
-    else
-    {
-        <img alt="@Model.Title" src="~/images/placeholder.png" class="img-responsive" />
-    }
+    <img src="~/Images/placeholder.png" class="img-responsive" />
 </p>
 
 <div id="album-details">
