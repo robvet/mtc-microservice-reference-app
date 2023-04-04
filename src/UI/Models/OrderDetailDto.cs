@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MusicStore.Models
 {
@@ -17,5 +18,6 @@ namespace MusicStore.Models
         [Display(Name ="Price")]
         [DataType(DataType.Currency)]
         public decimal UnitPrice { get; set; }
+        public Guid ProductId { get; set; }
     }
 }

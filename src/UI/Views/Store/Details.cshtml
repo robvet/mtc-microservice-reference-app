@@ -20,7 +20,8 @@
 *@
 
 <p>
-    <img src="~/Images/placeholder.png" class="img-responsive" />
+    @{var imageLink = $"~/Images/{Model.AlbumArtUrl}";}
+    <img alt="@Model.Title" src="@Url.Content(imageLink)" />
 </p>
 
 <div id="album-details">

@@ -12,8 +12,14 @@
         {
             <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
                 <a asp-controller="Store" asp-action="Details" asp-route-id="@album.Id">
-                    <img src="~/Images/placeholder.png" class="img-responsive" />
-                    <h5 class="control-label">@album.Title</h5>
+                    @{
+                        var imageLink = $"~/Images/{album.AlbumArtUrl}";
+                    }
+                    <img alt="@album.Title" src="@Url.Content(imageLink)" />
+                    
+                    
+                  @*  <img src="~/Images/placeholder.png" class="img-responsive" />
+                    <h5 class="control-label">@album.Title</h5>*@
                     
                 @*    
                     @if (!string.IsNullOrEmpty(album.AlbumArtUrl))

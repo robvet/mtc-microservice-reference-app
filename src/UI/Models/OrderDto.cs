@@ -27,6 +27,6 @@ namespace MusicStore.Models
         
         [DataType(DataType.Currency)]
         public decimal Total { get; set; }
-
+         
     }
 }

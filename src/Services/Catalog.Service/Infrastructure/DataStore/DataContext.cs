@@ -40,6 +40,8 @@ namespace Catalog.API.Infrastructure.DataStore
 
                 entity.Property(e => e.ReleaseDate).HasColumnType("datetime");
 
+                entity.Property(e => e.ProductId).HasColumnType("uniqueidentifier");
+
                 entity.Property(e => e.Title)
                     .IsRequired()
                     .HasMaxLength(160);
