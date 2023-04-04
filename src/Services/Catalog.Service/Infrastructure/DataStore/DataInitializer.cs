@@ -346,7 +346,7 @@ namespace Catalog.API.Infrastructure.DataStore
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -354,12 +354,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Hank Williams"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -367,12 +367,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "George Jones"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -380,12 +380,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bill Monroe"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -393,12 +393,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The Carter Family"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -406,12 +406,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tammy Wynette"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -419,12 +419,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Hank Williams"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -432,12 +432,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Patsy Cline"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -445,12 +445,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Randy Travis"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -458,12 +458,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eddy Arnold"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -471,12 +471,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Johnny Cash"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -484,12 +484,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Dolly Parton"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -497,12 +497,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Roy Acuff"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -510,12 +510,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Willie Nelson"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -523,12 +523,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Garth Brooks"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -536,12 +536,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Patsy Cline"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -549,12 +549,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Loretta Lynn"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -562,12 +562,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Hank Snow"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -575,12 +575,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Johnny Cash"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -588,12 +588,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Wills"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -601,12 +601,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kitty Wells"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -614,12 +614,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Merle Haggard"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -627,12 +627,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Garth Brooks"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -640,12 +640,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Willie Nelson"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -653,7 +653,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Country"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Conway Twitty"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
 
                     // Rock Albums
@@ -661,7 +661,7 @@ namespace Catalog.API.Infrastructure.DataStore
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -669,12 +669,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -682,12 +682,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -695,12 +695,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -708,12 +708,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -721,12 +721,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Dylan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -734,12 +734,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -747,12 +747,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Who"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -760,12 +760,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eagles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -773,12 +773,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Derek And The Dominos"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -786,12 +786,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Lynyrd Skynyrd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -799,12 +799,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Queen"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -812,12 +812,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doors"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -825,12 +825,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -838,12 +838,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Heart"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -851,12 +851,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ZZ Top"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -864,12 +864,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aerosmith"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -877,12 +877,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Van Halen"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -890,12 +890,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -903,12 +903,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Dire Straits"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -916,12 +916,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "AC/DC"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -929,12 +929,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -942,12 +942,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kinks"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -955,12 +955,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kansas"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -968,12 +968,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -981,12 +981,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jethro Tull"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -994,12 +994,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "U2"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1007,12 +1007,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steppenwolf"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1020,12 +1020,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Lynyrd Skynyrd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1033,12 +1033,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1046,12 +1046,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rush"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1059,12 +1059,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1072,12 +1072,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Who"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1085,12 +1085,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steve Miller"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1098,12 +1098,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Police"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1111,12 +1111,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1124,12 +1124,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "AC/DC"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1137,12 +1137,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1150,12 +1150,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1163,12 +1163,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yes"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1176,12 +1176,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Buffalo Springfield"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1189,12 +1189,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Santana"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1202,12 +1202,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Moody Blues"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1215,12 +1215,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1228,12 +1228,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1241,12 +1241,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1254,12 +1254,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1267,12 +1267,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Don McLean"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1280,12 +1280,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bad Company"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1293,12 +1293,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ZZ Top"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1306,12 +1306,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1319,12 +1319,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yes"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1332,12 +1332,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Supertramp"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1345,12 +1345,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1358,12 +1358,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aerosmith"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1371,12 +1371,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1384,12 +1384,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "George Harrison"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1397,12 +1397,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Dylan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1410,12 +1410,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cars"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1423,12 +1423,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Blue Oyster Cult"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1436,12 +1436,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Who"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1449,12 +1449,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steely Dan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1462,12 +1462,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "George Thorogood"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1475,12 +1475,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ELP"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1488,12 +1488,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eagles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1501,12 +1501,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1514,12 +1514,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "U2"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1527,12 +1527,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Joe Walsh"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1540,12 +1540,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tom Petty"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1553,12 +1553,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1566,12 +1566,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1579,12 +1579,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ten Years After"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1592,12 +1592,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1605,12 +1605,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Van Morrison"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1618,12 +1618,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "AC/DC"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1631,12 +1631,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1644,12 +1644,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eagles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1657,12 +1657,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1670,12 +1670,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Queen"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1683,12 +1683,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1696,12 +1696,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Seger"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1709,12 +1709,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Free"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1722,12 +1722,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doobie Brothers"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1735,12 +1735,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1748,12 +1748,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Janis Joplin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1761,12 +1761,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1774,12 +1774,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CSN&Y"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1787,12 +1787,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kinks"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1800,12 +1800,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Supertramp"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1813,12 +1813,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "AC/DC"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1826,12 +1826,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jethro Tull"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1839,12 +1839,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1852,12 +1852,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Blue Oyster Cult"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1865,12 +1865,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cars"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1878,12 +1878,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Animals"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1891,12 +1891,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Who"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1904,12 +1904,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Paul McCartney"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1917,12 +1917,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1930,12 +1930,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kansas"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1943,12 +1943,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rick Derringer"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1956,12 +1956,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Heart"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1969,12 +1969,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Peter Frampton"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1982,12 +1982,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The Kingsmen"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -1995,12 +1995,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Allman Brothers"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2008,12 +2008,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doobie Brothers"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2021,12 +2021,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Police"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2034,12 +2034,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ted Nugent"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2047,12 +2047,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2060,12 +2060,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ZZ Top"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2073,12 +2073,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bad Company"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2086,12 +2086,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2099,12 +2099,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Stevie Ray Vaughan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2112,12 +2112,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "BTO"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2125,12 +2125,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Deep Purple"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2138,12 +2138,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Marshall Tucker Band"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2151,12 +2151,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Seger"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2164,12 +2164,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doors"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2177,12 +2177,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Van Halen"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2190,12 +2190,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2203,12 +2203,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2216,12 +2216,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2229,12 +2229,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2242,12 +2242,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2255,12 +2255,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2268,12 +2268,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2281,12 +2281,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steve Miller"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2294,12 +2294,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rod Stewart"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2307,12 +2307,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steppenwolf"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2320,12 +2320,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cream"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2333,12 +2333,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ELP"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2346,12 +2346,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Lynyrd Skynyrd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2359,12 +2359,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cars"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2372,12 +2372,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pete Townshend"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2385,12 +2385,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Dire Straits"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2398,12 +2398,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Supertramp"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2411,12 +2411,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2424,12 +2424,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bad Company"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2437,12 +2437,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yes"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2450,12 +2450,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Styx"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2463,12 +2463,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2476,12 +2476,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2489,12 +2489,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2502,12 +2502,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2515,12 +2515,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tom Petty"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2528,12 +2528,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "CCR"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2541,12 +2541,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Traffic"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2554,12 +2554,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2567,12 +2567,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ELO"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2580,12 +2580,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2593,12 +2593,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Robin Trower"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2606,12 +2606,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2619,12 +2619,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aerosmith"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2632,12 +2632,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2645,12 +2645,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cars"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2658,12 +2658,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2671,12 +2671,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2684,12 +2684,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bruce Springsteen"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2697,12 +2697,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Santana"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2710,12 +2710,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steely Dan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2723,12 +2723,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Police"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2736,12 +2736,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bob Dylan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2749,12 +2749,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Edgar Winter Group"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2762,12 +2762,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tom Petty"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2775,12 +2775,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2788,12 +2788,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rush"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2801,12 +2801,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2814,12 +2814,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doors"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2827,12 +2827,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2840,12 +2840,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2853,12 +2853,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jefferson Airplane"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2866,12 +2866,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Golden Earring"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2879,12 +2879,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Head East"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2892,12 +2892,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2905,12 +2905,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Foreigner"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2918,12 +2918,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "ELP"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2931,12 +2931,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rush"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2944,12 +2944,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bruce Springsteen"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2957,12 +2957,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Joe Walsh"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2970,12 +2970,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "U2"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2983,12 +2983,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Heart"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -2996,12 +2996,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eagles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3009,12 +3009,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bad Company"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3022,12 +3022,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Doors"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3035,12 +3035,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3048,12 +3048,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pretenders"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3061,12 +3061,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cream"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3074,12 +3074,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3087,12 +3087,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Don Henley"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3100,12 +3100,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3113,12 +3113,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Queen"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3126,12 +3126,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Steve Miller"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3139,12 +3139,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jethro Tull"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3152,12 +3152,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pat Benatar"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3165,12 +3165,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Beatles"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3178,12 +3178,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elton John"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3191,12 +3191,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ted Nugent"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3204,12 +3204,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3217,12 +3217,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "David Bowie"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3230,12 +3230,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3243,12 +3243,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Van Morrison"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3256,12 +3256,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Stevie Ray Vaughan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3269,12 +3269,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aaron Copland & London Symphony Orchestra"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3282,12 +3282,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aaron Goldberg"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3295,12 +3295,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Adrian Leaper & Doreen de Feis"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3308,12 +3308,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Aisha Duo"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3321,12 +3321,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Pop"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Amy Winehouse"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3334,12 +3334,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Disco"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Anita Ward"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3347,12 +3347,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Antônio Carlos Jobim"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3360,12 +3360,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Antônio Carlos Jobim"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3373,12 +3373,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Apocalyptica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3386,12 +3386,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Audioslave"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3399,12 +3399,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Rock"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Audioslave"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3412,12 +3412,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Barry Wordsworth & BBC Concert Orchestra"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3425,12 +3425,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Berliner Philharmoniker & Hans Rosbaud"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3438,12 +3438,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Berliner Philharmoniker & Herbert Von Karajan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3451,12 +3451,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Billy Cobham"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3464,12 +3464,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Black Label Society"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3477,12 +3477,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Black Label Society"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3490,12 +3490,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Black Sabbath"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3503,12 +3503,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Black Sabbath"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3516,12 +3516,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Boston Symphony Orchestra & Seiji Ozawa"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3529,12 +3529,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Britten Sinfonia, Ivor Bolton & Lesley Garrett"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3542,12 +3542,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Bruce Dickinson"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3555,12 +3555,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Caetano Veloso"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3568,12 +3568,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Caetano Veloso"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3581,12 +3581,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cake"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3594,12 +3594,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Calexico"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3607,12 +3607,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cássia Eller"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3620,12 +3620,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Disco"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chic"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3633,12 +3633,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chicago Symphony Orchestra & Fritz Reiner"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3646,12 +3646,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chico Buarque"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3659,12 +3659,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chico Science & Nação Zumbi"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3672,12 +3672,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chico Science & Nação Zumbi"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3685,12 +3685,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Chris Cornell"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3698,12 +3698,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Christopher O'Riley"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3711,12 +3711,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Reggae"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cidade Negra"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3724,12 +3724,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Reggae"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cidade Negra"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3737,12 +3737,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Cláudio Zoli"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3750,12 +3750,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Dennis Chambers"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3763,12 +3763,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Djavan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3776,12 +3776,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Djavan"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3789,12 +3789,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Disco"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Donna Summer"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3802,12 +3802,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ed Motta"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3815,12 +3815,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Edo de Waart & San Francisco Symphony"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3828,12 +3828,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Elis Regina"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3841,12 +3841,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "English Concert & Trevor Pinnock"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3854,12 +3854,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3867,12 +3867,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3880,12 +3880,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eugene Ormandy"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3893,12 +3893,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Eugene Ormandy"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3906,12 +3906,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Falamansa"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3919,12 +3919,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Funk Como Le Gusta"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3932,12 +3932,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Gilberto Gil"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3945,12 +3945,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Gilberto Gil"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3958,12 +3958,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Godsmack"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3971,12 +3971,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Gonzaguinha"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3984,12 +3984,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Göteborgs Symfoniker & Neeme Järvi"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -3997,12 +3997,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Guns N' Roses"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4010,12 +4010,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Incognito"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4023,12 +4023,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4036,12 +4036,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4049,12 +4049,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4062,12 +4062,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4075,12 +4075,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4088,12 +4088,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4101,12 +4101,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4114,12 +4114,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4127,12 +4127,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4140,12 +4140,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4153,12 +4153,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4166,12 +4166,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4179,12 +4179,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "James Levine"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4192,12 +4192,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jorge Ben"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4205,12 +4205,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Jota Quest"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4218,12 +4218,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Judas Priest"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4231,12 +4231,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Kent Nagano and Orchestre de l'Opéra de Lyon"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4244,12 +4244,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Legião Urbana"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4257,12 +4257,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "London Symphony Orchestra & Sir Charles Mackerras"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4270,12 +4270,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Luciana Souza/Romero Lubambo"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4283,12 +4283,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Marcos Valle"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4296,12 +4296,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Marisa Monte"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4309,12 +4309,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Martin Roscoe"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4322,12 +4322,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4335,12 +4335,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4348,12 +4348,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4361,12 +4361,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4374,12 +4374,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4387,12 +4387,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4400,12 +4400,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4413,12 +4413,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4426,12 +4426,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Metallica"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4439,12 +4439,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Michael Tilson Thomas & San Francisco Symphony"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4452,12 +4452,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Michael Tilson Thomas & San Francisco Symphony"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4465,12 +4465,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Miles Davis"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4478,12 +4478,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Miles Davis"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4491,12 +4491,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Miles Davis"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4504,12 +4504,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Milton Nascimento"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4517,12 +4517,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Milton Nascimento"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4530,12 +4530,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Mötley Crüe"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4543,12 +4543,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Motörhead"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4556,12 +4556,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Nash Ensemble"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4569,12 +4569,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Nicolaus Esterhazy Sinfonia"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4582,12 +4582,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Olodum"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4595,12 +4595,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Orchestra of The Age of Enlightenment"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4608,12 +4608,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Os Paralamas Do Sucesso"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4621,12 +4621,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Os Paralamas Do Sucesso"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4634,12 +4634,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Os Paralamas Do Sucesso"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4647,12 +4647,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4660,12 +4660,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4673,12 +4673,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4686,12 +4686,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4699,12 +4699,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4712,12 +4712,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4725,12 +4725,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Roger Norrington, London Classical Players"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4738,12 +4738,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Royal Philharmonic Orchestra & Sir Thomas Beecham"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4751,12 +4751,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Scholars Baroque Ensemble"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4764,12 +4764,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Sergei Prokofiev & Yuri Temirkanov"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4777,12 +4777,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Sir Georg Solti & Wiener Philharmoniker"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4790,12 +4790,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Spyro Gyra"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4803,12 +4803,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Jazz"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Spyro Gyra"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4816,12 +4816,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Stevie Ray Vaughan & Double Trouble"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4829,12 +4829,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Metal"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "System Of A Down"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4842,12 +4842,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Alternative"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Temple of the Dog"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4855,12 +4855,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The 12 Cellists of The Berlin Philharmonic"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4868,12 +4868,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The Black Crowes"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4881,12 +4881,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Blues"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The Black Crowes"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4894,12 +4894,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "The King's Singers"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4907,12 +4907,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tim Maia"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4920,12 +4920,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Tim Maia"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4933,12 +4933,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Ton Koopman"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = SetCaution(),
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4946,12 +4946,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Reggae"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "UB40"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4959,12 +4959,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Pop"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Various Artists"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4972,12 +4972,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Various Artists"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4985,12 +4985,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Various Artists"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -4998,12 +4998,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Vinícius De Moraes"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -5011,12 +5011,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Wilhelm Kempff"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -5024,12 +5024,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yehudi Menuhin"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -5037,12 +5037,12 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Classical"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Yo-Yo Ma"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     },
                     new Product
                     {
                         Cutout = false,
-                        CorrelationId = Guid.NewGuid(),
+                        ProductId = Guid.NewGuid(),
                         ParentalCaution = false,
                         ReleaseDate = SetReleaseDate(),
                         Upc = GenerateUpc(),
@@ -5050,7 +5050,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Genre = genres.Single(g => g.Name == "Latin"),
                         Price = .99M,
                         Artist = artists.Single(a => a.Name == "Zeca Pagodinho"),
-                        AlbumArtUrl = "/Images/placeholder.gif"
+                        AlbumArtUrl = "placeholder.png"
                     }
                 }.ForEach(a => context.Products.Add(a));
 

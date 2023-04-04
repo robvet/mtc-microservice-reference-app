@@ -32,7 +32,7 @@ namespace Catalog.API.Infrastructure.Repository
             var rnd = new Random();
             var productCount = Get().Count() + 5;
 
-            for (var i = 0; i <= count; i++)
+            for (var i = 1; i <= count; i++)
             {
                 var item = rnd.Next(productCount);
 
@@ -83,7 +83,7 @@ namespace Catalog.API.Infrastructure.Repository
         {
             var guid = ParseCorrelationToken(correlationToken);
             
-            return Get().Where(x => x.Id == id && x.CorrelationId == guid).Include(x => x.Artist)
+            return Get().Where(x => x.Id == id && x.ProductId == guid).Include(x => x.Artist)
                 .Include(y => y.Genre).FirstOrDefault();
         }
 

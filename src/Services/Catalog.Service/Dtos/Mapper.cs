@@ -21,7 +21,9 @@ namespace Catalog.API.Dtos
                     ParentalCaution = item.ParentalCaution,
                     Upc = item.Upc,
                     Cutout = item.Cutout,
-                    ReleaseDate = item.ReleaseDate
+                    ReleaseDate = item.ReleaseDate,
+                    AlbumArtUrl = item.AlbumArtUrl,
+                    ProductId=item.ProductId
                 });
 
             return mappedDtos;
@@ -41,7 +43,9 @@ namespace Catalog.API.Dtos
                 Cutout = music.Cutout,
                 ReleaseDate = music.ReleaseDate,
                 ArtistId = music.ArtistId,
-                GenreId = music.GenreId
+                GenreId = music.GenreId,
+                AlbumArtUrl = music.AlbumArtUrl,
+                ProductId = music.ProductId
             };
         }
 

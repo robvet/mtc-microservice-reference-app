@@ -44,7 +44,7 @@ body {
 {
     font-size: 18px;
     float: left;
-    background: url(/content/Images/logo.png) no-repeat;
+    background: url(/contentlogo.png) no-repeat;
     padding: 45px 0px 5px 0px;
 }
 
@@ -52,7 +52,7 @@ body {
 {
     height: 300px;
     width: 800px;
-    background: url(/content/Images/home-showcase.png) no-repeat;
+    background: url(/contenthome-showcase.png) no-repeat;
 }
 
 ul li a
@@ -381,7 +381,7 @@ tr:hover
         display: block;
         float: none;
         text-align: center; /*float: left; */
-        background: url(/content/Images/logo.png) top no-repeat;
+        background: url(/contentlogo.png) top no-repeat;
         padding: 45px 0px 5px 0px;
     }
 
@@ -455,7 +455,7 @@ tr:hover
     ul#album-list
     {
         float: none; /* Following line centers top selling albums */
-        display: inline-block; /*margin-left: 155px;*/ /*margin-left: 0px;*/ /*margin: auto;         /*display: block;*/ /*width: 72px;         height: 71px;         background: url(/content/Images/vinyl-album.png);         position: absolute;         left: 25px;         top: 3px;         z-index: 5;*/
+        display: inline-block; /*margin-left: 155px;*/ /*margin-left: 0px;*/ /*margin: auto;         /*display: block;*/ /*width: 72px;         height: 71px;         background: url(/contentvinyl-album.png);         position: absolute;         left: 25px;         top: 3px;         z-index: 5;*/
     }
 
     ul#album-list li
@@ -531,14 +531,14 @@ tr:hover
         display: block;
         float: none;
         text-align: center; /*float: left; */
-        background: url(/content/Images/logo.png) top no-repeat;
+        background: url(/contentlogo.png) top no-repeat;
         padding: 45px 0px 5px 0px;
     }
     /******************** Album Image ************************/
 
 
     /*img#album-image {
-            background: url(/content/Images/vinyl-album.png);
+            background: url(/contentvinyl-album.png);
             display: block;
             width: 72px;
             height: 71px;

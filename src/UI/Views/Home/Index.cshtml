@@ -8,7 +8,7 @@
 @*<div class="jumbotron" class=”divlogocolor”>*@
 <div class=”divlogocolor”>
     <h1>@AppSettings.Value.SiteTitle</h1>
-    <img src="~/Images/retro.png" />
+    <img src="~retro.png" />
 </div>
 
 @if (Model != null)
@@ -18,7 +18,7 @@
         {
             <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
                 <a asp-controller="Store" asp-action="Details" asp-route-id="@album.Id">
-                    <img src="~/Images/placeholder.png" class="img-responsive" />
+                    <img src="~placeholder.png" class="img-responsive" />
                     <h4>@album.Title</h4>
 
                     @*
@@ -30,9 +30,9 @@
                         //}
                         //else
                         //{
-                        //    @*<img src="~/images/placeholder.jpg" width"100" height="100" />
-                        //    @*<img alt="@album.Title" src="@Url.Content("/images/placeholder.jpg")" />
-                        //    @*<img alt="@album.Title" src="~/images/placeholder.png" class="img-responsive" />
+                        //    @*<img src="~placeholder.jpg" width"100" height="100" />
+                        //    @*<img alt="@album.Title" src="@Url.Content("placeholder.jpg")" />
+                        //    @*<img alt="@album.Title" src="~placeholder.png" class="img-responsive" />
                         //}
                     *@
                     

@@ -14,6 +14,14 @@
     <UserSecretsId>v3c4694b-984b-4f1b-b37f-9983ebed511</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
    </PropertyGroup>
+  
+  
+  <ItemGroup>
+    <Compile Remove="Connected Services\Application Insights\**" />
+    <Content Remove="Connected Services\Application Insights\**" />
+    <EmbeddedResource Remove="Connected Services\Application Insights\**" />
+    <None Remove="Connected Services\Application Insights\**" />
+  </ItemGroup>
 
 
 
@@ -42,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Connected Services\Application Insights\" />
+    <Folder Include="Connected Services\" />
   </ItemGroup>
   
   

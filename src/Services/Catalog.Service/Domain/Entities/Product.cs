@@ -15,7 +15,7 @@ namespace Catalog.API.Domain.Entities
         public bool? Cutout { get; set; }
         public string Upc { get; set; }
         public DateTime? ReleaseDate { get; set; }
-        public Guid CorrelationId { get; set; }
+        public Guid ProductId { get; set; }
 
         public Artist Artist { get; set; }
         public Genre Genre { get; set; }
