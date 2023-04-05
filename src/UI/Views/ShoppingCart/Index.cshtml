@@ -69,16 +69,16 @@
         {
             <tr id="row-@item.">
                 <td>
-                    <a asp-controller="Store" asp-action="Details" asp-route-id="@item.">@item.Name</a>
+                <a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">@item.Name</a>
                 </td>
                 <td>
                     @item.Price
                 </td>
-                <td id="item-count-@item.">
+            <td id="item-count-@item.ProductId">
                     @item.QuanityOrdered
                 </td>
                 <td>
-                    <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.">Remove from cart</a>
+                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.ProductId">Remove from cart</a>
                 </td>
             </tr>
         }

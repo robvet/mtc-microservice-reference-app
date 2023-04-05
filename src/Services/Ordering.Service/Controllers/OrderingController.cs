@@ -19,7 +19,6 @@ namespace Ordering.API.Controllers
         private readonly IOrderQueries _orderQueries;
         private readonly TelemetryClient _telemetryClient;
         
-
         public OrderingController(IOrderQueries orderQueries, TelemetryClient telemetryClient)
         {
             _orderQueries = orderQueries;

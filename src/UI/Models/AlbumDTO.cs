@@ -17,6 +17,8 @@ namespace MusicStore.Models
 
         public string AlbumArtUrl { get; set; }
 
+        public Guid ProductId { get; set; }
+
         public bool ParentalCaution { get; set; }
 
         [Required]

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace MusicStore.Areas.Admin.Controllers
     {
         private const string baseUrl = "catalog/api/catalog";
         private readonly IRestClient _IRestClient;
+        private const string defaultProductName = "placeholder.png";
 
         public StoreManagerController(IRestClient iuiRestClient)
         {
@@ -59,6 +61,13 @@ namespace MusicStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AlbumDTO album)
         {
+            album.ProductId = Guid.NewGuid();
+
+            if (string.IsNullOrEmpty(album.AlbumArtUrl))
+            {
+                album.AlbumArtUrl = defaultProductName;
+            }
+            
             if (ModelState.IsValid)
             {
                 var result = await _IRestClient.PostAsync<AlbumDTO>($"{baseUrl}", album);

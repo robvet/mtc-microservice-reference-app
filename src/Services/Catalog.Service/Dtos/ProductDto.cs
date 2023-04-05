@@ -5,6 +5,7 @@ namespace Catalog.API.Dtos
     public class ProductDto
     {
         public int Id { get; set; }
+        
         public Guid ProductId { get; set; }
 
         public string Title { get; set; }
