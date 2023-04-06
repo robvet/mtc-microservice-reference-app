@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore.Models
 {
-    public class AlbumDTO
+    public class ProductDto
     {
 
         public int Id { get; set; }

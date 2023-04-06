@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Catalog.API.Domain.Entities;
 
 namespace Catalog.API.Contracts
 {
-    public interface IMusicRepository : IRepository<Product>
+    public interface IProductRepository : IRepository<Product>
     {
         Task<int> GetCount(string correlationToken);
         Task<List<Product>> GetTopSellers(int count, string correlationToken);
@@ -13,6 +14,7 @@ namespace Catalog.API.Contracts
         Task<bool> ChangeParentalCaution(int albumId, bool parentalCaution, string correlationToken);
         Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken);
         Task<List<Product>> GetInexpensiveAlbumsByGenre(int genreId, decimal priceCeiling, string correlationToken);
-        Task<Product> GetByIdWithIdempotencyCheck(int id, string correlationToken);
+        Task<Product> GetByIdWithIdempotencyCheck(int id, Guid productId, string correlationToken);
+        Task ClearProductDatabase(string correlationToken);
     }
 }

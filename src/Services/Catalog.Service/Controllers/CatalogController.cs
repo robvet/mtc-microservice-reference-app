@@ -228,5 +228,14 @@ namespace Catalog.API.Controllers
 
             return NoContent();
         }
+
+        //[ProducesResponseType(typeof(Product), 200)]
+        [HttpGet("ClearProductDatabase", Name = "ClearDatabaseRoute")]
+        public async Task ClearProductDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
+        {
+            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+            await _catalogBusinessServices.ClearProductDatabase(correlationToken);
+        }
+
     }
 }

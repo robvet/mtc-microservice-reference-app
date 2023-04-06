@@ -158,5 +158,31 @@ namespace Catalog.API.Infrastructure.Repository
             _ctx.Set<T>().Attach(entity);
             _ctx.Entry(entity).State = EntityState.Modified;
         }
+
+        public async Task ClearData(string correlationToken)
+        {
+            try
+            {
+                // Delete all records from all tables
+                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Products");
+                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Artists");
+                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Genres");
+
+                // Reset the identity columns
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Products', RESEED, 0);");
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Artists', RESEED, 0);");
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Genres', RESEED, 0);");
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new Exception($"Could not Clear Data in BaseRepository : {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                //var traveredMessage = ExceptionHandlingUtilties.TraverseException(ex);
+                //throw new Exception($"Could not Save in BaseRepository : {traveredMessage}");
+                throw new Exception($"Could not Clear Data in BaseRepository : {ex.Message}");
+            }
+        }
     }
 }

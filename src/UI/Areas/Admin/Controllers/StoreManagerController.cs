@@ -26,7 +26,7 @@ namespace MusicStore.Areas.Admin.Controllers
         // GET: /StoreManager/
         public async Task<IActionResult> Index()
         {
-            var result = await _IRestClient.GetAsync<List<AlbumDTO>>($"{baseUrl}/Music");
+            var result = await _IRestClient.GetAsync<List<ProductDto>>($"{baseUrl}/Music");
 
             return View(result.Data);
         }
@@ -35,7 +35,7 @@ namespace MusicStore.Areas.Admin.Controllers
         // GET: /StoreManager/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            var result = await _IRestClient.GetAsync<AlbumDTO>($"{baseUrl}/Music/{id} ");
+            var result = await _IRestClient.GetAsync<ProductDto>($"{baseUrl}/Music/{id} ");
 
             return View(result.Data);
         }
@@ -59,7 +59,7 @@ namespace MusicStore.Areas.Admin.Controllers
         // POST: /StoreManager/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(AlbumDTO album)
+        public async Task<IActionResult> Create(ProductDto album)
         {
             album.ProductId = Guid.NewGuid();
 
@@ -70,8 +70,8 @@ namespace MusicStore.Areas.Admin.Controllers
             
             if (ModelState.IsValid)
             {
-                var result = await _IRestClient.PostAsync<AlbumDTO>($"{baseUrl}", album);
-                //var result = await _IRestClient.PostAsync<AlbumDTO>($"{baseUrl}/Music", album);
+                var result = await _IRestClient.PostAsync<ProductDto>($"{baseUrl}", album);
+                //var result = await _IRestClient.PostAsync<ProductDto>($"{baseUrl}/Music", album);
                 return RedirectToAction("Index");
             }
 
@@ -83,7 +83,7 @@ namespace MusicStore.Areas.Admin.Controllers
         // GET: /StoreManager/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var album = await _IRestClient.GetAsync<AlbumDTO>($"{baseUrl}/Music/{id} ");
+            var album = await _IRestClient.GetAsync<ProductDto>($"{baseUrl}/Music/{id} ");
 
             await GetArtistsAndGenres(album.Data);
 
@@ -94,12 +94,12 @@ namespace MusicStore.Areas.Admin.Controllers
         // POST: /StoreManager/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(AlbumDTO album, CancellationToken requestAborted)
+        public async Task<IActionResult> Edit(ProductDto album, CancellationToken requestAborted)
         {
             if (ModelState.IsValid)
             {
-                await _IRestClient.PutAsync<AlbumDTO>($"{baseUrl}", album);
-                //await _IRestClient.PutAsync<AlbumDTO>($"{baseUrl}/Music", album);
+                await _IRestClient.PutAsync<ProductDto>($"{baseUrl}", album);
+                //await _IRestClient.PutAsync<ProductDto>($"{baseUrl}/Music", album);
                 return RedirectToAction("Index");
             }
 
@@ -112,7 +112,7 @@ namespace MusicStore.Areas.Admin.Controllers
         // GET: /StoreManager/RemoveAlbum/5
         public async Task<IActionResult> RemoveAlbum(int id)
         {
-            var album = await _IRestClient.GetAsync<AlbumDTO>($"{baseUrl}/Music/{id} ");
+            var album = await _IRestClient.GetAsync<ProductDto>($"{baseUrl}/Music/{id} ");
 
             if (album == null)
                 return NotFound();
@@ -126,7 +126,7 @@ namespace MusicStore.Areas.Admin.Controllers
         [ActionName("RemoveAlbum")]
         public async Task<IActionResult> RemoveAlbumConfirmed(int id, CancellationToken requestAborted)
         {
-            var album = await _IRestClient.GetAsync<AlbumDTO>($"{baseUrl}/Music/{id} ");
+            var album = await _IRestClient.GetAsync<ProductDto>($"{baseUrl}/Music/{id} ");
             if (album == null)
                 return NotFound();
 
@@ -134,7 +134,7 @@ namespace MusicStore.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        private async Task GetArtistsAndGenres(AlbumDTO album)
+        private async Task GetArtistsAndGenres(ProductDto album)
         {
             //grab lookup data as parallel tasks
             var genreTask = await _IRestClient.GetAsync<List<GenreDto>>($"{baseUrl}/Genres/");

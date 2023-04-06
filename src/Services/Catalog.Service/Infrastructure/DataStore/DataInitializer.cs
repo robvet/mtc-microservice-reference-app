@@ -25,6 +25,24 @@ namespace Catalog.API.Infrastructure.DataStore
             }
         }
 
+        // generate number between $1 and $20 as decimal
+        private static decimal GenerateAlbumPrice()
+        {
+            Random rand = new Random();
+            int a = rand.Next(10, 500);
+            string c = a + ".00";
+            return decimal.Parse(c);
+        }
+
+
+        // generate number between $1 and $20
+        //private static decimal GenerateAlbumPrice()
+        //{
+        //    var rnd = new Random();
+        //    return (decimal)(String.Format("{0:C}", rnd.Next())).toDecimal();
+        //   // return rnd.Next(1, 20);
+        //}
+
         private static async Task Seed(DataContext context)
         {
             //var users = new List<User>
@@ -352,7 +370,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Your Cheatin' Heart",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Hank Williams"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -365,7 +383,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "He Stopped Loving Her Today",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "George Jones"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -378,7 +396,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Blue Moon of Kentucky",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bill Monroe"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -391,7 +409,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Can The Circle Be Unbroken",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "The Carter Family"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -404,7 +422,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Stand By Your Man",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Tammy Wynette"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -417,7 +435,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I'm So Lonesome I Could Cry",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Hank Williams"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -430,7 +448,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Crazy",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Patsy Cline"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -443,7 +461,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Forever & Ever, Amen",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Randy Travis"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -456,7 +474,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Make The World Go Away",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eddy Arnold"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -469,7 +487,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I Walk The Line",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Johnny Cash"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -482,7 +500,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I Will Always Love You",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Dolly Parton"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -495,7 +513,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Wabash Cannonball",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Roy Acuff"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -508,7 +526,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Blue Eyes Crying In The Rain",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Willie Nelson"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -521,7 +539,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Dance",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Garth Brooks"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -534,7 +552,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I Fall To Pieces",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Patsy Cline"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -547,7 +565,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Blue Yodel",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Loretta Lynn"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -560,7 +578,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I'm Moving On",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Hank Snow"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -573,7 +591,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Ring of Fire",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Johnny Cash"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -586,7 +604,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "New San Antonio Rose",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bob Wills"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -599,7 +617,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "It Wasn't God",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Kitty Wells"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -612,7 +630,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Mama Tried ",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Merle Haggard"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -625,7 +643,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Friends In Low Places",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Garth Brooks"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -638,7 +656,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Always On My Mind",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Willie Nelson"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -651,7 +669,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Hello Darlin' ",
                         Genre = genres.Single(g => g.Name == "Country"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Conway Twitty"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -667,7 +685,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Stairway to Heaven",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -680,7 +698,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Hey Jude",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -693,7 +711,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "All Along the Watchtower",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -706,7 +724,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Satisfaction",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -719,7 +737,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Like A Rolling Stone",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bob Dylan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -732,7 +750,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Another Brick In The Wall",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -745,7 +763,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Won't Get Fooled Again",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Who"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -758,7 +776,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Hotel California",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eagles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -771,7 +789,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Layla",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Derek And The Dominos"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -784,7 +802,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Sweet Home Alabama",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Lynyrd Skynyrd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -797,7 +815,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bohemian Rhapsody",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Queen"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -810,7 +828,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Riders on the Storm",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Doors"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -823,7 +841,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Rock and Roll",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -836,7 +854,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Barracuda",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Heart"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -849,7 +867,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "La Grange",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "ZZ Top"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -862,7 +880,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Dream On",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Aerosmith"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -875,7 +893,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "You Really Got Me",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Van Halen"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -888,7 +906,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "More Than a Feeling",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Boston"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -901,7 +919,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Sultans of Swing",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Dire Straits"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -914,7 +932,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "You Shook Me All Night Long",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "AC/DC"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -927,7 +945,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Kashmir",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -940,7 +958,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Lola",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Kinks"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -953,7 +971,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Carry on Wayward Son",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Kansas"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -966,7 +984,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Tiny Dancer",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Elton John"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -979,7 +997,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Locomotive Breath",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jethro Tull"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -992,7 +1010,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I Still Haven't Found",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "U2"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1005,7 +1023,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Magic Carpet Ride",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Steppenwolf"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1018,7 +1036,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Free Bird",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Lynyrd Skynyrd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1031,7 +1049,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Purple Haze",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1044,7 +1062,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Tom Sawyer",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rush"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1057,7 +1075,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Let It Be",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1070,7 +1088,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Baba O'Riley",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Who"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1083,7 +1101,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Joker",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Steve Miller"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1096,7 +1114,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Roxanne",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Police"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1109,7 +1127,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Time",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1122,7 +1140,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "It's A Long Way to the Top",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "AC/DC"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1135,7 +1153,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Whole Lotta Love",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1148,7 +1166,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Chain",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1161,7 +1179,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I've Seen All Good People",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Yes"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1174,7 +1192,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "For What It's Worth",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Buffalo Springfield"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1187,7 +1205,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Black Magic Woman",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Santana"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1200,7 +1218,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Nights in White Satin",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Moody Blues"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1213,7 +1231,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "While My Guitar Gently Weeps",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1226,7 +1244,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Gimme Shelter",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1239,7 +1257,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Gold Dust Woman",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1252,7 +1270,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Fortunate Son",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "CCR"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1265,7 +1283,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "American Pie",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Don McLean"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1278,7 +1296,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bad Company",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bad Company"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1291,7 +1309,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Waitin' For The Bus",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "ZZ Top"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1304,7 +1322,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Over the Hills and Far Away",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1317,7 +1335,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Owner of a Lonely Heart",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Yes"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1330,7 +1348,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Logical Song",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Supertramp"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1343,7 +1361,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "A Day in the Life",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1356,7 +1374,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Sweet Emotion",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Aerosmith"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1369,7 +1387,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Down On The Corner",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "CCR"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1382,7 +1400,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "My Sweet Lord",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "George Harrison"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1395,7 +1413,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Knockin' on Heaven's Door",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bob Dylan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1408,7 +1426,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Just What I Needed",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cars"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1421,7 +1439,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Don't Fear the Reaper",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Blue Oyster Cult"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1434,7 +1452,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Behind Blue Eyes",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Who"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1447,7 +1465,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Do It Again",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Steely Dan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1460,7 +1478,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Who Do You Love",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "George Thorogood"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1473,7 +1491,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "From the Beginning",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "ELP"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1486,7 +1504,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Already Gone",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eagles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1499,7 +1517,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Here Comes The Sun",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1512,7 +1530,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "With Or Without You",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "U2"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1525,7 +1543,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Life's Been Good",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Joe Walsh"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1538,7 +1556,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Breakdown",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Tom Petty"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1551,7 +1569,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Comfortably Numb",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1564,7 +1582,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Ramble On",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1577,7 +1595,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I'd Love to Change the World",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ten Years After"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1590,7 +1608,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Longtime",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Boston"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1603,7 +1621,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Brown Eyed Girl",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Van Morrison"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1616,7 +1634,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Back In Black",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "AC/DC"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1629,7 +1647,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "You Can't Always Get What You",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1642,7 +1660,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Take It Easy",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eagles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1655,7 +1673,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Sgt. Pepper/With A Little Help",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1668,7 +1686,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "We Will Rock You",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Queen"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1681,7 +1699,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Dancing Days",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1694,7 +1712,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Turn the Page",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bob Seger"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1707,7 +1725,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "All Right Now",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Free"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1720,7 +1738,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Black Water",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Doobie Brothers"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1733,7 +1751,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Oh Well",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1746,7 +1764,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Me and Bobby McGee",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Janis Joplin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1759,7 +1777,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Rocket Man",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Elton John"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1772,7 +1790,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Ohio",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "CSN&Y"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1785,7 +1803,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "You Really Got Me",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Kinks"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1798,7 +1816,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bloody Well Right",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Supertramp"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1811,7 +1829,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Dirty Deeds",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "AC/DC"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1824,7 +1842,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Aqualung",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jethro Tull"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1837,7 +1855,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Wind Cries Mary",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1850,7 +1868,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Burnin' for You",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Blue Oyster Cult"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1863,7 +1881,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Moving in Stereo",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cars"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1876,7 +1894,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "House of the Rising Sun",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Animals"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1889,7 +1907,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bargain",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Who"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1902,7 +1920,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Maybe I'm Amazed",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Paul McCartney"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1915,7 +1933,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bennie & The Jets",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Elton John"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1928,7 +1946,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Dust in the Wind",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Kansas"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1941,7 +1959,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Rock 'n Roll Hootchie Koo",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rick Derringer"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1954,7 +1972,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Crazy On You",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Heart"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1967,7 +1985,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Do You Feel Like We Do",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Peter Frampton"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1980,7 +1998,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Louie Louie",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "The Kingsmen"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -1993,7 +2011,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Jessica",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Allman Brothers"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2006,7 +2024,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Long Train Running",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Doobie Brothers"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2019,7 +2037,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Walkin' On The Moon",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Police"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2032,7 +2050,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Stranglehold",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ted Nugent"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2045,7 +2063,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Fire",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jimi Hendrix"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2058,7 +2076,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Tush",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "ZZ Top"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2071,7 +2089,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Feel Like Making Love",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bad Company"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2084,7 +2102,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Who'll Stop The Rain",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "CCR"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2097,7 +2115,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Sky Is Crying",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Stevie Ray Vaughan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2110,7 +2128,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "You Ain't Seen Nothing Yet",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "BTO"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2123,7 +2141,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Smoke on the Water",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Deep Purple"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2136,7 +2154,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Can't You See",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Marshall Tucker Band"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2149,7 +2167,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Night Moves",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bob Seger"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2162,7 +2180,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Touch Me",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Doors"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2175,7 +2193,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Runnin' With The Devil",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Van Halen"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2188,7 +2206,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Cocaine",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2201,7 +2219,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Immigrant Song",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2214,7 +2232,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Run Through The Jungle",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "CCR"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2227,7 +2245,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Brain Damage",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2240,7 +2258,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "You've Got to Hide Your Love Away",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2253,7 +2271,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Jumpin' Jack Flash",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2266,7 +2284,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Levon",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Elton John"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2279,7 +2297,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Take The Money And Run",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Steve Miller"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2292,7 +2310,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Maggie May",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rod Stewart"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2305,7 +2323,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Born To Be Wild",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Steppenwolf"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2318,7 +2336,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "White Room",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cream"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2331,7 +2349,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Lucky Man",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "ELP"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2344,7 +2362,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Call Me The Breeze",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Lynyrd Skynyrd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2357,7 +2375,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "My Best Friend's Girl",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cars"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2370,7 +2388,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Let My Love Open The Door",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pete Townshend"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2383,7 +2401,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Money For Nothing",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Dire Straits"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2396,7 +2414,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Breakfast In America",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Supertramp"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2409,7 +2427,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "You Make Lovin' Fun",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2422,7 +2440,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Burnin' Sky",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bad Company"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2435,7 +2453,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Long Distance Runaround",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Yes"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2448,7 +2466,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Grand Illusion",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Styx"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2461,7 +2479,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Strawberry Fields Forever",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2474,7 +2492,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Come Together",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2487,7 +2505,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Goodbye Yellow Brick Road",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Elton John"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2500,7 +2518,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Rock 'n Roll Band",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Boston"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2513,7 +2531,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Runnin' Down a Dream",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Tom Petty"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2526,7 +2544,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I Heard It Through The Grapevine",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "CCR"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2539,7 +2557,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Dear Mr. Fantasy",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Traffic"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2552,7 +2570,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Dreams",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2565,7 +2583,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Fire on High",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "ELO"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2578,7 +2596,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Wish You Were Here",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2591,7 +2609,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bridge of Sighs",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Robin Trower"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2604,7 +2622,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Rocky Racoon",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2617,7 +2635,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Walk This Way",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Aerosmith"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2630,7 +2648,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "In My Life",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2643,7 +2661,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Good Times Roll",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cars"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2656,7 +2674,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Fool In the Rain",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2669,7 +2687,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Revolution",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2682,7 +2700,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Born To Run",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bruce Springsteen"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2695,7 +2713,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Oye Como Va",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Santana"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2708,7 +2726,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Reeling In The Years",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Steely Dan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2721,7 +2739,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Every Breath You Take",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Police"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2734,7 +2752,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Rainy Day Women",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bob Dylan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2747,7 +2765,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Frankenstein",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Edgar Winter Group"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2760,7 +2778,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Refugee",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Tom Petty"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2773,7 +2791,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Have A Cigar",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2786,7 +2804,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Spirit of Radio",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rush"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2799,7 +2817,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Going To California",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Led Zeppelin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2812,7 +2830,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Hello, I Love You",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Doors"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2825,7 +2843,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Go Your Own Way",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Fleetwood Mac"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2838,7 +2856,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Peace of Mind",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Boston"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2851,7 +2869,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "White Rabbit",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jefferson Airplane"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2864,7 +2882,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Radar Love",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Golden Earring"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2877,7 +2895,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Never Been Any Reason",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Head East"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2890,7 +2908,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Let It Rain",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2903,7 +2921,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Cold As Ice",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Foreigner"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2916,7 +2934,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Karn Evil",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "ELP"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2929,7 +2947,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Subdivisions",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rush"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2942,7 +2960,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Pink Cadillac",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bruce Springsteen"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2955,7 +2973,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Rocky Mountain Way",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Joe Walsh"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2968,7 +2986,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "New Year's Day",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "U2"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2981,7 +2999,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Magic Man",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Heart"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -2994,7 +3012,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Witchy Woman",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eagles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3007,7 +3025,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Rock and Roll Fantasy",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bad Company"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3020,7 +3038,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Love Me Two Times",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Doors"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3033,7 +3051,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Eleanor Rigby",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3046,7 +3064,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Middle of The Road",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pretenders"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3059,7 +3077,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Sunshine of Your Love",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cream"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3072,7 +3090,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Don't Look Back",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Boston"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3085,7 +3103,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Dirty Laundry",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Don Henley"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3098,7 +3116,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Penny Lane",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3111,7 +3129,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Killer Queen",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Queen"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3124,7 +3142,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Fly Like An Eagle",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Steve Miller"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3137,7 +3155,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Cross-Eyed Mary",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jethro Tull"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3150,7 +3168,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Heartbreaker",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pat Benatar"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3163,7 +3181,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Norwegian Wood",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Beatles"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3176,7 +3194,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Your Song",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Elton John"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3189,7 +3207,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Hey Baby",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ted Nugent"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3202,7 +3220,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Money",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Pink Floyd"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3215,7 +3233,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Space Oddity",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "David Bowie"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3228,7 +3246,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Street Fighting Man",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Rolling Stones"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3241,7 +3259,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Moondance",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Van Morrison"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3254,7 +3272,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Pride and Joy",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Stevie Ray Vaughan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3267,7 +3285,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The World Feels Dusty",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Aaron Copland & London Symphony Orchestra"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3280,7 +3298,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Salvador",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Aaron Goldberg"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3293,7 +3311,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Symphony No. 3: III. Lento - Cantablile Semplice ",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Adrian Leaper & Doreen de Feis"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3306,7 +3324,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Beneath an Evening Sky ",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Aisha Duo"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3319,7 +3337,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Frank",
                         Genre = genres.Single(g => g.Name == "Pop"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Amy Winehouse"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3332,7 +3350,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Ring My Bell",
                         Genre = genres.Single(g => g.Name == "Disco"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Anita Ward"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3345,7 +3363,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Chill Brazil",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Antônio Carlos Jobim"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3358,7 +3376,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Warner 25 Anos",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Antônio Carlos Jobim"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3371,7 +3389,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Master of Puppets",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Apocalyptica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3384,7 +3402,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Revelations",
                         Genre = genres.Single(g => g.Name == "Alternative"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Audioslave"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3397,7 +3415,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Until We Fall",
                         Genre = genres.Single(g => g.Name == "Rock"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Audioslave"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3410,7 +3428,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Last Night of the Proms",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Barry Wordsworth & BBC Concert Orchestra"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3423,7 +3441,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Symphony No. 1 in E Minor",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Berliner Philharmoniker & Hans Rosbaud"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3436,7 +3454,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Mozart: Symphonies Nos. 40 & 41",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Berliner Philharmoniker & Herbert Von Karajan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3449,7 +3467,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Quadrant 4",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Billy Cobham"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3462,7 +3480,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Alcohol Fueled Brewtality Live!",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Black Label Society"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3475,7 +3493,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Superterrorizer",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Black Label Society"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3488,7 +3506,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Wheels of Confusion ",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Black Sabbath"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3501,7 +3519,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Every Day Comes and Goes ",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Black Sabbath"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3514,7 +3532,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Carmina Burana",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Boston Symphony Orchestra & Seiji Ozawa"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3527,7 +3545,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "A Soprano Inspired",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Britten Sinfonia, Ivor Bolton & Lesley Garrett"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3540,7 +3558,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Chemical Wedding",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Bruce Dickinson"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3553,7 +3571,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Prenda Minha",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Caetano Veloso"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3566,7 +3584,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Sozinho Remix Ao Vivo",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Caetano Veloso"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3579,7 +3597,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "War Pigs",
                         Genre = genres.Single(g => g.Name == "Alternative"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cake"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3592,7 +3610,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Carried to Dust",
                         Genre = genres.Single(g => g.Name == "Alternative"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Calexico"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3605,7 +3623,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Cássia Eller - Sem Limite",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cássia Eller"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3618,7 +3636,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Le Freak",
                         Genre = genres.Single(g => g.Name == "Disco"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Chic"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3631,7 +3649,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Scheherazade",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Chicago Symphony Orchestra & Fritz Reiner"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3644,7 +3662,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Minha Historia",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Chico Buarque"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3657,7 +3675,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Afrociberdelia",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Chico Science & Nação Zumbi"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3670,7 +3688,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Da Lama Ao Caos",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Chico Science & Nação Zumbi"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3683,7 +3701,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Carry On",
                         Genre = genres.Single(g => g.Name == "Alternative"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Chris Cornell"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3696,7 +3714,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "SCRIABIN: Vers la flamme",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Christopher O'Riley"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3709,7 +3727,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Acústico MTV",
                         Genre = genres.Single(g => g.Name == "Reggae"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cidade Negra"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3722,7 +3740,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Monte Castelo",
                         Genre = genres.Single(g => g.Name == "Reggae"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cidade Negra"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3735,7 +3753,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Na Pista",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Cláudio Zoli"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3748,7 +3766,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Outbreak",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Dennis Chambers"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3761,7 +3779,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Um Amor Puro",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Djavan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3774,7 +3792,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Oceano",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Djavan"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3787,7 +3805,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "MacArthur Park",
                         Genre = genres.Single(g => g.Name == "Disco"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Donna Summer"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3800,7 +3818,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Cassiano",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ed Motta"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3813,7 +3831,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Adams, John: The Chairman Dances",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Edo de Waart & San Francisco Symphony"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3826,7 +3844,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Elis Regina-Minha História",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Elis Regina"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3839,7 +3857,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Pachelbel: Canon & Gigue",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "English Concert & Trevor Pinnock"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3852,7 +3870,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bell Bottom Blues",
                         Genre = genres.Single(g => g.Name == "Blues"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3865,7 +3883,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Promises",
                         Genre = genres.Single(g => g.Name == "Blues"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eric Clapton"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3878,7 +3896,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Respighi:Pines of Rome",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eugene Ormandy"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3891,7 +3909,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Strauss: Waltzes",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Eugene Ormandy"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3904,7 +3922,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Deixa Entrar",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Falamansa"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3917,7 +3935,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Roda De Funk",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Funk Como Le Gusta"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3930,7 +3948,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Quanta Gente Veio Ver (Live)",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Gilberto Gil"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3943,7 +3961,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Quanta Gente Veio ver--Bônus De Carnaval",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Gilberto Gil"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3956,7 +3974,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Faceless",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Godsmack"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3969,7 +3987,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Meus Momentos",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Gonzaguinha"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3982,7 +4000,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Nielsen Symphony",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Göteborgs Symfoniker & Neeme Järvi"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -3995,7 +4013,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Civil War",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Guns N' Roses"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4008,7 +4026,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Blue Mood",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Incognito"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4021,7 +4039,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "A Real Dead One",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4034,7 +4052,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "A Real Live One",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4047,7 +4065,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Run to the Hills",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4060,7 +4078,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Ghost of the Navigator",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4073,7 +4091,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Piece Of Mind",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4086,7 +4104,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Fear of the Dark",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4099,7 +4117,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Wicker Man",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4112,7 +4130,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Number of the Beast",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4125,7 +4143,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Seventh Son",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4138,7 +4156,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Somewhere in Time",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4151,7 +4169,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Dream of Mirrors",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4164,7 +4182,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Number of the Beast",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Iron Maiden"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4177,7 +4195,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Mascagni: Cavalleria Rusticana",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "James Levine"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4190,7 +4208,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Jorge Ben Jor 25 Anos",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jorge Ben"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4203,7 +4221,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Jota Quest",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Jota Quest"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4216,7 +4234,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Living After Midnight",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Judas Priest"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4229,7 +4247,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Weill: The Seven Deadly Sins",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Kent Nagano and Orchestre de l'Opéra de Lyon"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4242,7 +4260,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Mais Do Mesmo",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Legião Urbana"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4255,7 +4273,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Tchaikovsky: The Nutcracker",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "London Symphony Orchestra & Sir Charles Mackerras"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4268,7 +4286,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Duos II",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Luciana Souza/Romero Lubambo"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4281,7 +4299,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Chill: Mexico",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Marcos Valle"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4294,7 +4312,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Barulhinho Bom",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Marisa Monte"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4307,7 +4325,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Szymanowski: Piano Works",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Martin Roscoe"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4320,7 +4338,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Shortest Straw",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Metallica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4333,7 +4351,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "To Live Is to Die",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Metallica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4346,7 +4364,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Garage Inc.",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Metallica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4359,7 +4377,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Kill 'Em All",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Metallica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4372,7 +4390,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Unforgiven",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Metallica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4385,7 +4403,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Master Of Puppets",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Metallica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4398,7 +4416,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "ReLoad",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Metallica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4411,7 +4429,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Ride The Lightning",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Metallica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4424,7 +4442,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "St. Anger",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Metallica"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4437,7 +4455,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Berlioz: Symphonie Fantastique",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Michael Tilson Thomas & San Francisco Symphony"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4450,7 +4468,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Prokofiev: Romeo & Juliet",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Michael Tilson Thomas & San Francisco Symphony"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4463,7 +4481,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Miles Ahead",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Miles Davis"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4476,7 +4494,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Duke",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Miles Davis"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4489,7 +4507,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "New Rhumba",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Miles Davis"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4502,7 +4520,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Milton Nascimento Ao Vivo",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Milton Nascimento"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4515,7 +4533,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Minas",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Milton Nascimento"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4528,7 +4546,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bitter Pill",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Mötley Crüe"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4541,7 +4559,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Ace Of Spades",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Motörhead"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4554,7 +4572,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Chamber",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Nash Ensemble"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4567,7 +4585,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Fifth",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Nicolaus Esterhazy Sinfonia"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4580,7 +4598,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Olodum",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Olodum"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4593,7 +4611,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bach: The Brandenburg Concertos",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Orchestra of The Age of Enlightenment"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4606,7 +4624,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Acústico MTV",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Os Paralamas Do Sucesso"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4619,7 +4637,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Arquivo II",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Os Paralamas Do Sucesso"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4632,7 +4650,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Arquivo Os Paralamas Do Sucesso",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Os Paralamas Do Sucesso"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4645,7 +4663,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Paranoid",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4658,7 +4676,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Suicide Solution)",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4671,7 +4689,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Iron Man",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4684,7 +4702,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Believer",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4697,7 +4715,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "I Don't Know)",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4710,7 +4728,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Goodbye to Romance",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ozzy Osbourne"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4723,7 +4741,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Purcell: The Fairy Queen",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Roger Norrington, London Classical Players"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4736,7 +4754,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Haydn: Symphonies 99",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Royal Philharmonic Orchestra & Sir Thomas Beecham"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4749,7 +4767,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Handel: The Messiah",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Scholars Baroque Ensemble"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4762,7 +4780,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Prokofiev: Symphony No.1",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Sergei Prokofiev & Yuri Temirkanov"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4775,7 +4793,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Wagner: Overture",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Sir Georg Solti & Wiener Philharmoniker"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4788,7 +4806,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Heart of the Night",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Spyro Gyra"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4801,7 +4819,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Morning Dance",
                         Genre = genres.Single(g => g.Name == "Jazz"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Spyro Gyra"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4814,7 +4832,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "In Step",
                         Genre = genres.Single(g => g.Name == "Blues"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Stevie Ray Vaughan & Double Trouble"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4827,7 +4845,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Mezmerize",
                         Genre = genres.Single(g => g.Name == "Metal"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "System Of A Down"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4840,7 +4858,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Temple of the Dog",
                         Genre = genres.Single(g => g.Name == "Alternative"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Temple of the Dog"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4853,7 +4871,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "South American Getaway",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "The 12 Cellists of The Berlin Philharmonic"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4866,7 +4884,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Hard To Handle",
                         Genre = genres.Single(g => g.Name == "Blues"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "The Black Crowes"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4879,7 +4897,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Thick N'Thin",
                         Genre = genres.Single(g => g.Name == "Blues"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "The Black Crowes"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4892,7 +4910,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "English Renaissance",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "The King's Singers"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4905,7 +4923,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Serie Sem Limite (Disc 1)",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Tim Maia"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4918,7 +4936,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Hapsburg Serenade",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Tim Maia"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4931,7 +4949,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bach: Toccata & Fugue in D Minor",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Ton Koopman"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4944,7 +4962,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "The Earth Dies Screaming",
                         Genre = genres.Single(g => g.Name == "Reggae"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "UB40"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4957,7 +4975,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Axé Bahia 2001",
                         Genre = genres.Single(g => g.Name == "Pop"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Various Artists"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4970,7 +4988,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Sambas De Enredo 2001",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Various Artists"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4983,7 +5001,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Vozes do MPB",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Various Artists"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -4996,7 +5014,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Vinicius De Moraes",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Vinícius De Moraes"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -5009,7 +5027,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bach: Goldberg Variations",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Wilhelm Kempff"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -5022,7 +5040,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bartok: Violin & Viola Concertos",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Yehudi Menuhin"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -5035,7 +5053,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Bach: The Cello Suites",
                         Genre = genres.Single(g => g.Name == "Classical"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Yo-Yo Ma"),
                         AlbumArtUrl = "placeholder.png"
                     },
@@ -5048,7 +5066,7 @@ namespace Catalog.API.Infrastructure.DataStore
                         Upc = GenerateUpc(),
                         Title = "Ao Vivo",
                         Genre = genres.Single(g => g.Name == "Latin"),
-                        Price = .99M,
+                        Price = GenerateAlbumPrice(),
                         Artist = artists.Single(a => a.Name == "Zeca Pagodinho"),
                         AlbumArtUrl = "placeholder.png"
                     }

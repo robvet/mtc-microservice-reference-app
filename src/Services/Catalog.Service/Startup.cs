@@ -40,7 +40,7 @@ namespace Catalog.API
 
             // Register concrete dependencies
             services.AddTransient<ICatalogBusinessServices, CatalogBusinessServices>();
-            services.AddTransient<IMusicRepository, MusicRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IArtistRepository, ArtistRepository>();
             services.AddTransient<IGenreRepository, GenreRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

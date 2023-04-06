@@ -10,6 +10,6 @@ namespace MusicStore.Models
         public int GenreId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public IEnumerable<AlbumDTO> Albums { get; set; }
+        public IEnumerable<ProductDto> Albums { get; set; }
     }
 }

@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.API.Infrastructure.Repository
 {
-    public class MusicRepository : BaseRepository<Product>, IMusicRepository
+    public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-        public MusicRepository(DataContext ctx) : base(ctx)
+        public ProductRepository(DataContext ctx) : base(ctx)
         {
         }
 
@@ -79,12 +79,14 @@ namespace Catalog.API.Infrastructure.Repository
             return Get().Where(x => x.Id == id).Include(x => x.Artist).Include(y => y.Genre).FirstOrDefault();
         }
 
-        public async Task<Product> GetByIdWithIdempotencyCheck(int id, string correlationToken)
+        public async Task<Product> GetByIdWithIdempotencyCheck(int id, Guid productId, string correlationToken)
         {
-            var guid = ParseCorrelationToken(correlationToken);
+            //var guid = ParseCorrelationToken(correlationToken);
             
-            return Get().Where(x => x.Id == id && x.ProductId == guid).Include(x => x.Artist)
+            return Get().Where(x => x.ProductId == productId).Include(x => x.Artist)
                 .Include(y => y.Genre).FirstOrDefault();
+            //return Get().Where(x => x.Id == id && x.ProductId == guid).Include(x => x.Artist)
+            //    .Include(y => y.Genre).FirstOrDefault();
         }
 
 
@@ -121,15 +123,20 @@ namespace Catalog.API.Infrastructure.Repository
             //return base.Find(x => x.GenreId == genreId && x.Price <= priceCeiling).ToList();
         }
 
+        public async Task ClearProductDatabase(string correlationToken)
+        {
+            await ClearData(correlationToken);
+        }
+
         /// <summary>
         /// Parse out extra characters to make guid
         /// </summary>
         /// <param name="correlationToken"></param>
         /// <returns></returns>
-        private Guid ParseCorrelationToken(string correlationToken)
-        {
-            var count = correlationToken.IndexOf("-") + 1;
-            return new Guid(correlationToken.Substring(count));
-        }
+        //private Guid ParseCorrelationToken(string correlationToken)
+        //{
+        //    var count = correlationToken.IndexOf("-") + 1;
+        //    return new Guid(correlationToken.Substring(count));
+        //}
     }
 }

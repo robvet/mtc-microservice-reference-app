@@ -15,15 +15,15 @@ namespace Catalog.API.Domain.BusinessServices
         private readonly IEventBusPublisher _eventBusPublisher;
         private readonly IGenreRepository _genreRepository;
         private readonly ILogger<CatalogBusinessServices> _logger;
-        private readonly IMusicRepository _musicRepository;
+        private readonly IProductRepository _ProductRepository;
 
-        public CatalogBusinessServices(IMusicRepository musicRepository,
+        public CatalogBusinessServices(IProductRepository ProductRepository,
             IGenreRepository genreRepository,
             IArtistRepository artistRepository,
             IEventBusPublisher eventBusPublisher,
             ILogger<CatalogBusinessServices> logger)
         {
-            _musicRepository = musicRepository;
+            _ProductRepository = ProductRepository;
             _genreRepository = genreRepository;
             _artistRepository = artistRepository;
             _eventBusPublisher = eventBusPublisher;
@@ -32,17 +32,17 @@ namespace Catalog.API.Domain.BusinessServices
 
         public async Task<List<Product>> GetAllMusic(string correlationToken)
         {
-            return await _musicRepository.GetAll(correlationToken);
+            return await _ProductRepository.GetAll(correlationToken);
         }
 
         public async Task<Product> GetMusic(string correlationToken, int albumId)
         {
-            return await _musicRepository.GetById(albumId, correlationToken);
+            return await _ProductRepository.GetById(albumId, correlationToken);
         }
 
         public async Task<List<Product>> GetTopSellingMusic(string correlationToken, int count)
         {
-            return await _musicRepository.GetTopSellers(count, correlationToken);
+            return await _ProductRepository.GetTopSellers(count, correlationToken);
         }
 
         public async Task<List<Genre>> GetAllGenres(string correlationToken, bool includeAlbums = false)
@@ -69,15 +69,14 @@ namespace Catalog.API.Domain.BusinessServices
 
         public async Task Add(string correlationToken, Product product)
         {
-            // Idempotent write check. Ensure insert with same correlation token has
-            // not already happened. This would most likely do to a retry after the
-            // product has been added.
-            var targetAlbum = await _musicRepository.GetByIdWithIdempotencyCheck(product.Id, correlationToken);
+            // Idempotent write check. Ensure no insert with same productId has happened.
+            // This would most likely do to a retry for an error happening after a product has been added.
+            var targetAlbum = await _ProductRepository.GetByIdWithIdempotencyCheck(product.Id, product.ProductId, correlationToken);
 
             if (targetAlbum == null)
             {
                 // Product has not been added yet
-                await _musicRepository.Add(product);
+                await _ProductRepository.Add(product);
 
                 // Hack: Yet another transformation of same data.
                 //       Added to remove issue in new Core Serializer which doesn't allow circular references.
@@ -100,7 +99,7 @@ namespace Catalog.API.Domain.BusinessServices
 
         public async Task Update(string correlationToken, Product product)
         {
-            await _musicRepository.Update(product);
+            await _ProductRepository.Update(product);
 
             // Hack: Yet another transformation of same data.
             //       Added to remove issue in new Core Serializer which doesn't allow circular references.
@@ -148,6 +147,11 @@ namespace Catalog.API.Domain.BusinessServices
             productChangedEvent.CorrelationToken = correlationToken;
 
             return productChangedEvent;
+        }
+
+        public async Task ClearProductDatabase(string correlationToken)
+        {
+            await _ProductRepository.ClearProductDatabase(correlationToken); 
         }
     }
 }

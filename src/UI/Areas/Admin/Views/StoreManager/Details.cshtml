@@ -1,4 +1,4 @@
-﻿@model MusicStore.Models.AlbumDTO
+﻿@model MusicStore.Models.ProductDto
 
 @{
     ViewBag.Title = "Details";
@@ -7,9 +7,10 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Song</h4>
+    <h2>@Model.Title</h2>
     <hr />
     <dl class="dl-horizontal">
+              
         <dt>
             @Html.DisplayNameFor(model => model.ArtistName)
         </dt>
@@ -27,11 +28,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.ProductId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.ProductId)
         </dd>
 
         <dt>
@@ -39,7 +40,23 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.Price, "{0:C}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate, "{0:MM/dd/yyyy}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Upc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Upc)
         </dd>
 
         <dt>

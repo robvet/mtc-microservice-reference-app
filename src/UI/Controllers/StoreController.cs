@@ -41,7 +41,7 @@ namespace MusicStore.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var result = await _IRestClient.GetAsync<AlbumDTO>($"{baseUrl}/Music/{id} ");
+            var result = await _IRestClient.GetAsync<ProductDto>($"{baseUrl}/Music/{id} ");
 
             //if (album == null)
             //{

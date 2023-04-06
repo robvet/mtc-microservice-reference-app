@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,16 @@ namespace MusicStore.Controllers
         // GET: /Home/
         public async Task<IActionResult> Index()
         {
-            var result = await _IRestClient.GetAsync<List<AlbumDTO>>($"{baseUrl}/TopSellingMusic/{count}");
+            // generate random price between 1 and 20
+
+            //Random rand = new Random();
+            //int a = rand.Next(10, 500);
+            //string c = a + ".00";
+            //decimal d = decimal.Parse(c);
+           
+
+
+            var result = await _IRestClient.GetAsync<List<ProductDto>>($"{baseUrl}/TopSellingMusic/{count}");
 
             return View(result.Data);
         }

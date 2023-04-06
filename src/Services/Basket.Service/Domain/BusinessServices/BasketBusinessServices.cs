@@ -26,12 +26,12 @@ namespace Basket.API.Domain.BusinessServices
         private readonly IEventBusPublisher _eventBusPublisher;
         private readonly IEventBusSubscriber _eventBusSubscriber;
         private readonly ILogger<BasketBusinessServices> _logger;
-        private readonly IAzureTableStorageRespository<ProductTableEntity> _productRepository;
+        private readonly IAzureTableStorageRespository<ProductTableEntity> _productTableRepository;
         private readonly TelemetryClient _telemetryClient;
         private readonly IRestClient _restClient;
 
         public BasketBusinessServices(IDistributedCacheRepository distributedCacheRepository,
-            IAzureTableStorageRespository<ProductTableEntity> productRepository,
+            IAzureTableStorageRespository<ProductTableEntity> productTableRepository,
             ILogger<BasketBusinessServices> logger,
             IEventBusPublisher eventBusPublisher,
             IEventBusSubscriber eventBusSubscriber,
@@ -39,7 +39,7 @@ namespace Basket.API.Domain.BusinessServices
             TelemetryClient telemetryClient)
         {
             _distributedCacheRepository = distributedCacheRepository;
-            _productRepository = productRepository;
+            _productTableRepository = productTableRepository;
             _logger = logger;
             _eventBusPublisher = eventBusPublisher;
             _eventBusSubscriber = eventBusSubscriber;
@@ -88,7 +88,7 @@ namespace Basket.API.Domain.BusinessServices
             // Query Catalog Read store (materialized view) for information about the selected product
             try
             {
-                productTableEntity = await _productRepository.GetItem(ProductPartitionKey, productId.ToString(), correlationToken);
+                productTableEntity = await _productTableRepository.GetItem(ProductPartitionKey, productId.ToString(), correlationToken);
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace Basket.API.Domain.BusinessServices
                 };
 
                 // Add product entity tolocal read store, implementing a cache-aside pattern
-                await _productRepository.Insert(productTableEntity, correlationToken);
+                await _productTableRepository.Insert(productTableEntity, correlationToken);
 
                 _logger.LogInformation(
                     $"Added productEntity information for item {productId} for Request {correlationToken} to the read model.");
@@ -422,13 +422,13 @@ namespace Basket.API.Domain.BusinessServices
             {
                 // Determine if record already exists
                 var currentReadTableItems =
-                    await _productRepository.GetItem(ProductPartitionKey,
+                    await _productTableRepository.GetItem(ProductPartitionKey,
                         productTableEntity.RowKey, correlationId);
 
                 if (currentReadTableItems == null)
                 {
                     // Insert resource
-                    await _productRepository.Insert(productTableEntity, correlationId);
+                    await _productTableRepository.Insert(productTableEntity, correlationId);
 
                     _logger.LogInformation(
                         $"Inserting ProductEntity {productEntity.Id}, {productTableEntity.Title} into Catalog ReadModel for Request {correlationId}" );
@@ -436,7 +436,7 @@ namespace Basket.API.Domain.BusinessServices
                 else
                 {
                     // Update resource
-                    await _productRepository.Update(productTableEntity, correlationId);
+                    await _productTableRepository.Update(productTableEntity, correlationId);
 
                     _logger.LogInformation(
                         $"Updating ProductEntity {productEntity.Id}, {productTableEntity.Title} to Catalog ReadModel  for Request {correlationId}");
