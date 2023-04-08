@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
+using Catalog.API.Contracts;
 using Catalog.API.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Catalog.API.Infrastructure.DataStore
@@ -10,37 +14,44 @@ namespace Catalog.API.Infrastructure.DataStore
     public static class DataInitializer
     {
         private static int _counter;
+        private static IProductRepository _ProductRepository;
 
         public static async Task InitializeDatabaseAsync(IServiceScope serviceScope)
         {
             var context = serviceScope.ServiceProvider.GetService<DataContext>();
+            var productRepository = serviceScope.ServiceProvider.GetService<IProductRepository>();
 
             if (context != null)
             {
                 var databaseCreated = context.Database.EnsureCreated();
 
                 // Determine if database has been seeded
-                if (!context.Products.Any()) 
+                if (!context.Products.Any())
+                {
+                    // make sure child tables are dropped and tables reseeded for identity values
+                    await productRepository.ClearProductDatabase("abc");
+                    // Seed database
                     await Seed(context);
+                }
             }
         }
 
-        // generate number between $1 and $20 as decimal
+        // generate number between $10 and $100 as decimal rounding to nearest dollar
         private static decimal GenerateAlbumPrice()
         {
-            Random rand = new Random();
-            int a = rand.Next(10, 500);
-            string c = a + ".00";
-            return decimal.Parse(c);
-        }
+            Random random = new Random();
+            decimal randomPrice = (decimal)random.Next(1000, 10000) / 100;
+            return Math.Round(randomPrice);
 
-        // generate number between $1 and $20
-        //private static decimal GenerateAlbumPrice()
-        //{
-        //    var rnd = new Random();
-        //    return (decimal)(String.Format("{0:C}", rnd.Next())).toDecimal();
-        //   // return rnd.Next(1, 20);
-        //}
+            //Random rand = new Random();
+            //int price = rand.Next(10, 99);
+            //string formattedPrice = price + ".00";
+            //return decimal.Parse(formattedPrice);
+
+            //    var rnd = new Random();
+            //    return (decimal)(String.Format("{0:C}", rnd.Next())).toDecimal();
+            //   // return rnd.Next(1, 20);
+        }
 
         private static async Task Seed(DataContext context)
         {

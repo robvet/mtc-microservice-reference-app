@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -15,9 +16,11 @@ namespace MusicStore.Helper
         //// Creating a new instance for each request is an antipattern that can
         //// result in socket exhaustion.
         private static readonly HttpClient _client;
-
-        private readonly string _apiGateway;
         //private readonly HttpClient _client = new HttpClient();
+        private readonly string _apiGateway;
+
+        // apikey
+        private string _apikey;
 
         // Create a TimeSpan of 4 minutes so that HTTP Calls do not timeout when debugging
         // Do not do this in production!!!
@@ -34,6 +37,7 @@ namespace MusicStore.Helper
             _apiGateway = config["ApiGateway"];
             _client.Timeout = _httpTimeOut;
             _logger = logger;
+            _apikey = config["apikey"];
         }
 
         public async Task<UIRestResponse<TReturnMessage>> GetAsync<TReturnMessage>(string path)
@@ -49,8 +53,7 @@ namespace MusicStore.Helper
 
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            // Pack correlationToken in the custom http header
+            _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
             try
             {
