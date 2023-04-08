@@ -34,7 +34,6 @@ namespace Catalog.API.Infrastructure.DataStore
             return decimal.Parse(c);
         }
 
-
         // generate number between $1 and $20
         //private static decimal GenerateAlbumPrice()
         //{

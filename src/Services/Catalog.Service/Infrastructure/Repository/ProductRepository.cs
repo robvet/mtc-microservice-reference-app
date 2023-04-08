@@ -68,7 +68,6 @@ namespace Catalog.API.Infrastructure.Repository
             //    select item;
         }
 
-
         public async Task<List<Product>> GetAll(string correlationToken)
         {
             return Get().Include(x => x.Artist).Include(y => y.Genre).ToList();

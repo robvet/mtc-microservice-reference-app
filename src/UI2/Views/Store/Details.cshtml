@@ -1,0 +1,36 @@
+﻿@model AlbumDTO
+
+@{
+    ViewBag.Title = "Song - " + Model.Title;
+}
+
+<h2>@Model.Title</h2>
+
+<p>
+    @if (!string.IsNullOrEmpty(Model.AlbumArtUrl))
+    {
+        <img alt="@Model.Title" src="@Url.Content(Model.AlbumArtUrl)" />
+    }
+    else
+    {
+        <img alt="@Model.Title" src="~/images/placeholder.png" class="img-responsive" />
+    }
+</p>
+
+<div id="album-details">
+    <p>
+        <em>Genre:</em>
+        @Model.GenreName
+    </p>
+    <p>
+        <em>Artist:</em>
+        @Model.ArtistName
+    </p>
+    <p>
+        <em>Price:</em>
+        <label>@Model.Price</label>
+    </p>
+    <p class="button">
+        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.Id">Add to cart</a>
+    </p>
+</div>

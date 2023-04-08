@@ -1,0 +1,25 @@
+@{
+    ViewBag.Title = "Order Confirmation";
+}
+
+<h1 class="text-danger">Thank You!...</h1>
+<h2 class="text-danger">Your order has been placed.</h2>
+
+
+<div class="container-fluid">
+    <div>
+        <label class="control-label text-right">
+            Your order number is <font color="#b94a48" size="+1">@TempData["BasketId"]</font>
+        </label>
+    </div>
+    <div>
+        <label class="control-label text-right">
+            You will receive an email confirmation shortly at <font color="#b94a48" size="+1">@TempData["BuyerEmail"]</font>
+        </label>
+    </div>
+    <div>
+        <label class="control-label text-right">
+            Please use this value to track your order: <font color="#b94a48" size="+1">@TempData["CorrelationId"]</font>
+        </label>
+    </div>
+</div>

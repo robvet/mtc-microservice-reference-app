@@ -1,0 +1,70 @@
+﻿@using MusicStore.Models
+@model List<BasketDto>
+
+<h2>Shopping Carts</h2>
+
+@if (Model == null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                <h1>Sorry, but no shopping baskets exist</h1>
+            </th>
+        </tr>
+    </table>
+}
+
+
+    @foreach (var basket in Model)
+    {
+        <div style="display: block; border: 5px solid black">
+        <table class="table">
+            <tr>
+                <th colspan="4">
+                    <label class="control-label text-right">Basket ID: </label>
+                    @Html.DisplayFor(model => basket.BasketId)
+        <a asp-controller="ShoppingCarts" asp-action="RemoveCart" asp-route-id="@basket.BasketId">Remove</a>
+        @*<a asp-controller="ShoppingCart" asp-action='@Url.Action("RemoveCart", "ShoppingCart", new {area = ""} )' asp-route-id="@basket.BasketId">Remove</a>
+        <a href='@Url.Page("/ShoppingCart/RemoveCart/" + @basket.BasketId)'>
+            Remove
+        </a>*@
+                </th>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <th>
+                    <label class="col-md-2 control-label text-right">Song</label>
+                </th>
+                <th>
+                    <label class="col-md-2 control-label text-right">Artist</label>
+                </th>
+                <th>
+                    <label class="col-md-2 control-label text-right">Quantity</label>
+                </th>
+                <th>
+                    <label class="col-md-2 control-label text-right">Price</label>
+                </th>
+
+            </tr>
+            @foreach (var item in basket.CartItems)
+            {
+                <tr>
+                    <td>
+                        "@item.Name"
+                    </td>
+                    <td>
+                        @item.Artist
+                    </td>
+                    <td>
+                        @item.QuanityOrdered
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    }
+

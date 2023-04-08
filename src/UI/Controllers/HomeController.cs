@@ -49,5 +49,11 @@ namespace MusicStore.Controllers
         {
             return View("~/Views/Shared/AccessDenied.cshtml");
         }
+
+        public IActionResult RemoveBasketCookie([FromServices] CookieLogic cookieLogic)
+        {
+            cookieLogic.RemoveBasketId();
+            return RedirectToAction("Index");
+        }
     }
 }
