@@ -16,7 +16,8 @@
                         var imageLink = $"~/Images/{album.AlbumArtUrl}";
                     }
                     <img alt="@album.Title" src="@Url.Content(imageLink)" />
-                    <h4 class="control-label">@album.Title</h4>
+                    <h5 class="control-label">@album.Title</h5>
+                    
                     
                   @*  <img src="~/Images/placeholder.png" class="img-responsive" />
                     <h5 class="control-label">@album.Title</h5>*@
@@ -34,6 +35,7 @@
                 *@
 
                 </a>
+                
             </li>
         }
     </ul>
