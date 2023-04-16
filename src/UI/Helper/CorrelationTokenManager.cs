@@ -1,4 +1,5 @@
-﻿using Snowflake;
+﻿
+using SharedUtilities.TokenGenerator;
 
 namespace MusicStore.Helper
 {
@@ -12,8 +13,8 @@ namespace MusicStore.Helper
             var appInsightOperationKey = System.Diagnostics.Activity.Current.RootId;
 
             return !string.IsNullOrEmpty(appInsightOperationKey) ? 
-                $"{SnowflakeEnum.Correlation}-{appInsightOperationKey}" 
-                : SnowflakeIdGenerator.GenerateId(SnowflakeEnum.Correlation);
+                $"{TokenGeneratorEnum.Correlation}-{appInsightOperationKey}" 
+                : TokenGenerator.GenerateId(TokenGeneratorEnum.Correlation);
         }
     }
 }

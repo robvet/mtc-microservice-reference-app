@@ -53,6 +53,11 @@ namespace MusicStore.Helper
 
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            // Pay Attention: Restclient is static, so we need to clear the default request header each time
+            // the method is called as the previously-called api keys remain in the header
+            _client.DefaultRequestHeaders.Remove("Ocp-Apim-Subscription-Key");
+
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
             try
@@ -109,6 +114,12 @@ namespace MusicStore.Helper
 
             var uri = new Uri($"{_apiGateway}/{path}");
 
+            // Pay Attention: Restclient is static, so we need to clear the default request header each time
+            // the method is called as the previously-called api keys remain in the header
+            _client.DefaultRequestHeaders.Remove("Ocp-Apim-Subscription-Key");
+
+            _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
+
             var content = dataObject == null ? "{}" : JsonConvert.SerializeObject(dataObject);
 
             try
@@ -155,6 +166,12 @@ namespace MusicStore.Helper
 
             var uri = new Uri($"{_apiGateway}/{path}");
 
+            // Pay Attention: Restclient is static, so we need to clear the default request header each time
+            // the method is called as the previously-called api keys remain in the header
+            _client.DefaultRequestHeaders.Remove("Ocp-Apim-Subscription-Key");
+
+            _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
+
             var content = dataObject != null ? JsonConvert.SerializeObject(dataObject) : "{}";
 
             try
@@ -198,6 +215,12 @@ namespace MusicStore.Helper
             HttpResponseMessage response;
             
             var uri = new Uri($"{_apiGateway}/{path}");
+
+            // Pay Attention: Restclient is static, so we need to clear the default request header each time
+            // the method is called as the previously-called api keys remain in the header
+            _client.DefaultRequestHeaders.Remove("Ocp-Apim-Subscription-Key");
+
+            _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
             try
             {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MusicStore.Models;
-using Utilities;
+using SharedUtilities.Utilties;
 
 namespace MusicStore.Controllers
 {

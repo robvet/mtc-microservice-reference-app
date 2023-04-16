@@ -41,16 +41,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuildingBlocks\Snowflake\Snowflake.csproj" />
-    <ProjectReference Include="..\BuildingBlocks\Utilities\Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Connected Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SharedServices\SharedUtilities\SharedUtilities.csproj" />
   </ItemGroup>
   
   

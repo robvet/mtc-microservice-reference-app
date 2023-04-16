@@ -7,8 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["UI/MusicStore.csproj", "UI/"]
-COPY ["BuildingBlocks/Snowflake/Snowflake.csproj", "BuildingBlocks/Snowflake/"]
-COPY ["BuildingBlocks/Utilities/Utilities.csproj", "BuildingBlocks/Utilities/"]
+COPY ["SharedServices/SharedUtilities/SharedUtilities.csproj", "SharedServices/SharedUtilities/"]
 RUN dotnet restore "UI/MusicStore.csproj"
 COPY . .
 WORKDIR "/src/UI"

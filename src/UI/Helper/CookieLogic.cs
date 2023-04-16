@@ -1,8 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Http;
 using MusicStore.Models;
-using Utilities;
-using Snowflake;
+using SharedUtilities.TokenGenerator;
 
 namespace MusicStore.Helper
 {
@@ -42,7 +41,7 @@ namespace MusicStore.Helper
             if (string.IsNullOrWhiteSpace(basketId))
             {
                 // Use SnowflakeIdGenerator to generate BasketId
-                basketId = SnowflakeIdGenerator.GenerateId(SnowflakeEnum.Basket);
+                basketId = TokenGenerator.GenerateId(TokenGeneratorEnum.Basket);
             }
 
             var options = new CookieOptions
