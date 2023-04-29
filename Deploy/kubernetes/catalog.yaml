@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: catalog
-  namespace: api
   labels:
     deploy: catalog
 spec:
@@ -16,7 +15,7 @@ spec:
         app: catalog
     spec:
       containers:
-      - image: "aks0demo0acr.azurecr.io/catalogapi:latest"
+      - image: "container0registry0acr2.azurecr.io/catalogapi:latest"
         imagePullPolicy: Always
         name: catalog
         ports:
@@ -41,7 +40,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: catalog
-  namespace: api
 spec:
   type: ClusterIP
   selector:

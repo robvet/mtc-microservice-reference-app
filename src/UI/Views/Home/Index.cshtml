@@ -6,25 +6,31 @@
 }
 
 @*<div class="jumbotron" class=”divlogocolor”>*@
+@*https://stackoverflow.com/questions/3029422/how-to-auto-resize-an-image-while-maintaining-aspect-ratio*@
+
 <div class=”divlogocolor”>
     <h1>@AppSettings.Value.SiteTitle</h1>
-    <img src="@Url.Content("~/Images/retro.png")" />
+    <img style='height: 100%; width: 100%; object-fit: cover;' src="@Url.Content("~/Images/retro.png")" />
 </div>
+
+<hr />
 
 @if (Model != null)
 {
-    <ul class="row list-unstyled" id="album-list">
-        @foreach (var album in Model)
-        {
-            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
-                <a asp-controller="Store" asp-action="Details" asp-route-id="@album.Id">
-                @{ var imageLink = $"~/Images/{album.AlbumArtUrl}"; }
-                <img alt="@album.Title" src="@Url.Content(imageLink)" />
-                <h4>@album.Title</h4>
-                </a>
-            </li>
-        }
-    </ul>
+    <div style="display: flex; justify-content: center;">
+        <ul class="row list-unstyled" id="album-list">
+            @foreach (var album in Model)
+            {
+                <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
+                    <a asp-controller="Store" asp-action="Details" asp-route-id="@album.Id">
+                    @{ var imageLink = $"~/Images/{album.AlbumArtUrl}"; }
+                    <img alt="@album.Title" src="@Url.Content(imageLink)" />
+                    <h4>@album.Title</h4>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
 }
 
 

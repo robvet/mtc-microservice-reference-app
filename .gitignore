@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Custom ignores
+# Ignore any files container in 'secrets' folder
+secrets/
+
+# Ignore any files container in 'IaC/old/' folder
+old/
