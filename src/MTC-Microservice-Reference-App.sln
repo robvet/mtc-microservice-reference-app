@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{F4EE0D1A-FDD6-4B67-8888-DE56E5B68345}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sharedservices", "sharedservices", "{E14B1BAF-6A26-4F44-9E42-ADF3264B1651}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plumbing", "plumbing", "{E14B1BAF-6A26-4F44-9E42-ADF3264B1651}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{26869CC7-419E-4FF0-806C-CDFCD20E35E2}"
 EndProject
