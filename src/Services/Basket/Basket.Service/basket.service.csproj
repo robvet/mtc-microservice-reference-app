@@ -43,9 +43,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SharedServices\EventBus\EventBus.csproj" />
-    <ProjectReference Include="..\..\..\SharedServices\RestCommunicator\RestCommunicator.csproj" />
-    <ProjectReference Include="..\..\..\SharedServices\SharedUtilities\SharedUtilities.csproj" />
+    <ProjectReference Include="..\..\..\Plumbing\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\..\..\Plumbing\RestCommunicator\RestCommunicator.csproj" />
+    <ProjectReference Include="..\..\..\Plumbing\SharedUtilities\SharedUtilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>

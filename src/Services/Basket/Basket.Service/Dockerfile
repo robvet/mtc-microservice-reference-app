@@ -7,10 +7,10 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["Services/Basket/Basket.Service/basket.service.csproj", "Services/Basket/Basket.Service/"]
-COPY ["SharedServices/EventBus/EventBus.csproj", "SharedServices/EventBus/"]
-COPY ["SharedServices/RestCommunicator/RestCommunicator.csproj", "SharedServices/RestCommunicator/"]
-COPY ["SharedServices/ServiceLocator/ServiceLocator.csproj", "SharedServices/ServiceLocator/"]
-COPY ["SharedServices/SharedUtilities/SharedUtilities.csproj", "SharedServices/SharedUtilities/"]
+COPY ["Plumbing/EventBus/EventBus.csproj", "Plumbing/EventBus/"]
+COPY ["Plumbing/RestCommunicator/RestCommunicator.csproj", "Plumbing/RestCommunicator/"]
+COPY ["Plumbing/ServiceLocator/ServiceLocator.csproj", "Plumbing/ServiceLocator/"]
+COPY ["Plumbing/SharedUtilities/SharedUtilities.csproj", "Plumbing/SharedUtilities/"]
 RUN dotnet restore "Services/Basket/Basket.Service/basket.service.csproj"
 COPY . .
 WORKDIR "/src/Services/Basket/Basket.Service"

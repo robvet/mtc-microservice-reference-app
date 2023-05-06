@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using MusicStore.Models;
+using System;
 using SharedUtilities.TokenGenerator;
 
 namespace MusicStore.Helper

@@ -7,7 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["UI/MusicStore.csproj", "UI/"]
-COPY ["SharedServices/SharedUtilities/SharedUtilities.csproj", "SharedServices/SharedUtilities/"]
+COPY ["Plumbing/SharedUtilities/SharedUtilities.csproj", "Plumbing/SharedUtilities/"]
 RUN dotnet restore "UI/MusicStore.csproj"
 COPY . .
 WORKDIR "/src/UI"

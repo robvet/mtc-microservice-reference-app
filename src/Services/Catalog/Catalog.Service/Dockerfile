@@ -7,8 +7,8 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["Services/Catalog/Catalog.Service/catalog.service.csproj", "Services/Catalog/Catalog.Service/"]
-COPY ["SharedServices/EventBus/EventBus.csproj", "SharedServices/EventBus/"]
-COPY ["SharedServices/SharedUtilities/SharedUtilities.csproj", "SharedServices/SharedUtilities/"]
+COPY ["Plumbing/EventBus/EventBus.csproj", "Plumbing/EventBus/"]
+COPY ["Plumbing/SharedUtilities/SharedUtilities.csproj", "Plumbing/SharedUtilities/"]
 RUN dotnet restore "Services/Catalog/Catalog.Service/catalog.service.csproj"
 COPY . .
 WORKDIR "/src/Services/Catalog/Catalog.Service"

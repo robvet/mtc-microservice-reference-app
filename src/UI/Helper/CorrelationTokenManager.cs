@@ -1,9 +1,8 @@
-﻿
-using SharedUtilities.TokenGenerator;
+﻿using SharedUtilities.TokenGenerator;
 
 namespace MusicStore.Helper
 {
-    public class CorrelationTokenManager 
+    public class CorrelationTokenManager
     {
         public static string GenerateToken()
         {
@@ -12,8 +11,8 @@ namespace MusicStore.Helper
             // If not, generate with Snowflake
             var appInsightOperationKey = System.Diagnostics.Activity.Current.RootId;
 
-            return !string.IsNullOrEmpty(appInsightOperationKey) ? 
-                $"{TokenGeneratorEnum.Correlation}-{appInsightOperationKey}" 
+            return !string.IsNullOrEmpty(appInsightOperationKey) ?
+                $"{TokenGeneratorEnum.Correlation}-{appInsightOperationKey}"
                 : TokenGenerator.GenerateId(TokenGeneratorEnum.Correlation);
         }
     }

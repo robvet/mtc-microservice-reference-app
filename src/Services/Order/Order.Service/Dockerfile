@@ -7,8 +7,8 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["Services/Order/Order.Service/order.service.csproj", "Services/Order/Order.Service/"]
-COPY ["SharedServices/EventBus/EventBus.csproj", "SharedServices/EventBus/"]
-COPY ["SharedServices/SharedUtilities/SharedUtilities.csproj", "SharedServices/SharedUtilities/"]
+COPY ["Plumbing/EventBus/EventBus.csproj", "Plumbing/EventBus/"]
+COPY ["Plumbing/SharedUtilities/SharedUtilities.csproj", "Plumbing/SharedUtilities/"]
 COPY ["Services/Order/Order.Domain/order.domain.csproj", "Services/Order/Order.Domain/"]
 COPY ["Services/Order/Order.Infrastructure.NoSql/order.infrastructure.nosql.csproj", "Services/Order/Order.Infrastructure.NoSql/"]
 RUN dotnet restore "Services/Order/Order.Service/order.service.csproj"
