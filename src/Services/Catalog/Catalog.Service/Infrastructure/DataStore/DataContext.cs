@@ -17,8 +17,13 @@ namespace Catalog.API.Infrastructure.DataStore
 
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Artist> Artists { get; set; }
-        public virtual DbSet<Distributor> Distributors { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<Description> Descriptions { get; set; }
+        public virtual DbSet<Medium> Mediums { get; set; }
+        public virtual DbSet<Condition> Conditions { get; set; }
+        public virtual DbSet<Status> Statuses { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -62,20 +67,87 @@ namespace Catalog.API.Infrastructure.DataStore
                     .HasForeignKey(d => d.GenreId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Albums_Genres");
+
+                entity.HasOne(s => s.Status)
+                    .WithMany(p => p.Albums)
+                    .HasForeignKey(d => d.StatusId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Albums_Status");
+
+                entity.HasOne(s => s.Medium)
+                    .WithMany(p => p.Albums)
+                    .HasForeignKey(d => d.MediumId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Albums_Medium");
+
+                entity.HasOne(c => c.Condition)
+                    .WithMany(p => p.Albums)
+                    .HasForeignKey(d => d.ConditionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Albums_Condition");
+
+                entity.HasOne(d => d.Description)
+                    .WithMany(p => p.Albums)
+                    .HasForeignKey(d => d.DescriptionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Albums_Description");
+
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
+                entity.Property(e => e.IsActive).HasDefaultValueSql("1");
             });
 
-            modelBuilder.Entity<Artist>(entity => { entity.HasKey(e => e.ArtistId); });
+            modelBuilder.Entity<Artist>(entity => 
+            { 
+                entity.HasKey(e => e.ArtistId);
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
+                entity.Property(e => e.IsActive).HasDefaultValueSql("1");
+            });
 
-            modelBuilder.Entity<Distributor>(entity =>
+            modelBuilder.Entity<Status>(entity => 
             {
-                entity.HasKey(e => e.DistributorId);
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.HasKey(e => e.StatusId); 
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
+                entity.Property(e => e.IsActive).HasDefaultValueSql("1");
             });
 
-            modelBuilder.Entity<Genre>(entity => { entity.HasKey(e => e.GenreId); });
+            modelBuilder.Entity<Medium>(entity =>
+            {
+                entity.HasKey(e => e.MediumId);
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
+                entity.Property(e => e.IsActive).HasDefaultValueSql("1");
+            });
+
+            modelBuilder.Entity<Condition>(entity =>
+            {
+                entity.HasKey(e => e.ConditionId);
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
+                entity.Property(e => e.IsActive).HasDefaultValueSql("1");
+            });
+
+            modelBuilder.Entity<Description>(entity =>
+            {
+                entity.HasKey(e => e.DescriptionId);
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
+                entity.Property(e => e.IsActive).HasDefaultValueSql("1");
+            });
+
+            modelBuilder.Entity<Genre>(entity => 
+            { 
+                entity.HasKey(e => e.GenreId);
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
+                entity.Property(e => e.IsActive).HasDefaultValueSql("1");
+            });
+
+            //modelBuilder.Entity<Status>(entity =>
+            //{
+            //    entity.HasKey(e => e.Id);
+
+            //    entity.HasOne(s => s.Product)
+
+            //    entity.Property(e => e.Name)
+            //        .IsRequired()
+            //        .HasMaxLength(50);
+            //});
         }
     }
 }

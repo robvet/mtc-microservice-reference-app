@@ -3,15 +3,14 @@ using System.Collections.Generic;
 
 namespace Catalog.API.Domain.Entities
 {
-    public class Genre
+    public class Condition
     {
-        public Genre()
+        public Condition()
         {
             Albums = new HashSet<Product>();
         }
 
-        public int GenreId { get; set; }
-        public string Name { get; set; }
+        public int ConditionId { get; set; }
         public string Description { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }

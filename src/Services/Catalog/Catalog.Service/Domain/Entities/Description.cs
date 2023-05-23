@@ -3,16 +3,14 @@ using System.Collections.Generic;
 
 namespace Catalog.API.Domain.Entities
 {
-    public class Genre
+    public class Description
     {
-        public Genre()
+        public Description()
         {
             Albums = new HashSet<Product>();
         }
-
-        public int GenreId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int DescriptionId { get; set; }
+        public string Item { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
 

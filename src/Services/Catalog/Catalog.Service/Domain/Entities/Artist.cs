@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Catalog.API.Domain.Entities
 {
@@ -11,6 +12,8 @@ namespace Catalog.API.Domain.Entities
 
         public int ArtistId { get; set; }
         public string Name { get; set; }
+        public DateTime CreateDate { get; set; }
+        public bool IsActive { get; set; }
 
         public ICollection<Product> Albums { get; set; }
     }
