@@ -1,4 +1,5 @@
 ﻿using System;
+using catalog.service.Infrastructure.DataStore;
 using Catalog.API.Contracts;
 using Catalog.API.Domain.BusinessServices;
 using Catalog.API.Extensions;
@@ -99,7 +100,8 @@ namespace Catalog.API
             // The code block creates and populates the Product database
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
-                DataInitializer.InitializeDatabaseAsync(serviceScope).Wait();
+                //DataInitializer.InitializeDatabaseAsync(serviceScope).Wait();
+                new ProductInitializer().InitializeDatabaseAsync(serviceScope).Wait();
             }
         }
     }

@@ -25,9 +25,9 @@ namespace Catalog.API.Domain.Entities
         public Artist Artist { get; set; }
         public Genre Genre { get; set; }
         public Status Status { get; set; }
-        public Status Medium { get; set; }
-        public Status Condition { get; set; }
-        public Status  Description { get; set; }
+        public Medium Medium { get; set; }
+        public Condition Condition { get; set; }
+        public Description  Description { get; set; }
 
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }

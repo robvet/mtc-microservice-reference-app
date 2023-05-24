@@ -68,6 +68,12 @@ namespace Catalog.API.Infrastructure.DataStore
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Albums_Genres");
 
+                //entity.HasOne(s => s.Status)
+                //    .WithMany(p => p.Albums)
+                //    .HasForeignKey(d => d.StatusId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Albums_Status");
+
                 entity.HasOne(s => s.Status)
                     .WithMany(p => p.Albums)
                     .HasForeignKey(d => d.StatusId)
