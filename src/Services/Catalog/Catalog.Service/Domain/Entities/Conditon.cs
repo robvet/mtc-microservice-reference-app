@@ -7,14 +7,14 @@ namespace Catalog.API.Domain.Entities
     {
         public Condition()
         {
-            Albums = new HashSet<Product>();
+            Products = new HashSet<Product>();
         }
 
         public int ConditionId { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
 
-        public ICollection<Product> Albums { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

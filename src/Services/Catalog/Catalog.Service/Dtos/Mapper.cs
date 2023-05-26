@@ -20,8 +20,7 @@ namespace Catalog.API.Dtos
                     Price = item.Price,
                     ParentalCaution = item.ParentalCaution,
                     Upc = item.Upc,
-                    Cutout = item.Cutout,
-                    ReleaseDate = item.ReleaseDate,
+                    //ReleaseDate = item.ReleaseDate,
                     AlbumArtUrl = item.AlbumArtUrl,
                     ProductId=item.ProductId
                 });
@@ -40,8 +39,7 @@ namespace Catalog.API.Dtos
                 Price = music.Price,
                 ParentalCaution = music.ParentalCaution,
                 Upc = music.Upc,
-                Cutout = music.Cutout,
-                ReleaseDate = music.ReleaseDate,
+                //ReleaseDate = music.ReleaseDate,
                 ArtistId = music.ArtistId,
                 GenreId = music.GenreId,
                 AlbumArtUrl = music.AlbumArtUrl,
@@ -58,9 +56,9 @@ namespace Catalog.API.Dtos
                 mappedDtos.Add(new GenreDto
                 {
                     Name = item.Name,
-                    Description = item.Description,
+                    Description = item.Name,
                     GenreId = item.GenreId,
-                    Albums = item.Albums == null || item.Albums.Count == 0 ? null : MapToMusicDto(item.Albums).ToList()
+                    Albums = item.Products == null || item.Products.Count == 0 ? null : MapToMusicDto(item.Products).ToList()
                 });
 
             return mappedDtos;
@@ -71,9 +69,9 @@ namespace Catalog.API.Dtos
             return new GenreDto
             {
                 Name = genre.Name,
-                Description = genre.Description,
+                Description = genre.Name,
                 GenreId = genre.GenreId,
-                Albums = genre.Albums == null || genre.Albums.Count == 0 ? null : MapToMusicDto(genre.Albums).ToList()
+                Albums = genre.Products == null || genre.Products.Count == 0 ? null : MapToMusicDto(genre.Products).ToList()
             };
         }
 

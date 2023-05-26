@@ -88,9 +88,8 @@ namespace Catalog.API.Domain.BusinessServices
                     GenreId = product.GenreId,
                     Title = product.Title,
                     ParentalCaution = product.ParentalCaution,
-                    Cutout = product.Cutout,
                     Price = product.Price,
-                    ReleaseDate = product.ReleaseDate,
+                    //ReleaseDate = product.ReleaseDate,
                     Upc = product.Upc
                 };
                 await _eventBusPublisher.Publish<ProductChangedEvent>(
@@ -111,9 +110,8 @@ namespace Catalog.API.Domain.BusinessServices
                 GenreId = product.GenreId,
                 Title = product.Title,
                 ParentalCaution = product.ParentalCaution,
-                Cutout = product.Cutout,
                 Price = product.Price,
-                ReleaseDate = product.ReleaseDate,
+                //ReleaseDate = product.ReleaseDate,
                 Upc = product.Upc
             };
             //************** Publish Event  *************************

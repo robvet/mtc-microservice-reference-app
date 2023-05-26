@@ -7,7 +7,7 @@ namespace Catalog.API.Domain.Entities
     {
         public Artist()
         {
-            Albums = new HashSet<Product>();
+            Products = new HashSet<Product>();
         }
 
         public int ArtistId { get; set; }
@@ -15,6 +15,6 @@ namespace Catalog.API.Domain.Entities
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
 
-        public ICollection<Product> Albums { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

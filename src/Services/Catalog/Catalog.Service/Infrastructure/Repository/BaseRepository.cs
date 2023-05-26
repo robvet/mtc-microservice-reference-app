@@ -163,15 +163,14 @@ namespace Catalog.API.Infrastructure.Repository
         {
             try
             {
-                // Delete all records from all tables
+                // Delete data from all tables
                 await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Products");
                 await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Artists");
                 await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Genres");
-
-                // Reset the identity columns
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Products', RESEED, 0);");
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Artists', RESEED, 0);");
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Genres', RESEED, 0);");
+                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Conditions");
+                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Mediums");
+                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Descriptions");
+                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Status");
             }
             catch (DbUpdateException ex)
             {
@@ -183,6 +182,29 @@ namespace Catalog.API.Infrastructure.Repository
                 //throw new Exception($"Could not Save in BaseRepository : {traveredMessage}");
                 throw new Exception($"Could not Clear Data in BaseRepository : {ex.Message}");
             }
+
+            try
+            {
+                // Reset identity columns
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Products', RESEED, 1);");
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Artists', RESEED, 1);");
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Genres', RESEED, 1);");
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Conditions', RESEED, 1);");
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Mediums', RESEED, 1);");
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Descriptions', RESEED, 1);");
+                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Status', RESEED, 1);");
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new Exception($"Could not reset identity value in BaseRepository : {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                //var traveredMessage = ExceptionHandlingUtilties.TraverseException(ex);
+                //throw new Exception($"Could not Save in BaseRepository : {traveredMessage}");
+                throw new Exception($"Could not reset identity value in BaseRepository : {ex.Message}");
+            }
+
         }
     }
 }

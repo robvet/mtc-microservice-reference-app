@@ -17,7 +17,7 @@ namespace Catalog.API.Infrastructure.Repository
         public async Task<Genre> GetById(int id, string correlationToken, bool includeAlbums = false)
         {
             return includeAlbums
-                ? Get().Include(x => x.Albums).SingleOrDefault(g => g.GenreId == id)
+                ? Get().Include(x => x.Products).SingleOrDefault(g => g.GenreId == id)
                 : await FindById(id);
         }
 
@@ -28,7 +28,7 @@ namespace Catalog.API.Infrastructure.Repository
 
         public async Task<List<Genre>> GetAllAndAlbums(string correlationToken)
         {
-            return Get().Include(x => x.Albums).ToList();
+            return Get().Include(x => x.Products).ToList();
         }
 
         //public override void Add(Genre genre)
@@ -44,7 +44,7 @@ namespace Catalog.API.Infrastructure.Repository
 
         public async Task<Genre> GetGenreAndAlbums(string genre, string correlationToken)
         {
-            return Get().Include(x => x.Albums).SingleOrDefault(x => x.Name == genre);
+            return Get().Include(x => x.Products).SingleOrDefault(x => x.Name == genre);
         }
     }
 }
