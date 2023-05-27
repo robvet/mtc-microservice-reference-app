@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Catalog.API.Infrastructure.DataStore;
 using System.Linq;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace catalog.service.Infrastructure.DataStore
 {
@@ -35,12 +36,18 @@ namespace catalog.service.Infrastructure.DataStore
                     // Seed database
                     //await Seed(context);
 
+
+                    await SeedData<Genre>("genres.csv");
+
+
                     await SeedGenres();
                     await SeedMediums();
                     await SeedStatuses();
                     await SeedConditions();
                     await SeedArtists();
                     await SeedProducts();
+
+
 
                     //var currentDirectory = Environment.CurrentDirectory;
                     //var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "products.csv");
@@ -53,6 +60,61 @@ namespace catalog.service.Infrastructure.DataStore
                 }
             }
         }
+
+        //public async Task SeedData<T>(IEnumerable<T> data) where T : class
+        public async Task SeedData<T>(string dataFile) where T : class
+
+        {
+            try
+            {
+                var currentDirectory = Environment.CurrentDirectory;
+
+                // File path for Genres
+                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", dataFile);
+                               
+                var lines = File.ReadAllLines(filePath).Skip(1);
+                foreach (var line in lines)
+                {
+                    var values = line.Split(',');
+                    var item = Activator.CreateInstance<T>();
+
+                    // Todo: Add validation to ensure Name property exists
+                    if(item.GetType().GetProperty("Name") == null)
+                    {
+                        throw new Exception($"Name property not found for {typeof(T).Name}");
+                    }
+
+                    // Set name property  
+                    item.GetType().GetProperty("Name").SetValue(item, values[0]);
+
+                    // Add item to EF context
+                    _context.Set<T>().Add(item);
+                }
+
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    // Todo: Add Logging
+                    var errorMessage = $"Error seeding {typeof(T).Name} data {ex.Message}";
+                    throw;
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                var errorMessage = $"Error seeding {typeof(T).Name} data {ex.Data}";
+                throw;
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = $"Error seeding {typeof(T).Name} data {ex.Message}";
+                throw;
+            }
+        }
+
+
 
         public async Task SeedGenres()
         {
@@ -285,12 +347,12 @@ namespace catalog.service.Infrastructure.DataStore
                     // File path for Genres
                     var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "products.csv");
 
-                    ////var filePath = "path/to/your/csv/file";
-                    //var genres = new List<Genre> { new Genre { Name = "Southern Rock" } };
-                    //var artists = new List<Artist> { new Artist { Name = "The Black Crowes" } };
+                ////var filePath = "path/to/your/csv/file";
+                //var genres = new List<Genre> { new Genre { Name = "Southern Rock" } };
+                //var artists = new List<Artist> { new Artist { Name = "The Black Crowes" } };
 
- 
-                var lines = File.ReadAllLines(filePath).Skip(1);
+
+                var lines = File.ReadAllLines(filePath).Skip(1); //.Take(75);
                 foreach (var line in lines)
                 {
                     var values = line.Split(',');
@@ -308,7 +370,7 @@ namespace catalog.service.Infrastructure.DataStore
                         Artist = _context.Artists.Single(a => a.Name == values[0]),
                         Status = _context.Status.Single(s => s.Name == values[5]),
                         Condition = _context.Conditions.Single(c => c.Name == values[7]),
-                        AlbumArtUrl = values[8],
+                        AlbumArtUrl = SetMediumGraphic(values[6]),
                         CreateDate = DateTime.Now,
                         IsActive = true
                     };
@@ -491,6 +553,31 @@ namespace catalog.service.Infrastructure.DataStore
                 return true;
 
             return false;
+        }
+
+        // Set medium graphic
+        private static string SetMediumGraphic(string medium)
+        {
+            string graphicName;
+            switch (medium)
+            {
+                case "EightTrack":
+                    graphicName = "eight-track.jpg";
+                    break;
+                case "CD":
+                    graphicName = "cd.jpg";
+                    break;
+                case "CassetteTape":
+                    graphicName = "cassette.jpg";
+                    break;
+                case "Album":
+                    graphicName = "cassette.jpg";
+                    break;
+                default:
+                    graphicName = "placeholder.png";
+                    break;
+            }
+            return graphicName;
         }
 
 
