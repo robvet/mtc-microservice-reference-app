@@ -7,57 +7,47 @@ using System.Threading.Tasks;
 using Catalog.API.Infrastructure.DataStore;
 using System.Linq;
 using System.IO;
-using Microsoft.EntityFrameworkCore;
+using SharedUtilities.Utilties;
+using Microsoft.Extensions.Logging;
 
 namespace catalog.service.Infrastructure.DataStore
 {
     public class ProductInitializer
     {
         private static int _counter;
-        private static IProductRepository _ProductRepository;
         private DataContext _context;
+        private ILogger<ProductInitializer> _logger;
 
         public async Task InitializeDatabaseAsync(IServiceScope serviceScope)
         {
-            //var context = serviceScope.ServiceProvider.GetService<DataContext>();
+            // Get DataContext and Logger explicitly from DI container
             _context = serviceScope.ServiceProvider.GetService<DataContext>();
+            _logger = serviceScope.ServiceProvider.GetService<ILogger<ProductInitializer>>();
+            
+            Guard.ForNullObject(_context, "DataContext not found in DI container");
+
+            // Get ProductRepository from DI container
             var productRepository = serviceScope.ServiceProvider.GetService<IProductRepository>();
 
-            if (_context != null)
+            Guard.ForNullObject(productRepository, "ProductRepository not found in DI container");
+
+            var databaseCreated = _context.Database.EnsureCreated();
+
+            // Determine if database has been seeded by checking for any data in the Products table
+            if (!_context.Products.Any())
             {
-                var databaseCreated = _context.Database.EnsureCreated();
+                // make sure child tables are dropped and tables reseeded for identity values (pass dummy correlation token)
+                await productRepository.ClearProductDatabase("clearingdatabase");
 
-                // Determine if database has been seeded
-                if (!_context.Products.Any())
-                {
-                    // make sure child tables are dropped and tables reseeded for identity values (pass dummy correlation token)
-                    await productRepository.ClearProductDatabase("clearingdatabase");
+                // Seed lookup data
+                await SeedData<Genre>("genres.csv");
+                await SeedData<Medium>("mediums.csv");
+                await SeedData<Status>("statuses.csv");
+                await SeedData<Condition>("conditions.csv");
+                await SeedData<Artist>("artists.csv");
 
-                    // Seed database
-                    //await Seed(context);
-
-
-                    await SeedData<Genre>("genres.csv");
-
-
-                    await SeedGenres();
-                    await SeedMediums();
-                    await SeedStatuses();
-                    await SeedConditions();
-                    await SeedArtists();
-                    await SeedProducts();
-
-
-
-                    //var currentDirectory = Environment.CurrentDirectory;
-                    //var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "products.csv");
-
-                    ////var filePath = "path/to/your/csv/file";
-                    //var genres = new List<Genre> { new Genre { Name = "Southern Rock" } };
-                    //var artists = new List<Artist> { new Artist { Name = "The Black Crowes" } };
-
-                    //var products = ReadProductsFromCsv(filePath, genres, artists);
-                }
+                // Seed products
+                await SeedProducts();
             }
         }
 
@@ -69,20 +59,19 @@ namespace catalog.service.Infrastructure.DataStore
             {
                 var currentDirectory = Environment.CurrentDirectory;
 
-                // File path for Genres
+                // File path for lookup data
                 var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", dataFile);
                                
+                // Skip header row from CSV File
                 var lines = File.ReadAllLines(filePath).Skip(1);
+
                 foreach (var line in lines)
                 {
                     var values = line.Split(',');
                     var item = Activator.CreateInstance<T>();
 
-                    // Todo: Add validation to ensure Name property exists
-                    if(item.GetType().GetProperty("Name") == null)
-                    {
-                        throw new Exception($"Name property not found for {typeof(T).Name}");
-                    }
+                    // Add validation to ensure Name property exists
+                    Guard.ForNullObject(item.GetType().GetProperty("Name"), $"Name property doesn't exist in {typeof(T).Name}");
 
                     // Set name property  
                     item.GetType().GetProperty("Name").SetValue(item, values[0]);
@@ -99,259 +88,37 @@ namespace catalog.service.Infrastructure.DataStore
                 {
                     // Todo: Add Logging
                     var errorMessage = $"Error seeding {typeof(T).Name} data {ex.Message}";
-                    throw;
+                    _logger.LogError(errorMessage);
+                    throw new Exception(errorMessage , ex);
                 }
             }
             catch (InvalidOperationException ex)
             {
                 var errorMessage = $"Error seeding {typeof(T).Name} data {ex.Data}";
-                throw;
+                _logger.LogError(errorMessage);
+                throw new Exception(errorMessage, ex);
             }
             catch (Exception ex)
             {
                 var errorMessage = $"Error seeding {typeof(T).Name} data {ex.Message}";
-                throw;
-            }
-        }
-
-
-
-        public async Task SeedGenres()
-        {
-            try
-            {
-                var currentDirectory = Environment.CurrentDirectory;
-
-                // File path for Genres
-                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "genres.csv");
-
-                ////var filePath = "path/to/your/csv/file";
-                //var genres = new List<Genre> { new Genre { Name = "Southern Rock" } };
-                //var artists = new List<Artist> { new Artist { Name = "The Black Crowes" } };
-
-                var lines = File.ReadAllLines(filePath).Skip(1);
-                foreach (var line in lines)
-                {
-                    var values = line.Split(',');
-                    var genre = new Genre
-                    {
-                        Name = values[0]
-                    };
-                    _context.Genres.Add(genre);
-                }
-
-                try
-                {
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    // Todo: Add Logging
-                    var errorMessage = $"Error seeding Genre data {ex.Message}";
-                    throw;
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                var errorMessage = $"Error seeding Genre data {ex.Data}";
-                throw;
-            }
-            catch (Exception ex)
-            {
-                var errorMessage = $"Error seeding Genre data {ex.Message}";
-                throw;
-            }
-        }
-
-        public async Task SeedMediums()
-        {
-            try
-            {
-                var currentDirectory = Environment.CurrentDirectory;
-
-                // File path for Genres
-                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "mediums.csv");
-
-                var lines = File.ReadAllLines(filePath).Skip(1);
-                foreach (var line in lines)
-                {
-                    var values = line.Split(',');
-                    var mediums = new Medium
-                    {
-                        Name = values[0]
-                    };
-                    _context.Mediums.Add(mediums);
-                }
-
-                try
-                {
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    // Todo: Add Logging
-                    var errorMessage = $"Error seeding Medium data {ex.Message}";
-                    throw;
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                var errorMessage = $"Error seeding Medium data {ex.Data}";
-                throw;
-            }
-            catch (Exception ex)
-            {
-                var errorMessage = $"Error seeding Medium data {ex.Message}";
-                throw;
-            }
-        }
-
-        public async Task SeedStatuses()
-        {
-            try
-            {
-                var currentDirectory = Environment.CurrentDirectory;
-
-                // File path for Genres
-                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "statuses.csv");
-
-                var lines = File.ReadAllLines(filePath).Skip(1);
-                foreach (var line in lines)
-                {
-                    var values = line.Split(',');
-                    var statuses = new Status
-                    {
-                        Name = values[0]
-                    };
-                    _context.Status.Add(statuses);
-                }
-
-                try
-                {
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    // Todo: Add Logging
-                    var errorMessage = $"Error seeding Status data {ex.Message}";
-                    throw;
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                var errorMessage = $"Error seeding Status data {ex.Data}";
-                throw;
-            }
-            catch (Exception ex)
-            {
-                var errorMessage = $"Error seeding Status data {ex.Message}";
-                throw;
-            }
-        }
-
-
-        public async Task SeedConditions()
-        {
-            try
-            {
-                var currentDirectory = Environment.CurrentDirectory;
-
-                // File path for Genres
-                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "conditions.csv");
-
-                var lines = File.ReadAllLines(filePath).Skip(1);
-                foreach (var line in lines)
-                {
-                    var values = line.Split(',');
-                    var conditions = new Condition
-                    {
-                        Name = values[0]
-                    };
-                    _context.Conditions.Add(conditions);
-                }
-
-                try
-                {
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    // Todo: Add Logging
-                    var errorMessage = $"Error seeding Condition data {ex.Message}";
-                    throw;
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                var errorMessage = $"Error seeding Condition data {ex.Data}";
-                throw;
-            }
-            catch (Exception ex)
-            {
-                var errorMessage = $"Error seeding Condition data {ex.Message}";
-                throw;
-            }
-        }
-
-        public async Task SeedArtists()
-        {
-            try
-            {
-                var currentDirectory = Environment.CurrentDirectory;
-
-                // File path for Genres
-                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "artists.csv");
-
-                var lines = File.ReadAllLines(filePath).Skip(1);
-                foreach (var line in lines)
-                {
-                    var values = line.Split(',');
-                    var artists = new Artist
-                    {
-                        Name = values[0]
-                    };
-                    _context.Artists.Add(artists);
-                }
-
-                try
-                {
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    // Todo: Add Logging
-                    var errorMessage = $"Error seeding Artist data {ex.Message}";
-                    throw;
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                var errorMessage = $"Error seeding Artist data {ex.Data}";
-                throw;
-            }
-            catch (Exception ex)
-            {
-                var errorMessage = $"Error seeding Artist data {ex.Message}";
-                throw;
+                _logger.LogError(errorMessage);
+                throw new Exception(errorMessage, ex);
             }
         }
 
         public async Task<List<Product>> SeedProducts()
         {
             List<Product> products = new List<Product>();
+            int counter = 1;
 
-                try
-                {
-                    var currentDirectory = Environment.CurrentDirectory;
+            try
+            {
+                var currentDirectory = Environment.CurrentDirectory;
 
-                    // File path for Genres
-                    var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "products.csv");
+                // File path for Genres
+                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "products.csv");
 
-                ////var filePath = "path/to/your/csv/file";
-                //var genres = new List<Genre> { new Genre { Name = "Southern Rock" } };
-                //var artists = new List<Artist> { new Artist { Name = "The Black Crowes" } };
-
-
+                // Skip header row from CSV File
                 var lines = File.ReadAllLines(filePath).Skip(1); //.Take(75);
                 foreach (var line in lines)
                 {
@@ -376,6 +143,7 @@ namespace catalog.service.Infrastructure.DataStore
                     };
                     products.Add(product);
                     _context.Products.Add(product);
+                    counter++;
                 }
 
                 try
@@ -385,150 +153,27 @@ namespace catalog.service.Infrastructure.DataStore
                 catch (Exception ex)
                 {
                     // Todo: Add Logging
-                    var errorMessage = $"Error seeding Product Catalog data {ex.Message}";
-                    throw;
+                    var errorMessage = $"Error seeding Product Catalog data on record {counter}: {ex.Message}";
+                    _logger.LogError(errorMessage);
+                    throw new Exception(errorMessage, ex);
                 }
             }
 
             catch (InvalidOperationException ex)
             {
-                var errorMessage = $"Error seeding Product Catalog data {ex.Data}";
-                throw;
+                var errorMessage = $"Error seeding Product Catalog data on record {counter}: {ex.Data}";
+                _logger.LogError(errorMessage);
+                throw new Exception(errorMessage, ex);
             }
             catch (Exception ex)
             {
-                var errorMessage = $"Error seeding Product Catalog data {ex.Message}";
-                throw;
+                var errorMessage = $"Error seeding Product Catalog data on record {counter}: {ex.Message}";
+                _logger.LogError(errorMessage);
+                throw new Exception(errorMessage, ex);
             }
 
             return products;
         }
-
-      
-
-        //private static async Task SeedProducts()
-        //{
-        //    //var users = new List<User>
-        //    //{
-        //    //    new User {Name = "Admin", Password = "musicstore", EmailAddress = "admin@musicstore.com"},
-        //    //    new User {Name = "Customer", Password = "musicstore", EmailAddress = "customer@musicstore.com"},
-        //    //}
-        //    //; //.ForEach(x => context.Users.Add(x));
-
-        //    ////new List<User>
-        //    ////{
-        //    ////    new User {Name = "Admin", Password = "musicstore", EmailAddress = "admin@musicstore.com"},
-        //    ////    new User {Name = "John", Password = "musicstore", EmailAddress = "johnsmith@musicstore.com"},
-        //    ////}.ForEach(x => context.Users.Add(x));
-
-        //    //var roles = new List<Role>
-        //    //{
-        //    //    new Role {Name = "Administrator", Description = "Administrator",},
-        //    //    new Role {Name = "Customer", Description = "Customer",},
-        //    //}; //.ForEach(x => context.Roles.Add(x));
-
-        //    ////new List<Role>
-        //    ////{
-        //    ////    new Role {Name = "Admin", Description = "Admin",},
-        //    ////    new Role {Name = "Customer", Description = "Customer",},
-        //    ////}.ForEach(x => context.Roles.Add(x));
-
-
-        //    //new List<UserRole>
-        //    //{
-        //    //    new UserRole
-        //    //    {
-        //    //        User = users.Single(x => x.Name == "Admin"), 
-        //    //        Role = roles.Single(x => x.Name =="Administrator"),
-        //    //    },
-        //    //    new UserRole
-        //    //    {
-        //    //        User = users.Single(x => x.Name == "Customer"), 
-        //    //        Role = roles.Single(x => x.Name =="Customer"),
-        //    //    },
-        //    //}.ForEach(x => context.UserRoles.Add(x));
-
-        //    var genres = new List<Genre>
-        //    {
-        //        new Genre {Name = "Rock"},
-        //        new Genre {Name = "Jazz"},
-        //        new Genre {Name = "Metal"},
-        //        new Genre {Name = "Alternative"},
-        //        new Genre {Name = "Disco"},
-        //        new Genre {Name = "Blues"},
-        //        new Genre {Name = "Latin"},
-        //        new Genre {Name = "Reggae"},
-        //        new Genre {Name = "Pop"},
-        //        new Genre {Name = "Classical"},
-        //        new Genre {Name = "Country"}
-        //    };
-
-        //    var artists = new List<Artist>
-        //    {
-        //        new Artist {Name = "Aerosmith"},
-        //        new Artist {Name = "AC/DC"},
-        //        new Artist {Name = "Animals"},
-        //        new Artist {Name = "Allman Brothers"},
-
-  
-        //    };
-
-        //    try
-        //    {
-        //        new List<Product>
-        //        {
-        //            // Country
-
-        //            new Product
-        //            {
-        //                Cutout = false,
-        //                ProductId = Guid.NewGuid(),
-        //                ParentalCaution = false,
-        //                ReleaseDate = SetReleaseDate(),
-        //                Upc = GenerateUpc(),
-        //                Title = "Your Cheatin' Heart",
-        //                Genre = genres.Single(g => g.Name == "Country"),
-        //                Price = GenerateAlbumPrice(),
-        //                Artist = artists.Single(a => a.Name == "Hank Williams"),
-        //                AlbumArtUrl = "placeholder.png"
-        //            },
-        //            new Product
-        //            {
-        //                Cutout = false,
-        //                ProductId = Guid.NewGuid(),
-        //                ParentalCaution = false,
-        //                ReleaseDate = SetReleaseDate(),
-        //                Upc = GenerateUpc(),
-        //                Title = "He Stopped Loving Her Today",
-        //                Genre = genres.Single(g => g.Name == "Country"),
-        //                Price = GenerateAlbumPrice(),
-        //                Artist = artists.Single(a => a.Name == "George Jones"),
-        //                AlbumArtUrl = "placeholder.png"
-        //            },
-        //                           }.ForEach(a => _context.Products.Add(a));
-
-        //        try
-        //        {
-        //            _context.SaveChanges();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            // Todo: Add Logging
-        //            var errorMessage = $"Error seeding Product Catalog data {ex.Message}";
-        //            throw;
-        //        }
-        //    }
-        //    catch (InvalidOperationException ex)
-        //    {
-        //        var errorMessage = $"Error seeding Product Catalog data {ex.Data}";
-        //        throw;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var errorMessage = $"Error seeding Product Catalog data {ex.Message}";
-        //        throw;
-        //    }
-        //}
 
 
         // Generate mock UPC code

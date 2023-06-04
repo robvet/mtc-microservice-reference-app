@@ -37,7 +37,7 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(List<BasketDto>), 200)]
         [HttpGet("Baskets", Name = "GetAllbasketsRoute")]
         //public async Task<IActionResult> GetAllBaskets()
-        public async Task<IActionResult> GetAllBaskets([FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task<IActionResult> GetAllBaskets([FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             //Request.Headers.TryGetValue(EnumLookup.CorrelationToken.ToSafeString(), out var correlationToken);
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
@@ -57,7 +57,7 @@ namespace Basket.API.Controllers
         /// <returns>List of line items that make up a shopping basket</returns>
         [ProducesResponseType(typeof(List<BasketItemDto>), 200)]
         [HttpGet("Basket/{basketId}", Name = "GetbasketRoute")]
-        public async Task<IActionResult> GetBasket(string basketId, [FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task<IActionResult> GetBasket(string basketId, [FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(basketId, "BasketId");
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
@@ -77,7 +77,7 @@ namespace Basket.API.Controllers
         /// <returns>List of line items that make up a shopping basket</returns>
         [ProducesResponseType(typeof(BasketSummaryDto), 200)]
         [HttpGet("BasketSummary/{basketId}", Name = "GetBasketSummaryRoute")]
-        public async Task<IActionResult> GetBasketSummary(string basketId, [FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task<IActionResult> GetBasketSummary(string basketId, [FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(basketId, "BasketId");
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
@@ -103,7 +103,7 @@ namespace Basket.API.Controllers
         /// <returns>The newly-created line item</returns>
         [ProducesResponseType(typeof(BasketItemDto), 200)]
         [HttpPost]
-        public async Task<IActionResult> AddBasketItem(string basketId, int productId, [FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task<IActionResult> AddBasketItem(string basketId, int productId, [FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForLessEqualZero(productId, "ProductId");
             Guard.ForNullOrEmpty(basketId, "BasketId");
@@ -126,7 +126,7 @@ namespace Basket.API.Controllers
         /// <param name="productId">ProductEntity Identifier</param>
         /// <returns>Summary of shopping basket state</returns>
         [HttpDelete("{BasketId}/lineitem/{productId}")]
-        public async Task<IActionResult> DeleteLineItem(string basketId, int productId, [FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task<IActionResult> DeleteLineItem(string basketId, int productId, [FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(basketId, "BasketId");
             Guard.ForLessEqualZero(productId, "ProductId");
@@ -151,7 +151,7 @@ namespace Basket.API.Controllers
         /// <returns>The newly-created line item</returns>
         [ProducesResponseType(typeof(CheckoutDto), 200)]
         [HttpPost("CheckOut")]
-        public async Task<IActionResult> PostCheckOut([FromBody] CheckoutDto checkoutDto, [FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task<IActionResult> PostCheckOut([FromBody] CheckoutDto checkoutDto, [FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullObject(checkoutDto, "NewOrder");
             Guard.ForNullOrEmpty(checkoutDto.BasketId, "BasketId in New Order");
@@ -195,7 +195,7 @@ namespace Basket.API.Controllers
         /// <param name="basketId">Identifier for user shopping basket</param>
         /// <returns></returns>
         [HttpDelete]
-        public async Task<HttpStatusCode>  Delete(string basketId, [FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task<HttpStatusCode>  Delete(string basketId, [FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(basketId, "BasketId");
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");

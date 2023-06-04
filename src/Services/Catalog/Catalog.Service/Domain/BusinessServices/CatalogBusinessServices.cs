@@ -116,7 +116,7 @@ namespace Catalog.API.Domain.BusinessServices
             };
             //************** Publish Event  *************************
             await _eventBusPublisher.Publish<ProductChangedEvent>(
-                await PrepareProductChangedEvent(productUpsert, correlationToken));
+            await PrepareProductChangedEvent(productUpsert, correlationToken));
         }
         private async Task<ProductChangedEvent> PrepareProductChangedEvent(ProductUpsert productUpsert,
             string correlationToken)
