@@ -37,10 +37,9 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(List<Product>), 200)]
         [HttpGet("Music", Name = "GetAllMusicRoute")]
         public async Task<IActionResult> GetAllMusic([FromHeader(Name = "x-correlationToken")]
-            string correlationToken = "123")
+            string correlationToken)
         {
-            if (string.IsNullOrEmpty(correlationToken))
-                return BadRequest("CorrelationToken not present");
+            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
             var products = await _catalogBusinessServices.GetAllMusic(correlationToken);
 
@@ -58,11 +57,8 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(Product), 200)]
         [HttpGet("Music/{id}", Name = "GetMusicRoute")]
         public async Task<IActionResult> GetMusic(int id, [FromHeader(Name = "x-correlationToken")]
-            string correlationToken = "123")
+            string correlationToken)
         {
-            if (string.IsNullOrEmpty(correlationToken))
-                return BadRequest("CorrelationToken not present");
-
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             Guard.ForLessEqualZero(id, "albumId");
 
@@ -81,7 +77,7 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(Product), 200)]
         [HttpGet("TopSellingMusic/{count}", Name = "GetTopSellingMusicRoute")]
         public async Task<IActionResult> GetTopSellingMusic([FromHeader(Name = "x-correlationToken")]
-            string correlationToken = "123", int count = TopSellingCount)
+            string correlationToken, int count = TopSellingCount)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             Guard.ForLessEqualZero(count, "count");
@@ -103,7 +99,7 @@ namespace Catalog.API.Controllers
         [HttpGet("Genres", Name = "GetAllGenreRoute")]
         public async Task<IActionResult> GetAllGenres([FromQuery] bool includeAlbums,
             [FromHeader(Name = "x-correlationToken")]
-            string correlationToken = "123")
+            string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
@@ -124,7 +120,7 @@ namespace Catalog.API.Controllers
         [HttpGet("Genre/{id}", Name = "GetGenreRoute")]
         public async Task<IActionResult> GetGenre(int id, [FromQuery] bool includeAlbums,
             [FromHeader(Name = "x-correlationToken")]
-            string correlationToken = "123")
+            string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             Guard.ForLessEqualZero(id, "GenreId");
@@ -143,7 +139,7 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(List<ArtistDto>), 200)]
         [HttpGet("Artists", Name = "GetAllArtistsRoute")]
         public async Task<IActionResult> GetAllArtists([FromHeader(Name = "x-correlationToken")]
-            string correlationToken = "123")
+            string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
@@ -163,7 +159,7 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(ProductDto), 201)]
         [HttpPost(Name = "PostMusicRoute")]
         public async Task<IActionResult> Post([FromBody] Product product, [FromHeader(Name = "x-correlationToken")]
-            string correlationToken = "123")
+            string correlationToken)
         {
             var isSuccessful = true;
             var errorMessage = string.Empty;
@@ -200,7 +196,7 @@ namespace Catalog.API.Controllers
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] Product product,
             [FromHeader(Name = "x-correlationToken")]
-            string correlationToken = "123")
+            string correlationToken)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -231,7 +227,7 @@ namespace Catalog.API.Controllers
 
         //[ProducesResponseType(typeof(Product), 200)]
         [HttpGet("ClearProductDatabase", Name = "ClearDatabaseRoute")]
-        public async Task ClearProductDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task ClearProductDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             await _catalogBusinessServices.ClearProductDatabase(correlationToken);

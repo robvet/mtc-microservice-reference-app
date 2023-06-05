@@ -54,12 +54,10 @@ namespace order.service.Controllers
         [ProducesResponseType(typeof(OrderDto), 200)]
         [HttpGet("Orders", Name = "GetAllOrdersRoute")]
         //[HttpGet("v{version:apiVersion}/Orders", Title = "GetAllOrdersRoute")]
-        public async Task<IActionResult> GetOrders([FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task<IActionResult> GetOrders([FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             _telemetryClient.TrackEvent(
                 $"Publishing EmptyBasketEvent from CheckOutEventHandler in Ordering.API for Request {correlationToken} ");
-
-
 
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
@@ -80,8 +78,9 @@ namespace order.service.Controllers
 
         [ProducesResponseType(typeof(OrderDto), 200)]
         [HttpGet("Orders/SimulateError", Name = "SimulateErrorRoute")]
-        public async Task<IActionResult> SimulateError([FromHeader(Name = "x-correlationToken")] string correlationToken = "123")
+        public async Task<IActionResult> SimulateError([FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
+            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }

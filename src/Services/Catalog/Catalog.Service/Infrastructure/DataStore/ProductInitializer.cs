@@ -1,17 +1,18 @@
 ﻿using Catalog.API.Contracts;
 using Catalog.API.Domain.Entities;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Catalog.API.Infrastructure.DataStore;
 using System.Linq;
 using System.IO;
 using SharedUtilities.Utilties;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Catalog.API.Infrastructure.DataStore;
 
 namespace catalog.service.Infrastructure.DataStore
+
 {
     public class ProductInitializer
     {
@@ -141,29 +142,29 @@ namespace catalog.service.Infrastructure.DataStore
                         ParentalCaution = SetParentalCaution(),
 
                         // Inline validation for missing 'ReleaseYear' value
-                        ReleaseYear = values[3].IsNullOrEmpty() ? "n/a" : values[3],
+                        ReleaseYear = values[3].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Release Year' on record {counter}") : values[3],
                         
-                        // Inline validation to ensure Medium lookup value exist - Use SingleOrDefault to return null if not found
-                        Medium = _context.Mediums.SingleOrDefault(g => g.Name == values[6]) ?? throw new Exception($"Missing lookup value from 'Medium' {values[6]} on record {counter}"),
-
-                        // Inline validation for Missing 'Single' value (which would be the hit single from the album)
-                        Single = values[1].IsNullOrEmpty() ? "n/a" : values[1],
-
+                        // Inline validation to ensure Medium lookup value exist -
+                        // -- Use SingleOrDefault to return null if not found
+                        // -- Use NoCommaValidation to remove any commas from the value, which would cause an error
+                        // -- Use ?? to throw exception if null
+                        Medium = _context.Mediums.SingleOrDefault(g => g.Name == NoCommaValidation(values[6])) ?? throw new Exception($"Missing lookup value from 'Medium' {values[6]} on record {counter}"),
+                                                
+                        Single = values[1].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Single' on record {counter}") : values[1],
+                        
                         Upc = GenerateUpc(),
 
                         // Inline validation for Missing 'Title' value
-                        Title = !(values[2].IsNullOrEmpty()) ? values[2] : throw new Exception($"Missing 'ProductName' value on record {counter}"),
+                        Title = values[2].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Title' on record {counter}") : values[2],
 
-                        Genre = _context.Genres.SingleOrDefault(g => g.Name == values[4]) ?? throw new Exception($"Missing lookup value from 'Genre' {values[4]} on record {counter}"),
+                        Genre = _context.Genres.SingleOrDefault(g => g.Name == NoCommaValidation(values[4])) ?? throw new Exception($"Missing lookup value from 'Genre' {values[4]} on record {counter}"),
 
                         // Round price to 2 decimal places
                         Price = GeneratePrice(),
-
-                        
                                                 
-                        Artist = _context.Artists.SingleOrDefault (a => a.Name == values[0]) ?? throw new Exception($"Missing lookup value from 'Artits' {values[0]} on record {counter}"),
-                        Status = _context.Status.SingleOrDefault(s => s.Name == values[5]) ?? throw new Exception($"Missing lookup value from 'Status' {values[5]} on record {counter}"),
-                        Condition = _context.Conditions.SingleOrDefault (c => c.Name == values[7]) ?? throw new Exception($"Missing lookup value from 'Condition' {values[7]} on record {counter}"),
+                        Artist = _context.Artists.SingleOrDefault (a => a.Name == NoCommaValidation(values[0])) ?? throw new Exception($"Missing lookup value from 'Artits' {values[0]} on record {counter}"),
+                        Status = _context.Status.SingleOrDefault(s => s.Name == NoCommaValidation(values[5])) ?? throw new Exception($"Missing lookup value from 'Status' {values[5]} on record {counter}"),
+                        Condition = _context.Conditions.SingleOrDefault (c => c.Name == NoCommaValidation(values[7])) ?? throw new Exception($"Missing lookup value from 'Condition' {values[7]} on record {counter}"),
                         CreateDate = DateTime.Now,
                         IsActive = true
                     };
@@ -274,7 +275,13 @@ namespace catalog.service.Infrastructure.DataStore
             return graphicName;
         }
 
-
-  
+        private static string NoCommaValidation(string cell)
+        {
+            if (cell.Contains(","))
+            {
+                    return cell.Replace(",", "", StringComparison.OrdinalIgnoreCase);
+            }
+            return cell;
+        }
     }
 }
