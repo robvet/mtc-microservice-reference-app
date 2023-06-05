@@ -9,6 +9,7 @@ using System.Linq;
 using System.IO;
 using SharedUtilities.Utilties;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace catalog.service.Infrastructure.DataStore
 {
@@ -17,12 +18,20 @@ namespace catalog.service.Infrastructure.DataStore
         private static int _counter;
         private DataContext _context;
         private ILogger<ProductInitializer> _logger;
+        const string GENRE = "genres.csv";
+        const string MEDIUM = "mediums.csv";
+        const string STATUS = "statuses.csv";
+        const string CONDITION = "conditions.csv";
+        const string ARTIST = "artists.csv";
+        const string PRODUCT = "products2.csv";
 
         public async Task InitializeDatabaseAsync(IServiceScope serviceScope)
         {
             // Get DataContext and Logger explicitly from DI container
             _context = serviceScope.ServiceProvider.GetService<DataContext>();
             _logger = serviceScope.ServiceProvider.GetService<ILogger<ProductInitializer>>();
+
+
             
             Guard.ForNullObject(_context, "DataContext not found in DI container");
 
@@ -40,11 +49,11 @@ namespace catalog.service.Infrastructure.DataStore
                 await productRepository.ClearProductDatabase("clearingdatabase");
 
                 // Seed lookup data
-                await SeedData<Genre>("genres.csv");
-                await SeedData<Medium>("mediums.csv");
-                await SeedData<Status>("statuses.csv");
-                await SeedData<Condition>("conditions.csv");
-                await SeedData<Artist>("artists.csv");
+                await SeedData<Genre>(GENRE);
+                await SeedData<Medium>(MEDIUM);
+                await SeedData<Status>(STATUS);
+                await SeedData<Condition>(CONDITION);
+                await SeedData<Artist>(ARTIST);
 
                 // Seed products
                 await SeedProducts();
@@ -86,7 +95,6 @@ namespace catalog.service.Infrastructure.DataStore
                 }
                 catch (Exception ex)
                 {
-                    // Todo: Add Logging
                     var errorMessage = $"Error seeding {typeof(T).Name} data {ex.Message}";
                     _logger.LogError(errorMessage);
                     throw new Exception(errorMessage , ex);
@@ -110,37 +118,60 @@ namespace catalog.service.Infrastructure.DataStore
         {
             List<Product> products = new List<Product>();
             int counter = 1;
+            Product product = null;
+            string[] values;
 
             try
             {
                 var currentDirectory = Environment.CurrentDirectory;
 
                 // File path for Genres
-                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", "products.csv");
+                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", PRODUCT);
 
                 // Skip header row from CSV File
                 var lines = File.ReadAllLines(filePath).Skip(1); //.Take(75);
                 foreach (var line in lines)
                 {
-                    var values = line.Split(',');
-                    var product = new Product
+                    values = null;
+                    values = line.Split(',');
+                    product = new Product
                     {
                         ProductId = Guid.NewGuid(),
-                        ParentalCaution = false,
-                        ReleaseYear = values[3],
-                        Medium = _context.Mediums.Single(g => g.Name == values[6]),
-                        Single = values[1],
+
+                        ParentalCaution = SetParentalCaution(),
+
+                        // Inline validation for missing 'ReleaseYear' value
+                        ReleaseYear = values[3].IsNullOrEmpty() ? "n/a" : values[3],
+                        
+                        // Inline validation to ensure Medium lookup value exist - Use SingleOrDefault to return null if not found
+                        Medium = _context.Mediums.SingleOrDefault(g => g.Name == values[6]) ?? throw new Exception($"Missing lookup value from 'Medium' {values[6]} on record {counter}"),
+
+                        // Inline validation for Missing 'Single' value (which would be the hit single from the album)
+                        Single = values[1].IsNullOrEmpty() ? "n/a" : values[1],
+
                         Upc = GenerateUpc(),
-                        Title = values[2],
-                        Genre = _context.Genres.Single(g => g.Name == values[4]),
+
+                        // Inline validation for Missing 'Title' value
+                        Title = !(values[2].IsNullOrEmpty()) ? values[2] : throw new Exception($"Missing 'ProductName' value on record {counter}"),
+
+                        Genre = _context.Genres.SingleOrDefault(g => g.Name == values[4]) ?? throw new Exception($"Missing lookup value from 'Genre' {values[4]} on record {counter}"),
+
+                        // Round price to 2 decimal places
                         Price = GeneratePrice(),
-                        Artist = _context.Artists.Single(a => a.Name == values[0]),
-                        Status = _context.Status.Single(s => s.Name == values[5]),
-                        Condition = _context.Conditions.Single(c => c.Name == values[7]),
-                        AlbumArtUrl = SetMediumGraphic(values[6]),
+
+                        
+                                                
+                        Artist = _context.Artists.SingleOrDefault (a => a.Name == values[0]) ?? throw new Exception($"Missing lookup value from 'Artits' {values[0]} on record {counter}"),
+                        Status = _context.Status.SingleOrDefault(s => s.Name == values[5]) ?? throw new Exception($"Missing lookup value from 'Status' {values[5]} on record {counter}"),
+                        Condition = _context.Conditions.SingleOrDefault (c => c.Name == values[7]) ?? throw new Exception($"Missing lookup value from 'Condition' {values[7]} on record {counter}"),
                         CreateDate = DateTime.Now,
                         IsActive = true
                     };
+
+                    // Round cost to 2 decimal places
+                    product.Cost = GenerateCost(product.Price);
+                    product.AlbumArtUrl = SetMediumGraphic(product.Medium.Name);
+                    
                     products.Add(product);
                     _context.Products.Add(product);
                     counter++;
@@ -152,7 +183,6 @@ namespace catalog.service.Infrastructure.DataStore
                 }
                 catch (Exception ex)
                 {
-                    // Todo: Add Logging
                     var errorMessage = $"Error seeding Product Catalog data on record {counter}: {ex.Message}";
                     _logger.LogError(errorMessage);
                     throw new Exception(errorMessage, ex);
@@ -175,12 +205,31 @@ namespace catalog.service.Infrastructure.DataStore
             return products;
         }
 
+        // generate number between $10 and $100 as decimal rounding to nearest dollar
+        private static decimal GeneratePrice()
+        {
+            Random random = new Random();
+            // Generate random price between $30 and $100
+            decimal randomPrice = Math.Round((decimal)(random.Next(3000, 10000)) / 100, 2);
+            return randomPrice;
+        }
+
+        // Generate random cost that is 30-70% of the price
+        private decimal GenerateCost(decimal price)
+        {
+            Random random = new Random();
+            // Generate random markup between 30% and 70%
+            decimal markup = Convert.ToDecimal(random.Next(30, 71)) / 100m;   // Explicitly convert into decimal type.
+            return Math.Round((decimal)(price * markup), 2);
+        }
+
 
         // Generate mock UPC code
         private static string GenerateUpc()
         {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var stringChars = new char[20];
+            // Generate random 12 digit UPC number
+            var chars = "0123456789";
+            var stringChars = new char[12];
             var random = new Random();
 
             for (var i = 0; i < stringChars.Length; i++) stringChars[i] = chars[random.Next(chars.Length)];
@@ -188,10 +237,10 @@ namespace catalog.service.Infrastructure.DataStore
             return new string(stringChars);
         }
 
-
         // Set parental caution flag
-        private static bool SetCaution()
+        private static bool SetParentalCaution()
         {
+            // Set ParentalCaution flag to true every 5th record
             _counter++;
 
             if (_counter % 5 == 0)
@@ -216,31 +265,16 @@ namespace catalog.service.Infrastructure.DataStore
                     graphicName = "cassette.jpg";
                     break;
                 case "Album":
-                    graphicName = "cassette.jpg";
+                    graphicName = "album.jpg";
                     break;
                 default:
-                    graphicName = "placeholder.png";
+                    graphicName = "album.jpg";
                     break;
             }
             return graphicName;
         }
 
 
-        // generate number between $10 and $100 as decimal rounding to nearest dollar
-        private static decimal GeneratePrice()
-        {
-            Random random = new Random();
-            decimal randomPrice = (decimal)random.Next(1000, 10000) / 100;
-            return Math.Round(randomPrice);
-
-            //Random rand = new Random();
-            //int price = rand.Next(10, 99);
-            //string formattedPrice = price + ".00";
-            //return decimal.Parse(formattedPrice);
-
-            //    var rnd = new Random();
-            //    return (decimal)(String.Format("{0:C}", rnd.Next())).toDecimal();
-            //   // return rnd.Next(1, 20);
-        }
+  
     }
 }

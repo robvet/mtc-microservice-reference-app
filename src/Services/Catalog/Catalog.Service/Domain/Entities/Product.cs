@@ -22,6 +22,7 @@ namespace Catalog.API.Domain.Entities
         public string Single { get; set; }
         public string AlbumArtUrl { get; set; }
         public decimal Price { get; set; }
+        public decimal Cost { get; set; }
         public bool ParentalCaution { get; set; }
         public string Upc { get; set; }
         public string ReleaseYear { get; set; }
