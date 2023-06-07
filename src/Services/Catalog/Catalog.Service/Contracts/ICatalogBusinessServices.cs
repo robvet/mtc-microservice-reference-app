@@ -12,8 +12,8 @@ namespace Catalog.API.Contracts
         Task<List<Genre>> GetAllGenres(string correlationToken, bool includeAlbums = false);
         Task<List<Artist>> GetAllArtists(string correlationToken);
         Task<Artist> GetArtist(int artistID, string correlationToken);
-        Task Add(string correlationToken, Product product);
-        Task Update(string correlationToken, Product product);
+        //Task Add(string correlationToken, Product product);
+        //Task Update(string correlationToken, Product product);
         Task<Genre> GetGenre(int genreId, string correlationToken, bool includeAlbums = false);
         Task ClearProductDatabase(string correlationToken);
     }

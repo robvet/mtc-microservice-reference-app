@@ -22,6 +22,7 @@ namespace Catalog.API.Controllers
         private const int TopSellingCount = 5;
         private readonly ICatalogBusinessServices _catalogBusinessServices;
         private readonly ILogger<CatalogController> _logger;
+         
 
         public CatalogController(ICatalogBusinessServices catalogBusinessServices,
             ILogger<CatalogController> logger)
@@ -84,8 +85,9 @@ namespace Catalog.API.Controllers
 
             var products = await _catalogBusinessServices.GetTopSellingMusic(correlationToken, count);
 
-            if (products == null || products.Count < 1)
-                return BadRequest("Popular products do not exist");
+            //if (products == null || products.Count < 1)
+            if (products == null)
+                    return BadRequest("Popular products do not exist");
 
             return new ObjectResult(Mapper.MapToMusicDto(products));
         }
@@ -105,7 +107,8 @@ namespace Catalog.API.Controllers
 
             var genres = await _catalogBusinessServices.GetAllGenres(correlationToken, includeAlbums);
 
-            if (genres == null || genres.Count < 1)
+            //if (genres == null || genres.Count < 1)
+            if (genres == null)
                 return BadRequest("Genres do not exist");
 
             return new ObjectResult(Mapper.MapToGenreDto(genres));
@@ -156,74 +159,83 @@ namespace Catalog.API.Controllers
         /// </summary>
         /// <param name="musicDto">Required music information - Id must be ZERO value</param>
         /// <returns></returns>
-        [ProducesResponseType(typeof(ProductDto), 201)]
-        [HttpPost(Name = "PostMusicRoute")]
-        public async Task<IActionResult> Post([FromBody] Product product, [FromHeader(Name = "x-correlationToken")]
-            string correlationToken)
-        {
-            var isSuccessful = true;
-            var errorMessage = string.Empty;
+        //[ProducesResponseType(typeof(ProductDto), 201)]
+        //[HttpPost(Name = "PostMusicRoute")]
+        //public async Task<IActionResult> Post([FromBody] Product product, [FromHeader(Name = "x-correlationToken")]
+        //    string correlationToken)
+        //{
+        //    var isSuccessful = true;
+        //    var errorMessage = string.Empty;
 
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
 
-            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-            Guard.ForNullObject(product, "Product parameter null for catalog post");
+        //    Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+        //    Guard.ForNullObject(product, "Product parameter null for catalog post");
 
-            try
-            {
-                await _catalogBusinessServices.Add(correlationToken, product);
-            }
-            catch (Exception ex)
-            {
-                errorMessage = $"Catalog: Exception on Post operation:{ex.Message} for Request {correlationToken}";
-                _logger.LogError(errorMessage);
-                isSuccessful = false;
-            }
+        //    try
+        //    {
+        //        await _catalogBusinessServices.Add(correlationToken, product);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        errorMessage = $"Catalog: Exception on Post operation:{ex.Message} for Request {correlationToken}";
+        //        _logger.LogError(errorMessage);
+        //        isSuccessful = false;
+        //    }
 
-            if (!isSuccessful)
-                return BadRequest(errorMessage);
+        //    if (!isSuccessful)
+        //        return BadRequest(errorMessage);
 
-            //return CreatedAtRoute("PostMusicRoute", product);
-            return StatusCode(Convert.ToInt32(HttpStatusCode.Created));
-        }
+        //    //return CreatedAtRoute("PostMusicRoute", product);
+        //    return StatusCode(Convert.ToInt32(HttpStatusCode.Created));
+        //}
 
         /// <summary>
         ///     Updates existing music item
         /// </summary>
         /// <param name="productdateDto">Required music information - Id must be non-ZERO value</param>
         /// <returns></returns>
-        [HttpPut]
-        public async Task<IActionResult> Put([FromBody] Product product,
-            [FromHeader(Name = "x-correlationToken")]
-            string correlationToken)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        //[HttpPut]
+        //public async Task<IActionResult> Put([FromBody] Product product,
+        //    [FromHeader(Name = "x-correlationToken")]
+        //    string correlationToken)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
 
-            var isSuccessful = true;
-            var errorMessage = string.Empty;
+        //    var isSuccessful = true;
+        //    var errorMessage = string.Empty;
 
-            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-            Guard.ForNullObject(product, "Product parameter missing in catalog put");
-            Guard.ForLessEqualZero(product.Id, "album.Id is zerp in catalog put");
+        //    Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+        //    Guard.ForNullObject(product, "Product parameter missing in catalog put");
+        //    Guard.ForLessEqualZero(product.Id, "album.Id is zerp in catalog put");
 
-            try
-            {
-                await _catalogBusinessServices.Update(correlationToken, product);
-            }
-            catch (Exception ex)
-            {
-                errorMessage = $"Catalog: Exception on Put operation:{ex.Message} for Request{correlationToken}";
-                _logger.LogError(errorMessage);
-                isSuccessful = false;
-            }
+        //    try
+        //    {
+        //        await _catalogBusinessServices.Update(correlationToken, product);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        errorMessage = $"Catalog: Exception on Put operation:{ex.Message} for Request{correlationToken}";
+        //        _logger.LogError(errorMessage);
+        //        isSuccessful = false;
+        //    }
 
-            if (!isSuccessful)
-                return BadRequest(errorMessage);
+        //    if (!isSuccessful)
+        //        return BadRequest(errorMessage);
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
+
+        //[ProducesResponseType(200)]
+        //[HttpGet("SeedDatabase", Name = "SeedDataBase")]
+        //public async Task SeedDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
+        //{
+        //    Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+
+        //    await _catalogBusinessServices.SeedDatabase(correlationToken);
+        //}
 
         //[ProducesResponseType(typeof(Product), 200)]
         [HttpGet("ClearProductDatabase", Name = "ClearDatabaseRoute")]

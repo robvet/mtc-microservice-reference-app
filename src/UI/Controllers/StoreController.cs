@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MusicStore.Helper;
 using MusicStore.Models;
 
@@ -8,12 +10,14 @@ namespace MusicStore.Controllers
 {
     public class StoreController : Controller
     {
-        private const string baseUrl = "catalog/api/catalog";
+        private readonly string _baseUrl;
         private readonly IRestClient _IRestClient;
 
-        public StoreController(IRestClient iuiRestClient)
+        public StoreController(IRestClient iuiRestClient, IConfiguration configuration)
         {
             _IRestClient = iuiRestClient;
+            _baseUrl = configuration["catalogBaseUri"] ??
+                       throw new ArgumentNullException("catalogBaseUri", "Missing value");
         }
 
         //
@@ -22,7 +26,7 @@ namespace MusicStore.Controllers
         {
             var includeAlbums = false;
 
-            var result = await _IRestClient.GetAsync<List<GenreDto>>($"{baseUrl}/Genres/?includeAlbums={includeAlbums}");
+            var result = await _IRestClient.GetAsync<List<GenreDto>>($"{_baseUrl}/Genres/?includeAlbums={includeAlbums}");
 
             return View(result.Data);
         }
@@ -34,14 +38,14 @@ namespace MusicStore.Controllers
             var includeAlbums = true;
 
             // Retrieve Genre genre and its Associated associated Albums albums from database
-            var result = await _IRestClient.GetAsync<GenreDto>($"{baseUrl}/Genre/{id}?includeAlbums={includeAlbums}");
+            var result = await _IRestClient.GetAsync<GenreDto>($"{_baseUrl}/Genre/{id}?includeAlbums={includeAlbums}");
 
             return View(result.Data);
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            var result = await _IRestClient.GetAsync<ProductDto>($"{baseUrl}/Music/{id} ");
+            var result = await _IRestClient.GetAsync<ProductDto>($"{_baseUrl}/Music/{id} ");
 
             //if (album == null)
             //{

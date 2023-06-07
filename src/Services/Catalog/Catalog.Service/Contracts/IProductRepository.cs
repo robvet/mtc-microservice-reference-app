@@ -13,7 +13,6 @@ namespace Catalog.API.Contracts
         Task<Product> GetById(int id, string correlationToken);
         Task<bool> ChangeParentalCaution(int albumId, bool parentalCaution, string correlationToken);
         Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken);
-        Task<List<Product>> GetInexpensiveAlbumsByGenre(int genreId, decimal priceCeiling, string correlationToken);
         Task<Product> GetByIdWithIdempotencyCheck(int id, Guid productId, string correlationToken);
         Task ClearProductDatabase(string correlationToken);
     }

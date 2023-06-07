@@ -5,6 +5,7 @@ using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Catalog.API
 {
@@ -26,12 +27,20 @@ namespace Catalog.API
             return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    //webBuilder.ConfigureLogging(logging =>
+                    //    logging.AddConsole(options =>
+                    //    {
+                    //        options.LogLevel = LogLevel.Debug;
+                    //    })
+                    //);
+
                     webBuilder.UseStartup<Startup>();
                     // webBuilder.UseUrls("http://localhost:8082");
                     webBuilder.UseKestrel();
 
-
                     webBuilder.CaptureStartupErrors(true);
+                    
+
                     webBuilder.ConfigureAppConfiguration((builderContext, config) =>
                     {
                         config.AddEnvironmentVariables();

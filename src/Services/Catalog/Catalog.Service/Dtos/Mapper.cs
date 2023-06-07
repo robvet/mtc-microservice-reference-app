@@ -14,15 +14,30 @@ namespace Catalog.API.Dtos
                 mappedDtos.Add(new ProductDto
                 {
                     Id = item.Id,
-                    GenreName = item.Genre?.Name,
                     Title = item.Title,
-                    ArtistName = item.Artist?.Name,
                     Price = item.Price,
                     ParentalCaution = item.ParentalCaution,
                     Upc = item.Upc,
-                    //ReleaseDate = item.ReleaseDate,
                     AlbumArtUrl = item.AlbumArtUrl,
-                    ProductId=item.ProductId
+                    ProductId = item.ProductId,
+                    Single = item.Single,
+                    ReleaseYear = item.ReleaseYear,
+                    IsActive = item.IsActive,
+
+                    GenreName = item.Genre?.Name,
+                    GenreId = item.GenreId,
+
+                    ArtistName = item.Artist?.Name,
+                    ArtistId = item.ArtistId,
+
+                    MediumName = item.Medium?.Name,
+                    MediumId = item.MediumId,
+
+                    StatusName = item.Status?.Name,
+                    StatusId = item.StatusId,
+
+                    ConditionName = item.Condition?.Name,
+                    ConditionId = item.ConditionId
                 });
 
             return mappedDtos;
@@ -33,17 +48,30 @@ namespace Catalog.API.Dtos
             return new ProductDto
             {
                 Id = music.Id,
-                GenreName = music.Genre?.Name,
                 Title = music.Title,
-                ArtistName = music.Artist?.Name,
                 Price = music.Price,
                 ParentalCaution = music.ParentalCaution,
                 Upc = music.Upc,
-                //ReleaseDate = music.ReleaseDate,
-                ArtistId = music.ArtistId,
-                GenreId = music.GenreId,
                 AlbumArtUrl = music.AlbumArtUrl,
-                ProductId = music.ProductId
+                ProductId = music.ProductId,
+                Single = music.Single,
+                ReleaseYear = music.ReleaseYear,
+                IsActive = music.IsActive,
+
+                GenreName = music.Genre?.Name,
+                GenreId = music.GenreId,
+
+                ArtistName = music.Artist?.Name,
+                ArtistId = music.ArtistId,
+
+                MediumName = music.Medium?.Name,
+                MediumId = music.MediumId,
+
+                StatusName = music.Status?.Name,
+                StatusId = music.StatusId,
+
+                ConditionName = music.Condition?.Name,
+                ConditionId = music.ConditionId
             };
         }
 

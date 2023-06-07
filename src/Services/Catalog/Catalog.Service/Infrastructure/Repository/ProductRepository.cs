@@ -13,6 +13,7 @@ namespace Catalog.API.Infrastructure.Repository
     {
         public ProductRepository(DataContext ctx) : base(ctx)
         {
+
         }
 
         public async Task<int> GetCount(string correlationToken)
@@ -24,6 +25,11 @@ namespace Catalog.API.Infrastructure.Repository
         {
             // Group the order details by album and return the albums with the highest count
 
+            //if (IsEmpty())
+            //{
+            //    return new List<Product>();
+            //}
+             
             // Fix for race conditions where music is created with higher id values
             // Select MIN(id) from products as lowestId
             var lowestId = Get().Min(x => x.Id);
@@ -70,20 +76,34 @@ namespace Catalog.API.Infrastructure.Repository
 
         public async Task<List<Product>> GetAll(string correlationToken)
         {
-            return Get().Include(x => x.Artist).Include(y => y.Genre).ToList();
+            return Get().Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .ToList();
         }
 
         public async Task<Product> GetById(int id, string correlationToken)
         {
-            return Get().Where(x => x.Id == id).Include(x => x.Artist).Include(y => y.Genre).FirstOrDefault();
+            return Get().Where(x => x.Id == id)
+                        .Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .FirstOrDefault();
         }
 
         public async Task<Product> GetByIdWithIdempotencyCheck(int id, Guid productId, string correlationToken)
         {
-            //var guid = ParseCorrelationToken(correlationToken);
-            
-            return Get().Where(x => x.ProductId == productId).Include(x => x.Artist)
-                .Include(y => y.Genre).FirstOrDefault();
+            return Get().Where(x => x.ProductId == productId)
+                        .Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .FirstOrDefault();
             //return Get().Where(x => x.Id == id && x.ProductId == guid).Include(x => x.Artist)
             //    .Include(y => y.Genre).FirstOrDefault();
         }
@@ -96,8 +116,8 @@ namespace Catalog.API.Infrastructure.Repository
             if (album == null)
                 return false;
 
-            // If ParentalCaution has not changed, the short-circuit operation
-            // and return true, avoiding expense of unneccesary update.
+            // If ParentalCaution hasn't changed, short-circuit operation
+            // and return true, avoiding expense of unneccesary database update operation.
             if (album.ParentalCaution == parentalCaution)
                 return true;
 
@@ -115,27 +135,15 @@ namespace Catalog.API.Infrastructure.Repository
                 .Where(x => x.GenreId == genreId).ToList();
         }
 
-        public async Task<List<Product>> GetInexpensiveAlbumsByGenre(int genreId, decimal priceCeiling,
-            string correlationToken)
-        {
-            throw new NotImplementedException();
-            //return base.Find(x => x.GenreId == genreId && x.Price <= priceCeiling).ToList();
-        }
+        //public async Task SeedDatabase(string correlationToken)
+        //{
+        //    await SeedData(correlationToken);
+        //}
+
 
         public async Task ClearProductDatabase(string correlationToken)
         {
             await ClearData(correlationToken);
         }
-
-        /// <summary>
-        /// Parse out extra characters to make guid
-        /// </summary>
-        /// <param name="correlationToken"></param>
-        /// <returns></returns>
-        //private Guid ParseCorrelationToken(string correlationToken)
-        //{
-        //    var count = correlationToken.IndexOf("-") + 1;
-        //    return new Guid(correlationToken.Substring(count));
-        //}
     }
 }

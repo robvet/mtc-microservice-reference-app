@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MusicStore.Extensions;
 using MusicStore.Helper;
 using MusicStore.Properties;
+using SharedUtilities.Utilties;
 
 namespace MusicStore
 {
@@ -24,12 +25,12 @@ namespace MusicStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-                       // validate config data exists
-            if (string.IsNullOrEmpty(Configuration["ApiGateway"]))
-            {
-                throw new Exception("ApiGateway Endpoint Environment Variable not set");
-            }
-                       
+            // validate configuration data exists
+            Guard.ForNullOrEmpty(Configuration["ApiGateway"], "ApiGateway Endpoint Environment Variable not set");
+            Guard.ForNullOrEmpty(Configuration["catalogBaseUri"], "CatalogBaseUri Environment Variable not set");
+            Guard.ForNullOrEmpty(Configuration["basketBaseUri"], "ApiGateway Endpoint Environment Variable not set");
+            Guard.ForNullOrEmpty(Configuration["orderBaseUri"], "ApiGateway Endpoint Environment Variable not set");
+
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Home/AccessDenied");

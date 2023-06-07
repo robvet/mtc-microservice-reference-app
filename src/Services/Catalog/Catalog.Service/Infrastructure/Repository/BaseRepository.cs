@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using catalog.service.Infrastructure.DataStore;
 using Catalog.API.Contracts;
 using Catalog.API.Infrastructure.DataStore;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ namespace Catalog.API.Infrastructure.Repository
     {
         private readonly DataContext _ctx;
         protected readonly DataContext Context;
+        
 
         // Used for testing if we explicitly pass in DbContext object
         protected BaseRepository(DataContext ctx)
@@ -120,6 +122,11 @@ namespace Catalog.API.Infrastructure.Repository
             return _ctx.Set<T>().AsQueryable();
         }
 
+        protected virtual bool IsEmpty()
+        {
+            return !_ctx.Set<T>().Any();
+        }
+
         /// <summary>
         ///     Executes Linq query expression as a predicate
         ///     against given domain class <T>.
@@ -158,6 +165,21 @@ namespace Catalog.API.Infrastructure.Repository
             _ctx.Set<T>().Attach(entity);
             _ctx.Entry(entity).State = EntityState.Modified;
         }
+
+        // Seed database with prouductinitialier
+        //public async Task SeedData(string correlationToken)
+        //{
+        //    try
+        //    {
+        //        var productInitailizer = new ProductInitializer(_ctx);
+        //        await productInitailizer.InitializeDatabaseAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception($"Could not run Product Initializer : {ex.Message}");
+        //    }
+        //}
+
 
         public async Task ClearData(string correlationToken)
         {

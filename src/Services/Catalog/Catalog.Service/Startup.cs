@@ -11,10 +11,13 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.VisualStudio.Web.CodeGeneration;
+using SharedUtilities.Utilties;
 
 namespace Catalog.API
 {
@@ -100,7 +103,16 @@ namespace Catalog.API
             // The code block creates and populates the Product database
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
+                //// Get DataContext and Logger explicitly from DI container
+                //var context = serviceScope.ServiceProvider.GetService<DataContext>();
+
+                //Guard.ForNullObject(context, "DataContext not found in DI container");
+
+                //// Create database and tables, but not populate data
+                //var databaseCreated = context.Database.EnsureCreated();
                 //DataInitializer.InitializeDatabaseAsync(serviceScope).Wait();
+                
+                
                 new ProductInitializer().InitializeDatabaseAsync(serviceScope).Wait();
             }
         }

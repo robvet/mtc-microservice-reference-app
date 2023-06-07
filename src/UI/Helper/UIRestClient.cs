@@ -60,6 +60,30 @@ namespace MusicStore.Helper
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            // TODO remove
+            _client.DefaultRequestHeaders.Add("x-correlationToken", "1234");
+
+
+
+
+
+
+
+
+
+
             try
             {
                 response = await _client.GetAsync(uri);

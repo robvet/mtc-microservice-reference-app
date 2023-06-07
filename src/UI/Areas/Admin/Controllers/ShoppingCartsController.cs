@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MusicStore.Controllers;
 using MusicStore.Helper;
@@ -16,15 +17,18 @@ namespace MusicStore.Areas.Admin.Controllers
     public class ShoppingCartsController : Controller
     {
         private readonly IRestClient _IRestClient;
-        private readonly string baseUrl = "basket/api/Basket";
+        private readonly string _baseUrl;
         private readonly ILogger<ShoppingCartController> _logger;
 
         public ShoppingCartsController(ILogger<ShoppingCartController> logger,
             CookieLogic cookieLogic,
-            IRestClient iuiRestClient)
+            IRestClient iuiRestClient,
+            IConfiguration configuration)
         {
             _logger = logger;
             _IRestClient = iuiRestClient;
+            _baseUrl = configuration["basketBaseUri"] ??
+                       throw new ArgumentNullException("basketBaseUri", "Missing value");
         }
 
         // GET: ShoppingCartsController
@@ -34,7 +38,7 @@ namespace MusicStore.Areas.Admin.Controllers
             //var viewModel = new ShoppingCartViewModel();
            
             var response =
-                await _IRestClient.GetAsync<List<BasketDto>>($"{baseUrl}/Baskets");
+                await _IRestClient.GetAsync<List<BasketDto>>($"{_baseUrl}/Baskets");
 
             basket = response.Data;
 
@@ -56,7 +60,7 @@ namespace MusicStore.Areas.Admin.Controllers
         {
             var basketId = Request.Query["id"];
             
-            await _IRestClient.DeleteAsync($"{baseUrl}/?basketId={basketId}");
+            await _IRestClient.DeleteAsync($"{_baseUrl}/?basketId={basketId}");
 
             TempData[ToastrMessage.Success] = "Successfully Removed Shopping Cart";
 

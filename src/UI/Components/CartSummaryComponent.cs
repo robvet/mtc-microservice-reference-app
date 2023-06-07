@@ -33,7 +33,7 @@ namespace MusicStore.Components
                 if (response.Data != null)
                 {
                     //var response =
-                    //    await _IRestClient.GetAsync<BasketDto>($"{baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
+                    //    await _IRestClient.GetAsync<BasketDto>($"{_baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
 
                     ViewBag.CartCount = response.Data.ItemCount;
                     ViewBag.CartSummary = response.Data.ProductNames;

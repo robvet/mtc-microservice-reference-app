@@ -10,19 +10,19 @@ namespace Catalog.API.Dtos
 
         public string Title { get; set; }
 
+        public string Single { get; set; }
+
         public string AlbumArtUrl { get; set; }
 
         public bool ParentalCaution { get; set; }
 
         public string Upc { get; set; }
 
-        public DateTime? ReleaseDate { get; set; }
+        public string ReleaseYear { get; set; }
 
         public decimal Price { get; set; }
 
-        public int Available { get; set; }
-
-        public bool? Cutout { get; set; }
+        public bool IsActive { get; set; }
 
         public string ArtistName { get; set; }
 
@@ -31,5 +31,16 @@ namespace Catalog.API.Dtos
         public string GenreName { get; set; }
 
         public int GenreId { get; set; }
+
+        public string MediumName { get; set; }
+        public int MediumId { get; set; }
+
+        public string StatusName { get; set; }
+
+        public int StatusId { get; set; }
+
+        public string ConditionName { get; set; }
+
+        public int ConditionId { get; set; }
     }
 }
