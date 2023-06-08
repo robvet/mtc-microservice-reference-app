@@ -21,15 +21,28 @@ namespace Catalog.API.Infrastructure.Repository
                 : await FindById(id);
         }
 
-        public async Task<List<Genre>> GetAll(string correlationToken)
+        public async Task<List<Genre>> GetAll(string correlationToken, bool includeProducts)
         {
-            return Get().ToList();
+            // Important to return empty product list if no products exist
+            // Avoids errors in UX
+            if (IsEmpty())
+            {
+                return new List<Genre>();
+            }
+
+            if (includeProducts)
+            {
+                return await Get().Include(x => x.Products).ToListAsync();
+            }
+
+            return await Get().ToListAsync();
         }
 
-        public async Task<List<Genre>> GetAllAndAlbums(string correlationToken)
-        {
-            return Get().Include(x => x.Products).ToList();
-        }
+        //public async Task<List<Genre>> GetAllAndAlbums(string correlationToken)
+        //{
+            
+        //    return Get().Include(x => x.Products).ToList();
+        //}
 
         //public override void Add(Genre genre)
         //{
@@ -44,7 +57,8 @@ namespace Catalog.API.Infrastructure.Repository
 
         public async Task<Genre> GetGenreAndAlbums(string genre, string correlationToken)
         {
-            return Get().Include(x => x.Products).SingleOrDefault(x => x.Name == genre);
+            return await Get().Include(x => x.Products).FirstOrDefaultAsync(x => x.Name == genre);
+            //return       Get().Include(x => x.Products).SingleOrDefault(x => x.Name == genre);
         }
     }
 }

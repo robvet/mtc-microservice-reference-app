@@ -36,6 +36,8 @@ namespace Catalog.API.Controllers
         /// </summary>
         /// <returns>All Music Products</returns>
         [ProducesResponseType(typeof(List<Product>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
         [HttpGet("Music", Name = "GetAllMusicRoute")]
         public async Task<IActionResult> GetAllMusic([FromHeader(Name = "x-correlationToken")]
             string correlationToken)
@@ -44,10 +46,18 @@ namespace Catalog.API.Controllers
 
             var products = await _catalogBusinessServices.GetAllMusic(correlationToken);
 
-            if (products == null || products.Count < 1)
+            if (products == null)
                 return BadRequest("Products do not exist");
+            else if (products.Count < 1)
+                return StatusCode(StatusCodes.Status204NoContent);
+            else
+                return new ObjectResult(Mapper.MapToMusicDto(products));
 
-            return new ObjectResult(Mapper.MapToMusicDto(products));
+
+            //if (products == null || products.Count < 1)
+            //    return BadRequest("Products do not exist");
+
+            //return new ObjectResult(Mapper.MapToMusicDto(products));
         }
 
         /// <summary>
@@ -56,6 +66,8 @@ namespace Catalog.API.Controllers
         /// <param name="id">Id of music -- cannot be zero or negative</param>
         /// <returns>Specific Music Product</returns>
         [ProducesResponseType(typeof(Product), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
         [HttpGet("Music/{id}", Name = "GetMusicRoute")]
         public async Task<IActionResult> GetMusic(int id, [FromHeader(Name = "x-correlationToken")]
             string correlationToken)
@@ -76,6 +88,8 @@ namespace Catalog.API.Controllers
         /// <param name="count">Number of items to return</param>
         /// <returns>List of Top Selling Items</returns>
         [ProducesResponseType(typeof(Product), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
         [HttpGet("TopSellingMusic/{count}", Name = "GetTopSellingMusicRoute")]
         public async Task<IActionResult> GetTopSellingMusic([FromHeader(Name = "x-correlationToken")]
             string correlationToken, int count = TopSellingCount)
@@ -85,11 +99,19 @@ namespace Catalog.API.Controllers
 
             var products = await _catalogBusinessServices.GetTopSellingMusic(correlationToken, count);
 
-            //if (products == null || products.Count < 1)
             if (products == null)
-                    return BadRequest("Popular products do not exist");
+                return BadRequest("Products do not exist");
+            else if (products.Count < 1)
+                return StatusCode(StatusCodes.Status204NoContent);
+            else
+                return new ObjectResult(Mapper.MapToMusicDto(products));
 
-            return new ObjectResult(Mapper.MapToMusicDto(products));
+
+            ////if (products == null || products.Count < 1)
+            //if (products == null)
+            //        return BadRequest("Popular products do not exist");
+
+            //return new ObjectResult(Mapper.MapToMusicDto(products));
         }
 
         /// <summary>
@@ -98,6 +120,8 @@ namespace Catalog.API.Controllers
         /// <param name="includeAlbums">Optionally include Albums associated with each genre</param>
         /// <returns>List of all Genre Types</returns>
         [ProducesResponseType(typeof(List<GenreDto>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
         [HttpGet("Genres", Name = "GetAllGenreRoute")]
         public async Task<IActionResult> GetAllGenres([FromQuery] bool includeAlbums,
             [FromHeader(Name = "x-correlationToken")]
@@ -110,8 +134,10 @@ namespace Catalog.API.Controllers
             //if (genres == null || genres.Count < 1)
             if (genres == null)
                 return BadRequest("Genres do not exist");
-
-            return new ObjectResult(Mapper.MapToGenreDto(genres));
+            else if (genres.Count < 1)
+                return StatusCode(StatusCodes.Status204NoContent);
+            else 
+                return new ObjectResult(Mapper.MapToGenreDto(genres));
         }
 
         /// <summary>
@@ -120,6 +146,7 @@ namespace Catalog.API.Controllers
         /// <param name="id">Id of music -- cannot be zero or negative</param>
         /// <returns>Specific Genre Type</returns>
         [ProducesResponseType(typeof(GenreDto), 200)]
+        [ProducesResponseType(400)]
         [HttpGet("Genre/{id}", Name = "GetGenreRoute")]
         public async Task<IActionResult> GetGenre(int id, [FromQuery] bool includeAlbums,
             [FromHeader(Name = "x-correlationToken")]
@@ -140,6 +167,8 @@ namespace Catalog.API.Controllers
         /// </summary>
         /// <returns>List of all Artist Types</returns>
         [ProducesResponseType(typeof(List<ArtistDto>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
         [HttpGet("Artists", Name = "GetAllArtistsRoute")]
         public async Task<IActionResult> GetAllArtists([FromHeader(Name = "x-correlationToken")]
             string correlationToken)
@@ -228,22 +257,24 @@ namespace Catalog.API.Controllers
         //    return NoContent();
         //}
 
-        //[ProducesResponseType(200)]
-        //[HttpGet("SeedDatabase", Name = "SeedDataBase")]
-        //public async Task SeedDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
-        //{
-        //    Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-
-        //    await _catalogBusinessServices.SeedDatabase(correlationToken);
-        //}
-
-        //[ProducesResponseType(typeof(Product), 200)]
-        [HttpGet("ClearProductDatabase", Name = "ClearDatabaseRoute")]
-        public async Task ClearProductDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
+        [ProducesResponseType(200)]
+        [HttpPost("SeedDatabase", Name = "SeedDataBase")]
+        public async Task<IActionResult> SeedDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-            await _catalogBusinessServices.ClearProductDatabase(correlationToken);
+
+            await _catalogBusinessServices.SeedDatabase(correlationToken);
+       
+            return StatusCode(StatusCodes.Status204NoContent, "Successfully Seeded Database");
         }
+
+        ////[ProducesResponseType(typeof(Product), 200)]
+        //[HttpGet("ClearProductDatabase", Name = "ClearDatabaseRoute")]
+        //public async Task ClearProductDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
+        //{
+        //    Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+        //    await _catalogBusinessServices.ClearProductDatabase(correlationToken);
+        //}
 
     }
 }

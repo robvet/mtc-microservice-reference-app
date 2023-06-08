@@ -69,4 +69,12 @@
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
+  <!-- Add the Content directory which contains csv files to the output directory -->	
+  <ItemGroup>
+	<Content Include="Content\**\*;">
+    	<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+  </ItemGroup>	
+	
 </Project>

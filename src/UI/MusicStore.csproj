@@ -22,6 +22,17 @@
     <EmbeddedResource Remove="Connected Services\Application Insights\**" />
     <None Remove="Connected Services\Application Insights\**" />
   </ItemGroup>
+  
+  
+  <ItemGroup>
+    <Content Remove="wwwroot\DataFiles\artists.csv" />
+    <Content Remove="wwwroot\DataFiles\conditions.csv" />
+    <Content Remove="wwwroot\DataFiles\genres.csv" />
+    <Content Remove="wwwroot\DataFiles\mediums.csv" />
+    <Content Remove="wwwroot\DataFiles\products.csv" />
+    <Content Remove="wwwroot\DataFiles\products2.csv" />
+    <Content Remove="wwwroot\DataFiles\statuses.csv" />
+  </ItemGroup>
 
 
 
@@ -29,7 +40,7 @@
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.4" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
     <PackageReference Include="RandomNameGeneratorLibrary" Version="1.2.2" />
     <PackageReference Include="toastr" Version="2.1.1" />
   </ItemGroup>
@@ -45,6 +56,16 @@
 
   <ItemGroup>
     <Folder Include="Connected Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\DataFiles\artists.csv" />
+    <None Include="wwwroot\DataFiles\conditions.csv" />
+    <None Include="wwwroot\DataFiles\genres.csv" />
+    <None Include="wwwroot\DataFiles\mediums.csv" />
+    <None Include="wwwroot\DataFiles\products.csv" />
+    <None Include="wwwroot\DataFiles\products2.csv" />
+    <None Include="wwwroot\DataFiles\statuses.csv" />
   </ItemGroup>
 
   <ItemGroup>

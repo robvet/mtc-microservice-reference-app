@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -60,19 +61,20 @@ namespace MusicStore.Helper
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
             // TODO remove
+            _client.DefaultRequestHeaders.Remove("x-correlationToken");
             _client.DefaultRequestHeaders.Add("x-correlationToken", "1234");
 
 
@@ -110,6 +112,9 @@ namespace MusicStore.Helper
                 throw;
             }
 
+            //if (!response.IsSuccessStatusCode || response.StatusCode == HttpStatusCode.NoContent)
+
+
             if (!response.IsSuccessStatusCode)
             {
                 var message = await response.Content.ReadAsStringAsync();
@@ -144,12 +149,31 @@ namespace MusicStore.Helper
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
+
+
+
+
+
+
+            // TODO remove
+            _client.DefaultRequestHeaders.Remove("x-correlationToken");
+            _client.DefaultRequestHeaders.Add("x-correlationToken", "1234");
+
+
+
             var content = dataObject == null ? "{}" : JsonConvert.SerializeObject(dataObject);
 
             try
             {
-                response = await _client.PostAsync(uri, new StringContent(content, Encoding.UTF8, "application/json"));
-
+                if (content == "{}")
+                {
+                    response = await _client.PostAsync(uri, null);
+                }
+                    //response = await _client.PostAsync(uri, null);
+                else
+                { 
+                    response = await _client.PostAsync(uri, new StringContent(content, Encoding.UTF8, "application/json"));
+                }
             }
             catch (Exception ex)
             {

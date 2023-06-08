@@ -20,7 +20,14 @@ namespace Catalog.API.Infrastructure.Repository
 
         public async Task<List<Artist>> GetAll(string correlationToken)
         {
-            return Get().ToList();
+            // Important to return empty product list if no products exist
+            // Avoids errors in UX
+            if (IsEmpty())
+            {
+                return new List<Artist>();
+            }
+
+            return await Task.FromResult(Get().ToList());
         }
     }
 }

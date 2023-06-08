@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using catalog.service.Infrastructure.DataStore;
 using Catalog.API.Contracts;
 using Catalog.API.Infrastructure.DataStore;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Hosting;
 
 namespace Catalog.API.Infrastructure.Repository
 {
@@ -21,6 +23,11 @@ namespace Catalog.API.Infrastructure.Repository
         {
             _ctx = ctx;
             Context = _ctx;
+
+            // Ensure that database structure is created
+            // Command ignored if database already exists
+            // Command doesn't seed data
+            _ctx.Database.EnsureCreated();
         }
 
         /// <summary>
@@ -92,7 +99,7 @@ namespace Catalog.API.Infrastructure.Repository
             var returnValue = 0;
             try
             {
-                returnValue = _ctx.SaveChanges();
+                await _ctx.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
             {
@@ -122,6 +129,10 @@ namespace Catalog.API.Infrastructure.Repository
             return _ctx.Set<T>().AsQueryable();
         }
 
+        /// <summary>
+        /// Checks for existence of T in database
+        /// </summary>
+        /// <returns></returns>
         protected virtual bool IsEmpty()
         {
             return !_ctx.Set<T>().Any();
@@ -135,7 +146,7 @@ namespace Catalog.API.Infrastructure.Repository
         /// <returns></returns>
         protected virtual async Task<IQueryable<T>> Find(Expression<Func<T, bool>> predicate)
         {
-            return _ctx.Set<T>().Where(predicate).AsQueryable();
+            return await Task.Run(() => _ctx.Set<T>().Where(predicate).AsQueryable());
         }
              
         /// <summary>
@@ -149,7 +160,7 @@ namespace Catalog.API.Infrastructure.Repository
         /// <returns></returns>
         protected virtual async Task<T> FindById(int entityId)
         {
-            return _ctx.Set<T>().Find(entityId);
+            return await _ctx.Set<T>().FindAsync(entityId);
         }
 
         /// <summary>
@@ -166,19 +177,24 @@ namespace Catalog.API.Infrastructure.Repository
             _ctx.Entry(entity).State = EntityState.Modified;
         }
 
-        // Seed database with prouductinitialier
-        //public async Task SeedData(string correlationToken)
-        //{
-        //    try
-        //    {
-        //        var productInitailizer = new ProductInitializer(_ctx);
-        //        await productInitailizer.InitializeDatabaseAsync();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception($"Could not run Product Initializer : {ex.Message}");
-        //    }
-        //}
+        /// <summary>
+        /// Seed database with prouductinitialier
+        /// </summary>
+        /// <param name="correlationToken"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task SeedData(string correlationToken, IWebHostEnvironment webHostEnvironment)
+        {
+            try
+            {
+                var productInitailizer = new ProductInitializer(_ctx, webHostEnvironment);
+                await productInitailizer.InitializeDatabaseAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Could not run Product Initializer : {ex.Message}");
+            }
+        }
 
 
         public async Task ClearData(string correlationToken)

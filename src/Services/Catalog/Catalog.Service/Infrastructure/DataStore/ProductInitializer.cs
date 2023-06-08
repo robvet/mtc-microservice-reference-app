@@ -1,15 +1,16 @@
-﻿using Catalog.API.Contracts;
-using Catalog.API.Domain.Entities;
+﻿using Catalog.API.Domain.Entities;
 using System.Linq;
 using System.IO;
 using SharedUtilities.Utilties;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Catalog.API.Infrastructure.DataStore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 
 namespace catalog.service.Infrastructure.DataStore
 
@@ -19,46 +20,65 @@ namespace catalog.service.Infrastructure.DataStore
         private static int _counter;
         private DataContext _context;
         private ILogger<ProductInitializer> _logger;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         const string GENRE = "genres.csv";
         const string MEDIUM = "mediums.csv";
         const string STATUS = "statuses.csv";
         const string CONDITION = "conditions.csv";
         const string ARTIST = "artists.csv";
         const string PRODUCT = "products2.csv";
+        const string CONTENT_DIRECTORY = "Content";
 
-        public async Task InitializeDatabaseAsync(IServiceScope serviceScope)
+        public ProductInitializer(DataContext context, IWebHostEnvironment webHostEnvironment)
         {
-            // Get DataContext and Logger explicitly from DI container
-            _context = serviceScope.ServiceProvider.GetService<DataContext>();
-            _logger = serviceScope.ServiceProvider.GetService<ILogger<ProductInitializer>>();
+            _context = context;
 
+            ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddConsole();
+            });
 
+            _logger = loggerFactory.CreateLogger<ProductInitializer>();
+
+            _webHostEnvironment = webHostEnvironment;
+        }
+
+        //public async Task InitializeDatabaseAsync(IServiceScope serviceScope)
+        
             
+        public async Task InitializeDatabaseAsync()   
+        {
             Guard.ForNullObject(_context, "DataContext not found in DI container");
-
-            // Get ProductRepository from DI container
-            var productRepository = serviceScope.ServiceProvider.GetService<IProductRepository>();
-
-            Guard.ForNullObject(productRepository, "ProductRepository not found in DI container");
+            Guard.ForNullObject(_logger, "Logger not instantiated for SeedData");
+            Guard.ForNullObject(_webHostEnvironment, "_webHostEnvironment Null in SeedData");
 
             var databaseCreated = _context.Database.EnsureCreated();
 
-            // Determine if database has been seeded by checking for any data in the Products table
-            if (!_context.Products.Any())
-            {
-                // make sure child tables are dropped and tables reseeded for identity values (pass dummy correlation token)
-                await productRepository.ClearProductDatabase("clearingdatabase");
+            // Seed lookup data
+            await SeedData<Genre>(GENRE);
+            await SeedData<Medium>(MEDIUM);
+            await SeedData<Status>(STATUS);
+            await SeedData<Condition>(CONDITION);
+            await SeedData<Artist>(ARTIST);
 
-                // Seed lookup data
-                await SeedData<Genre>(GENRE);
-                await SeedData<Medium>(MEDIUM);
-                await SeedData<Status>(STATUS);
-                await SeedData<Condition>(CONDITION);
-                await SeedData<Artist>(ARTIST);
+            // Seed products
+            await SeedProducts();
 
-                // Seed products
-                await SeedProducts();
-            }
+
+
+            //// Determine if database has been seeded by checking for any data in the Products table
+            //if (!_context.Products.Any())
+            //{
+            //    // Seed lookup data
+            //    await SeedData<Genre>(GENRE);
+            //    await SeedData<Medium>(MEDIUM);
+            //    await SeedData<Status>(STATUS);
+            //    await SeedData<Condition>(CONDITION);
+            //    await SeedData<Artist>(ARTIST);
+
+            //    // Seed products
+            //    await SeedProducts();
+            //}
         }
 
         //public async Task SeedData<T>(IEnumerable<T> data) where T : class
@@ -67,11 +87,17 @@ namespace catalog.service.Infrastructure.DataStore
         {
             try
             {
-                var currentDirectory = Environment.CurrentDirectory;
+                //var currentDirectory = Environment.CurrentDirectory;
+
+                //// File path for lookup data
+                //var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", dataFile);
 
                 // File path for lookup data
-                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", dataFile);
-                               
+                var contentRootPath = _webHostEnvironment.ContentRootPath;
+                var filePath = Path.Combine(contentRootPath, CONTENT_DIRECTORY, dataFile);
+
+                _logger.LogInformation("Content FilePath is {filePath}", filePath);
+
                 // Skip header row from CSV File
                 var lines = File.ReadAllLines(filePath).Skip(1);
 
@@ -96,7 +122,7 @@ namespace catalog.service.Infrastructure.DataStore
                 }
                 catch (Exception ex)
                 {
-                    var errorMessage = $"Error seeding {typeof(T).Name} data {ex.Message}";
+                    var errorMessage = $"Error seeding {typeof(T).Name} data in {filePath}: {ex.Message}";
                     _logger.LogError(errorMessage);
                     throw new Exception(errorMessage , ex);
                 }
@@ -117,20 +143,23 @@ namespace catalog.service.Infrastructure.DataStore
 
         public async Task<List<Product>> SeedProducts()
         {
-            List<Product> products = new List<Product>();
+            List<Product> products = new();
             int counter = 1;
             Product product = null;
             string[] values;
 
             try
             {
-                var currentDirectory = Environment.CurrentDirectory;
+                //var currentDirectory = Environment.CurrentDirectory;
 
-                // File path for Genres
-                var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", PRODUCT);
+                //// File path for Genres
+                //var filePath = Path.Combine(currentDirectory, "Infrastructure", "SeedData", PRODUCT);
+
+                var contentRootPath = _webHostEnvironment.ContentRootPath;
+                var filePath = Path.Combine(contentRootPath, CONTENT_DIRECTORY, PRODUCT);
 
                 // Skip header row from CSV File
-                var lines = File.ReadAllLines(filePath).Skip(1); //.Take(75);
+                var lines = File.ReadAllLines(filePath).Skip(1).Take(10);
                 foreach (var line in lines)
                 {
                     values = null;
@@ -161,10 +190,10 @@ namespace catalog.service.Infrastructure.DataStore
 
                         // Round price to 2 decimal places
                         Price = GeneratePrice(),
-                                                
-                        Artist = _context.Artists.SingleOrDefault (a => a.Name == NoCommaValidation(values[0])) ?? throw new Exception($"Missing lookup value from 'Artits' {values[0]} on record {counter}"),
-                        Status = _context.Status.SingleOrDefault(s => s.Name == NoCommaValidation(values[5])) ?? throw new Exception($"Missing lookup value from 'Status' {values[5]} on record {counter}"),
-                        Condition = _context.Conditions.SingleOrDefault (c => c.Name == NoCommaValidation(values[7])) ?? throw new Exception($"Missing lookup value from 'Condition' {values[7]} on record {counter}"),
+
+                        Artist = await _context.Artists.SingleOrDefaultAsync(a => a.Name == NoCommaValidation(values[0])) ?? throw new Exception($"Missing lookup value from 'Artits' {values[0]} on record {counter}"),
+                        Status = await _context.Status.SingleOrDefaultAsync(s => s.Name == NoCommaValidation(values[5])) ?? throw new Exception($"Missing lookup value from 'Status' {values[5]} on record {counter}"),
+                        Condition = await _context.Conditions.SingleOrDefaultAsync(c => c.Name == NoCommaValidation(values[7])) ?? throw new Exception($"Missing lookup value from 'Condition' {values[7]} on record {counter}"),
                         CreateDate = DateTime.Now,
                         IsActive = true
                     };
@@ -185,7 +214,7 @@ namespace catalog.service.Infrastructure.DataStore
                 catch (Exception ex)
                 {
                     var errorMessage = $"Error seeding Product Catalog data on record {counter}: {ex.Message}";
-                    _logger.LogError(errorMessage);
+                    _logger.LogError(errorMessage, ex);
                     throw new Exception(errorMessage, ex);
                 }
             }
@@ -193,13 +222,13 @@ namespace catalog.service.Infrastructure.DataStore
             catch (InvalidOperationException ex)
             {
                 var errorMessage = $"Error seeding Product Catalog data on record {counter}: {ex.Data}";
-                _logger.LogError(errorMessage);
+                _logger.LogError(errorMessage, ex);
                 throw new Exception(errorMessage, ex);
             }
             catch (Exception ex)
             {
                 var errorMessage = $"Error seeding Product Catalog data on record {counter}: {ex.Message}";
-                _logger.LogError(errorMessage);
+                _logger.LogError(errorMessage, ex);
                 throw new Exception(errorMessage, ex);
             }
 
@@ -209,7 +238,7 @@ namespace catalog.service.Infrastructure.DataStore
         // generate number between $10 and $100 as decimal rounding to nearest dollar
         private static decimal GeneratePrice()
         {
-            Random random = new Random();
+            Random random = new();
             // Generate random price between $30 and $100
             decimal randomPrice = Math.Round((decimal)(random.Next(3000, 10000)) / 100, 2);
             return randomPrice;
@@ -277,7 +306,7 @@ namespace catalog.service.Infrastructure.DataStore
 
         private static string NoCommaValidation(string cell)
         {
-            if (cell.Contains(","))
+            if (cell.Contains(','))
             {
                     return cell.Replace(",", "", StringComparison.OrdinalIgnoreCase);
             }

@@ -29,7 +29,7 @@ namespace Catalog.API.Infrastructure.DataStore
                 if (!context.Products.Any())
                 {
                     // make sure child tables are dropped and tables reseeded for identity values
-                    await productRepository.ClearProductDatabase("abc");
+                    //await productRepository.ClearProductDatabase("abc");
                     // Seed database
                     await Seed(context);
                 }

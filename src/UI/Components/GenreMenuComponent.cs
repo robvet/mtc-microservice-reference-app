@@ -29,7 +29,7 @@ namespace MusicStore.Components
             //var genres = await _catalogService.GetAllGenres();
 
             // 3-7-20, robvet - Added check for to trap for Null response
-            if (genres.Data == null) throw new NullReferenceException("Catalog Service did not return Genres");
+            //if (genres.Data == null) throw new NullReferenceException("Catalog Service did not return Genres");
 
             return View(genres.Data);
         }

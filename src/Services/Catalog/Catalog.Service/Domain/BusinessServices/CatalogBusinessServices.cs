@@ -6,7 +6,9 @@ using Catalog.API.Contracts;
 using Catalog.API.Domain.Entities;
 using Catalog.API.Events;
 using EventBus.Bus;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace Catalog.API.Domain.BusinessServices
@@ -18,18 +20,21 @@ namespace Catalog.API.Domain.BusinessServices
         private readonly IGenreRepository _genreRepository;
         private readonly ILogger<CatalogBusinessServices> _logger;
         private readonly IProductRepository _ProductRepository;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public CatalogBusinessServices(IProductRepository ProductRepository,
             IGenreRepository genreRepository,
             IArtistRepository artistRepository,
             IEventBusPublisher eventBusPublisher,
-            ILogger<CatalogBusinessServices> logger)
+            ILogger<CatalogBusinessServices> logger,
+            IWebHostEnvironment webHostEnvironment)
         {
             _ProductRepository = ProductRepository;
             _genreRepository = genreRepository;
             _artistRepository = artistRepository;
             _eventBusPublisher = eventBusPublisher;
             _logger = logger;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<List<Product>> GetAllMusic(string correlationToken)
@@ -49,9 +54,12 @@ namespace Catalog.API.Domain.BusinessServices
 
         public async Task<List<Genre>> GetAllGenres(string correlationToken, bool includeAlbums = false)
         {
-            return includeAlbums
-                ? await _genreRepository.GetAllAndAlbums(correlationToken)
-                : await _genreRepository.GetAll(correlationToken);
+            return await _genreRepository.GetAll(correlationToken, includeAlbums);
+
+
+            //return includeAlbums
+            //    ? await _genreRepository.GetAllAndAlbums(correlationToken)
+            //    : await _genreRepository.GetAll(correlationToken, includeAlbums);
         }
 
         public async Task<Genre> GetGenre(int genreId, string correlationToken, bool includeAlbums = false)
@@ -149,9 +157,31 @@ namespace Catalog.API.Domain.BusinessServices
         //    return productChangedEvent;
         //}
 
-        public async Task ClearProductDatabase(string correlationToken)
+        public async Task SeedDatabase(string correlationToken)
         {
-            await _ProductRepository.ClearProductDatabase(correlationToken); 
+           
+            try
+            {
+                await _ProductRepository.ClearData(correlationToken);
+             }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error clearing product database");
+
+                throw;
+            }
+
+            try
+            {
+                await _ProductRepository.SeedData(correlationToken, _webHostEnvironment);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error seeding product database");
+
+                throw;
+            }
+            
         }
     }
 }
