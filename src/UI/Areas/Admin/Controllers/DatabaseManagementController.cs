@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MusicStore.Controllers;
 using MusicStore.Helper;
+using MusicStore.Models;
 using System;
 using System.Globalization;
 using System.IO;
@@ -40,25 +41,25 @@ namespace MusicStore.Areas.Admin.Controllers
         {
             string filePath = string.Empty;
 
-            try
-            {
-                var wwwrootPath = _hostingEnvironment.WebRootPath;
-                filePath = Path.Combine(wwwrootPath, "DataFiles", "genres.csv");
+            //try
+            //{
+            //    var wwwrootPath = _hostingEnvironment.WebRootPath;
+            //    filePath = Path.Combine(wwwrootPath, "DataFiles", "genres.csv");
 
-                _logger.LogInformation("Content FilePath is {filePath}", filePath);
+            //    _logger.LogInformation("Content FilePath is {filePath}", filePath);
 
-                var lines = System.IO.File.ReadAllLines(filePath).Skip(1).ToArray();
+            //    var lines = System.IO.File.ReadAllLines(filePath).Skip(1).ToArray();
 
-                _logger.LogInformation("Number of Genres {lines.Count}", lines.Count());
+            //    _logger.LogInformation("Number of Genres {lines.Count}", lines.Count());
 
                 
-            }
-            catch (Exception ex)
-            {
-                var errorMessage = $"Error seeding data in {filePath}: {ex.Message}";
-                _logger.LogError(errorMessage);
-                throw;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var errorMessage = $"Error seeding data in {filePath}: {ex.Message}";
+            //    _logger.LogError(errorMessage);
+            //    throw;
+            //}
           
 
 
@@ -85,30 +86,10 @@ namespace MusicStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(IFormCollection collection)
         {
-            
-            
-            
-            
-            
-            
-            
-            
-            var retType = false;
-            
-            var x = await _IRestClient.PostAsync<object>($"{_baseUrl}/SeedDatabase", new object());
-
-
-
-
-            //try
-            //
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
-            return View();
+                        
+            var x = await _IRestClient.PostAsync<ProductDto>($"{_baseUrl}/SeedDatabase");
+          
+            return View("Index");
         }
 
         // GET: DatabaseManagementController/Details/5

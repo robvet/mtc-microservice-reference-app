@@ -22,17 +22,6 @@
     <EmbeddedResource Remove="Connected Services\Application Insights\**" />
     <None Remove="Connected Services\Application Insights\**" />
   </ItemGroup>
-  
-  
-  <ItemGroup>
-    <Content Remove="wwwroot\DataFiles\artists.csv" />
-    <Content Remove="wwwroot\DataFiles\conditions.csv" />
-    <Content Remove="wwwroot\DataFiles\genres.csv" />
-    <Content Remove="wwwroot\DataFiles\mediums.csv" />
-    <Content Remove="wwwroot\DataFiles\products.csv" />
-    <Content Remove="wwwroot\DataFiles\products2.csv" />
-    <Content Remove="wwwroot\DataFiles\statuses.csv" />
-  </ItemGroup>
 
 
 
@@ -56,16 +45,6 @@
 
   <ItemGroup>
     <Folder Include="Connected Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\DataFiles\artists.csv" />
-    <None Include="wwwroot\DataFiles\conditions.csv" />
-    <None Include="wwwroot\DataFiles\genres.csv" />
-    <None Include="wwwroot\DataFiles\mediums.csv" />
-    <None Include="wwwroot\DataFiles\products.csv" />
-    <None Include="wwwroot\DataFiles\products2.csv" />
-    <None Include="wwwroot\DataFiles\statuses.csv" />
   </ItemGroup>
 
   <ItemGroup>

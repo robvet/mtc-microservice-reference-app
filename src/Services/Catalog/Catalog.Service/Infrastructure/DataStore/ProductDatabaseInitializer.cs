@@ -11,16 +11,18 @@ using Catalog.API.Infrastructure.DataStore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
+using System.Diagnostics.Metrics;
 
 namespace catalog.service.Infrastructure.DataStore
 
 {
-    public class ProductInitializer
+    public class ProductDatabaseInitializer
     {
         private static int _counter;
         private DataContext _context;
-        private ILogger<ProductInitializer> _logger;
+        private ILogger<ProductDatabaseInitializer> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        
         const string GENRE = "genres.csv";
         const string MEDIUM = "mediums.csv";
         const string STATUS = "statuses.csv";
@@ -29,7 +31,7 @@ namespace catalog.service.Infrastructure.DataStore
         const string PRODUCT = "products2.csv";
         const string CONTENT_DIRECTORY = "Content";
 
-        public ProductInitializer(DataContext context, IWebHostEnvironment webHostEnvironment)
+        public ProductDatabaseInitializer(DataContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
 
@@ -38,7 +40,7 @@ namespace catalog.service.Infrastructure.DataStore
                 builder.AddConsole();
             });
 
-            _logger = loggerFactory.CreateLogger<ProductInitializer>();
+            _logger = loggerFactory.CreateLogger<ProductDatabaseInitializer>();
 
             _webHostEnvironment = webHostEnvironment;
         }
@@ -63,7 +65,6 @@ namespace catalog.service.Infrastructure.DataStore
 
             // Seed products
             await SeedProducts();
-
 
 
             //// Determine if database has been seeded by checking for any data in the Products table
@@ -116,6 +117,8 @@ namespace catalog.service.Infrastructure.DataStore
                     _context.Set<T>().Add(item);
                 }
 
+                _logger.LogInformation($"Inserted {typeof(T).Name} lookup records into Products Database");
+
                 try
                 {
                     _context.SaveChanges();
@@ -159,7 +162,7 @@ namespace catalog.service.Infrastructure.DataStore
                 var filePath = Path.Combine(contentRootPath, CONTENT_DIRECTORY, PRODUCT);
 
                 // Skip header row from CSV File
-                var lines = File.ReadAllLines(filePath).Skip(1).Take(10);
+                var lines = File.ReadAllLines(filePath).Skip(1); // Take(10);
                 foreach (var line in lines)
                 {
                     values = null;
@@ -231,6 +234,8 @@ namespace catalog.service.Infrastructure.DataStore
                 _logger.LogError(errorMessage, ex);
                 throw new Exception(errorMessage, ex);
             }
+
+            _logger.LogInformation($"Inserted {counter} products into Products Database");
 
             return products;
         }

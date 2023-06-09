@@ -163,17 +163,22 @@ namespace MusicStore.Helper
 
             var content = dataObject == null ? "{}" : JsonConvert.SerializeObject(dataObject);
 
+            
+
             try
             {
-                if (content == "{}")
-                {
-                    response = await _client.PostAsync(uri, null);
-                }
-                    //response = await _client.PostAsync(uri, null);
-                else
-                { 
-                    response = await _client.PostAsync(uri, new StringContent(content, Encoding.UTF8, "application/json"));
-                }
+
+                response = await _client.PostAsync(uri, new StringContent(content, Encoding.UTF8, "application/json"));
+
+                //if (content == "{}")
+                //{
+                //    response = await _client.PostAsync(uri, null);
+                //}
+                //    //response = await _client.PostAsync(uri, null);
+                //else
+                //{ 
+                //    response = await _client.PostAsync(uri, new StringContent(content, Encoding.UTF8, "application/json"));
+                //}
             }
             catch (Exception ex)
             {

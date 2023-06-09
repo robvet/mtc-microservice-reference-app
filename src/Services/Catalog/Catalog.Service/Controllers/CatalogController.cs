@@ -265,7 +265,7 @@ namespace Catalog.API.Controllers
 
             await _catalogBusinessServices.SeedDatabase(correlationToken);
        
-            return StatusCode(StatusCodes.Status204NoContent, "Successfully Seeded Database");
+            return StatusCode(StatusCodes.Status204NoContent);
         }
 
         ////[ProducesResponseType(typeof(Product), 200)]

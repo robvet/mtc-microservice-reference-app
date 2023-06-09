@@ -8,6 +8,7 @@ using Catalog.API.Infrastructure.DataStore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Catalog.API.Infrastructure.Repository
@@ -187,8 +188,10 @@ namespace Catalog.API.Infrastructure.Repository
         {
             try
             {
-                var productInitailizer = new ProductInitializer(_ctx, webHostEnvironment);
-                await productInitailizer.InitializeDatabaseAsync();
+                //var productInitailizer = new ProductDatabaseInitializer(_ctx, webHostEnvironment);
+                //await productInitailizer.InitializeDatabaseAsync();
+
+                new ProductDatabaseInitializer(_ctx, webHostEnvironment).InitializeDatabaseAsync().Wait();
             }
             catch (Exception ex)
             {

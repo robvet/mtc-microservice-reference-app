@@ -17,5 +17,6 @@ namespace Basket.API.Domain.Entities
         //public bool? Cutout { get; set; }
         public string ArtistName { get; set; }
         public string GenreName { get; set; }
+        public DateTime? CreateDate { get; set; }
     }
 }

@@ -113,7 +113,7 @@ namespace Catalog.API
                 //DataInitializer.InitializeDatabaseAsync(serviceScope).Wait();
                 
                 
-                //new ProductInitializer().InitializeDatabaseAsync(serviceScope).Wait();
+                //new ProductDatabaseInitializer().InitializeDatabaseAsync(serviceScope).Wait();
             }
         }
     }

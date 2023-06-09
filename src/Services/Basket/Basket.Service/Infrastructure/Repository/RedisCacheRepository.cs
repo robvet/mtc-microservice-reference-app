@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Basket.API.Domain.Entities;
 using Microsoft.ApplicationInsights;
+using NuGet.Protocol.Plugins;
 
 namespace Basket.API.Infrastructure.Repository
 {
@@ -111,7 +112,43 @@ namespace Basket.API.Infrastructure.Repository
             {
                 var created =
                     await _database.StringSetAsync(basketEntity.BasketId, JsonConvert.SerializeObject(basketEntity));
-                
+
+
+
+
+
+
+
+
+
+
+
+            //https://stackoverflow.com/questions/28702008/azure-redis-cache-batch-operations-multiple-operations
+
+                ////////        var pairs = new KeyValuePair<RedisKey, RedisValue>[] {
+                ////////    new KeyValuePair<RedisKey,RedisValue>("key1", "value1"),
+                ////////    new KeyValuePair<RedisKey,RedisValue>("key2", "value2"),
+                ////////    new KeyValuePair<RedisKey,RedisValue>("key3", "value3"),
+                ////////    new KeyValuePair<RedisKey,RedisValue>("key4", "value4"),
+                ////////    new KeyValuePair<RedisKey,RedisValue>("key5", "value5"),
+                ////////};
+
+                ////////        var keys = pairs.Select(p => p.Key).ToArray();
+
+                ////////        Connection.GetDatabase().StringSet(pairs);
+
+                ////////        var values = Connection.GetDatabase().StringGet(keys);
+
+                ////////        await _database.StringSetAsync(pairs);
+
+
+
+
+
+
+
+
+
                 // _database.SetAdd()
 
                 if (!created)
