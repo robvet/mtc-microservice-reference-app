@@ -13,7 +13,7 @@ using catalog.service.Infrastructure.DataStore;
 using catalog.service.Contracts;
 using StackExchange.Redis;
 using Newtonsoft.Json;
-using Microsoft.CodeAnalysis.Differencing;
+using Microsoft.Extensions.Hosting;
 
 namespace catalog.service.Domain.DataInitializationServices
 
@@ -26,6 +26,13 @@ namespace catalog.service.Domain.DataInitializationServices
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ConnectionMultiplexer _redisMultiplexer;
         private IDatabase _redisDatabase;
+
+        // Price generation
+        private readonly int lowPrice = 5000; // $50.00
+        private readonly int highPrice = 25000; // $250.00
+        private readonly decimal highValuePercentage = 0.75m; // 75%
+        private readonly decimal highValuePrice; 
+
 
         const string GENRE = "genres.csv";
         const string MEDIUM = "mediums.csv";
@@ -52,6 +59,8 @@ namespace catalog.service.Domain.DataInitializationServices
             _webHostEnvironment = webHostEnvironment;
 
             _redisMultiplexer = redis;
+
+            highValuePrice = highValuePercentage * (highPrice / 100);
         }
 
         //public async Task InitializeDatabaseAsync(IServiceScope serviceScope)
@@ -78,14 +87,14 @@ namespace catalog.service.Domain.DataInitializationServices
             await ClearData();    
 
             // Seed lookup data
-            await SeedData<Genre>(GENRE);
-            await SeedData<Medium>(MEDIUM);
-            await SeedData<Status>(STATUS);
-            await SeedData<Entities.Condition>(CONDITION);
-            await SeedData<Artist>(ARTIST);
+            await SeedLookupData<Genre>(GENRE);
+            await SeedLookupData<Medium>(MEDIUM);
+            await SeedLookupData<Status>(STATUS);
+            await SeedLookupData<Entities.Condition>(CONDITION);
+            await SeedLookupData<Artist>(ARTIST);
 
             // Seed dbProducts
-            await SeedProducts();
+            await SeedProductData();
 
 
             //// Determine if database has been seeded by checking for any data in the Products table
@@ -99,12 +108,12 @@ namespace catalog.service.Domain.DataInitializationServices
             //    await DataSeedingServices<Artist>(ARTIST);
 
             //    // Seed dbProducts
-            //    await SeedProducts();
+            //    await SeedProductData();
             //}
         }
 
         //public async Task DataSeedingServices<T>(IEnumerable<T> data) where T : class
-        private async Task SeedData<T>(string dataFile) where T : class
+        private async Task SeedLookupData<T>(string dataFile) where T : class
         {
             try
             {
@@ -164,7 +173,7 @@ namespace catalog.service.Domain.DataInitializationServices
             }
         }
 
-        public async Task<List<Product>> SeedProducts()
+        public async Task<List<Product>> SeedProductData()
         {
             List<Product> dbProducts = new();
             List<ProductReadModel> readModels = new();
@@ -174,7 +183,7 @@ namespace catalog.service.Domain.DataInitializationServices
             //var keyValuePairs = new List<KeyValuePair<Guid, ProductReadModel>>();
             var keyValuePairs = new List<KeyValuePair<RedisKey, RedisValue>>();
 
-            int counter = 1;
+            int counter = 0;
             Product product = null;
             ProductReadModel productReadModel = null;
             string[] itemValues;
@@ -190,7 +199,7 @@ namespace catalog.service.Domain.DataInitializationServices
                 var filePath = Path.Combine(contentRootPath, CONTENT_DIRECTORY, PRODUCT);
 
                 // Skip header row from CSV File
-                var items = File.ReadAllLines(filePath).Skip(1).Take(10);
+                var items = File.ReadAllLines(filePath).Skip(1); //.Take(10);
                 foreach (var item in items)
                 {
                     itemValues = null;
@@ -217,21 +226,24 @@ namespace catalog.service.Domain.DataInitializationServices
                         // Inline validation for Missing 'Title' value
                         Title = itemValues[2].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Title' on record {counter}") : itemValues[2],
 
-                        Genre = _context.Genres.SingleOrDefault(g => g.Name == NoCommaValidation(itemValues[4])) ?? throw new Exception($"Missing lookup value from 'Genre' {itemValues[4]} on record {counter}"),
+                        AlbumArtUrl = null, // SetMediumGraphic(product.Medium.Name);
 
-                        // Round price to 2 decimal places
-                        Price = GeneratePrice(),
+                        Genre = _context.Genres.SingleOrDefault(g => g.Name == NoCommaValidation(   itemValues[4])) ?? throw new Exception($"Missing lookup value from 'Genre' {itemValues[4]} on record {counter}"),
 
+                        // Round price and cost to 2 decimal places
+                        Price = GeneratePrice(lowPrice, highPrice),
+                        
                         Artist = await _context.Artists.SingleOrDefaultAsync(a => a.Name == NoCommaValidation(itemValues[0])) ?? throw new Exception($"Missing lookup value from 'Artits' {itemValues[0]} on record {counter}"),
                         Status = await _context.Status.SingleOrDefaultAsync(s => s.Name == NoCommaValidation(itemValues[5])) ?? throw new Exception($"Missing lookup value from 'Status' {itemValues[5]} on record {counter}"),
                         Condition = await _context.Conditions.SingleOrDefaultAsync(c => c.Name == NoCommaValidation(itemValues[7])) ?? throw new Exception($"Missing lookup value from 'Condition' {itemValues[7]} on record {counter}"),
                         CreateDate = DateTime.Now,
+
+
                         IsActive = true
                     };
 
-                    // Round cost to 2 decimal places
+                    product.HighValueItem = SetHighValueItem(product.Price);
                     product.Cost = GenerateCost(product.Price);
-                    product.AlbumArtUrl = SetMediumGraphic(product.Medium.Name);
 
                     dbProducts.Add(product);
                     _context.Products.Add(product);
@@ -325,12 +337,25 @@ namespace catalog.service.Domain.DataInitializationServices
             return dbProducts;
         }
 
+        // Set HighValue flag for items that exceed predetermined high value price set in constructor
+        private bool SetHighValueItem(decimal price)
+        {
+            if (price > highValuePrice)
+                {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         // generate number between $10 and $100 as decimal rounding to nearest dollar
-        private static decimal GeneratePrice()
+        private static decimal GeneratePrice(int lowPrice, int highPrice)
         {
             Random random = new();
-            // Generate random price between $30 and $100
-            decimal randomPrice = Math.Round((decimal)random.Next(3000, 10000) / 100, 2);
+            // Generate random price between $30 and $200
+            decimal randomPrice = Math.Round((decimal)random.Next(lowPrice, highPrice) / 100, 2);
             return randomPrice;
         }
 
@@ -369,30 +394,30 @@ namespace catalog.service.Domain.DataInitializationServices
             return false;
         }
 
-        // Set medium graphic
-        private static string SetMediumGraphic(string medium)
-        {
-            string graphicName;
-            switch (medium)
-            {
-                case "EightTrack":
-                    graphicName = "eighttrack.png";
-                    break;
-                case "CD":
-                    graphicName = "cd.jpg";
-                    break;
-                case "CassetteTape":
-                    graphicName = "cassette.jpg";
-                    break;
-                case "Album":
-                    graphicName = "album.jpg";
-                    break;
-                default:
-                    graphicName = "placeholder.png";
-                    break;
-            }
-            return graphicName;
-        }
+        //// Set medium graphic
+        //private static string SetMediumGraphic(string medium)
+        //{
+        //    string graphicName;
+        //    switch (medium)
+        //    {
+        //        case "EightTrack":
+        //            graphicName = "eighttrack.png";
+        //            break;
+        //        case "CD":
+        //            graphicName = "cd.jpg";
+        //            break;
+        //        case "CassetteTape":
+        //            graphicName = "cassette.jpg";
+        //            break;
+        //        case "Album":
+        //            graphicName = "album.jpg";
+        //            break;
+        //        default:
+        //            graphicName = "placeholder.png";
+        //            break;
+        //    }
+        //    return graphicName;
+        //}
 
         private static string NoCommaValidation(string cell)
         {

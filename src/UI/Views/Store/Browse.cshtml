@@ -1,22 +1,26 @@
-﻿@model GenreDto
+﻿@using MusicStore.Helper
+
+@model StoreModelHelperClass
+
 @{
     ViewBag.Title = "Browse Albums";
 }
 <div class="genre">
     <h3>
-        <em>@Model.Name</em> Song
+        <em>@Model.GenreName</em>
     </h3>
 
     <ul id="album-list" class="list-unstyled">
-        @foreach (var album in Model.Albums)
+        @foreach (var item in Model.Result)
         {
             <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
-                <a asp-controller="Store" asp-action="Details" asp-route-id="@album.Id">
+                <a asp-controller="Store" asp-action="Details" asp-route-id="@item.Id">
                     @{
-                        var imageLink = $"~/Images/{album.AlbumArtUrl}";
+                        //var imageLink = $"~/Images/{album.AlbumArtUrl}";
+                        var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(item.MediumName, item.AlbumArtUrl)}";
                     }
-                    <img alt="@album.Title" src="@Url.Content(imageLink)" />
-                    <h5 class="control-label">@album.Title</h5>
+                    <img alt="@item.Title" src="@Url.Content(imageLink)" />
+                    <h5 class="control-label">@item.Title</h5>
                     
                     
                   @*  <img src="~/Images/placeholder.png" class="img-responsive" />

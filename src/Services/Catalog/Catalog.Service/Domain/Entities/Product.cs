@@ -27,6 +27,7 @@ namespace catalog.service.Domain.Entities
         public string Upc { get; set; }
         public string ReleaseYear { get; set; }
         public Guid ProductId { get; set; }
+        public bool HighValueItem { get; set; }
 
         public Artist Artist { get; set; }
         public Genre Genre { get; set; }

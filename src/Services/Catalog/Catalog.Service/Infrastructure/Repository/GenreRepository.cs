@@ -38,11 +38,11 @@ namespace catalog.service.Infrastructure.Repository
             return await Get().ToListAsync();
         }
 
-        //public async Task<List<Genre>> GetAllAndAlbums(string correlationToken)
-        //{
+        public async Task<List<Genre>> GetAllAndAlbums(string correlationToken)
+        {
 
-        //    return Get().Include(x => x.Products).ToList();
-        //}
+            return Get().Include(x => x.Products).ToList();
+        }
 
         //public override void Add(Genre genre)
         //{

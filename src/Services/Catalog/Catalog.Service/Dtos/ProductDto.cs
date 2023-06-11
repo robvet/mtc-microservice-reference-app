@@ -22,6 +22,8 @@ namespace catalog.service.Dtos
 
         public decimal Price { get; set; }
 
+        public bool HighValueItem { get; set; }
+
         public string ArtistName { get; set; }
         public int ArtistId { get; set; }
 

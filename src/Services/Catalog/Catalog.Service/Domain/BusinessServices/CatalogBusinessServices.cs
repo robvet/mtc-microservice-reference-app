@@ -49,12 +49,16 @@ namespace catalog.service.Domain.BusinessServices
 
         public async Task<List<Genre>> GetAllGenres(string correlationToken, bool includeAlbums = false)
         {
-            return await _genreRepository.GetAll(correlationToken, includeAlbums);
+            //return await _genreRepository.GetAll(correlationToken, includeAlbums);
 
+            return includeAlbums
+                ? await _genreRepository.GetAllAndAlbums(correlationToken)
+                    : await _genreRepository.GetAll(correlationToken, includeAlbums);
+        }
 
-            //return includeAlbums
-            //    ? await _genreRepository.GetAllAndAlbums(correlationToken)
-            //    : await _genreRepository.GetAll(correlationToken, includeAlbums);
+        public async Task<List<Product>> GetMusicForGenres(int genreId, string correlationToken)
+        {
+            return await _ProductRepository.GetProductsForGenre(genreId, correlationToken);
         }
 
         public async Task<Genre> GetGenre(int genreId, string correlationToken, bool includeAlbums = false)

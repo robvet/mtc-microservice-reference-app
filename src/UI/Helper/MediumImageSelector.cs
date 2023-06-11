@@ -1,11 +1,23 @@
-﻿namespace MusicStore.Helper
+﻿using System.Drawing.Text;
+
+namespace MusicStore.Helper
 {
     public class MediumImageSelector
     {
+
+        private const string DEFAULT_GRAPHIC = "placeholder.png";
+
         // Set medium graphic
-        public static string SetMediumGraphic(string medium)
+        public static string SetMediumGraphic(string medium, string albumArtUrl)
         {
+            // Return graphic to product if present
+            if (albumArtUrl != null)
+            { 
+                return albumArtUrl;
+            }
+            
             string graphicName;
+
             switch (medium)
             {
                 case "EightTrack":
@@ -18,10 +30,10 @@
                     graphicName = "cassette.jpg";
                     break;
                 case "Album":
-                    graphicName = "album.jpg";
+                    graphicName = "album.png";
                     break;
                 default:
-                    graphicName = "placeholder.png";
+                    graphicName = DEFAULT_GRAPHIC;
                     break;
             }
             return graphicName;

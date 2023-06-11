@@ -183,7 +183,7 @@ namespace catalog.service.Infrastructure.Repository
         ///// <param name="correlationToken"></param>
         ///// <returns></returns>
         ///// <exception cref="Exception"></exception>
-        //public async Task SeedData(string correlationToken, IWebHostEnvironment webHostEnvironment)
+        //public async Task SeedLookupData(string correlationToken, IWebHostEnvironment webHostEnvironment)
         //{
         //    try
         //    {

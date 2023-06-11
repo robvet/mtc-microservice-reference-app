@@ -50,12 +50,6 @@ namespace catalog.service.Controllers
                 return StatusCode(StatusCodes.Status204NoContent);
             else
                 return new ObjectResult(Mapper.MapToMusicDto(products));
-
-
-            //if (products == null || products.Count < 1)
-            //    return BadRequest("Products do not exist");
-
-            //return new ObjectResult(Mapper.MapToMusicDto(products));
         }
 
         /// <summary>
@@ -103,13 +97,31 @@ namespace catalog.service.Controllers
                 return StatusCode(StatusCodes.Status204NoContent);
             else
                 return new ObjectResult(Mapper.MapToMusicDto(products));
+        }
 
+        /// <summary>
+        /// Get music items by genre
+        /// </summary>
+        /// <param name="genreId">genreId for music -- cannot be zero or negative</param>
+        /// <returns>All Music Products for specific GenreId</returns>
+        [ProducesResponseType(typeof(List<Product>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [HttpGet("GetMusicForGenres/{genreId}", Name = "GetMusicForGenresRoute")]
+        public async Task<IActionResult> GetMusicForGenere([FromHeader(Name = "x-correlationToken")]
+             string correlationToken, int genreId)
+        {
+            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+            Guard.ForLessEqualZero(genreId, "GenreId");
 
-            ////if (products == null || products.Count < 1)
-            //if (products == null)
-            //        return BadRequest("Popular products do not exist");
+            var products = await _catalogBusinessServices.GetMusicForGenres(genreId, correlationToken);
 
-            //return new ObjectResult(Mapper.MapToMusicDto(products));
+            if (products == null)
+                return BadRequest("Products do not exist");
+            else if (products.Count < 1)
+                return StatusCode(StatusCodes.Status204NoContent);
+            else
+                return new ObjectResult(Mapper.MapToMusicDto(products));
         }
 
         /// <summary>
@@ -256,6 +268,7 @@ namespace catalog.service.Controllers
         //}
 
         [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         [HttpPost("SeedDatabase", Name = "SeedDataBase")]
         public async Task<IActionResult> SeedDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
         {

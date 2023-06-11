@@ -1,4 +1,6 @@
-﻿@model ProductDto
+﻿@using MusicStore.Helper
+
+@model ProductDto
 
 @{
     ViewBag.Title = "Song - " + Model.Title;
@@ -20,7 +22,10 @@
 *@
 
 <p>
-    @{var imageLink = $"~/Images/{Model.AlbumArtUrl}";}
+    @{
+        //var imageLink = $"~/Images/{Model.AlbumArtUrl}";
+        var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(Model.MediumName, Model.AlbumArtUrl)}";
+    }
     <img alt="@Model.Title" src="@Url.Content(imageLink)" />
 </p>
 

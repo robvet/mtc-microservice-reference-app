@@ -22,6 +22,7 @@ namespace catalog.service.Dtos
                     ProductId = item.ProductId,
                     Single = item.Single,
                     ReleaseYear = item.ReleaseYear,
+                    HighValueItem = item.HighValueItem,
                     IsActive = item.IsActive,
 
                     GenreName = item.Genre?.Name,
@@ -56,6 +57,7 @@ namespace catalog.service.Dtos
                 ProductId = music.ProductId,
                 Single = music.Single,
                 ReleaseYear = music.ReleaseYear,
+                HighValueItem = music.HighValueItem,
                 IsActive = music.IsActive,
 
                 GenreName = music.Genre?.Name,

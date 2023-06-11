@@ -8,6 +8,6 @@ namespace catalog.service.Contracts
     {
         Task<Genre> GetById(int id, string correlationToken, bool includeAlbums = false);
         Task<List<Genre>> GetAll(string correlationToken, bool includeProducts);
-        //Task<List<Genre>> GetAllAndAlbums(string correlationToken);
+        Task<List<Genre>> GetAllAndAlbums(string correlationToken);
     }
 }

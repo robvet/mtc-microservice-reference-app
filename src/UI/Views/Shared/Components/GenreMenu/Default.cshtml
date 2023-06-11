@@ -8,7 +8,8 @@
             @foreach (var genre in Model)
             {
                 <li>
-                    <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a>
+                    @*<a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a>*@
+                    <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-genreId="@genre.GenreId" asp-route-genreName="@genre.Name">@genre.Name</a>
                 </li>
             }
 

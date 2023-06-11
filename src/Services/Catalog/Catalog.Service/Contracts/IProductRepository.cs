@@ -16,5 +16,6 @@ namespace catalog.service.Contracts
         Task<bool> ChangeParentalCaution(int albumId, bool parentalCaution, string correlationToken);
         Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken);
         Task<Product> GetByIdWithIdempotencyCheck(int id, Guid productId, string correlationToken);
+        Task<List<Product>> GetProductsForGenre(int genreId, string correlationToken);
     }
 }

@@ -149,6 +149,17 @@ namespace catalog.service.Infrastructure.Repository
             return true;
         }
 
+        public async Task<List<Product>> GetProductsForGenre(int genreId, string correlationToken)
+        {
+            return await Get().Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .Where(x => x.GenreId == genreId)
+                        .ToListAsync();
+        }
+
         public async Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken)
         {
             return await Get()
