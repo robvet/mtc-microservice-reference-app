@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Catalog.API.Contracts;
-using Catalog.API.Domain.Entities;
-using Catalog.API.Dtos;
+using catalog.service.Contracts;
+using catalog.service.Domain.Entities;
+using catalog.service.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SharedUtilities.Utilties;
 
-namespace Catalog.API.Controllers
+namespace catalog.service.Controllers
 {
     /// <summary>
     ///     Microservice that manages user's product catalog experience
@@ -21,14 +19,14 @@ namespace Catalog.API.Controllers
     {
         private const int TopSellingCount = 5;
         private readonly ICatalogBusinessServices _catalogBusinessServices;
-        private readonly ILogger<CatalogController> _logger;
-         
+        private readonly IDataSeedingServices _dataSeedingService;
 
         public CatalogController(ICatalogBusinessServices catalogBusinessServices,
-            ILogger<CatalogController> logger)
+            ILogger<CatalogController> logger,
+            IDataSeedingServices dataSeedingService)
         {
             _catalogBusinessServices = catalogBusinessServices;
-            _logger = logger;
+            _dataSeedingService = dataSeedingService;
         }
 
         /// <summary>
@@ -136,7 +134,7 @@ namespace Catalog.API.Controllers
                 return BadRequest("Genres do not exist");
             else if (genres.Count < 1)
                 return StatusCode(StatusCodes.Status204NoContent);
-            else 
+            else
                 return new ObjectResult(Mapper.MapToGenreDto(genres));
         }
 
@@ -263,18 +261,9 @@ namespace Catalog.API.Controllers
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
-            await _catalogBusinessServices.SeedDatabase(correlationToken);
-       
+            await _dataSeedingService.SeedDatabase(correlationToken);
+
             return StatusCode(StatusCodes.Status204NoContent);
         }
-
-        ////[ProducesResponseType(typeof(Product), 200)]
-        //[HttpGet("ClearProductDatabase", Name = "ClearDatabaseRoute")]
-        //public async Task ClearProductDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
-        //{
-        //    Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-        //    await _catalogBusinessServices.ClearProductDatabase(correlationToken);
-        //}
-
     }
 }

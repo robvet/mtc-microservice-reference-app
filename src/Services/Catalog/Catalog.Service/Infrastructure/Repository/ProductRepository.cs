@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Catalog.API.Contracts;
-using Catalog.API.Domain.Entities;
-using Catalog.API.Infrastructure.DataStore;
+using catalog.service.Contracts;
+using catalog.service.Domain.Entities;
+using catalog.service.Infrastructure.DataStore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Catalog.API.Infrastructure.Repository
+namespace catalog.service.Infrastructure.Repository
 {
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
         public ProductRepository(DataContext ctx) : base(ctx)
         {
-
         }
 
         public async Task<int> GetCount(string correlationToken)
@@ -46,9 +45,14 @@ namespace Catalog.API.Infrastructure.Repository
                 var item = rnd.Next(productCount);
 
                 var selecteditem = await Get()
-                   .Where(x => x.Id == (item + lowestId))
-                   .AsNoTracking() // Disable change tracking
-                   .FirstOrDefaultAsync();
+                        .Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .Where(x => x.Id == item + lowestId)
+                        .AsNoTracking() // Disable change tracking
+                        .FirstOrDefaultAsync();
 
 
                 //var selecteditem = await Get()

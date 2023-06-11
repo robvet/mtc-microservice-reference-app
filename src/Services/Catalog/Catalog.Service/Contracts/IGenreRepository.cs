@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Catalog.API.Domain.Entities;
+using catalog.service.Domain.Entities;
 
-namespace Catalog.API.Contracts
+namespace catalog.service.Contracts
 {
     public interface IGenreRepository : IRepository<Genre>
     {

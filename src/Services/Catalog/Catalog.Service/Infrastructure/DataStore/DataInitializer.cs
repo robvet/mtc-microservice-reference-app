@@ -4,12 +4,12 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
-using Catalog.API.Contracts;
-using Catalog.API.Domain.Entities;
+using catalog.service.Contracts;
+using catalog.service.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Catalog.API.Infrastructure.DataStore
+namespace catalog.service.Infrastructure.DataStore
 {
     public static class DataInitializer
     {

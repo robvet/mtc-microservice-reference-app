@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Catalog.API.Dtos
+namespace catalog.service.Dtos
 {
     [DataContract]
     public class GenreDto

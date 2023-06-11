@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Catalog.API.Domain.Entities
+namespace catalog.service.Domain.Entities
 {
     public class Product
     {
@@ -17,7 +17,7 @@ namespace Catalog.API.Domain.Entities
         public int StatusId { get; set; }
         public int MediumId { get; set; }
         public int ConditionId { get; set; }
-      
+
         public string Title { get; set; }
         public string Single { get; set; }
         public string AlbumArtUrl { get; set; }
@@ -33,10 +33,10 @@ namespace Catalog.API.Domain.Entities
         public Status Status { get; set; }
         public Medium Medium { get; set; }
         public Condition Condition { get; set; }
-        public ICollection<Description>  Descriptions { get; set; }
+        public ICollection<Description> Descriptions { get; set; }
 
         public DateTime CreateDate { get; set; }
-        public DateTime? RemoveDate{ get; set; }
+        public DateTime? RemoveDate { get; set; }
         public bool IsActive { get; set; }
     }
 }

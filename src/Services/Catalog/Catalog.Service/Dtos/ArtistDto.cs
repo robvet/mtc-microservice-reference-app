@@ -1,4 +1,4 @@
-﻿namespace Catalog.API.Dtos
+﻿namespace catalog.service.Dtos
 {
     public class ArtistDto
     {

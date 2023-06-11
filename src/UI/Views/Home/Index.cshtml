@@ -1,4 +1,5 @@
 ﻿@using MusicStore.Properties
+@using MusicStore.Helper
 @model List<ProductDto>
 @inject IOptions<AppSettings> AppSettings
 @{
@@ -23,7 +24,10 @@
             {
                 <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
                     <a asp-controller="Store" asp-action="Details" asp-route-id="@album.Id">
-                    @{ var imageLink = $"~/Images/{album.AlbumArtUrl}"; }
+                    @*@{ var imageLink = $"~/Images/{album.AlbumArtUrl}"; }*@
+                        @{
+                            var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(album.MediumName)}";
+                        }
                     <img alt="@album.Title" src="@Url.Content(imageLink)" />
                     <h4>@album.Title</h4>
                     </a>

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Catalog.API.Domain.Entities;
+using catalog.service.Domain.Entities;
 
-namespace Catalog.API.Contracts
+namespace catalog.service.Contracts
 {
     public interface ICatalogBusinessServices
     {
@@ -15,6 +15,5 @@ namespace Catalog.API.Contracts
         //Task Add(string correlationToken, Product product);
         //Task Update(string correlationToken, Product product);
         Task<Genre> GetGenre(int genreId, string correlationToken, bool includeAlbums = false);
-        Task SeedDatabase(string correlationToken);
     }
 }

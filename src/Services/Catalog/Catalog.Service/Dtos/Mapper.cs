@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Catalog.API.Domain.Entities;
+using catalog.service.Domain.Entities;
 
-namespace Catalog.API.Dtos
+namespace catalog.service.Dtos
 {
     public class Mapper
     {

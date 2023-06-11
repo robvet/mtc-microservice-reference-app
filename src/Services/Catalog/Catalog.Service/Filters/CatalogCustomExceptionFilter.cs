@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using SharedUtilities.ExceptionProcessing;
 
-namespace Catalog.API.Filters
+namespace catalog.service.Filters
 {
     public class CatalogCustomExceptionFilter : IExceptionFilter
     {
@@ -45,26 +45,26 @@ namespace Catalog.API.Filters
             if (exceptionType == typeof(UnauthorizedAccessException))
             {
                 context.Result = new UnauthorizedResult();
-                context.HttpContext.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 context.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = ServiceName;
             }
             else if (exceptionType == typeof(ForbidResult))
             {
                 context.Result = new ForbidResult(message);
-                context.HttpContext.Response.StatusCode = (int) HttpStatusCode.Forbidden;
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
                 context.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = ServiceName;
             }
             else if (exceptionType == typeof(NotFoundResult))
             {
                 context.Result = new NotFoundResult();
-                context.HttpContext.Response.StatusCode = (int) HttpStatusCode.NotFound;
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.NotFound;
                 context.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = ServiceName;
             }
             else
             {
                 context.Result = new ObjectResult(jsonErrorResponse);
                 context.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = message;
-                context.HttpContext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             }
 
             context.ExceptionHandled = true;

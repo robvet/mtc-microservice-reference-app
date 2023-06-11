@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Catalog.API
+namespace catalog.service
 {
     public class Program
     {
@@ -39,7 +39,7 @@ namespace Catalog.API
                     webBuilder.UseKestrel();
 
                     webBuilder.CaptureStartupErrors(true);
-                    
+
 
                     webBuilder.ConfigureAppConfiguration((builderContext, config) =>
                     {

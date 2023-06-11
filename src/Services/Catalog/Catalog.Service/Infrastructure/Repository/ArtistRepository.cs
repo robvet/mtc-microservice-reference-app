@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Catalog.API.Contracts;
-using Catalog.API.Domain.Entities;
-using Catalog.API.Infrastructure.DataStore;
+using catalog.service.Contracts;
+using catalog.service.Domain.Entities;
+using catalog.service.Infrastructure.DataStore;
 
-namespace Catalog.API.Infrastructure.Repository
+namespace catalog.service.Infrastructure.Repository
 {
     public class ArtistRepository : BaseRepository<Artist>, IArtistRepository
     {

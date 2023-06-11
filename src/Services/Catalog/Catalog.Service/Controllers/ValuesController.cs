@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Catalog.API.Controllers
+namespace catalog.service.Controllers
 {
     [ApiController]
     [ApiExplorerSettings(IgnoreApi = true)]

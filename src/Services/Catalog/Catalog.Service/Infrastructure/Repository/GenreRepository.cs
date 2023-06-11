@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Catalog.API.Contracts;
-using Catalog.API.Domain.Entities;
-using Catalog.API.Infrastructure.DataStore;
+using catalog.service.Contracts;
+using catalog.service.Domain.Entities;
+using catalog.service.Infrastructure.DataStore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Catalog.API.Infrastructure.Repository
+namespace catalog.service.Infrastructure.Repository
 {
     public class GenreRepository : BaseRepository<Genre>, IGenreRepository
     {
@@ -40,7 +40,7 @@ namespace Catalog.API.Infrastructure.Repository
 
         //public async Task<List<Genre>> GetAllAndAlbums(string correlationToken)
         //{
-            
+
         //    return Get().Include(x => x.Products).ToList();
         //}
 

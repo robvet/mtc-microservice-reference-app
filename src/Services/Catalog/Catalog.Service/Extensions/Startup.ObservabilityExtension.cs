@@ -1,11 +1,11 @@
 ﻿using System;
-using Catalog.API.TelemetryInitializer;
+using catalog.service.TelemetryInitializer;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Catalog.API.Extensions
+namespace catalog.service.Extensions
 {
     public static class ObservabilityExtension
     {
@@ -17,7 +17,7 @@ namespace Catalog.API.Extensions
             {
                 x.InstrumentationKey = configuration["aiinstrumkeysecret"] ??
                                        throw new ArgumentNullException("aiinstrumkeysecret",
-                                           "AppInsights instrumentation key for Basket missing");
+                                           "AppInsights instrumentation key for Catalog is missing");
                 x.DeveloperMode = true;
             });
 

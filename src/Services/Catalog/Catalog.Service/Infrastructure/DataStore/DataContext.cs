@@ -1,8 +1,10 @@
 ﻿using System;
-using Catalog.API.Domain.Entities;
+using catalog.service.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Catalog.API.Infrastructure.DataStore
+
+
+namespace catalog.service.Infrastructure.DataStore
 {
     public class DataContext : DbContext
     {
@@ -98,16 +100,18 @@ namespace Catalog.API.Infrastructure.DataStore
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
             });
 
-            modelBuilder.Entity<Artist>(entity => 
-            { 
+            modelBuilder.Entity<Artist>(entity =>
+            {
                 entity.HasKey(e => e.ArtistId);
+                entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
             });
 
-            modelBuilder.Entity<Status>(entity => 
+            modelBuilder.Entity<Status>(entity =>
             {
-                entity.HasKey(e => e.StatusId); 
+                entity.HasKey(e => e.StatusId);
+                entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
             });
@@ -115,6 +119,7 @@ namespace Catalog.API.Infrastructure.DataStore
             modelBuilder.Entity<Medium>(entity =>
             {
                 entity.HasKey(e => e.MediumId);
+                entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
             });
@@ -122,13 +127,15 @@ namespace Catalog.API.Infrastructure.DataStore
             modelBuilder.Entity<Condition>(entity =>
             {
                 entity.HasKey(e => e.ConditionId);
+                entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
             });
 
-                        modelBuilder.Entity<Genre>(entity => 
-            { 
+            modelBuilder.Entity<Genre>(entity =>
+            {
                 entity.HasKey(e => e.GenreId);
+                entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
             });

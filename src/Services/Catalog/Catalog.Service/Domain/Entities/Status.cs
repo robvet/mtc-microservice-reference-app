@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace Catalog.API.Domain.Entities
+namespace catalog.service.Domain.Entities
 {
+    [Index(nameof(Name), IsUnique = true)]
     public class Status
     {
         public Status()

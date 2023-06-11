@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using catalog.service.Infrastructure.DataStore;
-using Catalog.API.Contracts;
-using Catalog.API.Domain.Entities;
-using Catalog.API.Events;
+using catalog.service.Contracts;
+using catalog.service.Domain.Entities;
 using EventBus.Bus;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Catalog.API.Domain.BusinessServices
+namespace catalog.service.Domain.BusinessServices
 {
     public class CatalogBusinessServices : ICatalogBusinessServices
     {
@@ -41,7 +36,7 @@ namespace Catalog.API.Domain.BusinessServices
         {
             return await _ProductRepository.GetAll(correlationToken);
         }
-  
+
         public async Task<Product> GetMusic(string correlationToken, int albumId)
         {
             return await _ProductRepository.GetById(albumId, correlationToken);
@@ -156,32 +151,5 @@ namespace Catalog.API.Domain.BusinessServices
 
         //    return productChangedEvent;
         //}
-
-        public async Task SeedDatabase(string correlationToken)
-        {
-           
-            try
-            {
-                await _ProductRepository.ClearData(correlationToken);
-             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error clearing product database");
-
-                throw;
-            }
-
-            try
-            {
-                await _ProductRepository.SeedData(correlationToken, _webHostEnvironment);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error seeding product database");
-
-                throw;
-            }
-            
-        }
     }
 }

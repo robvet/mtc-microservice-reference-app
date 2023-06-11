@@ -1,7 +1,7 @@
 ﻿using System;
 using EventBus.Events;
 
-namespace Catalog.API.Events
+namespace catalog.service.Events
 {
     public class ProductChangedEvent : MessageEvent
     {

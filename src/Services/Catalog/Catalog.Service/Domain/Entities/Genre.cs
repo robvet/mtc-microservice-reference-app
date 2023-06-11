@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace Catalog.API.Domain.Entities
+namespace catalog.service.Domain.Entities
 {
-    [Index(nameof(Name))]
+    [Index(nameof(Name), IsUnique = true)]
     public class Genre
     {
         public Genre()

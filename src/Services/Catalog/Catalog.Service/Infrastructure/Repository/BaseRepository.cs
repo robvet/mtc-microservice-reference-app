@@ -2,22 +2,21 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using catalog.service.Contracts;
 using catalog.service.Infrastructure.DataStore;
-using Catalog.API.Contracts;
-using Catalog.API.Infrastructure.DataStore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Catalog.API.Infrastructure.Repository
+namespace catalog.service.Infrastructure.Repository
 {
     public abstract class BaseRepository<T> : IRepository<T> where T : class
     {
         private readonly DataContext _ctx;
         protected readonly DataContext Context;
-        
+
 
         // Used for testing if we explicitly pass in DbContext object
         protected BaseRepository(DataContext ctx)
@@ -149,7 +148,7 @@ namespace Catalog.API.Infrastructure.Repository
         {
             return await Task.Run(() => _ctx.Set<T>().Where(predicate).AsQueryable());
         }
-             
+
         /// <summary>
         ///     Leverages Entity Framework's Find method.
         ///     Find will first attempt to find given domain class
@@ -178,74 +177,28 @@ namespace Catalog.API.Infrastructure.Repository
             _ctx.Entry(entity).State = EntityState.Modified;
         }
 
-        /// <summary>
-        /// Seed database with prouductinitialier
-        /// </summary>
-        /// <param name="correlationToken"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        public async Task SeedData(string correlationToken, IWebHostEnvironment webHostEnvironment)
-        {
-            try
-            {
-                //var productInitailizer = new ProductDatabaseInitializer(_ctx, webHostEnvironment);
-                //await productInitailizer.InitializeDatabaseAsync();
+        ///// <summary>
+        ///// Seed database with prouductinitialier
+        ///// </summary>
+        ///// <param name="correlationToken"></param>
+        ///// <returns></returns>
+        ///// <exception cref="Exception"></exception>
+        //public async Task SeedData(string correlationToken, IWebHostEnvironment webHostEnvironment)
+        //{
+        //    try
+        //    {
+        //        //var productInitailizer = new ProductDatabaseInitializer(_ctx, webHostEnvironment);
+        //        //await productInitailizer.InitializeDatabaseAsync();
 
-                new ProductDatabaseInitializer(_ctx, webHostEnvironment).InitializeDatabaseAsync().Wait();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Could not run Product Initializer : {ex.Message}");
-            }
-        }
+        //        new ProductDatabaseInitializer(_ctx, webHostEnvironment).InitializeDatabaseAsync().Wait();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception($"Could not run Product Initializer : {ex.Message}");
+        //    }
+        //}
 
 
-        public async Task ClearData(string correlationToken)
-        {
-            try
-            {
-                // Delete data from all tables
-                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Products");
-                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Artists");
-                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Genres");
-                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Conditions");
-                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Mediums");
-                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Descriptions");
-                await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Status");
-            }
-            catch (DbUpdateException ex)
-            {
-                throw new Exception($"Could not Clear Data in BaseRepository : {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                //var traveredMessage = ExceptionHandlingUtilties.TraverseException(ex);
-                //throw new Exception($"Could not Save in BaseRepository : {traveredMessage}");
-                throw new Exception($"Could not Clear Data in BaseRepository : {ex.Message}");
-            }
 
-            try
-            {
-                // Reset identity columns
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Products', RESEED, 1);");
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Artists', RESEED, 1);");
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Genres', RESEED, 1);");
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Conditions', RESEED, 1);");
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Mediums', RESEED, 1);");
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Descriptions', RESEED, 1);");
-                await _ctx.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Status', RESEED, 1);");
-            }
-            catch (DbUpdateException ex)
-            {
-                throw new Exception($"Could not reset identity value in BaseRepository : {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                //var traveredMessage = ExceptionHandlingUtilties.TraverseException(ex);
-                //throw new Exception($"Could not Save in BaseRepository : {traveredMessage}");
-                throw new Exception($"Could not reset identity value in BaseRepository : {ex.Message}");
-            }
-
-        }
     }
 }

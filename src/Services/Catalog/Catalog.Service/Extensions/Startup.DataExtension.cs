@@ -1,10 +1,10 @@
 using System;
-using Catalog.API.Infrastructure.DataStore;
+using catalog.service.Infrastructure.DataStore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Catalog.API.Extensions
+namespace catalog.service.Extensions
 {
     public static class DataExtension
     {
