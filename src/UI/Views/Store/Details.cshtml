@@ -6,24 +6,16 @@
     ViewBag.Title = "Song - " + Model.Title;
 }
 
-<h2>@Model.Title</h2>
+<div class="genre" style="margin-bottom: 80px">
 
-@*
-    <p>
-        @if (!string.IsNullOrEmpty(Model.AlbumArtUrl))
-        {
-            <img alt="@Model.Title" src="@Url.Content(Model.AlbumArtUrl)" />
-        }
-        else
-        {
-            @*<img alt="@Model.Title" src="~/images/placeholder.png" class="img-responsive" />
-        }
-    </p>
-*@
+    <div style="margin-bottom: 40px; margin-top: 80px">
+        <h1>
+            @Model.Title.ToUpper()
+        </h1>
+    </div>
 
 <p>
     @{
-        //var imageLink = $"~/Images/{Model.AlbumArtUrl}";
         var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(Model.MediumName, Model.AlbumArtUrl)}";
     }
     <img alt="@Model.Title" src="@Url.Content(imageLink)" />
@@ -31,21 +23,45 @@
 
 
 
-<div id="album-details">
-    <p>
-        <em>Genre:</em>
-        @Model.GenreName
-    </p>
+<div id="album-details" style="font-size:larger">
     <p>
         <em>Artist:</em>
         @Model.ArtistName
     </p>
+
+    <p>
+        <em>Genre:</em>
+        @Model.GenreName
+    </p>
+   
     <p>
         <em>Price:</em>
-        <label>@Model.Price</label>
- 
+        <label>@($"${Model.Price:F2}")</label>
+        @*<label>@Model.Price</label>*@
     </p>
-    <p class="button">
+
+    <p>
+        <em>Released:</em>
+        @Model.ReleaseYear
+    </p>
+
+    <p>
+        <em>UPC Code:</em>
+        @Model.Upc
+    </p>
+
+    @if (Model.ParentalCaution)
+    {
+            <p style="" margin-bottom: 30px; margin-top: 30px">
+            @{
+                var imageAdvisory = $"~/Images/advisory2.png";
+                <img alt="@Model.Title" src="@Url.Content(imageAdvisory)" />
+             }
+        </p>
+    }
+
+
+        <p class="button" style="font-size:large">
         <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.Id">Add to cart</a>
     </p>
 </div>
