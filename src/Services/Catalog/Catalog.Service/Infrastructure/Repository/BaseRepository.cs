@@ -197,8 +197,5 @@ namespace catalog.service.Infrastructure.Repository
         //        throw new Exception($"Could not run Product Initializer : {ex.Message}");
         //    }
         //}
-
-
-
     }
 }

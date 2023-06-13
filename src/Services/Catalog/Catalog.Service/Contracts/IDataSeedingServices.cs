@@ -4,6 +4,6 @@ namespace catalog.service.Contracts
 {
     public interface IDataSeedingServices
     {
-        Task SeedDatabase(string correlationToken);
+        Task SeedDatabase(bool dropDatabase, string correlationToken);
     }
 }

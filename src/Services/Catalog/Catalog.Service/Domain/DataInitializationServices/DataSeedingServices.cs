@@ -16,31 +16,32 @@ namespace catalog.service.Domain.DataInitializationServices
         private readonly DataContext _dataContext;
         private readonly IProductRepository _productRepository;
         private readonly ILogger<DataSeedingServices> _logger;
-        private readonly IDistributedCacheRepository _distributedCacheRepository;
+        //private readonly IDistributedCacheRepository _distributedCacheRepository;
         private readonly ConnectionMultiplexer _redisCache;
 
         public DataSeedingServices(DataContext dataContext,
                         IWebHostEnvironment webHostEnvironment,
                         IProductRepository productRepository,
                         ILogger<DataSeedingServices> logger,
-                        IDistributedCacheRepository distributedCacheRepository,
+                        //IDistributedCacheRepository distributedCacheRepository,
                         ConnectionMultiplexer redis)
         {
             _dataContext = dataContext;
             _webHostEnvironment = webHostEnvironment;
             _productRepository = productRepository;
             _logger = logger;
-            _distributedCacheRepository = distributedCacheRepository;
+            //_distributedCacheRepository = distributedCacheRepository;
             _redisCache = redis;
         }
 
-        public async Task SeedDatabase(string correlationToken)
+        public async Task SeedDatabase(bool dropDatabase, string correlationToken)
         {
             try
             {
                 new ProductDatabaseInitializer(_dataContext,
                                                _webHostEnvironment,
-                                               _distributedCacheRepository,
+                                               //_distributedCacheRepository,
+                                               dropDatabase,
                                                _redisCache).InitializeDatabaseAsync().Wait();
             }
             catch (Exception ex)

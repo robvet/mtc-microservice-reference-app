@@ -15,7 +15,6 @@ namespace catalog.service.Domain.BusinessServices
         private readonly IGenreRepository _genreRepository;
         private readonly ILogger<CatalogBusinessServices> _logger;
         private readonly IProductRepository _ProductRepository;
-        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public CatalogBusinessServices(IProductRepository ProductRepository,
             IGenreRepository genreRepository,
@@ -29,7 +28,6 @@ namespace catalog.service.Domain.BusinessServices
             _artistRepository = artistRepository;
             _eventBusPublisher = eventBusPublisher;
             _logger = logger;
-            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<List<Product>> GetAllMusic(string correlationToken)

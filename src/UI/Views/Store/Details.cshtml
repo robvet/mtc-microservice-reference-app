@@ -8,13 +8,13 @@
 
 <div class="genre" style="margin-bottom: 80px">
 
-    <div style="margin-bottom: 40px; margin-top: 80px">
+    <div style="margin-bottom: 30px; margin-top: 80px">
         <h1>
             @Model.Title.ToUpper()
         </h1>
     </div>
 
-<p>
+<p style="align-content:center">
     @{
         var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(Model.MediumName, Model.AlbumArtUrl)}";
     }
@@ -22,8 +22,8 @@
 </p>
 
 
-
 <div id="album-details" style="font-size:larger">
+
     <p>
         <em>Artist:</em>
         @Model.ArtistName
@@ -61,7 +61,7 @@
     }
 
 
-        <p class="button" style="font-size:large">
+        <p class="button" style="font-size:large; margin-top: 30px">
         <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.Id">Add to cart</a>
     </p>
 </div>

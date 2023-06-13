@@ -1,12 +1,11 @@
-﻿
-@*@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminMenu.cshtml";
-}*@
+﻿@model MusicStore.Helper.DropDatabaseHelperClass
 
-<h1>Database Management</h1>
+@{
+    ViewData["Title"] = "Data Management";
+    //Layout = "~/Views/Shared/_AdminMenu.cshtml";
+}
 
-@model bool
+<h1>Data Management</h1>
 
 @*<style>
     div {
@@ -20,7 +19,7 @@
 
 
     <form method="post">
-    <div style="background-color: lightgrey; border-style: solid; border: 15px solid green; padding: 50px;margin: 20px;">
+    <div style="background-color: lightgrey; border-style: solid; border: 15px solid green; padding: 50px;margin: 20px;font-size:x-large">
            @* <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="generateDatabaseCheckbox" name="generateDatabaseCheckbox">
                 <label class="form-check-label" for="generateDatabaseCheckbox">
@@ -40,7 +39,24 @@
                 </label>
             </div>*@
             <p><strong>Click here to genereate the Product database</strong></p>
-            <button type="submit" asp-action="Create" class="btn btn-primary">Create</button>
+            <p>
+            <label for="generateDatabaseCheckbox">Drop Database?   </label>
+            <input class="form-check-input" type="checkbox" asp-for="DropDatabase" id="dropDatabase" name="dropDatabase" style="transform: scale(2.0); margin-left: 10px;" value="true">
+            <input type="hidden" asp-for="DropDatabase" value="false"/>
+
+@*            <div class="checkbox">
+                <label asp-for="DropDatabase">Drop Database?</label>
+                <input asp-for="DropDatabase" style="transform: scale(2.0); margin-left: 20px;" value="true" />
+            </div>
+*@
+            </p>
+            <p class="button" style="font-size:larger">
+            @*<a asp-controller="DatabaseManagement" asp-action="Create" asp-route-id="@Model">Add to cart</a>*@
+
+            <button type="submit" asp-action="Create" asp-route-id="@Model" class="btn btn-primary">Create</button>
+            </p>
         </div>
-    </form>
+    </form>How do i put value of checkbox 
+
+
 

@@ -270,11 +270,11 @@ namespace catalog.service.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [HttpPost("SeedDatabase", Name = "SeedDataBase")]
-        public async Task<IActionResult> SeedDatabase([FromHeader(Name = "x-correlationToken")] string correlationToken)
+        public async Task<IActionResult> SeedDatabase([FromQuery] bool dropDatabase, [FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
-            await _dataSeedingService.SeedDatabase(correlationToken);
+            await _dataSeedingService.SeedDatabase(dropDatabase, correlationToken);
 
             return StatusCode(StatusCodes.Status204NoContent);
         }

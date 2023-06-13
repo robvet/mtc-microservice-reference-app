@@ -75,19 +75,23 @@ namespace MusicStore.Areas.Admin.Controllers
 
 
 
+            var dropDatabaseHelperClass = new DropDatabaseHelperClass();
 
 
 
-
-            return View();
+            return View(dropDatabaseHelperClass);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(IFormCollection collection)
+        //public async Task<ActionResult> Create(IFormCollection collection)
+        public async Task<ActionResult> Create(DropDatabaseHelperClass dropDatabaseHelperClass)
         {
-                        
-            var x = await _IRestClient.PostAsync<ProductDto>($"{_baseUrl}/SeedDatabase");
+            //var parameter = collection["dropDatabase"];
+            var isChecked = dropDatabaseHelperClass.DropDatabase;
+
+
+            var x = await _IRestClient.PostAsync<ProductDto>($"{_baseUrl}/SeedDatabase/isChecked");
           
             return View("Index");
         }

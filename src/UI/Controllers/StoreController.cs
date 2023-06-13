@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MusicStore.Helper;
 using MusicStore.Models;
+using static MusicStore.Helper.GenreParametersHelperClass;
 
 namespace MusicStore.Controllers
 {
@@ -36,34 +37,16 @@ namespace MusicStore.Controllers
         //public async Task<IActionResult> Browse(int id)
         public async Task<IActionResult> Browse(GenreParameters parameters)
         {
-            var id = 1;
-            
-            var includeAlbums = true;
-
-
-            var genre = parameters.genreName;
+            var genre = parameters;
 
             var result = await _IRestClient.GetAsync<List<ProductDto>>($"{_baseUrl}/GetMusicForGenres/{parameters.genreid}");
-
-            
-
-
-
-
-            //var genre = await _IRestClient.GetAsync<GenreDto>($"{_baseUrl}/Genre/{id}?includeAlbums={includeAlbums}");
-
 
             // Retrieve Genre genre and its Associated associated Albums albums from database
             //var result = await _IRestClient.GetAsync<GenreDto>($"{_baseUrl}/Genre/{id}?includeAlbums={includeAlbums}");
             //var result = await _IRestClient.GetAsync<List<ProductDto>>($"{_baseUrl}/GetMusicForGenres/{id}");
 
-
-            //var model = new StoreModelHelperClass { GenreName = genre.Data.Name, Result = result.Data };
-            var model = new StoreModelHelperClass { GenreName = genre, Result = result.Data };
+            var model = new StoreModelHelperClass { GenreName = genre.genreName, Result = result.Data };
             return View(model);
-
-
-            //return View(result.Data);
         }
 
         public async Task<IActionResult> Details(int id)
@@ -77,12 +60,6 @@ namespace MusicStore.Controllers
             //}
 
             return View(result.Data);
-        }
-
-        public class GenreParameters
-        {
-            public int genreid { get; set; }
-            public string genreName { get; set; }
         }
     }
 }

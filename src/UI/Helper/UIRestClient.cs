@@ -67,19 +67,9 @@ namespace MusicStore.Helper
 
 
 
-
-
-
-
-
-
             // TODO remove
             _client.DefaultRequestHeaders.Remove("x-correlationToken");
             _client.DefaultRequestHeaders.Add("x-correlationToken", "1234");
-
-
-
-
 
 
 

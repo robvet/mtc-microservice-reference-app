@@ -13,7 +13,6 @@ using catalog.service.Infrastructure.DataStore;
 using catalog.service.Contracts;
 using StackExchange.Redis;
 using Newtonsoft.Json;
-using Microsoft.Extensions.Hosting;
 
 namespace catalog.service.Domain.DataInitializationServices
 
@@ -28,10 +27,11 @@ namespace catalog.service.Domain.DataInitializationServices
         private IDatabase _redisDatabase;
 
         // Price generation
-        private readonly int lowPrice = 5000; // $50.00
-        private readonly int highPrice = 25000; // $250.00
-        private readonly decimal highValuePercentage = 0.75m; // 75%
+        private readonly int _lowPrice = 5000; // $50.00
+        private readonly int _highPrice = 25000; // $250.00
+        private readonly decimal _highValuePercentage = 0.75m; // 75%
         private readonly decimal highValuePrice; 
+        private readonly bool _dropDatabase;
 
 
         const string GENRE = "genres.csv";
@@ -44,7 +44,7 @@ namespace catalog.service.Domain.DataInitializationServices
 
         public ProductDatabaseInitializer(DataContext context, 
                                           IWebHostEnvironment webHostEnvironment,
-                                          IDistributedCacheRepository distributedCacheRepository,
+                                          bool dropDatabase,
                                           ConnectionMultiplexer redis)
         {
             _context = context;
@@ -60,11 +60,10 @@ namespace catalog.service.Domain.DataInitializationServices
 
             _redisMultiplexer = redis;
 
-            highValuePrice = highValuePercentage * (highPrice / 100);
+            highValuePrice = _highValuePercentage * (_highPrice / 100);
+
+            _dropDatabase = dropDatabase;
         }
-
-        //public async Task InitializeDatabaseAsync(IServiceScope serviceScope)
-
 
         public async Task InitializeDatabaseAsync()
         {
@@ -84,7 +83,7 @@ namespace catalog.service.Domain.DataInitializationServices
                 _logger.LogInformation("Database already exists");
             }
 
-            await ClearData();    
+            await ClearData(_dropDatabase);    
 
             // Seed lookup data
             await SeedLookupData<Genre>(GENRE);
@@ -95,24 +94,8 @@ namespace catalog.service.Domain.DataInitializationServices
 
             // Seed dbProducts
             await SeedProductData();
-
-
-            //// Determine if database has been seeded by checking for any data in the Products table
-            //if (!_context.Products.Any())
-            //{
-            //    // Seed lookup data
-            //    await DataSeedingServices<Genre>(GENRE);
-            //    await DataSeedingServices<Medium>(MEDIUM);
-            //    await DataSeedingServices<Status>(STATUS);
-            //    await DataSeedingServices<Condition>(CONDITION);
-            //    await DataSeedingServices<Artist>(ARTIST);
-
-            //    // Seed dbProducts
-            //    await SeedProductData();
-            //}
         }
 
-        //public async Task DataSeedingServices<T>(IEnumerable<T> data) where T : class
         private async Task SeedLookupData<T>(string dataFile) where T : class
         {
             try
@@ -178,9 +161,6 @@ namespace catalog.service.Domain.DataInitializationServices
             List<Product> dbProducts = new();
             List<ProductReadModel> readModels = new();
 
-            //List<KeyValuePair<Guid, ProductReadModel>> keyValuePairs = new();//  List<KeyValuePair<Guid, ProductReadModel>>();
-
-            //var keyValuePairs = new List<KeyValuePair<Guid, ProductReadModel>>();
             var keyValuePairs = new List<KeyValuePair<RedisKey, RedisValue>>();
 
             int counter = 0;
@@ -231,7 +211,7 @@ namespace catalog.service.Domain.DataInitializationServices
                         Genre = _context.Genres.SingleOrDefault(g => g.Name == NoCommaValidation(   itemValues[4])) ?? throw new Exception($"Missing lookup value from 'Genre' {itemValues[4]} on record {counter}"),
 
                         // Round price and cost to 2 decimal places
-                        Price = GeneratePrice(lowPrice, highPrice),
+                        Price = GeneratePrice(_lowPrice, _highPrice),
                         
                         Artist = await _context.Artists.SingleOrDefaultAsync(a => a.Name == NoCommaValidation(itemValues[0])) ?? throw new Exception($"Missing lookup value from 'Artits' {itemValues[0]} on record {counter}"),
                         Status = await _context.Status.SingleOrDefaultAsync(s => s.Name == NoCommaValidation(itemValues[5])) ?? throw new Exception($"Missing lookup value from 'Status' {itemValues[5]} on record {counter}"),
@@ -260,10 +240,6 @@ namespace catalog.service.Domain.DataInitializationServices
                         Title = product.Title,
                         Price = product.Price,
                     };
-
-
-                    //KeyValuePair<Guid, ProductReadModel>[] keyValuePairs = new KeyValuePair<Guid, ProductReadModel>[];
-
 
                     // Add items to the list
                     keyValuePairs.Add(new KeyValuePair<RedisKey,RedisValue>(product.ProductId.ToString(), JsonConvert.SerializeObject(productReadModel)));
@@ -394,31 +370,6 @@ namespace catalog.service.Domain.DataInitializationServices
             return false;
         }
 
-        //// Set medium graphic
-        //private static string SetMediumGraphic(string medium)
-        //{
-        //    string graphicName;
-        //    switch (medium)
-        //    {
-        //        case "EightTrack":
-        //            graphicName = "eighttrack.png";
-        //            break;
-        //        case "CD":
-        //            graphicName = "cd.jpg";
-        //            break;
-        //        case "CassetteTape":
-        //            graphicName = "cassette.jpg";
-        //            break;
-        //        case "Album":
-        //            graphicName = "album.jpg";
-        //            break;
-        //        default:
-        //            graphicName = "placeholder.png";
-        //            break;
-        //    }
-        //    return graphicName;
-        //}
-
         private static string NoCommaValidation(string cell)
         {
             if (cell.Contains(','))
@@ -428,8 +379,9 @@ namespace catalog.service.Domain.DataInitializationServices
             return cell;
         }
 
-        private async Task ClearData()
+        private async Task ClearData(bool dropDatabase)
         {
+            
             try
             {
                 // Delete data from all tables
@@ -450,6 +402,42 @@ namespace catalog.service.Domain.DataInitializationServices
                 //var traveredMessage = ExceptionHandlingUtilties.TraverseException(ex);
                 //throw new Exception($"Could not Save in BaseRepository : {traveredMessage}");
                 throw new Exception($"Could not Clear Data in BaseRepository : {ex.Message}");
+            }
+        
+
+            if (dropDatabase)
+            { 
+                try
+                {
+                    // Delete data from all tables
+                    await _context.Database.ExecuteSqlRawAsync("DROP TABLE [dbo].Descriptions");
+                    await _context.Database.ExecuteSqlRawAsync("DROP TABLE [dbo].Products");
+                    await _context.Database.ExecuteSqlRawAsync("DROP TABLE [dbo].Genres");
+                    await _context.Database.ExecuteSqlRawAsync("DROP TABLE [dbo].Artists");
+                    await _context.Database.ExecuteSqlRawAsync("DROP TABLE [dbo].Conditions");
+                    await _context.Database.ExecuteSqlRawAsync("DROP TABLE [dbo].Mediums");
+                    await _context.Database.ExecuteSqlRawAsync("DROP TABLE [dbo].Status");
+                }
+                catch (DbUpdateException ex)
+                {
+                    throw new Exception($"Could not Drop Databases : {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    //var traveredMessage = ExceptionHandlingUtilties.TraverseException(ex);
+                    //throw new Exception($"Could not Save in BaseRepository : {traveredMessage}");
+                    throw new Exception($"Could not Drop Databases : {ex.Message}");
+                }
+
+                // Recreate database an tables
+                try
+                {
+                    _context.Database.EnsureCreated();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Could recreate databases : {ex.Message}");
+                }
             }
 
             try
