@@ -7,7 +7,7 @@
 <p>
     Select from @Model.Count() genres:
 </p>
-<ul class="list-group">
+<ul class="list-group" style="width: 50%">
     @foreach (var genre in Model)
     {
         <li class="list-group-item"><a asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a></li>

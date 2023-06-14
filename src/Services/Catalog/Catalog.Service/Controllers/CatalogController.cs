@@ -107,14 +107,14 @@ namespace catalog.service.Controllers
         [ProducesResponseType(typeof(List<Product>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        [HttpGet("GetMusicForGenres/{genreId}", Name = "GetMusicForGenresRoute")]
+        [HttpGet("GetMusicForGenre/{genreId}", Name = "GetMusicForGenreRoute")]
         public async Task<IActionResult> GetMusicForGenere([FromHeader(Name = "x-correlationToken")]
              string correlationToken, int genreId)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             Guard.ForLessEqualZero(genreId, "GenreId");
 
-            var products = await _catalogBusinessServices.GetMusicForGenres(genreId, correlationToken);
+            var products = await _catalogBusinessServices.GetMusicForGenre(genreId, correlationToken);
 
             if (products == null)
                 return BadRequest("Products do not exist");
@@ -127,19 +127,17 @@ namespace catalog.service.Controllers
         /// <summary>
         ///     Gets All Genres
         /// </summary>
-        /// <param name="includeAlbums">Optionally include Albums associated with each genre</param>
         /// <returns>List of all Genre Types</returns>
         [ProducesResponseType(typeof(List<GenreDto>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [HttpGet("Genres", Name = "GetAllGenreRoute")]
-        public async Task<IActionResult> GetAllGenres([FromQuery] bool includeAlbums,
-            [FromHeader(Name = "x-correlationToken")]
+        public async Task<IActionResult> GetAllGenres([FromHeader(Name = "x-correlationToken")]
             string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
-            var genres = await _catalogBusinessServices.GetAllGenres(correlationToken, includeAlbums);
+            var genres = await _catalogBusinessServices.GetAllGenres(correlationToken);
 
             //if (genres == null || genres.Count < 1)
             if (genres == null)
@@ -158,14 +156,13 @@ namespace catalog.service.Controllers
         [ProducesResponseType(typeof(GenreDto), 200)]
         [ProducesResponseType(400)]
         [HttpGet("Genre/{id}", Name = "GetGenreRoute")]
-        public async Task<IActionResult> GetGenre(int id, [FromQuery] bool includeAlbums,
-            [FromHeader(Name = "x-correlationToken")]
+        public async Task<IActionResult> GetGenre(int id, [FromHeader(Name = "x-correlationToken")]
             string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             Guard.ForLessEqualZero(id, "GenreId");
 
-            var genre = await _catalogBusinessServices.GetGenre(id, correlationToken, includeAlbums);
+            var genre = await _catalogBusinessServices.GetGenre(id, correlationToken);
 
             return genre == null
                 ? BadRequest("Genre does not exist")
@@ -191,6 +188,31 @@ namespace catalog.service.Controllers
                 return BadRequest("Genres do not exist");
 
             return new ObjectResult(Mapper.MapToArtistDto(artists));
+        }
+
+        /// <summary>
+        /// Get music items by genre
+        /// </summary>
+        /// <param name="genreId">genreId for music -- cannot be zero or negative</param>
+        /// <returns>All Music Products for specific GenreId</returns>
+        [ProducesResponseType(typeof(List<Product>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [HttpGet("GetMusicForArtist/{artistId}", Name = "GetMusicForArtistRoute")]
+        public async Task<IActionResult> GetMusicForArtist([FromHeader(Name = "x-correlationToken")]
+             string correlationToken, int artistId)
+        {
+            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+            Guard.ForLessEqualZero(artistId, "ArtistId");
+
+            var products = await _catalogBusinessServices.GetMusicForArtist(artistId, correlationToken);
+
+            if (products == null)
+                return BadRequest("Products do not exist");
+            else if (products.Count < 1)
+                return StatusCode(StatusCodes.Status204NoContent);
+            else
+                return new ObjectResult(Mapper.MapToMusicDto(products));
         }
 
         /// <summary>

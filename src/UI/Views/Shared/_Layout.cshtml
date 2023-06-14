@@ -43,6 +43,7 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     @await Component.InvokeAsync("GenreMenu")
+                    @await Component.InvokeAsync("ArtistMenu")
                     @await Component.InvokeAsync("CartSummary")
                 </ul>
                 @*@await Html.PartialAsync("_LoginPartial")*@

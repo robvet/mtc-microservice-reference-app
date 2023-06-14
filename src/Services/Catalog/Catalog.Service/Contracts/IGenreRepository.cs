@@ -6,8 +6,8 @@ namespace catalog.service.Contracts
 {
     public interface IGenreRepository : IRepository<Genre>
     {
-        Task<Genre> GetById(int id, string correlationToken, bool includeAlbums = false);
-        Task<List<Genre>> GetAll(string correlationToken, bool includeProducts);
+        Task<Genre> GetById(int id, string correlationToken);
+        Task<List<Genre>> GetAll(string correlationToken);
         Task<List<Genre>> GetAllAndAlbums(string correlationToken);
     }
 }

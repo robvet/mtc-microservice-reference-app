@@ -14,25 +14,22 @@ namespace catalog.service.Infrastructure.Repository
         {
         }
 
-        public async Task<Genre> GetById(int id, string correlationToken, bool includeAlbums = false)
+        public async Task<Genre> GetById(int id, string correlationToken)
         {
-            return includeAlbums
-                ? Get().Include(x => x.Products).SingleOrDefault(g => g.GenreId == id)
-                : await FindById(id);
+            return await FindById(id);
+
+            //return includeAlbums
+            //    ? Get().Include(x => x.Products).SingleOrDefault(g => g.GenreId == id)
+            //    : await FindById(id);
         }
 
-        public async Task<List<Genre>> GetAll(string correlationToken, bool includeProducts)
+        public async Task<List<Genre>> GetAll(string correlationToken)
         {
             // Important to return empty product list if no products exist
             // Avoids errors in UX
             if (IsEmpty())
             {
                 return new List<Genre>();
-            }
-
-            if (includeProducts)
-            {
-                return await Get().Include(x => x.Products).ToListAsync();
             }
 
             return await Get().ToListAsync();
@@ -58,7 +55,6 @@ namespace catalog.service.Infrastructure.Repository
         public async Task<Genre> GetGenreAndAlbums(string genre, string correlationToken)
         {
             return await Get().Include(x => x.Products).FirstOrDefaultAsync(x => x.Name == genre);
-            //return       Get().Include(x => x.Products).SingleOrDefault(x => x.Name == genre);
         }
     }
 }

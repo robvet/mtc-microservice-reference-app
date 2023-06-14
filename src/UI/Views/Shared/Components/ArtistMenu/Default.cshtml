@@ -1,0 +1,23 @@
+﻿@model List<ArtistDto>
+
+<li class="dropdown">
+    <a asp-area="" asp-controller="Store" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown">Artists <b class="caret"></b></a>
+    <ul class="dropdown-menu" style="overflow-y: auto; max-height: 600px;">
+        @if (Model != null)
+        {
+            @foreach (var artist in Model)
+            {
+                <li>
+                    @*<a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a>*@
+                    <a asp-area="" asp-controller="Store" asp-action="BrowseArtists" asp-route-artistId="@artist.ArtistId" asp-route-artistName="@artist.Name">@artist.Name</a>
+                </li>
+            }
+
+            <li class="divider"></li>
+            <li>
+                <a asp-area="" asp-controller="Store" asp-action="Artists">All Artists...</a>
+            </li>
+        }
+    </ul>
+</li>
+</li>

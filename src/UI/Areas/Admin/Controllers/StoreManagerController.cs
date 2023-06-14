@@ -47,10 +47,8 @@ namespace MusicStore.Areas.Admin.Controllers
         // GET: /StoreManager/Create
         public async Task<IActionResult> Create()
         {
-            var includeAlbums = false;
-
             var resultGenre =
-                await _IRestClient.GetAsync<List<GenreDto>>($"{_baseUrl}/Genres/?includeAlbums={includeAlbums}");
+                await _IRestClient.GetAsync<List<GenreDto>>($"{_baseUrl}/Genres");
             ViewBag.GenreId = new SelectList(resultGenre.Data, "GenreId", "Name");
 
             var resultArtist = await _IRestClient.GetAsync<List<ArtistDto>>($"{_baseUrl}/Artists/");

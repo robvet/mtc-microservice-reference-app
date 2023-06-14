@@ -45,23 +45,19 @@ namespace catalog.service.Domain.BusinessServices
             return await _ProductRepository.GetTopSellers(count, correlationToken);
         }
 
-        public async Task<List<Genre>> GetAllGenres(string correlationToken, bool includeAlbums = false)
+        public async Task<List<Genre>> GetAllGenres(string correlationToken)
         {
-            //return await _genreRepository.GetAll(correlationToken, includeAlbums);
-
-            return includeAlbums
-                ? await _genreRepository.GetAllAndAlbums(correlationToken)
-                    : await _genreRepository.GetAll(correlationToken, includeAlbums);
+            return await _genreRepository.GetAll(correlationToken);
         }
 
-        public async Task<List<Product>> GetMusicForGenres(int genreId, string correlationToken)
+        public async Task<List<Product>> GetMusicForGenre(int genreId, string correlationToken)
         {
             return await _ProductRepository.GetProductsForGenre(genreId, correlationToken);
         }
 
-        public async Task<Genre> GetGenre(int genreId, string correlationToken, bool includeAlbums = false)
+        public async Task<Genre> GetGenre(int genreId, string correlationToken)
         {
-            return await _genreRepository.GetById(genreId, correlationToken, includeAlbums);
+            return await _genreRepository.GetById(genreId, correlationToken);
         }
 
         public async Task<List<Artist>> GetAllArtists(string correlationToken)
@@ -72,6 +68,11 @@ namespace catalog.service.Domain.BusinessServices
         public async Task<Artist> GetArtist(int artistID, string correlationToken)
         {
             return await _artistRepository.GetById(artistID, correlationToken);
+        }
+
+        public async Task<List<Product>> GetMusicForArtist(int artistId, string correlationToken)
+        {
+            return await _ProductRepository.GetProductsForArtist(artistId, correlationToken);
         }
 
         //public async Task Add(string correlationToken, Product product)

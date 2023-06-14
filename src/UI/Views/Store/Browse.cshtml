@@ -1,6 +1,6 @@
 ﻿@using MusicStore.Helper
 
-@model StoreModelHelperClass
+@model StoreModelDto
 
 @{
     ViewBag.Title = "Browse Albums";
@@ -13,37 +13,30 @@
         </h1>
     </div>
 
-    <ul id="album-list" class="list-unstyled">
-        @foreach (var item in Model.Result)
+    
+        @if (Model.Result != null)
         {
-            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container" style="margin-bottom: 40px;margin-right:30px;">
-                <a asp-controller="Store" asp-action="Details" asp-route-id="@item.Id">
-                    @{
-                        //var imageLink = $"~/Images/{album.AlbumArtUrl}";
-                        var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(item.MediumName, item.AlbumArtUrl)}";
-                    }
-                    <img alt="@item.Title" src="@Url.Content(imageLink)" />
-                    <h3 class="control-label">@item.Title</h3>
-                    
-                    
-                  @*  <img src="~/Images/placeholder.png" class="img-responsive" />
-                    <h5 class="control-label">@album.Title</h5>*@
-                    
-                @*    
-                    @if (!string.IsNullOrEmpty(album.AlbumArtUrl))
-                    {
-                        <img alt="@album.Title" src="@Url.Content(@album.AlbumArtUrl)" />
-                    }
-                    else
-                    {
-                        <img alt="@album.Title" src="~/images/placeholder.png" class="img-responsive"/>
-                    }
-                    <h5 class="control-label">@album.Title</h5>
-                *@
-
-                </a>
-                
-            </li>
+            @foreach (var item in Model.Result)
+            {
+                <ul id="album-list" class="list-unstyled">
+                    <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container" style="margin-bottom: 40px;margin-right:30px;">
+                        <a asp-controller="Store" asp-action="Details" asp-route-id="@item.Id">
+                            @{
+                                var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(item.MediumName, item.AlbumArtUrl)}";
+                            }
+                        <img alt="@item.Title" src="@Url.Content(imageLink)" title="@item.ArtistName" />
+                            <h3 class="control-label">@item.Title</h3>
+                        </a>
+                    </li>
+                </ul>
+            }
         }
-    </ul>
+        else 
+        {
+            @*<li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container" style="margin-bottom: 40px;margin-right:30px;">*@
+            <div style="align-content:center">
+            <h1 class="control-label"><i>None Available</i></h1>
+            </div>
+        }
+    
 </div>
