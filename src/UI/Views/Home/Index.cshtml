@@ -9,9 +9,17 @@
 @*<div class="jumbotron" class=”divlogocolor”>*@
 @*https://stackoverflow.com/questions/3029422/how-to-auto-resize-an-image-while-maintaining-aspect-ratio*@
 
+
+
 <div class=”divlogocolor”>
-    <h1>@AppSettings.Value.SiteTitle</h1>
-    <img style='height: 100%; width: 100%; object-fit: cover;' src="@Url.Content("~/Images/retro.png")" />
+    <div style="display: flex;">
+        <h1>@AppSettings.Value.SiteTitle</h1>
+    </div>
+    @*<h1>@AppSettings.Value.SiteTitle</h1>*@
+        <img style='height: 100%; width: 100%; object-fit: cover; margin-top: 10px' src="@Url.Content("~/Images/retro.png")" />
+    @*<div style="display: flex; font-size:larger">
+        <h1 style="margin-left: auto;"><i>Music for the Astute Collector...</i></h1>
+    </div>*@
 </div>
 
 <hr />
@@ -19,7 +27,7 @@
 @if (Model != null)
 {
 
-    <div style="margin-bottom: 20px; margin-top: 80px; text-align:center;">
+    <div style="margin-bottom: 20px; margin-top: 40px; text-align:center;">
         <h1>
             <em>Top Selling Collector Items</em>
         </h1>
