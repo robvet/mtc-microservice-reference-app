@@ -43,15 +43,12 @@
     </script>
 }
 
-    <div style="margin-bottom: 20px; margin-top: 60px">
-        <h1>
-            REVIEW YOUR CART:
-        </h1>
-    </div>
-@*    <h3>
-        <em>Review</em> your cart:
-    </h3>
-*@    <div id="cart">
+<div style="margin-bottom: 30px; margin-top: 40px">
+    <h1 style="font-family: cursive">
+        REVIEW YOUR CART:
+    </h1>
+
+   <div id="cart">
         <p class="button">
             <a asp-controller="ShoppingCart" asp-action="RemoveCart">Delete Cart?</a>
         </p>
@@ -85,7 +82,7 @@
                     @item.QuanityOrdered
                 </td>
             <td style="text-align:center;">
-                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.ProductId">Remove from cart</a>
+                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.ProductId">Remove...</a>
                 </td>
             </tr>
         }
@@ -94,9 +91,11 @@
                 Total
             </td>
             <td id="cart-total">
-                <span style="font-weight:bolder;display:block;margin:0 auto;width:fit-content;">$@Model.CartTotal</span>
+                <span style="font-weight:bolder;display:block;margin:0 auto;width:fit-content;">@Model.CartTotal</span>
             </td>
-            <td></td>
+            <td>
+                <span style="font-weight:bolder;display:block;margin:0 auto;width:fit-content;">$@Model.ItemCount</span>
+            </td>
             <td></td>
         </tr>
     </table>

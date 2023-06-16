@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Basket.API.Dtos
+namespace Basket.Service.Dtos
 {
     [DataContract]
     public class MusicDto

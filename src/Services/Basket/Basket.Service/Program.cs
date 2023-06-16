@@ -4,7 +4,7 @@ using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-namespace Basket.API
+namespace Basket.Service
 {
     public class Program
     {

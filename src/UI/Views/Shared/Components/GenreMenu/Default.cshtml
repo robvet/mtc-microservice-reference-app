@@ -7,15 +7,20 @@
         {
             @foreach (var genre in Model)
             {
+                var Domain = "Genre";
+                var Id = genre.GenreId;
+                var Name = genre.Name;
+                
                 <li>
                     @*<a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a>*@
-                    <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-genreId="@genre.GenreId" asp-route-genreName="@genre.Name">@genre.Name</a>
+                    @*<a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-genreId="@genre.GenreId" asp-route-genreName="@genre.Name">@genre.Name</a>*@
+                    <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-Id="@Id" asp-route-Domain="@Domain" asp-route-Name="@Name">@Name</a>
                 </li>
             }
 
             <li class="divider"></li>
             <li>
-                <a asp-area="" asp-controller="Store" asp-action="Index">All Genres...</a>
+                <a asp-area="" asp-controller="Store" asp-action="Index" asp-route-Domain="Genres">All Genres...</a>
             </li>
         }
     </ul>

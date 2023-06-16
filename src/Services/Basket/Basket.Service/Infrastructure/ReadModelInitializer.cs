@@ -1,9 +1,8 @@
-﻿using Catalog.API.Domain.Entities;
+﻿
 using System.Linq;
 using System.IO;
 using SharedUtilities.Utilties;
-using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Logging;using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

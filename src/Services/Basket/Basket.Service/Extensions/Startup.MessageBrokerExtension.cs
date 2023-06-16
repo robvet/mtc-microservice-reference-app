@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Reflection;
-using Basket.API.Events;
+using Basket.Service.Events;
 using EventBus.Bus;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Basket.API.Extensions
+namespace Basket.Service.Extensions
 {
     public static class MessageBrokerExtension
     {

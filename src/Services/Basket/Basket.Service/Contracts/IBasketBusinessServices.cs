@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Basket.API.Domain;
-using Basket.API.Domain.Entities;
-using Basket.API.Dtos;
+using Basket.Service.Domain;
+using Basket.Service.Domain.Entities;
+using Basket.Service.Dtos;
 
-namespace Basket.API.Contracts
+namespace Basket.Service.Contracts
 {
     public interface IBasketBusinessServices
     {
-        Task<Domain.Entities.BasketEntity> GetBasketById(string basketId, string correlationToken);
-        Task<List<Domain.Entities.BasketEntity>> GetAllBaskets(string correlationToken);
-        Task<Domain.Entities.BasketEntity> AddItemToBasket(int productId, string correlationToken, string basketId);
-        Task<BasketItemRemovedEntity> RemoveItemFromBasket(string basketId, int productId, string correlationToken);
-        Task EmptyBasket(string basketId, string correlationToken, bool hasOrderBeenCreated);
+        Task<BasketEntity> GetBasketById(Guid basketId, string correlationToken);
+        Task<List<BasketEntity>> GetAllBaskets(string correlationToken);
+        //Task<BasketEntity> AddItemToBasket(int productId, Guid productGuidId, string correlationToken, string basketId);
+        //Task<BasketEntity> AddItemToBasket(int productId, string correlationToken, string basketId);
+        Task<BasketEntity> AddItemToBasket(Guid basketId, Guid ProductId, string correlationToken);
+        Task<BasketItemRemovedEntity> RemoveItemFromBasket(Guid basketId, Guid productId, string correlationToken);
+        Task EmptyBasket(Guid basketId, string correlationToken, bool hasOrderBeenCreated);
         Task<CheckoutEntity> Checkout(CheckoutDto checkout, string correlationToken);
         Task ProductChanged(ProductEntity productEntity, string correlationId);
     }

@@ -186,7 +186,8 @@ namespace catalog.service.Domain.DataInitializationServices
                     itemValues = item.Split(',');
                     product = new Product
                     {
-                        ProductId = Guid.NewGuid(),
+                        // Inline validation for missing 'ProductId' value
+                        ProductId =  itemValues[9].IsNullOrEmpty() ? throw new Exception($"Missing value from 'ProductId' on record {counter}") : new Guid(itemValues[9]),
 
                         ParentalCaution = SetParentalCaution(),
 

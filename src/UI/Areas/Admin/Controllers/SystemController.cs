@@ -4,17 +4,26 @@ using MusicStore.Helper;
 
 namespace MusicStore.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class SystemController : Controller
     {
-        // GET: SystemController
+        private readonly CookieLogic _cookieLogic;
+
+        public SystemController(CookieLogic cookieLogic)
+        {
+            _cookieLogic = cookieLogic;
+        }
+
+
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public IActionResult RemoveBasketCookie([FromServices] CookieLogic cookieLogic)
+        public IActionResult RemoveBasketCookie()
         {
-            cookieLogic.RemoveBasketId();
+            _cookieLogic.RemoveBasketId();
             return RedirectToAction("Home/Index");
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using EventBus.Events;
 
-namespace Basket.API.Events
+namespace Basket.Service.Events
 {
     public class CheckOutEvent : MessageEvent
     {

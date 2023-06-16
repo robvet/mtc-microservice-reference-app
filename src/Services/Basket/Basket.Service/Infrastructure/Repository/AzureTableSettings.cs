@@ -1,6 +1,6 @@
 using System;
 
-namespace Basket.API.Infrastructure.Repository
+namespace Basket.Service.Infrastructure.Repository
 {
     public class AzureTableSettings
     {

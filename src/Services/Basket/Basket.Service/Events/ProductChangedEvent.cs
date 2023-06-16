@@ -1,7 +1,7 @@
 ﻿using System;
 using EventBus.Events;
 
-namespace Basket.API.Events
+namespace Basket.Service.Events
 {
     public class ProductChangedEvent : MessageEvent
     {

@@ -7,9 +7,13 @@
         {
             @foreach (var artist in Model)
             {
+                var Domain = "Artist";
+                var Id = artist.ArtistId;
+                var Name = artist.Name;
+
                 <li>
                     @*<a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a>*@
-                    <a asp-area="" asp-controller="Store" asp-action="BrowseArtists" asp-route-artistId="@artist.ArtistId" asp-route-artistName="@artist.Name">@artist.Name</a>
+                    <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-Id="@Id" asp-route-Domain="@Domain" asp-route-Name="@Name">@Name</a>
                 </li>
             }
 

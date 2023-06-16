@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Basket.API.Domain.Entities;
+using Basket.Service.Domain.Entities;
 
-namespace Basket.API.Dtos
+namespace Basket.Service.Dtos
 {
     public class Mapper
     {
-        public static BasketDto MapToBasketDto(Domain.Entities.BasketEntity basketEntityEntity)
+        public static BasketDto MapToBasketDto(BasketEntity basketEntityEntity)
         {
             // Transform BasketEntity to BasketDto
             var basketDto = new BasketDto();
@@ -17,16 +17,21 @@ namespace Basket.API.Dtos
             foreach (var item in basketEntityEntity.Items)
             {
                 basketDto.CartItems.Add(new BasketItemDto
-                    {
-                        ProductId = item.ProductId,
-                        Name = item.Title,
-                        Artist = item.Artist,
-                        Genre = item.Genre,
-                        //ParentalCaution = item.ParentalCaution,
-                        QuanityOrdered = item.Quantity,
-                        Price = TransformUnitPrice(item.UnitPrice, item.Quantity),
+                {
+                    BasketParentId = item.BasketParentId,
+                    ProductId = item.ProductId,
+                    Title = item.Title,
+                    Artist = item.Artist,
+                    Genre = item.Genre,
+                    QuanityOrdered = item.Quantity,
+                    //Price = decimal.Parse(item.UnitPrice) * item.Quantity,
+                    Price = TransformUnitPrice(item.UnitPrice, item.Quantity),
+                    Condition = item.Condition,
+                    Status = item.Status,
+                    Medium = item.Medium,
+                    DateCreated = item.DateCreated
                 }
-                );
+            );
 
                 basketDto.CartTotal = basketDto.CartItems.Sum(x => x.Price);
             }
@@ -34,7 +39,7 @@ namespace Basket.API.Dtos
             return basketDto;
         }
 
-        public static List<BasketDto> MapToBasketDto(IEnumerable<Domain.Entities.BasketEntity> baskets)
+        public static List<BasketDto> MapToBasketDto(IEnumerable<BasketEntity> baskets)
         {
             var basketDtos = new List<BasketDto>();
 
@@ -42,23 +47,30 @@ namespace Basket.API.Dtos
             {
                 var basketDto = new BasketDto
                 {
-                    BasketId = basket.BasketId
+                    BasketId = basket.BasketId,
+                    ItemCount = basket.Count,
+
+                    
                 };
 
                 foreach (var item in basket.Items)
                 {
                     basketDto.CartItems.Add(new BasketItemDto
-                        {
-                            ProductId = item.ProductId,
-                            Name = item.Title,
-                            Artist = item.Artist,
-                            Genre = item.Genre,
-                            //ParentalCaution = item.ParentalCaution,
-                            QuanityOrdered = item.Quantity,
-                            //Price = decimal.Parse(item.UnitPrice) * item.Quantity,
-                            Price = TransformUnitPrice(item.UnitPrice, item.Quantity),
-                        }
-                    );
+                    {
+                        BasketParentId = item.BasketParentId,
+                        ProductId = item.ProductId,
+                        Title = item.Title,
+                        Artist = item.Artist,
+                        Genre = item.Genre,
+                        QuanityOrdered = item.Quantity,
+                        //Price = decimal.Parse(item.UnitPrice) * item.Quantity,
+                        Price = TransformUnitPrice(item.UnitPrice, item.Quantity),
+                        Condition = item.Condition,
+                        Status = item.Status,
+                        Medium = item.Medium,
+                        DateCreated = item.DateCreated
+                    }
+                );
                     
                     basketDto.CartTotal = basketDto.CartItems.Sum(x => x.Price * x.QuanityOrdered);
                 }
@@ -69,7 +81,7 @@ namespace Basket.API.Dtos
             return basketDtos;
         }
 
-        public static BasketSummaryDto MapToBasketSummaryDto(Domain.Entities.BasketEntity basketEntityEntity)
+        public static BasketSummaryDto MapToBasketSummaryDto(BasketEntity basketEntityEntity)
         {
             // Transform BasketEntity to BasketDto
             var basketSummaryDto = new BasketSummaryDto();

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace Basket.API.Domain.Entities
+namespace Basket.Service.Domain.Entities
 {
     /// <summary>
     /// Represents a Denormalized Read Table for ProductEntity Information

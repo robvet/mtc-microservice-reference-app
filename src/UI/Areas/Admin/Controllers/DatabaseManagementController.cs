@@ -91,7 +91,7 @@ namespace MusicStore.Areas.Admin.Controllers
             var isChecked = dropDatabaseHelperClass.DropDatabase;
 
 
-            var x = await _IRestClient.PostAsync<ProductDto>($"{_baseUrl}/SeedDatabase/isChecked");
+            var x = await _IRestClient.PostAsync<ProductDto>($"{_baseUrl}/SeedDatabase/{isChecked}");
           
             return View("Index");
         }

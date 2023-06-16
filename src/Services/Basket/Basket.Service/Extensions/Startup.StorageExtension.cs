@@ -1,11 +1,11 @@
 ﻿using System;
-using Basket.API.Contracts;
-using Basket.API.Domain.Entities;
-using Basket.API.Infrastructure.Repository;
+using Basket.Service.Contracts;
+using Basket.Service.Domain.Entities;
+using Basket.Service.Infrastructure.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Basket.API.Extensions
+namespace Basket.Service.Extensions
 {
     public static class StorageExtension
     {

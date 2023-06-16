@@ -1,9 +1,9 @@
 ﻿using System;
-using Basket.API.Contracts;
-using Basket.API.Domain.BusinessServices;
-using Basket.API.Events;
-using Basket.API.Extensions;
-using Basket.API.Filters;
+using Basket.Service.Contracts;
+using Basket.Service.Domain.BusinessServices;
+using Basket.Service.Events;
+using Basket.Service.Extensions;
+using Basket.Service.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,7 +16,7 @@ using Newtonsoft.Json.Serialization;
 using RestCommunicator;
 using ServiceLocator;
 
-namespace Basket.API
+namespace Basket.Service
 {
     public class Startup
     {

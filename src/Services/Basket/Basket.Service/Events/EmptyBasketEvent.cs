@@ -1,10 +1,11 @@
 ﻿using EventBus.Events;
+using System;
 
-namespace Basket.API.Events
+namespace Basket.Service.Events
 {
     public class EmptyBasketEvent : MessageEvent
 
     {
-        public string BasketID { get; set; }
+        public Guid BasketID { get; set; }
     }
 }

@@ -1,22 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Basket.API.Domain.Entities
+namespace Basket.Service.Domain.Entities
 {
     public class BasketEntity
     {
-        public BasketEntity()
-        {}
-        public BasketEntity(string customerId)
-        {
-            BuyerId = customerId;
-        }
+        public Guid BasketId { get; set; }
 
         public string CorrelationToken { get; set; }
 
-        public string BuyerId { get; set; }
-
-        public string BasketId { get; set; }
-        
+        public Guid BuyerId { get; set; }
+                       
         public int Count { get; set; }
 
         public List<BasketItemEntity> Items { get; set; } = new List<BasketItemEntity>();

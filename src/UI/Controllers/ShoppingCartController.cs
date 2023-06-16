@@ -77,21 +77,20 @@ namespace MusicStore.Controllers
         {
             // determine if shopping cart Id exists
             var shoppingCartId = _cookieLogic.GetBasketId();
+            var cartId = Guid.Empty;
 
-            if (string.IsNullOrEmpty(shoppingCartId))
+            if (Guid.TryParse(shoppingCartId, out Guid cartGuid))
             {
-                //shoppingCartId = _cookieLogic.SetBasketId();
-                shoppingCartId = "-1";
+                cartId = cartGuid;
             }
 
-        // Add item to the shopping cart5
-        //var basket = await _IRestClient.PostAsync<BasketDto>($"{_baseUrl}/Basket/{shoppingCartId}/item/{id}");
-
+             // Add item to the shopping cart5
+             //var basket = await _IRestClient.PostAsync<BasketDto>($"{_baseUrl}/Basket/{shoppingCartId}/item/{id}");
         
-                        // Here's what needs to be sent
+            // Here's what needs to be sent
             //http://localhost:8083/api/Basket/?productId=258&basketId=Basket-3.29.2023-9:42PM-0277211917
 
-            var basket = await _IRestClient.PostAsync<BasketSummaryDto>($"{_baseUrl}/?productId={id}&basketId={shoppingCartId}");
+            var basket = await _IRestClient.PostAsync<BasketSummaryDto>($"{_baseUrl}/?productId={id}&basketId={cartId}");
             //var basket = await _IRestClient.PostAsync<BasketSummaryDto>($"{_baseUrl}/{shoppingCartId}/item/{id}");
 
             _logger.LogInformation($"Song {id} was added to the cart.");
