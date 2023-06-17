@@ -1,18 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using Basket.Service.Domain.Entities;
 
 namespace Basket.Service.Dtos
 {
+    /// <summary>
+    /// Map Entity Objects to Dto Objects
+    /// </summary>
     public class Mapper
     {
         public static BasketDto MapToBasketDto(BasketEntity basketEntityEntity)
         {
-            // Transform BasketEntity to BasketDto
-            var basketDto = new BasketDto();
-
-            basketDto.BasketId = basketEntityEntity.BasketId;
-            basketDto.ItemCount = basketEntityEntity.Count;
+            // Transform Single BasketEntity to BasketDto
+            var basketDto = new BasketDto
+            {
+                BasketId = basketEntityEntity.BasketId,
+                ItemCount = basketEntityEntity.ItemCount,
+                BuyerID = basketEntityEntity.BuyerId,
+                Processed = basketEntityEntity.Processed
+            };
 
             foreach (var item in basketEntityEntity.Items)
             {
@@ -43,55 +51,141 @@ namespace Basket.Service.Dtos
         {
             var basketDtos = new List<BasketDto>();
 
+            // Transform Collection of BasketEntity items to BasketDto
             foreach (var basket in baskets)
             {
-                var basketDto = new BasketDto
-                {
-                    BasketId = basket.BasketId,
-                    ItemCount = basket.Count,
-
-                    
-                };
-
-                foreach (var item in basket.Items)
-                {
-                    basketDto.CartItems.Add(new BasketItemDto
+                if (basket.BasketId != Guid.Empty)
+                {  
+                    var basketDto = new BasketDto
                     {
-                        BasketParentId = item.BasketParentId,
-                        ProductId = item.ProductId,
-                        Title = item.Title,
-                        Artist = item.Artist,
-                        Genre = item.Genre,
-                        QuanityOrdered = item.Quantity,
-                        //Price = decimal.Parse(item.UnitPrice) * item.Quantity,
-                        Price = TransformUnitPrice(item.UnitPrice, item.Quantity),
-                        Condition = item.Condition,
-                        Status = item.Status,
-                        Medium = item.Medium,
-                        DateCreated = item.DateCreated
-                    }
-                );
-                    
-                    basketDto.CartTotal = basketDto.CartItems.Sum(x => x.Price * x.QuanityOrdered);
-                }
+                        BasketId = basket.BasketId,
+                        ItemCount = basket.ItemCount,
+                        BuyerID = basket.BuyerId,
+                        Processed = basket.Processed
+                    };
 
-                basketDtos.Add(basketDto);
+                    foreach (var item in basket.Items)
+                    {
+                        basketDto.CartItems.Add(new BasketItemDto
+                        {
+                            BasketParentId = item.BasketParentId,
+                            ProductId = item.ProductId,
+                            Title = item.Title,
+                            Artist = item.Artist,
+                            Genre = item.Genre,
+                            QuanityOrdered = item.Quantity,
+                            Price = TransformUnitPrice(item.UnitPrice, item.Quantity),
+                            Condition = item.Condition,
+                            Status = item.Status,
+                            Medium = item.Medium,
+                            DateCreated = item.DateCreated
+                        });
+                    }
+
+                    basketDto.CartTotal = basketDto.CartItems.Sum(x => x.Price * x.QuanityOrdered);
+                    basketDtos.Add(basketDto);
+                }
             }
 
             return basketDtos;
         }
 
-        public static BasketSummaryDto MapToBasketSummaryDto(BasketEntity basketEntityEntity)
+        public static List<ProductDto> MapToProductDto(List<ProductEntity> productEntity)
+        {
+            var productDtos = new List<ProductDto>();
+
+            foreach (var item in productEntity)
+            {
+                // Fitler out records with no ProductId
+                if (item.ProductId != Guid.Empty)
+                {
+                    productDtos.Add(new ProductDto
+                    {
+                        ProductId = item.ProductId,
+                        Title = item.Title,
+                        Artist = item.Artist,
+                        Genre = item.Genre,
+                        Price = item.Price,
+                        Condition = item.Condition,
+                        Status = item.Status,
+                        Medium = item.Medium,
+                        DateCreated = item.DateCreated
+                    });
+                }
+            }
+
+            return productDtos;
+        }
+
+
+        //public static BasketSummaryDto MapToBasketSummaryDto(BasketEntity genericEntities)
+        //{
+        //    // Transform BasketEntity to BasketDto
+        //    var basketSummaryDto = new BasketSummaryDto
+        //    {
+        //        BasketId = genericEntities.BasketId,
+        //        ItemCount = genericEntities.Items.Count,
+        //        Processed = genericEntities.Processed,
+        //        //basketSummaryDto.ProductNames = genericEntities.Items.SelectMany(x => x.Title).ToString();
+        //        ProductNames = string.Join("\n", genericEntities.Items.Select(c => c.Title).Distinct())
+        //    };
+
+        //    return basketSummaryDto;
+        //}
+
+        public static BasketSummaryDto MapToBasketSummaryDto(GenericEntity genericEntity)
         {
             // Transform BasketEntity to BasketDto
-            var basketSummaryDto = new BasketSummaryDto();
-
-            basketSummaryDto.BasketId = basketEntityEntity.BasketId;
-            basketSummaryDto.ItemCount = basketEntityEntity.Items.Count;
-            //basketSummaryDto.ProductNames = basketEntityEntity.Items.SelectMany(x => x.Title).ToString();
-            basketSummaryDto.ProductNames = string.Join("\n", basketEntityEntity.Items.Select(c => c.Title).Distinct());
+            var basketSummaryDto = new BasketSummaryDto
+            {
+                BasketId = genericEntity.BasketId,
+                ItemCount = genericEntity.ItemCount,
+                Processed = genericEntity.Processed
+                //basketSummaryDto.ProductNames = genericEntities.Items.SelectMany(x => x.Title).ToString();
+                //ProductNames = string.Join("\n", genericEntities.Items.Select(c => c.Title).Distinct())
+            };
 
             return basketSummaryDto;
+        }
+
+        public static GenericEntityDto MapToGenericEntitySummaryDto(List<GenericEntity> genericEntities)
+        {
+            var genericEntityDto = new GenericEntityDto();
+                       
+            {
+                
+                foreach(GenericEntity genericEntity in genericEntities) 
+                {
+                    if (genericEntity.BasketId == Guid.Empty)
+                    {
+                        genericEntityDto.Products.Add(new GenericEntitySummaryDto
+                        {
+                            ProductId = genericEntity.ProductId,
+                            Title = genericEntity.Title,
+                            Artist = genericEntity.Artist,
+
+                            BasketId = genericEntity.BasketId,
+                            Processed = genericEntity.Processed,
+                            ItemCount = genericEntity.ItemCount,
+                        });
+                    }
+                    else
+                    {
+                        genericEntityDto.Baskets.Add(new GenericEntitySummaryDto
+                        {
+                            ProductId = genericEntity.ProductId,
+                            Title = genericEntity.Title,
+                            Artist = genericEntity.Artist,
+
+                            BasketId = genericEntity.BasketId,
+                            Processed = genericEntity.Processed,
+                            ItemCount = genericEntity.ItemCount,
+                        });
+                    }
+                };
+            };
+
+            return genericEntityDto;
         }
 
         private static decimal TransformUnitPrice(string priceAsString, int quantity)

@@ -47,7 +47,6 @@ namespace Basket.Service
             // Register backing services
             services.RegisterTelemetryCollector(Configuration);
             services.RegisterDistrbutedCache(Configuration);
-            services.RegisterStorageAccount(Configuration);
             services.RegisterEventBusPublisher(Configuration);
             services.RegisterEventBusSubscriber(Configuration);
 

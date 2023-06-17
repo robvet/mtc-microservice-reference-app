@@ -11,7 +11,9 @@ namespace Basket.Service.Domain.Entities
 
         public Guid BuyerId { get; set; }
                        
-        public int Count { get; set; }
+        public int ItemCount { get; set; }
+
+        public bool Processed { get; set; }
 
         public List<BasketItemEntity> Items { get; set; } = new List<BasketItemEntity>();
     }

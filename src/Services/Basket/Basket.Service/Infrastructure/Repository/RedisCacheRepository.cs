@@ -1,17 +1,12 @@
 ﻿using Basket.Service.Contracts;
-using Basket.Service.Domain;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Basket.Service.Domain.Entities;
 using Microsoft.ApplicationInsights;
-using NuGet.Protocol.Plugins;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 namespace Basket.Service.Infrastructure.Repository
 {
@@ -28,7 +23,9 @@ namespace Basket.Service.Infrastructure.Repository
             _database = redis.GetDatabase();
         }
 
-        public async Task<bool> DeleteAsync<T>(Guid id, TelemetryClient telemetryClient)
+        public async Task<bool> DeleteAsync<T>(Guid id, 
+                                               TelemetryClient telemetryClient,
+                                               string correlationToken)
         {
             // Telemetry variables
             var success = false;
@@ -37,46 +34,22 @@ namespace Basket.Service.Infrastructure.Repository
 
             try
             {
-                return await _database.KeyDeleteAsync(id.ToString());
+                var result = await _database.KeyDeleteAsync(id.ToString());
                 success = true;
+                return result;
             }
             catch (Exception ex)
             {
+                var errorMessage = $"Error deleting {typeof(T).Name} with id {id} for CorrelationToken {correlationToken}: {ex.Message}";
                 telemetryClient.TrackException(ex);
+                _logger.LogError(errorMessage);
                 throw;
             }
             finally
             {
-                telemetryClient.TrackDependency(typeof(T).Name, "Delete", success.ToString(), startTime, timer.Elapsed, success);
+                telemetryClient.TrackDependency("RedisCache", "Delete", typeof(T).Name, startTime, timer.Elapsed, success);
             }
         }
-
-        //public async Task<bool> DeleteBasketAsync(Guid id, TelemetryClient telemetryClient)
-        //{
-        //    // Telemetry variables
-        //    var success = false;
-        //    var startTime = DateTime.UtcNow;
-        //    var timer = System.Diagnostics.Stopwatch.StartNew();
-            
-        //    try
-        //    {
-        //        return await _database.KeyDeleteAsync(id);
-        //        success = true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        telemetryClient.TrackException(ex);
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        telemetryClient.TrackDependency("RedisCache", "DeleteBasket", success.ToString(), startTime, timer.Elapsed, success);
-        //    }
-
-        //    return success;
-        //}
-
-
 
         public async Task<T> GetAsync<T>(Guid id,
                                  TelemetryClient telemetryClient,
@@ -87,7 +60,6 @@ namespace Basket.Service.Infrastructure.Repository
             var success = false;
             var startTime = DateTime.UtcNow;
             var timer = System.Diagnostics.Stopwatch.StartNew();
-            var returnValue = "Not Found";
 
             try
             {
@@ -95,168 +67,37 @@ namespace Basket.Service.Infrastructure.Repository
 
                 if (data.IsNullOrEmpty)
                 {
-                    return default(T);
+                    success = false;
+                    return default;
                 }
                 else
                 {
                     var result = JsonConvert.DeserializeObject<T>(data);
                     success = true;
-                    returnValue = "Found";
                     return result;
                 }
             }
             catch (Exception ex)
             {
+                var errorMessage = $"Error fetching {typeof(T).Name} with id {id} for CorrelationToken {correlationToken}: {ex.Message}";
                 telemetryClient.TrackException(ex);
+                _logger.LogError(errorMessage);
                 throw;
             }
             finally
             {
-                telemetryClient.TrackDependency("RedisCache", methodName, returnValue, startTime, timer.Elapsed, success);
+                telemetryClient.TrackDependency("RedisCache", "GetAsync", typeof(T).Name, startTime, timer.Elapsed, success);
             }
         }
-
-        //public async Task<BasketEntity> GetBasketAsync(string basketid,
-        //                                               string correlationToken,
-        //                                               TelemetryClient telemetryClient)
-        //{
-        //    // Telemetry variables
-        //    var success = false;
-        //    var startTime = DateTime.UtcNow;
-        //    var timer = System.Diagnostics.Stopwatch.StartNew();
-        //    var returnValue = "Not Found";
-
-        //    try
-        //    {
-        //        var data = await _database.StringGetAsync(basketid);
-
-        //        if (data.IsNullOrEmpty)
-        //        {
-        //            return null;
-        //        }
-        //        else
-        //        {
-        //            var basketdata = JsonConvert.DeserializeObject<BasketEntity>(data);
-        //            success = true;
-        //            returnValue = "Found";
-        //            return basketdata;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        telemetryClient.TrackException(ex);
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        telemetryClient.TrackDependency("RedisCache", "GetBasket", returnValue, startTime, timer.Elapsed, success);
-        //    }
-
-        //    //var data = await _database.StringGetAsync(basketid);
-        //    //if (data.IsNullOrEmpty)
-        //    //{
-        //    //    return null;
-        //    //}
-        //    //var basketdata = JsonConvert.DeserializeObject<BasketEntity>(data);
-        //    //return basketdata;
-        //}
-
-        public async Task<bool> UpdateAsync<T>(T entity, Guid id, string correlationToken, TelemetryClient telemetryClient)
-        {
-            // Telemetry variables
-            var success = false;
-            var startTime = DateTime.UtcNow;
-            var timer = System.Diagnostics.Stopwatch.StartNew();
-            var returnValue =  string.Empty;
-
-            try
-            {
-                var created =
-                    await _database.StringSetAsync(id.ToString(), JsonConvert.SerializeObject(entity));
-
-                // _database.SetAdd()
-
-                if (!created)
-                {
-                    _logger.LogInformation("Redis cache could not persist an item.");
-                    returnValue = "Not Updated";
-                    return false;
-                }
-                else
-                {
-                    success = true;
-                    returnValue = "Updated Successfully";
-                    _logger.LogInformation("Redis cache persisted item succesfully.");
-                }
-            }
-            catch (Exception ex)
-            {
-                telemetryClient.TrackException(ex);
-                _logger.LogError(ex.ToString());
-                throw;
-            }
-            finally
-            {
-                telemetryClient.TrackDependency("RedisCache","UpdateAsync", returnValue, startTime, timer.Elapsed, success);
-            }
-
-            return true;
-        }
-
-
-        //public async Task<BasketEntity> UpdateBasketAsync(BasketEntity basketEntity,
-        //                                                  string correlationToken,
-        //                                                  TelemetryClient telemetryClient)
-        //{
-        //    // Telemetry variables
-        //    var success = false;
-        //    var startTime = DateTime.UtcNow;
-        //    var timer = System.Diagnostics.Stopwatch.StartNew();
-        //    var returnValue = "Not Found";
-
-        //    try
-        //    {
-        //        var created =
-        //            await _database.StringSetAsync(basketEntity.BasketId, JsonConvert.SerializeObject(basketEntity));
-
-        //        // _database.SetAdd()
-
-        //        if (!created)
-        //        {
-        //            _logger.LogInformation("Redis cache could not persist an item.");
-        //            return null;
-        //        }
-        //        else
-        //        {
-        //            success = true;
-        //            returnValue = basketEntity.BasketId;
-        //            _logger.LogInformation("Redis cache persisted item succesfully.");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        telemetryClient.TrackException(ex);
-        //        _logger.LogError(ex.ToString());
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        telemetryClient.TrackDependency("RedisCache", "UpdateBasket", returnValue, startTime, timer.Elapsed, success);
-        //    }
-            
-        //    return await  GetBasketAsync(returnValue);
-        //    //return null;
-        //}
-
+         
         public async Task<List<T>> GetAll<T>(string correlationToken, TelemetryClient telemetryClient)
         {
             // Telemetry variables
             var success = false;
             var startTime = DateTime.UtcNow;
             var timer = System.Diagnostics.Stopwatch.StartNew();
-            var returnValue = "Not Found";
-
             var allItems = new List<T>();
+            string guidValue = null;
 
             try
             {
@@ -265,116 +106,88 @@ namespace Basket.Service.Infrastructure.Repository
 
                 foreach (string key in data)
                 {
-                    if (Guid.TryParse(key, out Guid guid))
+                    guidValue = key;
+
+                    // Ensure value can parse to Guid and that Guid value is not empty
+                    if (Guid.TryParse(guidValue, out Guid guid) && guid != Guid.Empty)
                     {
                         var item = await GetAsync<T>(guid, telemetryClient, "GetAll", correlationToken);
                         allItems.Add(item);
-                        returnValue = "Found";
                     }
-                    //var item = await GetAsync<T>(key, telemetryClient, "GetAll", correlationToken);
-                    //allItems.Add(item);
-                    //returnValue = "Found";
                 }
 
                 success = true;
             }
             catch (Exception ex)
             {
+                var errorMessage = $"Error fetching all {typeof(T).Name} with id {guidValue} for CorrelationToken {correlationToken}: {ex.Message}";
                 telemetryClient.TrackException(ex);
+                _logger.LogError(errorMessage);
                 throw;
             }
             finally
             {
-                telemetryClient.TrackDependency("RedisCache", "GetAll", returnValue, startTime, timer.Elapsed, success);
+                telemetryClient.TrackDependency("RedisCache", "GetAll", typeof(T).Name, startTime, timer.Elapsed, success);
             }
 
             return allItems;
         }
 
-
-        //public async Task<List<BasketEntity>> GetAllBaskets(string correlationToken,
-        //                                                     TelemetryClient telemetryClient)
-        //{
-        //    // Telemetry variables
-        //    var success = false;
-        //    var startTime = DateTime.UtcNow;
-        //    var timer = System.Diagnostics.Stopwatch.StartNew();
-        //    var returnValue = "Not Found";
-
-        //    var basketall = new List<BasketEntity>();
-
-        //    try
-        //    {
-        //        var server = GetServer();
-        //        var data = server.Keys();
-
-        //        foreach (string key in data)
-        //        {
-
-        //            var basket = await GetBasketAsync(key);
-        //            basketall.Add(basket);
-        //            returnValue = "Found";
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        telemetryClient.TrackException(ex);
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        telemetryClient.TrackDependency("RedisCache", "GetAllBaskets", returnValue, startTime, timer.Elapsed, success);
-        //    }
-        //    return basketall;
-
-        //    //var server = GetServer();
-        //    //var data = server.Keys();
-
-        //    //foreach(string key in data)
-        //    //{
-
-        //    //    var basket = await GetBasketAsync(key);
-        //    //    basketall.Add(basket);
-        //    //}
-        //}
-
-        //public IEnumerable<string> GetUsers()
-        //{
-        //    var server = GetServer();
-        //    var data = server.Keys();
-
-        //    return data?.Select(k => k.ToString());
-        //}
-
-        private async Task<T> GetAsync<T>(Guid id)
+        public async Task<bool> UpdateAsync<T>(T entity, Guid id, string correlationToken, TelemetryClient telemetryClient)
         {
-            var data = await _database.StringGetAsync(id.ToString());
+            // Telemetry variables
+            var success = false;
+            var startTime = DateTime.UtcNow;
+            var timer = System.Diagnostics.Stopwatch.StartNew();
 
-            if (data.IsNullOrEmpty)
+            try
             {
-                return default(T);
+                var created =
+                    await _database.StringSetAsync(id.ToString(), JsonConvert.SerializeObject(entity));
+
+                if (!created)
+                {
+                    _logger.LogInformation("Redis cache could not persist an item.");
+                    return success;
+                }
+                else
+                {
+                    success = true;
+                    _logger.LogInformation("Redis cache persisted item succesfully.");
+                }
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = $"Error updating {typeof(T).Name} with id {id} for CorrelationToken {correlationToken}: {ex.Message}";
+                telemetryClient.TrackException(ex);
+                _logger.LogError(errorMessage);
+                throw;
+            }
+            finally
+            {
+                telemetryClient.TrackDependency("RedisCache", "UpdateAsync", typeof(T).Name, startTime, timer.Elapsed, success);
             }
 
-            return JsonConvert.DeserializeObject<T>(data);
+            return success;
         }
 
-        private async Task<BasketEntity> GetBasketAsync(Guid id)
-        {
-            var data = await _database.StringGetAsync(id.ToString());
 
-            if (data.IsNullOrEmpty)
-            {
-                return null;
-            }
+        //private async Task<T> GetAsync<T>(Guid id)
+        //{
+        //    var data = await _database.StringGetAsync(id.ToString());
 
-            return JsonConvert.DeserializeObject<BasketEntity>(data);
-        }
+        //    if (data.IsNullOrEmpty)
+        //    {
+        //        return default;
+        //    }
+
+        //    return JsonConvert.DeserializeObject<T>(data);
+        //}
 
         private IServer GetServer()
         {
             var endpoint = _redis.GetEndPoints();
             return _redis.GetServer(endpoint.First());
         }
-
     }
 }

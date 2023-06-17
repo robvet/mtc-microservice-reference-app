@@ -11,9 +11,10 @@ namespace Basket.Service.Dtos
         }
 
         public Guid BasketId { get; set; }
-
         public List<BasketItemDto> CartItems { get; set; }
+        public Guid BuyerID { get; set; }
         public decimal CartTotal { get; set; }
         public int ItemCount { get; set; }
+        public bool Processed { get; set; }
     }
 }
