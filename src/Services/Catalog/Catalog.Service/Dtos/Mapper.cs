@@ -86,6 +86,7 @@ namespace catalog.service.Dtos
                 mappedDtos.Add(new GenreDto
                 {
                     Name = item.Name,
+                    GuidId = item.GuidId,
                     Description = item.Name,
                     GenreId = item.GenreId,
                     Albums = item.Products == null || item.Products.Count == 0 ? null : MapToMusicDto(item.Products).ToList()
@@ -99,6 +100,7 @@ namespace catalog.service.Dtos
             return new GenreDto
             {
                 Name = genre.Name,
+                GuidId = genre.GuidId,
                 Description = genre.Name,
                 GenreId = genre.GenreId,
                 Albums = genre.Products == null || genre.Products.Count == 0 ? null : MapToMusicDto(genre.Products).ToList()
@@ -112,6 +114,7 @@ namespace catalog.service.Dtos
             foreach (var item in artist)
                 mappedDtos.Add(new ArtistDto
                 {
+                    GuidId = item.GuidId,
                     ArtistId = item.ArtistId,
                     Name = item.Name
                 });

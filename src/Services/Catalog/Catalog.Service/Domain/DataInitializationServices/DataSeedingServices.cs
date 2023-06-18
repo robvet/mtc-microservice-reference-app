@@ -34,7 +34,7 @@ namespace catalog.service.Domain.DataInitializationServices
             _redisCache = redis;
         }
 
-        public async Task SeedDatabase(bool dropDatabase, string correlationToken)
+        public async Task SeedDatabase(bool dropDatabase)
         {
             try
             {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MusicStore.Models;
 
 namespace MusicStore.ViewModels
@@ -7,7 +8,7 @@ namespace MusicStore.ViewModels
     {
         public List<BasketItemDto> CartItems { get; set; }
         public decimal CartTotal { get; set; }
-        public string BasketId { get; set; }
+        public Guid BasketId { get; set; }
         public int ItemCount { get; set; }
     }
 }

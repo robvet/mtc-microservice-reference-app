@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using catalog.service.Contracts;
 using catalog.service.Domain.Entities;
@@ -35,9 +36,9 @@ namespace catalog.service.Domain.BusinessServices
             return await _ProductRepository.GetAll(correlationToken);
         }
 
-        public async Task<Product> GetMusic(string correlationToken, int albumId)
+        public async Task<Product> GetMusic(string correlationToken, Guid productId)
         {
-            return await _ProductRepository.GetById(albumId, correlationToken);
+            return await _ProductRepository.GetById(productId, correlationToken);
         }
 
         public async Task<List<Product>> GetTopSellingMusic(string correlationToken, int count)
@@ -50,14 +51,14 @@ namespace catalog.service.Domain.BusinessServices
             return await _genreRepository.GetAll(correlationToken);
         }
 
-        public async Task<List<Product>> GetMusicForGenre(int genreId, string correlationToken)
+        public async Task<List<Product>> GetMusicForGenre(Guid guidId, string correlationToken)
         {
-            return await _ProductRepository.GetProductsForGenre(genreId, correlationToken);
+            return await _ProductRepository.GetProductsForGenre(guidId, correlationToken);
         }
 
-        public async Task<Genre> GetGenre(int genreId, string correlationToken)
+        public async Task<Genre> GetGenre(Guid guidId, string correlationToken)
         {
-            return await _genreRepository.GetById(genreId, correlationToken);
+            return await _genreRepository.GetById(guidId, correlationToken);
         }
 
         public async Task<List<Artist>> GetAllArtists(string correlationToken)
@@ -65,14 +66,14 @@ namespace catalog.service.Domain.BusinessServices
             return await _artistRepository.GetAll(correlationToken);
         }
 
-        public async Task<Artist> GetArtist(int artistID, string correlationToken)
+        public async Task<Artist> GetArtist(Guid guidId, string correlationToken)
         {
-            return await _artistRepository.GetById(artistID, correlationToken);
+            return await _artistRepository.GetById(guidId, correlationToken);
         }
 
-        public async Task<List<Product>> GetMusicForArtist(int artistId, string correlationToken)
+        public async Task<List<Product>> GetMusicForArtist(Guid guidId, string correlationToken)
         {
-            return await _ProductRepository.GetProductsForArtist(artistId, correlationToken);
+            return await _ProductRepository.GetProductsForArtist(guidId, correlationToken);
         }
 
         //public async Task Add(string correlationToken, Product product)

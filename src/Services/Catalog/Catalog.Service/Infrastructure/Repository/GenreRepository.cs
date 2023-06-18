@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using catalog.service.Contracts;
@@ -14,9 +15,9 @@ namespace catalog.service.Infrastructure.Repository
         {
         }
 
-        public async Task<Genre> GetById(int id, string correlationToken)
+        public async Task<Genre> GetById(Guid guidId, string correlationToken)
         {
-            return await FindById(id);
+            return await FindById(guidId);
 
             //return includeAlbums
             //    ? Get().Include(x => x.Products).SingleOrDefault(g => g.GenreId == id)
@@ -38,7 +39,7 @@ namespace catalog.service.Infrastructure.Repository
         public async Task<List<Genre>> GetAllAndAlbums(string correlationToken)
         {
 
-            return Get().Include(x => x.Products).ToList();
+            return await Get().Include(x => x.Products).ToListAsync();
         }
 
         //public override void Add(Genre genre)
@@ -52,9 +53,9 @@ namespace catalog.service.Infrastructure.Repository
         //}
 
 
-        public async Task<Genre> GetGenreAndAlbums(string genre, string correlationToken)
-        {
-            return await Get().Include(x => x.Products).FirstOrDefaultAsync(x => x.Name == genre);
-        }
+        //public async Task<Genre> GetGenreAndAlbums(string genre, string correlationToken)
+        //{
+        //    return await Get().Include(x => x.Products).FirstOrDefaultAsync(x => x.Name == genre);
+        //}
     }
 }

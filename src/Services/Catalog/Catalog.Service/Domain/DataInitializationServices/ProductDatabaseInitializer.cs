@@ -34,11 +34,19 @@ namespace catalog.service.Domain.DataInitializationServices
         private readonly bool _dropDatabase;
 
 
-        const string GENRE = "genres.csv";
-        const string MEDIUM = "mediums.csv";
-        const string STATUS = "statuses.csv";
-        const string CONDITION = "conditions.csv";
-        const string ARTIST = "artists.csv";
+        //const string GENRE = "genres.csv";
+        //const string MEDIUM = "mediums.csv";
+        //const string STATUS = "statuses.csv";
+        //const string CONDITION = "conditions.csv";
+        //const string ARTIST = "artists.csv";
+
+        const string GENRE = "Genre.csv";
+        const string MEDIUM = "Medium.csv";
+        const string STATUS = "Status.csv";
+        const string CONDITION = "Condition.csv";
+        const string ARTIST = "Artist.csv";
+
+
         const string PRODUCT = "products2.csv";
         const string CONTENT_DIRECTORY = "Content";
 
@@ -83,31 +91,31 @@ namespace catalog.service.Domain.DataInitializationServices
                 _logger.LogInformation("Database already exists");
             }
 
-            await ClearData(_dropDatabase);    
+            await ClearData(_dropDatabase);
 
             // Seed lookup data
+            await SeedLookupData<Artist>(ARTIST);
             await SeedLookupData<Genre>(GENRE);
             await SeedLookupData<Medium>(MEDIUM);
             await SeedLookupData<Status>(STATUS);
             await SeedLookupData<Entities.Condition>(CONDITION);
-            await SeedLookupData<Artist>(ARTIST);
-
+            
             // Seed dbProducts
             await SeedProductData();
         }
 
-        private async Task SeedLookupData<T>(string dataFile) where T : class
+        private async Task SeedLookupData<T>(string lookupType) where T : class
         {
             try
             {
                 //var currentDirectory = Environment.CurrentDirectory;
 
                 //// File path for lookup data
-                //var filePath = Path.Combine(currentDirectory, "Infrastructure", "DataSeedingServices", dataFile);
+                //var filePath = Path.Combine(currentDirectory, "Infrastructure", "DataSeedingServices", lookupType);
 
                 // File path for lookup data
                 var contentRootPath = _webHostEnvironment.ContentRootPath;
-                var filePath = Path.Combine(contentRootPath, CONTENT_DIRECTORY, dataFile);
+                var filePath = Path.Combine(contentRootPath, CONTENT_DIRECTORY, lookupType);
 
                 _logger.LogInformation("Content FilePath is {filePath}", filePath);
 
@@ -121,15 +129,17 @@ namespace catalog.service.Domain.DataInitializationServices
 
                     // Add validation to ensure Name property exists
                     Guard.ForNullObject(item.GetType().GetProperty("Name"), $"Name property doesn't exist in {typeof(T).Name}");
+                    Guard.ForNullObject(item.GetType().GetProperty("GuidId"), $"Name property doesn't exist in {typeof(T).Name}");
 
                     // Set name property  
                     item.GetType().GetProperty("Name").SetValue(item, values[0]);
+                    item.GetType().GetProperty("GuidId").SetValue(item, Guid.Parse(values[1]));
 
                     // Add item to EF context
                     _context.Set<T>().Add(item);
                 }
 
-                _logger.LogInformation($"Inserted {typeof(T).Name} lookup records into Products Database");
+                _logger.LogInformation($"Inserted {lookupType} lookup records into Products Database");
 
                 try
                 {
@@ -137,14 +147,14 @@ namespace catalog.service.Domain.DataInitializationServices
                 }
                 catch (Exception ex)
                 {
-                    var errorMessage = $"Error seeding {typeof(T).Name} data in {filePath}: {ex.Message}";
+                    var errorMessage = $"Error seeding {lookupType} data in {filePath}: {ex.Message}";
                     _logger.LogError(errorMessage);
                     throw new Exception(errorMessage, ex);
                 }
             }
             catch (InvalidOperationException ex)
             {
-                var errorMessage = $"Error seeding {typeof(T).Name} data {ex.Data}";
+                var errorMessage = $"Error seeding {lookupType} data {ex.Data}";
                 _logger.LogError(errorMessage);
                 throw new Exception(errorMessage, ex);
             }
@@ -209,7 +219,7 @@ namespace catalog.service.Domain.DataInitializationServices
 
                         AlbumArtUrl = null, // SetMediumGraphic(product.Medium.Name);
 
-                        Genre = _context.Genres.SingleOrDefault(g => g.Name == NoCommaValidation(   itemValues[4])) ?? throw new Exception($"Missing lookup value from 'Genre' {itemValues[4]} on record {counter}"),
+                        Genre = _context.Genres.SingleOrDefault(g => g.Name == NoCommaValidation(itemValues[4])) ?? throw new Exception($"Missing lookup value from 'Genre' {itemValues[4]} on record {counter}"),
 
                         // Round price and cost to 2 decimal places
                         Price = GeneratePrice(_lowPrice, _highPrice),

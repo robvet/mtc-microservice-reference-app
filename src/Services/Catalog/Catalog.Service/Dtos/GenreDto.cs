@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace catalog.service.Dtos
@@ -7,6 +8,8 @@ namespace catalog.service.Dtos
     public class GenreDto
     {
         [DataMember] public int GenreId { get; set; }
+
+        [DataMember] public Guid GuidId { get; set; }
 
         [DataMember] public string Name { get; set; }
 

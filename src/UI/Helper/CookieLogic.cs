@@ -35,22 +35,15 @@ namespace MusicStore.Helper
         ///     If null create a new ID
         /// </param>
         /// <returns>the new The <see cref="BasketDto.BasketId">Basket ID</see></returns>
-        public string SetBasketId(string basketId = null)
+        public Guid SetBasketId(Guid basketId) 
         {
-            //A GUID to hold the basketId. 
-            if (string.IsNullOrWhiteSpace(basketId))
-            {
-                // Use SnowflakeIdGenerator to generate BasketId
-                basketId = TokenGenerator.GenerateId(TokenGeneratorEnum.Basket);
-            }
-
             var options = new CookieOptions
             {
                 Expires = DateTime.UtcNow.AddDays(7),
                 HttpOnly = true
             };
 
-            _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName, basketId, options);
+            _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName, basketId.ToString(), options);
             return basketId;
         }
 
@@ -59,8 +52,19 @@ namespace MusicStore.Helper
         /// </summary>
         public void RemoveBasketId()
         {
-            var cartId = _httpContextAccessor.HttpContext.Request.Cookies[CookieName];
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName);
+            // Only way to remove a cookie is to set it's expiration in the past
+            var cookieVaule = _httpContextAccessor.HttpContext.Request.Cookies[CookieName];
+
+            var options = new CookieOptions
+            {
+                Expires = DateTime.UtcNow.AddDays(-1),
+                HttpOnly = true
+            };
+
+            _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName, cookieVaule, options);
+
+            //var cartId = _httpContextAccessor.HttpContext.Request.Cookies[CookieName];
+            //_httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName);
         }
     }
 }

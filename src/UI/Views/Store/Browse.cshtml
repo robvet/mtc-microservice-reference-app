@@ -21,6 +21,7 @@
                 <ul id="album-list" class="list-unstyled">
                     <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container" style="margin-bottom: 40px;margin-right:30px;">
                         <a asp-controller="Store" asp-action="Details" asp-route-id="@item.Id">
+                        @*<a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">*@
                             @{
                                 var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(item.MediumName, item.AlbumArtUrl)}";
                             }

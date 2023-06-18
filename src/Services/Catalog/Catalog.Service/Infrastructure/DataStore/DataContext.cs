@@ -103,6 +103,7 @@ namespace catalog.service.Infrastructure.DataStore
             modelBuilder.Entity<Artist>(entity =>
             {
                 entity.HasKey(e => e.ArtistId);
+                entity.Property(e => e.GuidId);
                 entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
@@ -111,6 +112,7 @@ namespace catalog.service.Infrastructure.DataStore
             modelBuilder.Entity<Status>(entity =>
             {
                 entity.HasKey(e => e.StatusId);
+                entity.Property(e => e.GuidId);
                 entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
@@ -119,6 +121,7 @@ namespace catalog.service.Infrastructure.DataStore
             modelBuilder.Entity<Medium>(entity =>
             {
                 entity.HasKey(e => e.MediumId);
+                entity.Property(e => e.GuidId);
                 entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
@@ -127,6 +130,7 @@ namespace catalog.service.Infrastructure.DataStore
             modelBuilder.Entity<Condition>(entity =>
             {
                 entity.HasKey(e => e.ConditionId);
+                entity.Property(e => e.GuidId);
                 entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");
@@ -135,6 +139,7 @@ namespace catalog.service.Infrastructure.DataStore
             modelBuilder.Entity<Genre>(entity =>
             {
                 entity.HasKey(e => e.GenreId);
+                entity.Property(e => e.GuidId);
                 entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("getdate()");
                 entity.Property(e => e.IsActive).HasDefaultValueSql("1");

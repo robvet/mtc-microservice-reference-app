@@ -31,7 +31,7 @@ namespace MusicStore.Controllers
         }
 
 
-        public async Task<IActionResult> Artists(int aritistId)
+        public async Task<IActionResult> Artists(Guid aritistId)
         {
            var result = await _IRestClient.GetAsync<List<ArtistDto>>($"{_baseUrl}/Artists");
 
@@ -71,9 +71,11 @@ namespace MusicStore.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Details(int id)
+        //public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(Guid Id)
         {
-            var result = await _IRestClient.GetAsync<ProductDto>($"{_baseUrl}/Music/{id} ");
+            //var result = await _IRestClient.GetAsync<ProductDto>($"{_baseUrl}/Music/{id} ");
+            var result = await _IRestClient.GetAsync<ProductDto>($"{_baseUrl}/Music/{Id}");
 
             //if (album == null)
             //{

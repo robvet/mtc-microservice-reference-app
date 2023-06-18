@@ -52,7 +52,7 @@
 
     @if (Model.ParentalCaution)
     {
-            <p style="" margin-bottom: 30px; margin-top: 30px">
+            <p style="margin-bottom: 30px; margin-top: 40px">
             @{
                 var imageAdvisory = $"~/Images/advisory2.png";
                 <img alt="@Model.Title" src="@Url.Content(imageAdvisory)" />
@@ -62,6 +62,6 @@
 
 
         <p class="button" style="font-size:large; margin-top: 30px">
-        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.Id">Add to cart</a>
+        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.ProductId">Add to cart</a>
     </p>
 </div>

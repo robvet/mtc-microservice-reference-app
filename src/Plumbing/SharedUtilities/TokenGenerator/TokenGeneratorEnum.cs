@@ -6,7 +6,6 @@ namespace SharedUtilities.TokenGenerator
 {
     public enum TokenGeneratorEnum
     {
-        Basket,
         Correlation,
         Order,
         Checkout,

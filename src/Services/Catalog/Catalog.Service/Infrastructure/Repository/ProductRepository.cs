@@ -45,6 +45,7 @@ namespace catalog.service.Infrastructure.Repository
                 var item = rnd.Next(productCount);
 
                 var selecteditem = await Get()
+                        .Where(x => x.IsActive == true)
                         .Include(x => x.Artist)
                         .Include(y => y.Genre)
                         .Include(z => z.Medium)
@@ -98,6 +99,7 @@ namespace catalog.service.Infrastructure.Repository
             }
 
             return await Get().Include(x => x.Artist)
+                        .Where(x => x.IsActive == true)
                         .Include(y => y.Genre)
                         .Include(z => z.Medium)
                         .Include(a => a.Status)
@@ -105,9 +107,10 @@ namespace catalog.service.Infrastructure.Repository
                         .ToListAsync();
         }
 
-        public async Task<Product> GetById(int id, string correlationToken)
+        public async Task<Product> GetById(Guid productId, string correlationToken)
         {
-            return await Get().Where(x => x.Id == id)
+            return await Get().Where(x => x.ProductId == productId)
+                        .Where(x => x.IsActive == true)
                         .Include(x => x.Artist)
                         .Include(y => y.Genre)
                         .Include(z => z.Medium)
@@ -116,9 +119,9 @@ namespace catalog.service.Infrastructure.Repository
                         .FirstOrDefaultAsync();
         }
 
-        public async Task<Product> GetByIdWithIdempotencyCheck(int id, Guid productId, string correlationToken)
+        public async Task<Product> GetByIdWithIdempotencyCheck(Guid guidId, string correlationToken)
         {
-            return await Get().Where(x => x.ProductId == productId)
+            return await Get().Where(x => x.ProductId == guidId)
                         .Include(x => x.Artist)
                         .Include(y => y.Genre)
                         .Include(z => z.Medium)
@@ -130,9 +133,9 @@ namespace catalog.service.Infrastructure.Repository
         }
 
 
-        public async Task<bool> ChangeParentalCaution(int albumId, bool parentalCaution, string correlationToken)
+        public async Task<bool> ChangeParentalCaution(Guid productId, bool parentalCaution, string correlationToken)
         {
-            var album = await GetById(albumId, correlationToken);
+            var album = await GetById(productId, correlationToken);
 
             if (album == null)
                 return false;
@@ -149,21 +152,24 @@ namespace catalog.service.Infrastructure.Repository
             return true;
         }
 
-        public async Task<List<Product>> GetProductsForGenre(int genreId, string correlationToken)
+        public async Task<List<Product>> GetProductsForGenre(Guid guidId, string correlationToken)
         {
-            return await Get().Include(x => x.Artist)
-                        .Include(y => y.Genre)
-                        .Include(z => z.Medium)
-                        .Include(a => a.Status)
-                        .Include(b => b.Condition)
-                        .Where(x => x.GenreId == genreId)
-                        .ToListAsync();
+
+            return await Get()
+                .Where(y => y.Genre.GuidId == guidId)
+                .Include(y => y.Genre)
+                .Include(x => x.Artist)
+                .Include(z => z.Medium)
+                .Include(a => a.Status)
+                .Include(b => b.Condition)
+            
+            .ToListAsync();
         }
 
-        public async Task<List<Product>> GetProductsForArtist(int artistId, string correlationToken)
+        public async Task<List<Product>> GetProductsForArtist(Guid guidId, string correlationToken)
         {
             return await Get()
-                        .Where(x => x.ArtistId == artistId)
+                        .Where(x => x.Artist.GuidId == guidId)
                         .Include(x => x.Artist)
                         .Include(y => y.Genre)
                         .Include(z => z.Medium)
@@ -173,11 +179,11 @@ namespace catalog.service.Infrastructure.Repository
         }
 
 
-        public async Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken)
-        {
-            return await Get()
-                .Include("Artists")
-                .Where(x => x.GenreId == genreId).ToListAsync();
-        }
+        //public async Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken)
+        //{
+        //    return await Get()
+        //        .Include("Artists")
+        //        .Where(x => x.GenreId == genreId).ToListAsync();
+        //}
     }
 }

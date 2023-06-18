@@ -56,6 +56,20 @@
             <button type="submit" asp-action="Create" asp-route-id="@Model" class="btn btn-primary">Create</button>
             </p>
         </div>
+
+        <hr />
+
+        <div style="background-color: lightgrey; border-style: solid; border: 15px solid green; padding: 50px;margin: 20px;font-size:x-large">
+            <p><strong>Click here to Remove Current Shopping Backet Cookie</strong></p>
+          
+            <p class="button" style="font-size:larger">
+                @*<a asp-controller="DatabaseManagement" asp-action="Create" asp-route-id="@Model">Add to cart</a>*@
+
+            <button type="submit" asp-action="RemoveBasketCookie" disabled="@Model.DisableCookeButton" class="btn btn-primary">Create</button>
+            </p>
+        </div>
+
+
     </form>How do i put value of checkbox 
 
 

@@ -158,9 +158,9 @@ namespace catalog.service.Infrastructure.Repository
         /// </summary>
         /// <param name="entityId">Id of requested entity class</param>
         /// <returns></returns>
-        protected virtual async Task<T> FindById(int entityId)
+        protected virtual async Task<T> FindById(Guid guidId)
         {
-            return await _ctx.Set<T>().FindAsync(entityId);
+            return await _ctx.Set<T>().FindAsync(guidId);
         }
 
         /// <summary>

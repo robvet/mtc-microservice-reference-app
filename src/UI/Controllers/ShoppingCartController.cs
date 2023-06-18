@@ -46,8 +46,15 @@ namespace MusicStore.Controllers
             //    return RedirectToAction("Index", "Home");
             //}
 
+            var basketId = _cookieLogic.GetBasketId();
+
+            if (basketId == null)
+            {
+                throw new Exception($"Cookie missing in Index Action of ShoppingCartController");
+            }
+
             var response =
-                    await _IRestClient.GetAsync<BasketDto>($"{_baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
+                    await _IRestClient.GetAsync<BasketDto>($"{_baseUrl}/Basket/{basketId}");
                     //await _IRestClient.GetAsync<BasketDto>($"{_baseUrl}/{_cookieLogic.GetBasketId()}");
 
 
@@ -61,7 +68,7 @@ namespace MusicStore.Controllers
             }
             
             ViewBag.CartCount = basket.ItemCount;
-            ViewBag.CartSummary = string.Join("\n", basket.CartItems.Select(c => c.Name).Distinct());
+            ViewBag.CartSummary = string.Join("\n", basket.CartItems.Select(c => c.Title).Distinct());
 
             viewModel.CartItems = basket.CartItems;
             viewModel.CartTotal = basket.CartTotal;
@@ -73,7 +80,7 @@ namespace MusicStore.Controllers
         //
         // GET: /ShoppingCart/AddToCart/5
 
-        public async Task<IActionResult> AddToCart(int id, CancellationToken requestAborted)
+        public async Task<IActionResult> AddToCart(Guid id, CancellationToken requestAborted)
         {
             // determine if shopping cart Id exists
             var shoppingCartId = _cookieLogic.GetBasketId();
@@ -95,7 +102,7 @@ namespace MusicStore.Controllers
 
             _logger.LogInformation($"Song {id} was added to the cart.");
 
-            if (shoppingCartId == "-1")
+            if (shoppingCartId == null)
             {
                 _cookieLogic.SetBasketId(basket.Data.BasketId);
             }

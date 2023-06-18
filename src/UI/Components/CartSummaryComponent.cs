@@ -28,7 +28,10 @@ namespace MusicStore.Components
 
             if (!string.IsNullOrEmpty(shoppingCartId))
             {
-                var response = await _IRestClient.GetAsync<BasketSummaryDto>($"{baseUrl}/BasketSummary/{_cookieLogic.GetBasketId()}");
+                var cookie = _cookieLogic.GetBasketId();
+
+
+                var response = await _IRestClient.GetAsync<BasketSummaryDto>($"{baseUrl}/BasketSummary/{cookie}");
 
                 if (response.Data != null)
                 {

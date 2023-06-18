@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace catalog.service.Domain.Entities
 {
+    [Index(nameof(ProductId), IsUnique = true)]
+    [Index(nameof(GenreId))]
+    [Index(nameof(ArtistId))]
     public class Product
     {
         public Product()
@@ -12,6 +16,9 @@ namespace catalog.service.Domain.Entities
         }
 
         public int Id { get; set; }
+        public Guid ProductId { get; set; }
+
+        // Foreign Key Properties
         public int GenreId { get; set; }
         public int ArtistId { get; set; }
         public int StatusId { get; set; }
@@ -26,7 +33,6 @@ namespace catalog.service.Domain.Entities
         public bool ParentalCaution { get; set; }
         public string Upc { get; set; }
         public string ReleaseYear { get; set; }
-        public Guid ProductId { get; set; }
         public bool HighValueItem { get; set; }
 
         public Artist Artist { get; set; }

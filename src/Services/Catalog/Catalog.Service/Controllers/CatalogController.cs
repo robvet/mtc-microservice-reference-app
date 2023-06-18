@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using catalog.service.Contracts;
 using catalog.service.Domain.Entities;
@@ -60,14 +61,14 @@ namespace catalog.service.Controllers
         [ProducesResponseType(typeof(Product), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        [HttpGet("Music/{id}", Name = "GetMusicRoute")]
-        public async Task<IActionResult> GetMusic(int id, [FromHeader(Name = "x-correlationToken")]
+        [HttpGet("Music/{productId}", Name = "GetMusicRoute")]
+        public async Task<IActionResult> GetMusic(Guid productId, [FromHeader(Name = "x-correlationToken")]
             string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-            Guard.ForLessEqualZero(id, "albumId");
+            Guard.ForValidGuid(productId, "ProductId");
 
-            var product = await _catalogBusinessServices.GetMusic(correlationToken, id);
+            var product = await _catalogBusinessServices.GetMusic(correlationToken, productId);
 
             return product == null
                 ? BadRequest("Product does not exist")
@@ -79,7 +80,7 @@ namespace catalog.service.Controllers
         /// </summary>
         /// <param name="count">Number of items to return</param>
         /// <returns>List of Top Selling Items</returns>
-        [ProducesResponseType(typeof(Product), 200)]
+        [ProducesResponseType(typeof(ProductDto), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [HttpGet("TopSellingMusic/{count}", Name = "GetTopSellingMusicRoute")]
@@ -107,14 +108,14 @@ namespace catalog.service.Controllers
         [ProducesResponseType(typeof(List<Product>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        [HttpGet("GetMusicForGenre/{genreId}", Name = "GetMusicForGenreRoute")]
+        [HttpGet("GetMusicForGenre/{guidId}", Name = "GetMusicForGenreRoute")]
         public async Task<IActionResult> GetMusicForGenere([FromHeader(Name = "x-correlationToken")]
-             string correlationToken, int genreId)
+             string correlationToken, Guid guidId)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-            Guard.ForLessEqualZero(genreId, "GenreId");
+            Guard.ForValidGuid(guidId, "GuidId for Genre");
 
-            var products = await _catalogBusinessServices.GetMusicForGenre(genreId, correlationToken);
+            var products = await _catalogBusinessServices.GetMusicForGenre(guidId, correlationToken);
 
             if (products == null)
                 return BadRequest("Products do not exist");
@@ -155,14 +156,14 @@ namespace catalog.service.Controllers
         /// <returns>Specific Genre Type</returns>
         [ProducesResponseType(typeof(GenreDto), 200)]
         [ProducesResponseType(400)]
-        [HttpGet("Genre/{id}", Name = "GetGenreRoute")]
-        public async Task<IActionResult> GetGenre(int id, [FromHeader(Name = "x-correlationToken")]
+        [HttpGet("Genre/{guidId}", Name = "GetGenreRoute")]
+        public async Task<IActionResult> GetGenre(Guid guidId, [FromHeader(Name = "x-correlationToken")]
             string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-            Guard.ForLessEqualZero(id, "GenreId");
+            Guard.ForValidGuid(guidId, "GuidId for Genre");
 
-            var genre = await _catalogBusinessServices.GetGenre(id, correlationToken);
+            var genre = await _catalogBusinessServices.GetGenre(guidId, correlationToken);
 
             return genre == null
                 ? BadRequest("Genre does not exist")
@@ -198,14 +199,14 @@ namespace catalog.service.Controllers
         [ProducesResponseType(typeof(List<Product>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        [HttpGet("GetMusicForArtist/{artistId}", Name = "GetMusicForArtistRoute")]
+        [HttpGet("GetMusicForArtist/{guidId}", Name = "GetMusicForArtistRoute")]
         public async Task<IActionResult> GetMusicForArtist([FromHeader(Name = "x-correlationToken")]
-             string correlationToken, int artistId)
+             string correlationToken, Guid guidId)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-            Guard.ForLessEqualZero(artistId, "ArtistId");
+            Guard.ForValidGuid(guidId, "GuidId for Artist");
 
-            var products = await _catalogBusinessServices.GetMusicForArtist(artistId, correlationToken);
+            var products = await _catalogBusinessServices.GetMusicForArtist(guidId, correlationToken);
 
             if (products == null)
                 return BadRequest("Products do not exist");
@@ -292,11 +293,9 @@ namespace catalog.service.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [HttpPost("SeedDatabase", Name = "SeedDataBase")]
-        public async Task<IActionResult> SeedDatabase([FromQuery] bool dropDatabase, [FromHeader(Name = "x-correlationToken")] string correlationToken)
+        public async Task<IActionResult> SeedDatabase([FromQuery] bool dropDatabase)
         {
-            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-
-            await _dataSeedingService.SeedDatabase(dropDatabase, correlationToken);
+            await _dataSeedingService.SeedDatabase(dropDatabase);
 
             return StatusCode(StatusCodes.Status204NoContent);
         }

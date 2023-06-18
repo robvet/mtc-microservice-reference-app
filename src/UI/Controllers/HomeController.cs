@@ -14,7 +14,7 @@ namespace MusicStore.Controllers
         private readonly IRestClient _IRestClient;
         private readonly int count = 6;
 
-        public HomeController(IRestClient uiRestClient, IConfiguration configuration)
+        public HomeController(IRestClient uiRestClient, IConfiguration configuration) 
         {
             _IRestClient = uiRestClient;
             _baseUrl = configuration["catalogBaseUri"] ??
