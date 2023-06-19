@@ -17,7 +17,9 @@ namespace catalog.service.Infrastructure.Repository
 
         public async Task<Genre> GetById(Guid guidId, string correlationToken)
         {
-            return await FindById(guidId);
+            var result = await Get().Where(x => x.GuidId == guidId).FirstOrDefaultAsync();
+            return result;
+            //return await FindById(guidId);
 
             //return includeAlbums
             //    ? Get().Include(x => x.Products).SingleOrDefault(g => g.GenreId == id)

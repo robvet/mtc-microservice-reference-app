@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using MusicStore.Helper;
+using MusicStore.Plumbing;
 using MusicStore.Models;
 using RandomNameGeneratorLibrary;
 
@@ -82,8 +82,11 @@ namespace MusicStore.Controllers
                 var response = await _IRestClient.PostAsync<BasketSummaryDto>($"{_baseUrl}/checkout", checkoutDto);
 
                 if (response.HttpResponseMessage.IsSuccessStatusCode)
+                { 
                     // Order is successful remove shopping basket
                     _cookieLogic.RemoveBasketId();
+                    ViewBag.CartCount = 0;
+                }
 
                 //await _IRestClient.DeleteAsync($"{_baseUrl}/{checkoutDto.BasketId}");
                 //_cookieLogic.SetBasketId();

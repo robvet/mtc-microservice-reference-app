@@ -12,20 +12,22 @@ namespace catalog.service.Domain.BusinessServices
     public class CatalogBusinessServices : ICatalogBusinessServices
     {
         private readonly IArtistRepository _artistRepository;
-        private readonly IEventBusPublisher _eventBusPublisher;
         private readonly IGenreRepository _genreRepository;
+        private readonly IMediumRepository _mediumRepository;
         private readonly ILogger<CatalogBusinessServices> _logger;
         private readonly IProductRepository _ProductRepository;
+        private readonly IEventBusPublisher _eventBusPublisher;
 
         public CatalogBusinessServices(IProductRepository ProductRepository,
             IGenreRepository genreRepository,
             IArtistRepository artistRepository,
+            IMediumRepository mediumRepository,
             IEventBusPublisher eventBusPublisher,
-            ILogger<CatalogBusinessServices> logger,
-            IWebHostEnvironment webHostEnvironment)
+            ILogger<CatalogBusinessServices> logger)
         {
             _ProductRepository = ProductRepository;
             _genreRepository = genreRepository;
+            _mediumRepository = mediumRepository;
             _artistRepository = artistRepository;
             _eventBusPublisher = eventBusPublisher;
             _logger = logger;
@@ -76,6 +78,20 @@ namespace catalog.service.Domain.BusinessServices
             return await _ProductRepository.GetProductsForArtist(guidId, correlationToken);
         }
 
+        public async Task<List<Medium>> GetAllMediums(string correlationToken)
+        {
+            return await _mediumRepository.GetAll(correlationToken);
+        }
+
+        public async Task<Medium> GetMedium(Guid guidId, string correlationToken)
+        {
+            return await _mediumRepository.GetById(guidId, correlationToken);
+        }
+
+        public async Task<List<Product>> GetMusicForMedium(Guid guidId, string correlationToken)
+        {
+            return await _ProductRepository.GetProductsForMedium(guidId, correlationToken);
+        }
         //public async Task Add(string correlationToken, Product product)
         //{
         //    // Idempotent write check. Ensure no insert with same productId has happened.

@@ -9,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace MusicStore.Helper
+namespace MusicStore.Plumbing
 {
-    public class UIRestClient : IRestClient
+    public class RestClient : IRestClient
     {
         //// Best pracitce: Make HttpClient static and reuse.
         //// Creating a new instance for each request is an antipattern that can
@@ -26,14 +26,14 @@ namespace MusicStore.Helper
         // Create a TimeSpan of 4 minutes so that HTTP Calls do not timeout when debugging
         // Do not do this in production!!!
         private readonly TimeSpan _httpTimeOut = new TimeSpan(0, 4, 0);
-        private readonly ILogger<UIRestClient> _logger;
+        private readonly ILogger<RestClient> _logger;
         
-        static UIRestClient()
+        static RestClient()
         {
             _client = new HttpClient();
         }
 
-        public UIRestClient(IConfiguration config, ILogger<UIRestClient> logger)
+        public RestClient(IConfiguration config, ILogger<RestClient> logger)
         {
             _apiGateway = config["ApiGateway"];
             _client.Timeout = _httpTimeOut;
@@ -41,7 +41,7 @@ namespace MusicStore.Helper
             _apikey = config["apikey"];
         }
 
-        public async Task<UIRestResponse<TReturnMessage>> GetAsync<TReturnMessage>(string path)
+        public async Task<RestResponse<TReturnMessage>> GetAsync<TReturnMessage>(string path)
             where TReturnMessage : class, new()
         {
             HttpResponseMessage response = null;
@@ -69,7 +69,7 @@ namespace MusicStore.Helper
 
             // TODO remove
             _client.DefaultRequestHeaders.Remove("x-correlationToken");
-            _client.DefaultRequestHeaders.Add("x-correlationToken", "1234");
+            _client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
 
 
 
@@ -111,21 +111,27 @@ namespace MusicStore.Helper
 
                 // if status code 400 or greater, thrown exception so that
                 // exception handler takes care of it
-                if ((int) response.StatusCode >= 400)
+                if ((int) response.StatusCode == 400)
                 {
                     var error = $"{response.StatusCode}:{message}";
                     throw new HttpRequestException(error);
                 }
 
-                return new UIRestResponse<TReturnMessage>(response, null, string.Empty);
+                if ((int)response.StatusCode == 404)
+                {
+                    //var error = $"{response.StatusCode}:{message}";
+                    //throw new HttpRequestException(error);
+                }
+
+                return new RestResponse<TReturnMessage>(response, null, string.Empty);
             }
 
             var result = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<TReturnMessage>(result);
-            return new UIRestResponse<TReturnMessage>(response, data, string.Empty);
+            return new RestResponse<TReturnMessage>(response, data, string.Empty);
         }
 
-        public async Task<UIRestResponse<TReturnMessage>> PostAsync<TReturnMessage>(string path, object dataObject = null)
+        public async Task<RestResponse<TReturnMessage>> PostAsync<TReturnMessage>(string path, object dataObject = null)
             where TReturnMessage : class, new()
 
         {
@@ -147,7 +153,7 @@ namespace MusicStore.Helper
 
             // TODO remove
             _client.DefaultRequestHeaders.Remove("x-correlationToken");
-            _client.DefaultRequestHeaders.Add("x-correlationToken", "1234");
+            _client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
 
 
 
@@ -188,7 +194,7 @@ namespace MusicStore.Helper
                     throw new HttpRequestException(error);
                 }
 
-                return new UIRestResponse<TReturnMessage>(response, null, string.Empty);
+                return new RestResponse<TReturnMessage>(response, null, string.Empty);
 
                 //var ex = new HttpRequestException(
                 //    $"Error: StatusCode: {response.StatusCode} - Message: {response.ReasonPhrase}");
@@ -199,10 +205,10 @@ namespace MusicStore.Helper
 
             var result = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<TReturnMessage>(result);
-            return new UIRestResponse<TReturnMessage>(response, data, string.Empty);
+            return new RestResponse<TReturnMessage>(response, data, string.Empty);
         }
 
-        public async Task<UIRestResponse<TReturnMessage>> PutAsync<TReturnMessage>(string path, object dataObject = null)
+        public async Task<RestResponse<TReturnMessage>> PutAsync<TReturnMessage>(string path, object dataObject = null)
             where TReturnMessage : class, new()
         {
             HttpResponseMessage response;
@@ -214,6 +220,10 @@ namespace MusicStore.Helper
             _client.DefaultRequestHeaders.Remove("Ocp-Apim-Subscription-Key");
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
+
+
+            _client.DefaultRequestHeaders.Remove("x-correlationToken");
+            _client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
 
             var content = dataObject != null ? JsonConvert.SerializeObject(dataObject) : "{}";
 
@@ -239,7 +249,7 @@ namespace MusicStore.Helper
                     throw new HttpRequestException(error);
                 }
 
-                return new UIRestResponse<TReturnMessage>(response, null, string.Empty);
+                return new RestResponse<TReturnMessage>(response, null, string.Empty);
 
                 //var ex = new HttpRequestException(
                 //    $"Error: StatusCode: {response.StatusCode} - Message: {response.ReasonPhrase}");
@@ -250,10 +260,10 @@ namespace MusicStore.Helper
 
             var result = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<TReturnMessage>(result);
-            return new UIRestResponse<TReturnMessage>(response, data, string.Empty);
+            return new RestResponse<TReturnMessage>(response, data, string.Empty);
         }
 
-        public async Task<UIRestResponse<bool>> DeleteAsync(string path)
+        public async Task<RestResponse<bool>> DeleteAsync(string path)
         {
             HttpResponseMessage response;
             
@@ -264,6 +274,11 @@ namespace MusicStore.Helper
             _client.DefaultRequestHeaders.Remove("Ocp-Apim-Subscription-Key");
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
+
+
+            _client.DefaultRequestHeaders.Remove("x-correlationToken");
+            _client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
+
 
             try
             {
@@ -305,7 +320,7 @@ namespace MusicStore.Helper
                 //throw new Exception(ex.Message);
             }
 
-            return new UIRestResponse<bool>(response, response.IsSuccessStatusCode, string.Empty);
+            return new RestResponse<bool>(response, response.IsSuccessStatusCode, string.Empty);
         }
     }
 }

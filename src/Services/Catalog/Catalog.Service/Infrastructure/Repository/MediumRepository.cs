@@ -9,25 +9,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace catalog.service.Infrastructure.Repository
 {
-    public class ArtistRepository : BaseRepository<Artist>, IArtistRepository
+    public class MediumRepository : BaseRepository<Medium>, IMediumRepository
     {
-        public ArtistRepository(DataContext ctx) : base(ctx)
+        public MediumRepository(DataContext ctx) : base(ctx)
         {
         }
 
-        public async Task<Artist> GetById(Guid guidId, string correlationToken)
+        public async Task<Medium> GetById(Guid guidId, string correlationToken)
         {
             var result = await Get().Where(x => x.GuidId == guidId).FirstOrDefaultAsync();
             return result;
         }
 
-        public async Task<List<Artist>> GetAll(string correlationToken)
+        public async Task<List<Medium>> GetAll(string correlationToken)
         {
             // Important to return empty product list if no products exist
             // Avoids errors in UX
             if (IsEmpty())
             {
-                return new List<Artist>();
+                return new List<Medium>();
             }
 
             return await Task.FromResult(Get().ToList());

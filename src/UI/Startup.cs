@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MusicStore.Extensions;
-using MusicStore.Helper;
+using MusicStore.Plumbing;
 using MusicStore.Properties;
 using SharedUtilities.Utilties;
 
@@ -28,8 +28,8 @@ namespace MusicStore
             // validate configuration data exists
             Guard.ForNullOrEmpty(Configuration["ApiGateway"], "ApiGateway Endpoint Environment Variable not set");
             Guard.ForNullOrEmpty(Configuration["catalogBaseUri"], "CatalogBaseUri Environment Variable not set");
-            Guard.ForNullOrEmpty(Configuration["basketBaseUri"], "ApiGateway Endpoint Environment Variable not set");
-            Guard.ForNullOrEmpty(Configuration["orderBaseUri"], "ApiGateway Endpoint Environment Variable not set");
+            Guard.ForNullOrEmpty(Configuration["basketBaseUri"], "basketBaseUri Endpoint Environment Variable not set");
+            Guard.ForNullOrEmpty(Configuration["orderBaseUri"], "orderBaseUri Endpoint Environment Variable not set");
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
@@ -63,7 +63,7 @@ namespace MusicStore
             //});
             //services.AddAuthentication();
 
-            services.AddSingleton<IRestClient, UIRestClient>();
+            services.AddSingleton<IRestClient, RestClient>();
             services.AddSingleton<CookieLogic>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }

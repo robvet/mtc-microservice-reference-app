@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace Basket.Service.Domain.Entities
 {
-    public class GenericEntity
+    public class Generic
     {
         public Guid ProductId { get; set; }
         public string Title { get; set; }

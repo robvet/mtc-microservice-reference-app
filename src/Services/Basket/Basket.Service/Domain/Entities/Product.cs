@@ -2,7 +2,7 @@
 
 namespace Basket.Service.Domain.Entities
 {
-    public class ProductEntity
+    public class Product
     {
         public Guid ProductId { get; set; }
         public string Artist { get; set; }

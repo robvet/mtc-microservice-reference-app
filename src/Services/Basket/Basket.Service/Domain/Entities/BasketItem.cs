@@ -2,7 +2,7 @@
 
 namespace Basket.Service.Domain.Entities
 {
-    public class BasketItemEntity 
+    public class BasketItem 
     {
         public Guid BasketParentId { get; set; }
         public string CorrelationToken { get; set; }

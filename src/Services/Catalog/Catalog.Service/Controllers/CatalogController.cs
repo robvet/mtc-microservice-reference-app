@@ -71,7 +71,7 @@ namespace catalog.service.Controllers
             var product = await _catalogBusinessServices.GetMusic(correlationToken, productId);
 
             return product == null
-                ? BadRequest("Product does not exist")
+                ? NotFound($"Product {productId} does not exist")
                 : new ObjectResult(Mapper.MapToMusicDto(product));
         }
 
@@ -100,6 +100,65 @@ namespace catalog.service.Controllers
                 return new ObjectResult(Mapper.MapToMusicDto(products));
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        ///     Get specific Genre for specified Id
+        /// </summary>
+        /// <param name="id">Id of music -- cannot be zero or negative</param>
+        /// <returns>Specific Genre Type</returns>
+        [ProducesResponseType(typeof(GenreDto), 200)]
+        [ProducesResponseType(400)]
+        [HttpGet("Genre/{guidId}", Name = "GetGenreRoute")]
+        public async Task<IActionResult> GetGenre(Guid guidId, [FromHeader(Name = "x-correlationToken")]
+            string correlationToken)
+        {
+            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+            Guard.ForValidGuid(guidId, "GuidId for Genre");
+
+            var genre = await _catalogBusinessServices.GetGenre(guidId, correlationToken);
+
+            return genre == null
+                ? NotFound($"Genre {guidId} does not exist")
+                : new ObjectResult(Mapper.MapSingleToDto<Genre, GenreDto>(genre));
+        }
+
+        /// <summary>
+        ///     Gets All Genres
+        /// </summary>
+        /// <returns>List of all Genre Types</returns>
+        [ProducesResponseType(typeof(List<GenreDto>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [HttpGet("Genres", Name = "GetAllGenreRoute")]
+        public async Task<IActionResult> GetAllGenres([FromHeader(Name = "x-correlationToken")]
+            string correlationToken)
+        {
+            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+
+            var genres = await _catalogBusinessServices.GetAllGenres(correlationToken);
+
+            //if (genres == null || genres.Count < 1)
+            if (genres == null)
+                return BadRequest("Genres do not exist");
+            else if (genres.Count < 1)
+                return StatusCode(StatusCodes.Status204NoContent);
+            else
+                return new ObjectResult(Mapper.MapCollectionToDto<Genre, GenreDto>(genres));
+        }
+
         /// <summary>
         /// Get music items by genre
         /// </summary>
@@ -125,50 +184,87 @@ namespace catalog.service.Controllers
                 return new ObjectResult(Mapper.MapToMusicDto(products));
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        ///     Get specific Medium for specified Id
+        /// </summary>
+        /// <param name="id">Id of music -- cannot be zero or negative</param>
+        /// <returns>Specific Genre Type</returns>
+        [ProducesResponseType(typeof(MediumDto), 200)]
+        [ProducesResponseType(400)]
+        [HttpGet("Medium/{guidId}", Name = "GetMediumRoute")]
+        public async Task<IActionResult> GetMedium(Guid guidId, [FromHeader(Name = "x-correlationToken")]
+            string correlationToken)
+        {
+            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+            Guard.ForValidGuid(guidId, "GuidId for Medium");
+
+            var medium = await _catalogBusinessServices.GetMedium(guidId, correlationToken);
+
+            return medium == null
+                ? NotFound($"Genre {guidId} does not exist")
+                : new ObjectResult(Mapper.MapSingleToDto<Medium, MediumDto>(medium));
+        }
+
         /// <summary>
         ///     Gets All Genres
         /// </summary>
         /// <returns>List of all Genre Types</returns>
-        [ProducesResponseType(typeof(List<GenreDto>), 200)]
+        [ProducesResponseType(typeof(List<MediumDto>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        [HttpGet("Genres", Name = "GetAllGenreRoute")]
-        public async Task<IActionResult> GetAllGenres([FromHeader(Name = "x-correlationToken")]
+        [HttpGet("Mediums", Name = "GetAllMediumRoute")]
+        public async Task<IActionResult> GetAllMediums([FromHeader(Name = "x-correlationToken")]
             string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
-            var genres = await _catalogBusinessServices.GetAllGenres(correlationToken);
+            var mediums = await _catalogBusinessServices.GetAllMediums(correlationToken);
 
-            //if (genres == null || genres.Count < 1)
-            if (genres == null)
-                return BadRequest("Genres do not exist");
-            else if (genres.Count < 1)
+            if (mediums == null)
+                return BadRequest("Mediums do not exist in Catalog Service");
+            else if (mediums.Count < 1)
                 return StatusCode(StatusCodes.Status204NoContent);
             else
-                return new ObjectResult(Mapper.MapToGenreDto(genres));
+                return new ObjectResult(Mapper.MapCollectionToDto<Medium, MediumDto>(mediums));
         }
 
         /// <summary>
-        ///     Get specific Genre for specified Id
+        /// Get music items by genre
         /// </summary>
-        /// <param name="id">Id of music -- cannot be zero or negative</param>
-        /// <returns>Specific Genre Type</returns>
-        [ProducesResponseType(typeof(GenreDto), 200)]
+        /// <param name="guidId">genreId for music -- cannot be zero or negative</param>
+        /// <returns>All Music Products for specific GenreId</returns>
+        [ProducesResponseType(typeof(List<Product>), 200)]
+        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        [HttpGet("Genre/{guidId}", Name = "GetGenreRoute")]
-        public async Task<IActionResult> GetGenre(Guid guidId, [FromHeader(Name = "x-correlationToken")]
-            string correlationToken)
+        [HttpGet("GetMusicForMedium/{guidId}", Name = "GetMusicForMediumRoute")]
+        public async Task<IActionResult> GetMusicForMedium([FromHeader(Name = "x-correlationToken")]
+             string correlationToken, Guid guidId)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-            Guard.ForValidGuid(guidId, "GuidId for Genre");
+            Guard.ForValidGuid(guidId, "GuidId for Medium in GetMusicForMedium");
 
-            var genre = await _catalogBusinessServices.GetGenre(guidId, correlationToken);
+            var products = await _catalogBusinessServices.GetMusicForMedium(guidId, correlationToken);
 
-            return genre == null
-                ? BadRequest("Genre does not exist")
-                : new ObjectResult(Mapper.MapToGenreDto(genre));
+            if (products == null)
+                return BadRequest("Products do not exist");
+            else if (products.Count < 1)
+                return StatusCode(StatusCodes.Status204NoContent);
+            else
+                return new ObjectResult(Mapper.MapToMusicDto(products));
         }
+
 
         /// <summary>
         ///     Gets All Artists
@@ -188,7 +284,7 @@ namespace catalog.service.Controllers
             if (artists == null || artists.Count < 1)
                 return BadRequest("Genres do not exist");
 
-            return new ObjectResult(Mapper.MapToArtistDto(artists));
+            return new ObjectResult(Mapper.MapCollectionToDto<Artist, ArtistDto>(artists));
         }
 
         /// <summary>

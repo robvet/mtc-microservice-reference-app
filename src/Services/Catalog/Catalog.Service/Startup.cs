@@ -51,7 +51,9 @@ namespace catalog.service
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IArtistRepository, ArtistRepository>();
             services.AddTransient<IGenreRepository, GenreRepository>();
+            services.AddTransient<IMediumRepository, MediumRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<ICatalogBusinessServices, CatalogBusinessServices>();
 
             // Capture SQL query text in App Insights
             // https://docs.microsoft.com/en-us/azure/azure-monitor/app/asp-net-dependencies

@@ -178,6 +178,17 @@ namespace catalog.service.Infrastructure.Repository
                         .ToListAsync();
         }
 
+        public async Task<List<Product>> GetProductsForMedium(Guid guidId, string correlationToken)
+        {
+            return await Get()
+                        .Where(z => z.Medium.GuidId == guidId)
+                        .Include(z => z.Medium)
+                        .Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .ToListAsync();
+        }
 
         //public async Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken)
         //{

@@ -31,7 +31,7 @@ namespace Basket.Service.Controllers
         /// <summary>
         ///     Gets all shopping products.        /// </summary>
         /// <returns>List of line items that make up a shopping basket</returns>
-        [ProducesResponseType(typeof(List<GenericEntitySummaryDto>), 200)]
+        [ProducesResponseType(typeof(List<GenericSummaryDto>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [HttpGet("Baskets", Name = "GetAllBasketsRoute")]
@@ -61,7 +61,7 @@ namespace Basket.Service.Controllers
         ///     Gets all Products from Catalog read model
         /// </summary>
         /// <returns>List of line items that make up a shopping basket</returns>
-        [ProducesResponseType(typeof(List<GenericEntitySummaryDto>), 200)]
+        [ProducesResponseType(typeof(List<GenericSummaryDto>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [HttpGet("Products", Name = "GetAllProductsRoute")]
@@ -96,7 +96,7 @@ namespace Basket.Service.Controllers
             var basket = await _basketBusinessServices.GetBasketById(basketId, correlationToken);
 
             return basket == null
-                ? BadRequest("Basket does not exist")
+                ? NotFound($"Basket {basketId} does not exist")
                     : new ObjectResult(Mapper.MapToBasketDto(basket));
         }
 
@@ -162,7 +162,7 @@ namespace Basket.Service.Controllers
         /// <param name="basketId">Identifier for user shopping basket</param>
         /// <param name="productId">ProductEntity Identifier</param>
         /// <returns>Summary of shopping basket state</returns>
-        [ProducesResponseType(typeof(BasketItemRemovedEntity), 200)]
+        [ProducesResponseType(typeof(BasketItemRemove), 200)]
         [ProducesResponseType(400)]
         [HttpDelete("{basketId}/lineitem/{productId}")]
         public async Task<IActionResult> DeleteLineItem(Guid basketId, Guid productId, [FromHeader(Name = "x-correlationToken")] string correlationToken)

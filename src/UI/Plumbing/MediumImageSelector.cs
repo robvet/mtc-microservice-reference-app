@@ -1,6 +1,6 @@
 ﻿using System.Drawing.Text;
 
-namespace MusicStore.Helper
+namespace MusicStore.Plumbing
 {
     public class MediumImageSelector
     {

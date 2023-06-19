@@ -2,7 +2,7 @@
 
 namespace Basket.Service.Dtos
 {
-    public class GenericEntitySummaryDto
+    public class GenericSummaryDto
     {
         public Guid ProductId { get; set; }
         public string Title { get; set; }

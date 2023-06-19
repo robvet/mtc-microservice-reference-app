@@ -1,4 +1,4 @@
-﻿namespace MusicStore.Helper
+﻿namespace MusicStore.Plumbing
 {
     public class DropDatabaseHelperClass
     {

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System;
 
 namespace catalog.service.Dtos
 {
-    [DataContract]
-    public class GenreDto
+    public class MediumDto
     {
-        [DataMember] public int GenreId { get; set; }
+        [DataMember] public int MediumId { get; set; }
 
         [DataMember] public Guid GuidId { get; set; }
 

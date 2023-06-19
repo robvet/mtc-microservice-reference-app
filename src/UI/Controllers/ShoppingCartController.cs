@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using MusicStore.Helper;
+using MusicStore.Plumbing;
 using MusicStore.Models;
 using MusicStore.ViewModels;
 
@@ -50,7 +50,8 @@ namespace MusicStore.Controllers
 
             if (basketId == null)
             {
-                throw new Exception($"Cookie missing in Index Action of ShoppingCartController");
+                return null;
+                //throw new Exception($"Cookie missing in Index Action of ShoppingCartController");
             }
 
             var response =
@@ -102,17 +103,18 @@ namespace MusicStore.Controllers
 
             _logger.LogInformation($"Song {id} was added to the cart.");
 
-            if (shoppingCartId == null)
+            if (cartId == Guid.Empty) 
             {
+                cartId = basket.Data.BasketId;
                 _cookieLogic.SetBasketId(basket.Data.BasketId);
             }
-            
+
             // Go back to the main store page for more shopping
             return RedirectToAction("Index");
         }
         
         // AJAX: /ShoppingCart/RemoveFromCart/5
-        public async Task<IActionResult> RemoveFromCart(int id, CancellationToken requestAborted)
+        public async Task<IActionResult> RemoveFromCart(Guid id, CancellationToken requestAborted)
         {
             // Remove from cart
             await _IRestClient.DeleteAsync($"{_baseUrl}/{_cookieLogic.GetBasketId()}/lineitem/{id}");

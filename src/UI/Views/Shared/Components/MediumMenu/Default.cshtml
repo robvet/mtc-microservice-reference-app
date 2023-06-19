@@ -1,0 +1,28 @@
+﻿@model List<MediumDto>
+
+<li class="dropdown">
+    <a asp-area="" asp-controller="Store" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown">Mediums <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        @if (Model != null)
+        {
+            @foreach (var medium in Model)
+            {
+                var Domain = "Medium";
+                var Id = medium.GuidId;
+                var Name = medium.Name;
+                
+                <li>
+                    @*<a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a>*@
+                    @*<a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-genreId="@genre.GenreId" asp-route-genreName="@genre.Name">@genre.Name</a>*@
+@*                    <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-Id="@Id" asp-route-Domain="@Domain" asp-route-Name="@Name">@Name</a>*@
+                    <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-Id="@Id" asp-route-Domain="@Domain" asp-route-Name="@Name">@Name</a>
+                </li>
+            }
+
+            <li class="divider"></li>
+            <li>
+                <a asp-area="" asp-controller="Store" asp-action="Mediums" asp-route-Domain="Mediums">All Mediums...</a>
+            </li>
+        }
+    </ul>
+</li>

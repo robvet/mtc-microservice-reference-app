@@ -11,7 +11,7 @@ namespace Basket.Service.Dtos
     /// </summary>
     public class Mapper
     {
-        public static BasketDto MapToBasketDto(BasketEntity basketEntityEntity)
+        public static BasketDto MapToBasketDto(Domain.Entities.Basket basketEntityEntity)
         {
             // Transform Single BasketEntity to BasketDto
             var basketDto = new BasketDto
@@ -47,7 +47,7 @@ namespace Basket.Service.Dtos
             return basketDto;
         }
 
-        public static List<BasketDto> MapToBasketDto(IEnumerable<BasketEntity> baskets)
+        public static List<BasketDto> MapToBasketDto(IEnumerable<Domain.Entities.Basket> baskets)
         {
             var basketDtos = new List<BasketDto>();
 
@@ -90,7 +90,7 @@ namespace Basket.Service.Dtos
             return basketDtos;
         }
 
-        public static List<ProductDto> MapToProductDto(List<ProductEntity> productEntity)
+        public static List<ProductDto> MapToProductDto(List<Product> productEntity)
         {
             var productDtos = new List<ProductDto>();
 
@@ -133,7 +133,7 @@ namespace Basket.Service.Dtos
         //    return basketSummaryDto;
         //}
 
-        public static BasketSummaryDto MapToBasketSummaryDto(GenericEntity genericEntity)
+        public static BasketSummaryDto MapToBasketSummaryDto(Generic genericEntity)
         {
             // Transform BasketEntity to BasketDto
             var basketSummaryDto = new BasketSummaryDto
@@ -148,17 +148,17 @@ namespace Basket.Service.Dtos
             return basketSummaryDto;
         }
 
-        public static GenericEntityDto MapToGenericEntitySummaryDto(List<GenericEntity> genericEntities)
+        public static GenericDto MapToGenericEntitySummaryDto(List<Generic> genericEntities)
         {
-            var genericEntityDto = new GenericEntityDto();
+            var genericEntityDto = new GenericDto();
                        
             {
                 
-                foreach(GenericEntity genericEntity in genericEntities) 
+                foreach(Generic genericEntity in genericEntities) 
                 {
                     if (genericEntity.BasketId == Guid.Empty)
                     {
-                        genericEntityDto.Products.Add(new GenericEntitySummaryDto
+                        genericEntityDto.Products.Add(new GenericSummaryDto
                         {
                             ProductId = genericEntity.ProductId,
                             Title = genericEntity.Title,
@@ -171,7 +171,7 @@ namespace Basket.Service.Dtos
                     }
                     else
                     {
-                        genericEntityDto.Baskets.Add(new GenericEntitySummaryDto
+                        genericEntityDto.Baskets.Add(new GenericSummaryDto
                         {
                             ProductId = genericEntity.ProductId,
                             Title = genericEntity.Title,

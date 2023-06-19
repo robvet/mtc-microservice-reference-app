@@ -9,13 +9,13 @@ using MusicStore.Models;
 
 namespace MusicStore.Components
 {
-    [ViewComponent(Name = "GenreMenu")]
-    public class GenreMenuComponent : ViewComponent
+    [ViewComponent(Name = "MediumMenu")]
+    public class MediumMenuComponent : ViewComponent
     {
         private readonly string _baseUrl;
         private readonly IRestClient _IRestClient;
         
-        public GenreMenuComponent(IRestClient iuiRestClient, IConfiguration configuration)
+        public MediumMenuComponent(IRestClient iuiRestClient, IConfiguration configuration)
         {
             _IRestClient = iuiRestClient;
             _baseUrl = configuration["catalogBaseUri"] ??
@@ -25,7 +25,7 @@ namespace MusicStore.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var genres = await _IRestClient.GetAsync<List<GenreDto>>($"{_baseUrl}/Genres/");
+            var genres = await _IRestClient.GetAsync<List<MediumDto>>($"{_baseUrl}/mediums/");
 
             //var genres = await _catalogService.GetAllGenres();
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Basket.Service.Domain.Entities
 {
-    public class BasketEntity
+    public class Basket
     {
         public Guid BasketId { get; set; }
 
@@ -15,6 +15,6 @@ namespace Basket.Service.Domain.Entities
 
         public bool Processed { get; set; }
 
-        public List<BasketItemEntity> Items { get; set; } = new List<BasketItemEntity>();
+        public List<BasketItem> Items { get; set; } = new List<BasketItem>();
     }
 }

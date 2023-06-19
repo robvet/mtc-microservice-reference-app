@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using catalog.service.Domain.Entities;
 
 namespace catalog.service.Dtos
@@ -77,49 +78,109 @@ namespace catalog.service.Dtos
             };
         }
 
-
-        public static IEnumerable<GenreDto> MapToGenreDto(IEnumerable<Genre> genres)
+        public static Z MapSingleToDto<T, Z>(T value) where Z : class, new()
         {
-            var mappedDtos = new List<GenreDto>();
+            var dto = new Z();
+            
+            dto.GetType().GetProperty("Name").SetValue(dto, value.GetType().GetProperty("Name").GetValue(value));
+            dto.GetType().GetProperty("GuidId").SetValue(dto, value.GetType().GetProperty("GuidId").GetValue(value));
 
-            foreach (var item in genres)
-                mappedDtos.Add(new GenreDto
-                {
-                    Name = item.Name,
-                    GuidId = item.GuidId,
-                    Description = item.Name,
-                    GenreId = item.GenreId,
-                    Albums = item.Products == null || item.Products.Count == 0 ? null : MapToMusicDto(item.Products).ToList()
-                });
-
-            return mappedDtos;
+            return dto;
         }
 
-        public static GenreDto MapToGenreDto(Genre genre)
+
+        public static IEnumerable<Z> MapCollectionToDto<T,Z>(IEnumerable<T> collection) where Z : class, new()
         {
-            return new GenreDto
+            var mappedDtos = new List<Z>();
+
+            foreach (var item in collection)
             {
-                Name = genre.Name,
-                GuidId = genre.GuidId,
-                Description = genre.Name,
-                GenreId = genre.GenreId,
-                Albums = genre.Products == null || genre.Products.Count == 0 ? null : MapToMusicDto(genre.Products).ToList()
-            };
-        }
+                var dto = new Z();
+                dto.GetType().GetProperty("Name").SetValue(dto, item.GetType().GetProperty("Name").GetValue(item));
+                dto.GetType().GetProperty("GuidId").SetValue(dto, item.GetType().GetProperty("GuidId").GetValue(item));
 
-        public static IEnumerable<ArtistDto> MapToArtistDto(IEnumerable<Artist> artist)
-        {
-            var mappedDtos = new List<ArtistDto>();
+                //var productProperty = item.GetType().GetProperty("Products");
+                //if (productProperty != null)
+                //{
+                //    var albums = (IEnumerable<Product>)productProperty.GetValue(item);
+                //    dto.GetType().GetProperty("Albums").SetValue(dto, MapToMusicDto(albums).ToList());
+                //}
 
-            foreach (var item in artist)
-                mappedDtos.Add(new ArtistDto
-                {
-                    GuidId = item.GuidId,
-                    ArtistId = item.ArtistId,
-                    Name = item.Name
-                });
+                mappedDtos.Add(dto);
+            }
 
             return mappedDtos;
         }
+
+        //public static IEnumerable<Z> MapCollectionAdMusicToDto<T, Z>(IEnumerable<T> collection) where Z : class, new()
+        //{
+        //    var mappedDtos = new List<Z>();
+
+        //    foreach (var item in collection)
+        //    {
+        //        var dto = new Z();
+        //        dto.GetType().GetProperty("Name").SetValue(dto, item.GetType().GetProperty("Name").GetValue(item));
+        //        dto.GetType().GetProperty("GuidId").SetValue(dto, item.GetType().GetProperty("GuidId").GetValue(item));
+
+        //        var productProperty = item.GetType().GetProperty("Products");
+        //        if (productProperty != null)
+        //        {
+        //            var albums = (IEnumerable<Product>)productProperty.GetValue(item);
+        //            dto.GetType().GetProperty("Albums").SetValue(dto, MapToMusicDto(albums).ToList());
+        //        }
+
+        //        mappedDtos.Add(dto);
+        //    }
+
+        //    return mappedDtos;
+        //}
+
+
+
+
+
+        //public static IEnumerable<GenreDto> MapToGenreDto(IEnumerable<Genre> genres)
+        //{
+        //    var mappedDtos = new List<GenreDto>();
+
+        //    foreach (var item in genres)
+        //        mappedDtos.Add(new GenreDto
+        //        {
+        //            Name = item.Name,
+        //            GuidId = item.GuidId,
+        //            Description = item.Name,
+        //            GenreId = item.GenreId,
+        //            //Albums = item.Products == null || item.Products.Count == 0 ? null : MapToMusicDto(item.Products).ToList()
+        //        });
+
+        //    return mappedDtos;
+        //}
+
+        //public static GenreDto MapToGenreDto(Genre genre)
+        //{
+        //    return new GenreDto
+        //    {
+        //        Name = genre.Name,
+        //        GuidId = genre.GuidId,
+        //        Description = genre.Name,
+        //        GenreId = genre.GenreId,
+        //        //Albums = genre.Products == null || genre.Products.Count == 0 ? null : MapToMusicDto(genre.Products).ToList()
+        //    };
+        //}
+
+        //public static IEnumerable<ArtistDto> MapToArtistDto(IEnumerable<Artist> artist)
+        //{
+        //    var mappedDtos = new List<ArtistDto>();
+
+        //    foreach (var item in artist)
+        //        mappedDtos.Add(new ArtistDto
+        //        {
+        //            GuidId = item.GuidId,
+        //            ArtistId = item.ArtistId,
+        //            Name = item.Name
+        //        });
+
+        //    return mappedDtos;
+        //}
     }
 }

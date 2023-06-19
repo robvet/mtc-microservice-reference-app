@@ -46,10 +46,10 @@ namespace Basket.Service.Domain.BusinessServices
         /// </summary>
         /// <param name="correlationToken">Tracks request - can be any value</param>
         ///// <returns>BasketItemEntity</returns>
-        public async Task<List<BasketEntity>> GetAllBaskets(string correlationToken)
+        public async Task<List<Entities.Basket>> GetAllBaskets(string correlationToken)
         {
             //return await _distributedCacheRepository.GetAllBaskets(correlationToken, _telemetryClient);
-            return await _distributedCacheRepository.GetAll<BasketEntity>(correlationToken, _telemetryClient);
+            return await _distributedCacheRepository.GetAll<Entities.Basket>(correlationToken, _telemetryClient);
         }
 
         /// <summary>
@@ -57,10 +57,10 @@ namespace Basket.Service.Domain.BusinessServices
         /// </summary>
         /// <param name="correlationToken">Tracks request - can be any value</param>
         ///// <returns>BasketItemEntity</returns>
-        public async Task<List<ProductEntity>> GetAllProducts(string correlationToken)
+        public async Task<List<Product>> GetAllProducts(string correlationToken)
         {
             //return await _distributedCacheRepository.GetAllBaskets(correlationToken, _telemetryClient);
-            return await _distributedCacheRepository.GetAll<ProductEntity>(correlationToken, _telemetryClient);
+            return await _distributedCacheRepository.GetAll<Product>(correlationToken, _telemetryClient);
         }
 
         /// <summary>
@@ -69,9 +69,9 @@ namespace Basket.Service.Domain.BusinessServices
         /// <param name="correlationToken">Tracks request - can be any value</param>
         /// <param name="basketId">Id of shopping basket</param>
         /// <returns>BasketItemEntity</returns>
-        public async Task<Entities.BasketEntity> GetBasketById(Guid basketId, string correlationToken)
+        public async Task<Entities.Basket> GetBasketById(Guid basketId, string correlationToken)
         {
-            return await _distributedCacheRepository.GetAsync<BasketEntity>(basketId, _telemetryClient, "GetBasketById", correlationToken);
+            return await _distributedCacheRepository.GetAsync<Entities.Basket>(basketId, _telemetryClient, "GetBasketById", correlationToken);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Basket.Service.Domain.BusinessServices
         /// <param name="correlationToken">Tracks request - can be any value</param>
         /// <param name="basketId">Id of shopping basket</param>
         /// <returns>BasketItemEntity</returns>
-        public async Task<BasketEntity> AddItemToBasket(Guid basketId, Guid productId, string correlationToken)
+        public async Task<Entities.Basket> AddItemToBasket(Guid basketId, Guid productId, string correlationToken)
         {
             //* Materialized View Pattern
             //* Fetch product entity data from a read-only store contained in shopping basket service.
@@ -146,7 +146,7 @@ namespace Basket.Service.Domain.BusinessServices
                 //    $"Added productEntity information for item {productId} for Request {correlationToken} to the read model.");
             }
 
-            BasketEntity basket = null;
+            Entities.Basket basket = null;
             
             // Does basketID exist?
             if (basketId == Guid.Empty)
@@ -156,14 +156,14 @@ namespace Basket.Service.Domain.BusinessServices
             else
             {
                 // Fetch Basket from cache
-                basket = await _distributedCacheRepository.GetAsync<BasketEntity>(basketId, _telemetryClient, "AddItemToBasket", correlationToken);
+                basket = await _distributedCacheRepository.GetAsync<Entities.Basket>(basketId, _telemetryClient, "AddItemToBasket", correlationToken);
             }
 
             // Get basket from cache
             if (basket == null)
             {
                 // BasketEntity is null, add basket and product to it
-                basket = new BasketEntity
+                basket = new Entities.Basket
                 {
                     BuyerId = Guid.Empty,
                     BasketId = basketId,
@@ -172,7 +172,7 @@ namespace Basket.Service.Domain.BusinessServices
                     Processed = false,
                     Items =
                     {
-                        new BasketItemEntity
+                        new BasketItem
                         {
                             BasketParentId = basketId,
                             CorrelationToken = correlationToken,
@@ -190,7 +190,7 @@ namespace Basket.Service.Domain.BusinessServices
                     }
                 };
 
-                await _distributedCacheRepository.UpdateAsync<BasketEntity>(basket, basketId, correlationToken, _telemetryClient);
+                await _distributedCacheRepository.UpdateAsync<Entities.Basket>(basket, basketId, correlationToken, _telemetryClient);
                 _logger.LogInformation($"Created new shopping basket {basketId} and added productEntity {productEntity.Title} for Request {correlationToken} ");
             }
             else 
@@ -202,7 +202,7 @@ namespace Basket.Service.Domain.BusinessServices
                 if (itemAlreadyInBasket == null)
                 {
                     // ProductEntity does not exist in basket, add it
-                    basket.Items.Add(new BasketItemEntity()
+                    basket.Items.Add(new BasketItem()
                     {
                         BasketParentId = basketId,
                         CorrelationToken = correlationToken,
@@ -243,7 +243,7 @@ namespace Basket.Service.Domain.BusinessServices
                 // Increment basket count
                 basket.ItemCount++;
 
-                await _distributedCacheRepository.UpdateAsync<BasketEntity>(basket, basketId, correlationToken, _telemetryClient);
+                await _distributedCacheRepository.UpdateAsync<Entities.Basket>(basket, basketId, correlationToken, _telemetryClient);
                 //basket = await _distributedCacheRepository.UpdateBasketAsync(basket, correlationToken, _telemetryClient);
             }
 
@@ -257,10 +257,10 @@ namespace Basket.Service.Domain.BusinessServices
         /// <param name="correlationToken">Tracks request - can be any value</param>
         /// <param name="basketId">Id of shopping basket</param>
         /// <returns>BasketItemRemoveEntity</returns>
-        public async Task<BasketItemRemovedEntity> RemoveItemFromBasket(Guid basketId, Guid productId, string correlationToken)
+        public async Task<BasketItemRemove> RemoveItemFromBasket(Guid basketId, Guid productId, string correlationToken)
         {
             //Get reference to shopping basket item
-            var currentBasket = await _distributedCacheRepository.GetAsync<BasketEntity>(basketId, _telemetryClient, "RemoveItemFromBasket", correlationToken);
+            var currentBasket = await _distributedCacheRepository.GetAsync<Entities.Basket>(basketId, _telemetryClient, "RemoveItemFromBasket", correlationToken);
             //var currentBasket = await _distributedCacheRepository.GetBasketAsync(basketId, correlationToken, _telemetryClient);
 
             //Get the right item matching the prodcut
@@ -280,14 +280,14 @@ namespace Basket.Service.Domain.BusinessServices
                 itemInBasket.Quantity--;
                 itemInBasket.CorrelationToken = correlationToken;
                 currentBasket.ItemCount--;
-                await _distributedCacheRepository.UpdateAsync<BasketEntity>(currentBasket, basketId, correlationToken, _telemetryClient);
+                await _distributedCacheRepository.UpdateAsync<Entities.Basket>(currentBasket, basketId, correlationToken, _telemetryClient);
             }
             else
             {
                 // Only one quantity of productEntity in basket. Remove it
                 currentBasket.Items.Remove(itemInBasket);
                 currentBasket.ItemCount--;
-                await _distributedCacheRepository.UpdateAsync<BasketEntity>(currentBasket, basketId, correlationToken, _telemetryClient);
+                await _distributedCacheRepository.UpdateAsync<Entities.Basket>(currentBasket, basketId, correlationToken, _telemetryClient);
                     _logger.LogInformation("Removed both productEntity Id {id} and shopping basket {basket} for request {token}",
                     productId, basketId, correlationToken);
             }
@@ -295,10 +295,10 @@ namespace Basket.Service.Domain.BusinessServices
 
             // Calculate basket count and total
 
-            var basket = await _distributedCacheRepository.GetAsync<BasketEntity>(basketId, _telemetryClient, "RemoveItemFromBasket", correlationToken);
+            var basket = await _distributedCacheRepository.GetAsync<Entities.Basket>(basketId, _telemetryClient, "RemoveItemFromBasket", correlationToken);
 
             // Construct return type
-            var basketItemRemoved = new BasketItemRemovedEntity
+            var basketItemRemoved = new BasketItemRemove
             {
                 Message = $"{itemInBasket} has been removed from your shopping basket.",
                 DeleteId = productId,
@@ -320,7 +320,7 @@ namespace Basket.Service.Domain.BusinessServices
         public async Task EmptyBasket(Guid basketId, string correlationToken, bool hasOrderBeenCreated)
         {
             //Empty BasketEntity
-            await _distributedCacheRepository.DeleteAsync<BasketEntity>(basketId, _telemetryClient, correlationToken);
+            await _distributedCacheRepository.DeleteAsync<Entities.Basket>(basketId, _telemetryClient, correlationToken);
         }
 
         /// <summary>
@@ -329,7 +329,7 @@ namespace Basket.Service.Domain.BusinessServices
         /// <param name="checkout">User information to create new order</param>
         /// <param name="correlationToken">Tracks request - can be any value</param>
         /// <returns></returns>
-        public async Task<CheckoutEntity> Checkout(CheckoutDto checkout, string correlationToken)
+        public async Task<Checkout> Checkout(CheckoutDto checkout, string correlationToken)
         {
             // The shopping basket service is responsible for managing the user's shopping experirence.
             // It does not create or manage with orders. 
@@ -411,7 +411,7 @@ namespace Basket.Service.Domain.BusinessServices
             // Once created, Ordering publishes event to have BasketEntity remove basket.
             await _eventBusPublisher.Publish<CheckOutEvent>(checkoutEvent);
 
-            return (new CheckoutEntity
+            return (new Checkout
             {
                 CheckoutSystemId = checkoutEvent.OrderInformationModel.CheckoutId,
                 BuyerEmail = checkoutEvent.OrderInformationModel.Buyer.Email,

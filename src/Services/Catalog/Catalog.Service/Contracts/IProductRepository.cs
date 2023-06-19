@@ -16,5 +16,6 @@ namespace catalog.service.Contracts
         Task<Product> GetByIdWithIdempotencyCheck(Guid productId, string correlationToken);
         Task<List<Product>> GetProductsForGenre(Guid guidId, string correlationToken);
         Task<List<Product>> GetProductsForArtist(Guid guidId, string correlationToken);
+        Task<List<Product>> GetProductsForMedium(Guid guidId, string correlationToken);
     }
 }

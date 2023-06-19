@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Basket.Service.Domain.Entities
 {
-    public class CheckoutEntity
+    public class Checkout
     {
         public Guid CheckoutSystemId { get; set; }
         public string BuyerEmail { get; set; }

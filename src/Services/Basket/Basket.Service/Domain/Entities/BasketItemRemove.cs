@@ -2,7 +2,7 @@
 
 namespace Basket.Service.Domain.Entities
 {
-    public class BasketItemRemovedEntity
+    public class BasketItemRemove
     {
         public Guid DeleteId { get; set; }
         public string Message { get; set; }

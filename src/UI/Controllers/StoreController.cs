@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using MusicStore.Helper;
+using MusicStore.Plumbing;
 using MusicStore.Models;
 using SharedUtilities.Utilties;
 
@@ -38,17 +38,25 @@ namespace MusicStore.Controllers
             return View(result.Data);
         }
 
+        public async Task<IActionResult> Mediums(Guid aritistId)
+        {
+            var result = await _IRestClient.GetAsync<List<MediumDto>>($"{_baseUrl}/Mediums");
+
+            return View(result.Data);
+        }
+
+
         //
         // GET: /Store/Browse?genre=Disco
         //public async Task<IActionResult> Browse(int id)
         public async Task<IActionResult> Browse(StoreParametersDto parameters)
         {
             Guard.ForNullObject(parameters, "StoreParametersDto in StoreController");
-            Guard.ForLessEqualZero(parameters.Id, "StoreParametersDto Id in StoreController");
+            Guard.ForValidGuid(parameters.Id, "StoreParametersDto GuidId in StoreController");
             Guard.ForNullOrEmpty(parameters.Name, "StoreParametersDto Name in StoreController");
             Guard.ForNullOrEmpty(parameters.Domain, "StoreParametersDto Domain in StoreController");
 
-            UIRestResponse<List<ProductDto>> result = null;
+            RestResponse<List<ProductDto>> result = null;
             
             switch (parameters.Domain)
             {
@@ -57,6 +65,9 @@ namespace MusicStore.Controllers
                     break;
                 case "Genre":
                     result = await _IRestClient.GetAsync<List<ProductDto>>($"{_baseUrl}/GetMusicForGenre/{parameters.Id}");
+                    break;
+                case "Medium":
+                    result = await _IRestClient.GetAsync<List<ProductDto>>($"{_baseUrl}/GetMusicForMedium/{parameters.Id}");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("Domain type in StoreParametersDto is Incorrect");

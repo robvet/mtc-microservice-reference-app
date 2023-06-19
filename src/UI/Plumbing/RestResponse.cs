@@ -1,10 +1,10 @@
 ﻿using System.Net.Http;
 
-namespace MusicStore.Helper
+namespace MusicStore.Plumbing
 {
-    public class UIRestResponse<T> 
+    public class RestResponse<T> 
     {
-        public UIRestResponse(HttpResponseMessage httpResponseMessage, T data, string errorMessage)
+        public RestResponse(HttpResponseMessage httpResponseMessage, T data, string errorMessage)
         {
             HttpResponseMessage = httpResponseMessage;
             Data = data;

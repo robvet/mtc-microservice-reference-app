@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using MusicStore.Models;
 using System;
-using SharedUtilities.TokenGenerator;
 
-namespace MusicStore.Helper
+namespace MusicStore.Plumbing
 {
     public class CookieLogic
     {
@@ -64,7 +63,7 @@ namespace MusicStore.Helper
             _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName, cookieVaule, options);
 
             //var cartId = _httpContextAccessor.HttpContext.Request.Cookies[CookieName];
-            //_httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName);
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName);
         }
     }
 }

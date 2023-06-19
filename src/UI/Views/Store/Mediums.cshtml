@@ -1,23 +1,23 @@
-﻿@model List<ArtistDto>
+﻿@model List<MediumDto>
 @{
-    ViewBag.Title = "Artists";
+    ViewBag.Title = "Mediums";
 }
 
 <div style="margin-bottom: 30px; margin-top: 60px">
     <h1 style="font-family: cursive">
-        BROWSE BY Artist...
+        BROWSE BY Medium...
     </h1>
 </div>
 
 <p style="font-family: cursive; font-size:x-large">
-    Select from @Model.Count() artists...
+    Select from @Model.Count() mediums...
 
 <ul class="list-group" style="width: 50%">
-    @foreach (var artist in Model)
+    @foreach (var medium in Model)
     {
-        var Domain = "Artist";
-        var Id = artist.GuidId;
-        var Name = artist.Name;
+        var Domain = "Medium";
+        var Id = medium.GuidId;
+        var Name = medium.Name;
 
         <li class="list-group-item">
             @*<a asp-controller="Store" asp-action="Browse" asp-route-id="@artist.ArtistId">@artist.Name</a>*@
