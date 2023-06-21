@@ -23,7 +23,7 @@ namespace order.service.Events
 
         public class LineItem
         {
-            public int ProductId { get; set; }
+            public Guid ProductId { get; set; }
             public string Title { get; set; }
             public string Artist { get; set; }
             public string Genre { get; set; }

@@ -59,7 +59,7 @@ namespace order.domain.AggregateModels.OrderAggregate
 
         // DDD Patterns comment:
         // This Order AggregateRoot's method "AddOrderitem()" should be the only way to add Items to the Order. This centralized approach provides consistency to the entire aggregate.
-        public void AddOrderItem(string title, int productId, string artist, int quantity, decimal unitPrice)
+        public void AddOrderItem(string title, Guid productId, string artist, int quantity, decimal unitPrice)
         {
             OrderDetails.Add(new OrderDetail(title, artist, productId, quantity, unitPrice));
         }

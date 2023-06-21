@@ -62,7 +62,7 @@ namespace MusicStore.Plumbing
 
             _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName, cookieVaule, options);
 
-            //var cartId = _httpContextAccessor.HttpContext.Request.Cookies[CookieName];
+            var cartId = _httpContextAccessor.HttpContext.Request.Cookies[CookieName];
             _httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName);
         }
     }

@@ -50,8 +50,7 @@ namespace MusicStore.Controllers
 
             if (basketId == null)
             {
-                return null;
-                //throw new Exception($"Cookie missing in Index Action of ShoppingCartController");
+                throw new Exception($"Cookie missing in Index Action of ShoppingCartController");
             }
 
             var response =

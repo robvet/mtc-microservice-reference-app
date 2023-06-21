@@ -29,6 +29,11 @@ namespace MusicStore.Controllers
             _IRestClient = iuiRestClient;
         }
 
+        public IActionResult OrderPlaced()
+        {
+            return View();
+        }
+
         //
         // GET: /Checkout/
         public IActionResult AddressAndPayment()
@@ -98,7 +103,8 @@ namespace MusicStore.Controllers
                 TempData["CorrelationId"] = response.Data.CorrelationId;
 
                 //return RedirectToAction("index", "Home");
-                return View("OrderPlaced");
+                //return View("OrderPlaced");
+                return RedirectToAction("OrderPlaced");
             }
             catch
             {

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.ApplicationInsights;
+using Microsoft.Azure.Documents;
 //using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using order.domain.AggregateModels.BuyerAggregate;
 using order.domain.AggregateModels.OrderAggregate;
 using order.domain.Contracts;
+using static Microsoft.AspNetCore.Razor.Language.TagHelperMetadata;
 
 namespace order.service.Commands
 {
