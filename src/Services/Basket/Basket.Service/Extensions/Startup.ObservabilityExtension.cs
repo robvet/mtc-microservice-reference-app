@@ -1,11 +1,11 @@
 ﻿using System;
-using Basket.API.TelemetryInitializer;
+using Basket.Service.TelemetryInitializer;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Basket.API.Extensions
+namespace Basket.Service.Extensions
 {
     public static class ObservabilityExtension
     {

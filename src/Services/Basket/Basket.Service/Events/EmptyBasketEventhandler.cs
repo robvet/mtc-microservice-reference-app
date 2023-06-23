@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Basket.API.Contracts;
+using Basket.Service.Contracts;
 using EventBus.Events;
 
-namespace Basket.API.Events
+namespace Basket.Service.Events
 {
     public class EmptyBasketEventHandler : IMessageEventHandler
     {

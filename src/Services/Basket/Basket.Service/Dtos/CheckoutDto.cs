@@ -1,12 +1,12 @@
 using System;
 
-namespace Basket.API.Dtos
+namespace Basket.Service.Dtos
 {
     public class CheckoutDto
     {
         // Scalar properties (map to database columns)
         //[Required]
-        public string BasketId { get; set; }
+        public Guid BasketId { get; set; }
         public int OrderId { get; set; }
         public string PromoCode { get; set; }
         public string Username { get; set; }

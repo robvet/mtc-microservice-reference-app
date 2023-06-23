@@ -3,45 +3,34 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using MusicStore.Helper;
+using MusicStore.Plumbing;
 using MusicStore.Models;
 
 namespace MusicStore.Controllers
 {
     public class HomeController : Controller
     {
-        private const string baseUrl = "catalog/api/catalog";
+        private readonly string _baseUrl;
         private readonly IRestClient _IRestClient;
         private readonly int count = 6;
 
-        public HomeController(IRestClient iuiRestClient)
+        public HomeController(IRestClient uiRestClient, IConfiguration configuration) 
         {
-            _IRestClient = iuiRestClient;
+            _IRestClient = uiRestClient;
+            _baseUrl = configuration["catalogBaseUri"] ??
+                       throw new ArgumentNullException("catalogBaseUri", "Missing value");
         }
 
-        //
         // GET: /Home/
         public async Task<IActionResult> Index()
         {
-            // generate random price between 1 and 20
-
-            //Random rand = new Random();
-            //int a = rand.Next(10, 500);
-            //string c = a + ".00";
-            //decimal d = decimal.Parse(c);
-           
-
-
-            var result = await _IRestClient.GetAsync<List<ProductDto>>($"{baseUrl}/TopSellingMusic/{count}");
-
+            var result = await _IRestClient.GetAsync<List<ProductDto>>($"{_baseUrl}/TopSellingMusic/{count}");
             return View(result.Data);
         }
 
         public IActionResult StatusCodePage()
         {
             ViewData["statusCode"] = TempData["statusCode"];
-
             return View("~/Views/Shared/StatusCodePage.cshtml");
         }
 

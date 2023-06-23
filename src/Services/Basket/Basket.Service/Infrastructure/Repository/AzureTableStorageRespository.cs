@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Basket.API.Contracts;
+using Basket.Service.Contracts;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace Basket.API.Infrastructure.Repository
+namespace Basket.Service.Infrastructure.Repository
 {
     public class AzureTableStorageRespository<T> : IAzureTableStorageRespository<T>
         where T : TableEntity, new()

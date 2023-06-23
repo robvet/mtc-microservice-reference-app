@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Basket.API.Dtos
+namespace Basket.Service.Dtos
 {
     public class BasketDto
     {
@@ -9,10 +10,11 @@ namespace Basket.API.Dtos
             CartItems = new List<BasketItemDto>();
         }
 
-        public string BasketId { get; set; }
-
+        public Guid BasketId { get; set; }
         public List<BasketItemDto> CartItems { get; set; }
+        public Guid BuyerID { get; set; }
         public decimal CartTotal { get; set; }
         public int ItemCount { get; set; }
+        public bool Processed { get; set; }
     }
 }

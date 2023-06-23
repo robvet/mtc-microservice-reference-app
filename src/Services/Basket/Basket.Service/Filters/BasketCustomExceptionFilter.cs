@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 
-namespace Basket.API.Filters
+namespace Basket.Service.Filters
 {
     public class BasketCustomExceptionFilter : IExceptionFilter
     {

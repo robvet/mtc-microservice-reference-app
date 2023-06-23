@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Basket.API.TelemetryInitializer
+namespace Basket.Service.TelemetryInitializer
 {
     public class ServiceNameTelemetryInitializer : ITelemetryInitializer
     {

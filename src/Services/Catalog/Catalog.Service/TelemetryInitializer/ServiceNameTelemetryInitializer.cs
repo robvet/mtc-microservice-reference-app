@@ -6,17 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Catalog.API.TelemetryInitializer
+namespace catalog.service.TelemetryInitializer
 {
     public class ServiceNameTelemetryInitializer : ITelemetryInitializer
     {
         private readonly IConfiguration _configuration;
-        
+
         public ServiceNameTelemetryInitializer(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-        
+
         public void Initialize(ITelemetry telemetry)
         {
             // Get service name 

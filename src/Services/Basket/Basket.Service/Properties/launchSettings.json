@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Basket.API": {
+    "Basket.Service": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",

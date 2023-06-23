@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Catalog.API.Contracts;
-using Catalog.API.Domain.Entities;
-using Catalog.API.Infrastructure.DataStore;
+using catalog.service.Contracts;
+using catalog.service.Domain.Entities;
+using catalog.service.Infrastructure.DataStore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Catalog.API.Infrastructure.Repository
+namespace catalog.service.Infrastructure.Repository
 {
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
@@ -24,9 +24,17 @@ namespace Catalog.API.Infrastructure.Repository
         {
             // Group the order details by album and return the albums with the highest count
 
+            // Important to return empty product list if no products exist
+            // Avoids errors in UX
+            if (IsEmpty())
+            {
+                return new List<Product>();
+            }
+
             // Fix for race conditions where music is created with higher id values
             // Select MIN(id) from products as lowestId
-            var lowestId = Get().Min(x => x.Id);
+            var lowestId = await Task.Run(() => Get().Min(x => x.Id));
+            //var lowestId = Get().Min(x => x.Id);
 
             var topSellers = new List<Product>();
             var rnd = new Random();
@@ -36,10 +44,23 @@ namespace Catalog.API.Infrastructure.Repository
             {
                 var item = rnd.Next(productCount);
 
-                var selecteditem = Get()
-                    .Where(x => x.Id == (item + lowestId))
-                    .AsNoTracking() // Disable change tracking
-                    .FirstOrDefault();
+                var selecteditem = await Get()
+                        .Where(x => x.IsActive == true)
+                        .Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .Where(x => x.Id == item + lowestId)
+                        .AsNoTracking() // Disable change tracking
+                        .FirstOrDefaultAsync();
+
+
+                //var selecteditem = await Get()
+                //    .Where(x => x.Id == (item + lowestId))
+                //    .AsNoTracking() // Disable change tracking
+                //    .FirstOrDefault();
+
 
                 // In case selected item does not exist
                 if (selecteditem == null)
@@ -70,34 +91,57 @@ namespace Catalog.API.Infrastructure.Repository
 
         public async Task<List<Product>> GetAll(string correlationToken)
         {
-            return Get().Include(x => x.Artist).Include(y => y.Genre).ToList();
+            // Important to return empty product list if no products exist
+            // Avoids errors in UX
+            if (IsEmpty())
+            {
+                return new List<Product>();
+            }
+
+            return await Get().Include(x => x.Artist)
+                        .Where(x => x.IsActive == true)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .ToListAsync();
         }
 
-        public async Task<Product> GetById(int id, string correlationToken)
+        public async Task<Product> GetById(Guid productId, string correlationToken)
         {
-            return Get().Where(x => x.Id == id).Include(x => x.Artist).Include(y => y.Genre).FirstOrDefault();
+            return await Get().Where(x => x.ProductId == productId)
+                        .Where(x => x.IsActive == true)
+                        .Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .FirstOrDefaultAsync();
         }
 
-        public async Task<Product> GetByIdWithIdempotencyCheck(int id, Guid productId, string correlationToken)
+        public async Task<Product> GetByIdWithIdempotencyCheck(Guid guidId, string correlationToken)
         {
-            //var guid = ParseCorrelationToken(correlationToken);
-            
-            return Get().Where(x => x.ProductId == productId).Include(x => x.Artist)
-                .Include(y => y.Genre).FirstOrDefault();
+            return await Get().Where(x => x.ProductId == guidId)
+                        .Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .FirstOrDefaultAsync();
             //return Get().Where(x => x.Id == id && x.ProductId == guid).Include(x => x.Artist)
             //    .Include(y => y.Genre).FirstOrDefault();
         }
 
 
-        public async Task<bool> ChangeParentalCaution(int albumId, bool parentalCaution, string correlationToken)
+        public async Task<bool> ChangeParentalCaution(Guid productId, bool parentalCaution, string correlationToken)
         {
-            var album = await GetById(albumId, correlationToken);
+            var album = await GetById(productId, correlationToken);
 
             if (album == null)
                 return false;
 
-            // If ParentalCaution has not changed, the short-circuit operation
-            // and return true, avoiding expense of unneccesary update.
+            // If ParentalCaution hasn't changed, short-circuit operation
+            // and return true, avoiding expense of unneccesary database update operation.
             if (album.ParentalCaution == parentalCaution)
                 return true;
 
@@ -108,34 +152,49 @@ namespace Catalog.API.Infrastructure.Repository
             return true;
         }
 
-        public async Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken)
+        public async Task<List<Product>> GetProductsForGenre(Guid guidId, string correlationToken)
         {
-            return Get()
-                .Include("Artists")
-                .Where(x => x.GenreId == genreId).ToList();
+
+            return await Get()
+                .Where(y => y.Genre.GuidId == guidId)
+                .Include(y => y.Genre)
+                .Include(x => x.Artist)
+                .Include(z => z.Medium)
+                .Include(a => a.Status)
+                .Include(b => b.Condition)
+            
+            .ToListAsync();
         }
 
-        public async Task<List<Product>> GetInexpensiveAlbumsByGenre(int genreId, decimal priceCeiling,
-            string correlationToken)
+        public async Task<List<Product>> GetProductsForArtist(Guid guidId, string correlationToken)
         {
-            throw new NotImplementedException();
-            //return base.Find(x => x.GenreId == genreId && x.Price <= priceCeiling).ToList();
+            return await Get()
+                        .Where(x => x.Artist.GuidId == guidId)
+                        .Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(z => z.Medium)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .ToListAsync();
         }
 
-        public async Task ClearProductDatabase(string correlationToken)
+        public async Task<List<Product>> GetProductsForMedium(Guid guidId, string correlationToken)
         {
-            await ClearData(correlationToken);
+            return await Get()
+                        .Where(z => z.Medium.GuidId == guidId)
+                        .Include(z => z.Medium)
+                        .Include(x => x.Artist)
+                        .Include(y => y.Genre)
+                        .Include(a => a.Status)
+                        .Include(b => b.Condition)
+                        .ToListAsync();
         }
 
-        /// <summary>
-        /// Parse out extra characters to make guid
-        /// </summary>
-        /// <param name="correlationToken"></param>
-        /// <returns></returns>
-        //private Guid ParseCorrelationToken(string correlationToken)
+        //public async Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken)
         //{
-        //    var count = correlationToken.IndexOf("-") + 1;
-        //    return new Guid(correlationToken.Substring(count));
+        //    return await Get()
+        //        .Include("Artists")
+        //        .Where(x => x.GenreId == genreId).ToListAsync();
         //}
     }
 }

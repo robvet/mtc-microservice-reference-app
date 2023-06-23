@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Catalog.API.Domain.Entities;
+using catalog.service.Domain.Entities;
 
-namespace Catalog.API.Contracts
+namespace catalog.service.Contracts
 {
     public interface IArtistRepository : IRepository<Artist>
     {
         Task<List<Artist>> GetAll(string correlationToken);
-        Task<Artist> GetById(int id, string correlationToken);
+        Task<Artist> GetById(Guid guidId, string correlationToken);
     }
 }

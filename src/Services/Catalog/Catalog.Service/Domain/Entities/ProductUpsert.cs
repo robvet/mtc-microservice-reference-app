@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Catalog.API.Domain.Entities
+namespace catalog.service.Domain.Entities
 {
     public class ProductUpsert
     {

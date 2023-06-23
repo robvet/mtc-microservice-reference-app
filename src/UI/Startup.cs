@@ -8,8 +8,9 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MusicStore.Extensions;
-using MusicStore.Helper;
+using MusicStore.Plumbing;
 using MusicStore.Properties;
+using SharedUtilities.Utilties;
 
 namespace MusicStore
 {
@@ -24,12 +25,12 @@ namespace MusicStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-                       // validate config data exists
-            if (string.IsNullOrEmpty(Configuration["ApiGateway"]))
-            {
-                throw new Exception("ApiGateway Endpoint Environment Variable not set");
-            }
-                       
+            // validate configuration data exists
+            Guard.ForNullOrEmpty(Configuration["ApiGateway"], "ApiGateway Endpoint Environment Variable not set");
+            Guard.ForNullOrEmpty(Configuration["catalogBaseUri"], "CatalogBaseUri Environment Variable not set");
+            Guard.ForNullOrEmpty(Configuration["basketBaseUri"], "basketBaseUri Endpoint Environment Variable not set");
+            Guard.ForNullOrEmpty(Configuration["orderBaseUri"], "orderBaseUri Endpoint Environment Variable not set");
+
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Home/AccessDenied");
@@ -62,7 +63,7 @@ namespace MusicStore
             //});
             //services.AddAuthentication();
 
-            services.AddSingleton<IRestClient, UIRestClient>();
+            services.AddSingleton<IRestClient, RestClient>();
             services.AddSingleton<CookieLogic>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }

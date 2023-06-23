@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Catalog.API.Contracts;
-using Catalog.API.Domain.Entities;
-using Catalog.API.Infrastructure.DataStore;
+using catalog.service.Contracts;
+using catalog.service.Domain.Entities;
+using catalog.service.Infrastructure.DataStore;
+using Microsoft.EntityFrameworkCore;
 
-namespace Catalog.API.Infrastructure.Repository
+namespace catalog.service.Infrastructure.Repository
 {
     public class ArtistRepository : BaseRepository<Artist>, IArtistRepository
     {
@@ -13,14 +15,22 @@ namespace Catalog.API.Infrastructure.Repository
         {
         }
 
-        public async Task<Artist> GetById(int id, string correlationToken)
+        public async Task<Artist> GetById(Guid guidId, string correlationToken)
         {
-            return await FindById(id);
+            var result = await Get().Where(x => x.GuidId == guidId).FirstOrDefaultAsync();
+            return result;
         }
 
         public async Task<List<Artist>> GetAll(string correlationToken)
         {
-            return Get().ToList();
+            // Important to return empty product list if no products exist
+            // Avoids errors in UX
+            if (IsEmpty())
+            {
+                return new List<Artist>();
+            }
+
+            return await Task.FromResult(Get().ToList());
         }
     }
 }

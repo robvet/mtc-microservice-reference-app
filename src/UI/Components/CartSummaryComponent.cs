@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MusicStore.Helper;
+using MusicStore.Plumbing;
 using MusicStore.Models;
 
 namespace MusicStore.Components
@@ -28,12 +28,15 @@ namespace MusicStore.Components
 
             if (!string.IsNullOrEmpty(shoppingCartId))
             {
-                var response = await _IRestClient.GetAsync<BasketSummaryDto>($"{baseUrl}/BasketSummary/{_cookieLogic.GetBasketId()}");
+                var cookie = _cookieLogic.GetBasketId();
+
+
+                var response = await _IRestClient.GetAsync<BasketSummaryDto>($"{baseUrl}/BasketSummary/{cookie}");
 
                 if (response.Data != null)
                 {
                     //var response =
-                    //    await _IRestClient.GetAsync<BasketDto>($"{baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
+                    //    await _IRestClient.GetAsync<BasketDto>($"{_baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
 
                     ViewBag.CartCount = response.Data.ItemCount;
                     ViewBag.CartSummary = response.Data.ProductNames;

@@ -44,7 +44,7 @@ namespace SharedUtilities.Utilties
         public static void ForValidGuid(Guid value, string parameterName)
         {
             if (value == Guid.Empty)
-                throw new ArgumentOutOfRangeException(parameterName, $"{parameterName} cannot be Null or Empty");
+                throw new ArgumentOutOfRangeException(parameterName, $"{parameterName} cannot be Empty");
         }
 
         public static void ForNullObject(object target, string parameterName)

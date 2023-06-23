@@ -42,25 +42,28 @@
         });
     </script>
 }
-    <h3>
-        <em>Review</em> your cart:
-    </h3>
-    <div id="cart">
+
+<div style="margin-bottom: 30px; margin-top: 40px">
+    <h1 style="font-family: cursive">
+        REVIEW YOUR CART:
+    </h1>
+
+   <div id="cart">
         <p class="button">
             <a asp-controller="ShoppingCart" asp-action="RemoveCart">Delete Cart?</a>
         </p>
     </div>
     <div id="update-message">
     </div>
-    <table id="cart-summary" class="table table-bordered table-responsive table-hover table-striped">
-        <tr>
-            <th>
-                Song Name
+    <table id="cart-summary" style="font-size:large" class="table table-bordered table-responsive table-hover table-striped">
+    <tr>
+        <th style="font-size:large; text-align:center;">
+                Collection
             </th>
-            <th>
-                Price (each)
+        <th style="font-size:large; text-align:center;">
+                Price
             </th>
-            <th>
+        <th style="font-size:large; text-align:center;">
                 Quantity
             </th>
             <th></th>
@@ -68,29 +71,32 @@
         @foreach (var item in Model.CartItems)
         {
             <tr id="row-@item.">
-                <td>
-                <a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">@item.Name</a>
+            <td title="@item.Artist">
+                <a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">@item.Title</a>
                 </td>
-                <td>
-                    @item.Price
+            <td style="display:margin:0 auto;width:fit-content;">
+                <span style="display:block;margin:0 auto;width:fit-content;">$@item.Price</span>
+                    @*$@item.Price*@
                 </td>
-            <td id="item-count-@item.ProductId">
+            <td id="item-count-@item.ProductId" style="text-align:center;">
                     @item.QuanityOrdered
                 </td>
-                <td>
-                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.ProductId">Remove from cart</a>
+            <td style="text-align:center;">
+                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.ProductId">Remove...</a>
                 </td>
             </tr>
         }
-        <tr>
+    <tr style="font-size:larger">
             <td>
                 Total
             </td>
-            <td></td>
-            <td></td>
             <td id="cart-total">
-                @Model.CartTotal
+                <span style="font-weight:bolder;display:block;margin:0 auto;width:fit-content;">@Model.CartTotal</span>
             </td>
+            <td>
+                <span style="font-weight:bolder;display:block;margin:0 auto;width:fit-content;">$@Model.ItemCount</span>
+            </td>
+            <td></td>
         </tr>
     </table>
     <div id="cart">

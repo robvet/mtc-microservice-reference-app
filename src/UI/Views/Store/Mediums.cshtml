@@ -1,0 +1,27 @@
+﻿@model List<MediumDto>
+@{
+    ViewBag.Title = "Mediums";
+}
+
+<div style="margin-bottom: 30px; margin-top: 60px">
+    <h1 style="font-family: cursive">
+        BROWSE BY Medium...
+    </h1>
+</div>
+
+<p style="font-family: cursive; font-size:x-large">
+    Select from @Model.Count() mediums...
+
+<ul class="list-group" style="width: 50%">
+    @foreach (var medium in Model)
+    {
+        var Domain = "Medium";
+        var Id = medium.GuidId;
+        var Name = medium.Name;
+
+        <li class="list-group-item">
+            @*<a asp-controller="Store" asp-action="Browse" asp-route-id="@artist.ArtistId">@artist.Name</a>*@
+            <a asp-controller="Store" asp-action="Browse" asp-route-Id="@Id" asp-route-Domain="@Domain" asp-route-Name="@Name">@Name</a>
+        </li>
+    }
+</ul>

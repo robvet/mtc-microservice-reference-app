@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Basket.API.Events
+namespace Basket.Service.Events
 {
     public class OrderInformationModel
     {
@@ -10,9 +10,9 @@ namespace Basket.API.Events
             LineItems = new List<LineItem>();
         }
 
-        public string BasketId { get; set; }
-        public string OrderSystemId { get; set; }
-        public string CheckoutId { get; set; }
+        public Guid BasketId { get; set; }
+        public Guid OrderSystemId { get; set; }
+        public Guid CheckoutId { get; set; }
         public decimal Total { get; set; }
         public BuyerInformation Buyer { get; set; }
         public PaymentInformation Payment { get; set; }
@@ -20,7 +20,7 @@ namespace Basket.API.Events
     
         public class LineItem
         {
-            public int ProductId { get; set; }
+            public Guid ProductId { get; set; }
             public string Title { get; set; }
             public string Artist { get; set; }
             public string Genre { get; set; }

@@ -12,7 +12,7 @@ namespace order.domain.AggregateModels.OrderAggregate
 
         public OrderDetail(string title,
             string artist,
-            int albumId,
+            Guid albumId,
             int quantity,
             decimal unitPrice)
         {
@@ -34,7 +34,7 @@ namespace order.domain.AggregateModels.OrderAggregate
         //public int OrderDetailId { get; set; }
         //public int orderid { get; set; }
         public int Id { get; private set; }
-        public int AlbumId { get; private set; }
+        public Guid AlbumId { get; private set; }
         public string Title { get; private set; }
         public string Artist { get; private set; }
         public int Quantity { get; private set; }

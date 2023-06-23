@@ -2,14 +2,28 @@
 @{
     ViewBag.Title = "Store";
 }
-<h3>Browse Genres</h3>
 
-<p>
-    Select from @Model.Count() genres:
+<div style="margin-bottom: 30px; margin-top: 60px">
+    <h1 style="font-family: cursive">
+        BROWSE BY GENRE...
+    </h1>
+</div>
+
+<p style="font-family: cursive; font-size:x-large">
+    Select from @Model.Count() genres...
 </p>
-<ul class="list-group">
+<ul class="list-group" style="width: 50%; margin-top: 30px">
     @foreach (var genre in Model)
     {
-        <li class="list-group-item"><a asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a></li>
+        var Domain = "Genre";
+        var Id = genre.GuidId;
+        var Name = genre.Name;
+
+        <li class="list-group-item">
+            <a asp-controller="Store" asp-action="Browse" asp-route-Id="@Id" asp-route-Domain="@Domain" asp-route-Name="@Name">@Name</a>
+        </li>
+
+        @*<li class="list-group-item">
+            <a asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a></li>*@
     }
 </ul>

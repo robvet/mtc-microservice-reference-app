@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Catalog.API.Filters
+namespace catalog.service.Filters
 {
     public class SwaggerCustomerFilter : IOperationFilter
     {

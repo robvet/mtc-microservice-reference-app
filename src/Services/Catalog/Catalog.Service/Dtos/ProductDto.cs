@@ -1,14 +1,16 @@
 ﻿using System;
 
-namespace Catalog.API.Dtos
+namespace catalog.service.Dtos
 {
     public class ProductDto
     {
         public int Id { get; set; }
-        
+
         public Guid ProductId { get; set; }
 
         public string Title { get; set; }
+
+        public string Single { get; set; }
 
         public string AlbumArtUrl { get; set; }
 
@@ -16,20 +18,27 @@ namespace Catalog.API.Dtos
 
         public string Upc { get; set; }
 
-        public DateTime? ReleaseDate { get; set; }
+        public string ReleaseYear { get; set; }
 
         public decimal Price { get; set; }
 
-        public int Available { get; set; }
-
-        public bool? Cutout { get; set; }
+        public bool HighValueItem { get; set; }
 
         public string ArtistName { get; set; }
-
         public int ArtistId { get; set; }
 
         public string GenreName { get; set; }
-
         public int GenreId { get; set; }
+
+        public string MediumName { get; set; }
+        public int MediumId { get; set; }
+
+        public string StatusName { get; set; }
+        public int StatusId { get; set; }
+
+        public string ConditionName { get; set; }
+        public int ConditionId { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

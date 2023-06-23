@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Catalog.API.Contracts
+namespace catalog.service.Contracts
 {
     public interface IRepository<T>
     {

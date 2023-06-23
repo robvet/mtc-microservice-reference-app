@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MusicStore.Helper;
+using Microsoft.Extensions.Configuration;
+using MusicStore.Plumbing;
 using MusicStore.Models;
 
 namespace MusicStore.Areas.Admin.Controllers
@@ -11,24 +12,25 @@ namespace MusicStore.Areas.Admin.Controllers
     public class OrderController : Controller
     {
         private readonly IRestClient _IRestClient;
-        private const string baseUrl = "order/api/Ordering";
+        private readonly string _baseUrl;
         private const string version = "v1";
-        //private readonly string baseUrl = "order/api/Ordering/Orders";
 
-        public OrderController(IRestClient iuiRestClient)
+        public OrderController(IRestClient iuiRestClient, IConfiguration configuration)
         {
             _IRestClient = iuiRestClient;
+            _baseUrl = configuration["orderBaseUri"] ??
+                       throw new ArgumentNullException("orderBaseUri", "Missing value");
         }
 
         public async Task<IActionResult> Index()
         {
-            var response = await _IRestClient.GetAsync<List<OrderDto>>($"{baseUrl}/Orders");
+            var response = await _IRestClient.GetAsync<List<OrderDto>>($"{_baseUrl}/Orders");
             return View(response.Data);
         }
 
         public async Task<IActionResult> Details(string orderId)
         {
-            var response = await _IRestClient.GetAsync<OrderIndexDto>($"{baseUrl}/{version}/Order/{orderId}");
+            var response = await _IRestClient.GetAsync<OrderIndexDto>($"{_baseUrl}/{version}/Order/{orderId}");
             return View(response.Data);
         }
     }

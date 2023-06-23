@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Basket.API.Contracts
+namespace Basket.Service.Contracts
 {
     public interface IAzureTableStorageRespository<T> where T : TableEntity, new()
     {

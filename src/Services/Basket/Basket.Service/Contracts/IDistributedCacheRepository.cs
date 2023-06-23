@@ -1,30 +1,29 @@
-﻿using Basket.API.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Basket.API.Domain.Entities;
 using Microsoft.ApplicationInsights;
 
-namespace Basket.API.Contracts
+namespace Basket.Service.Contracts
 {
    public interface IDistributedCacheRepository 
     {
-        Task<Domain.Entities.BasketEntity> GetBasketAsync(string basketid, 
-                                                          string correlationToken, 
-                                                          TelemetryClient telemetryClient);
+        Task<T> GetAsync<T>(Guid id,
+                            TelemetryClient telemetryClient,
+                            string methodName,
+                            string correlationToken);
         
-        Task<List<Domain.Entities.BasketEntity>> GetAllBaskets(string correlationToken,
-                                                               TelemetryClient telemetryClient);
-        
-        //IEnumerable<string> GetUsers();
-       
-        Task<Domain.Entities.BasketEntity> UpdateBasketAsync(Domain.Entities.BasketEntity basketEntity, 
-                                                             string correlationToken,
-                                                             TelemetryClient telemetryClient);
-       
-        Task<bool> DeleteBasketAsync(string id,
-                                     TelemetryClient telemetryClient);
+        Task<List<T>> GetAll<T>(string correlationToken, 
+                                TelemetryClient telemetryClient);
+
+        Task<bool> UpdateAsync<T>(T entity, 
+                                  Guid id, 
+                                  string correlationToken, 
+                                  TelemetryClient telemetryClient);
+
+
+        Task<bool> DeleteAsync<T>(Guid id,
+                                  TelemetryClient telemetryClient,
+                                  string correlationToken);
 
     }
 }

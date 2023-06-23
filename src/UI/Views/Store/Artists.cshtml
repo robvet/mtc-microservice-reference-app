@@ -1,0 +1,27 @@
+﻿@model List<ArtistDto>
+@{
+    ViewBag.Title = "Artists";
+}
+
+<div style="margin-bottom: 30px; margin-top: 60px">
+    <h1 style="font-family: cursive">
+        BROWSE BY Artist...
+    </h1>
+</div>
+
+<p style="font-family: cursive; font-size:x-large">
+    Select from @Model.Count() artists...
+
+<ul class="list-group" style="width: 50%">
+    @foreach (var artist in Model)
+    {
+        var Domain = "Artist";
+        var Id = artist.GuidId;
+        var Name = artist.Name;
+
+        <li class="list-group-item">
+            @*<a asp-controller="Store" asp-action="Browse" asp-route-id="@artist.ArtistId">@artist.Name</a>*@
+            <a asp-controller="Store" asp-action="Browse" asp-route-Id="@Id" asp-route-Domain="@Domain" asp-route-Name="@Name">@Name</a>
+        </li>
+    }
+</ul>

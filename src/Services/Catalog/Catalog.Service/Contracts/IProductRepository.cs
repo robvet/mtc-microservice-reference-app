@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Catalog.API.Domain.Entities;
+using catalog.service.Domain.Entities;
 
-namespace Catalog.API.Contracts
+namespace catalog.service.Contracts
 {
     public interface IProductRepository : IRepository<Product>
     {
         Task<int> GetCount(string correlationToken);
         Task<List<Product>> GetTopSellers(int count, string correlationToken);
         Task<List<Product>> GetAll(string correlationToken);
-        Task<Product> GetById(int id, string correlationToken);
-        Task<bool> ChangeParentalCaution(int albumId, bool parentalCaution, string correlationToken);
-        Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken);
-        Task<List<Product>> GetInexpensiveAlbumsByGenre(int genreId, decimal priceCeiling, string correlationToken);
-        Task<Product> GetByIdWithIdempotencyCheck(int id, Guid productId, string correlationToken);
-        Task ClearProductDatabase(string correlationToken);
+        Task<Product> GetById(Guid id, string correlationToken);
+        Task<bool> ChangeParentalCaution(Guid productId, bool parentalCaution, string correlationToken);
+        //Task<List<Product>> RetrieveArtistsForGenre(int genreId, string correlationToken);
+        Task<Product> GetByIdWithIdempotencyCheck(Guid productId, string correlationToken);
+        Task<List<Product>> GetProductsForGenre(Guid guidId, string correlationToken);
+        Task<List<Product>> GetProductsForArtist(Guid guidId, string correlationToken);
+        Task<List<Product>> GetProductsForMedium(Guid guidId, string correlationToken);
     }
 }

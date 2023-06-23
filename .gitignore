@@ -368,3 +368,4 @@ secrets/
 
 # Ignore any files container in 'IaC/old/' folder
 old/
+/src/Services/Catalog/Catalog.Service/Infrastructure/DataStore/SeedDatabase.cs

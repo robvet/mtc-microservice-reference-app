@@ -3,15 +3,26 @@
 <li class="dropdown">
     <a asp-area="" asp-controller="Store" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown">Store <b class="caret"></b></a>
     <ul class="dropdown-menu">
-        @foreach (var genre in Model)
+        @if (Model != null)
         {
+            @foreach (var genre in Model)
+            {
+                var Domain = "Genre";
+                var Id = genre.GuidId;
+                var Name = genre.Name;
+                
+                <li>
+                    @*<a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a>*@
+                    @*<a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-genreId="@genre.GenreId" asp-route-genreName="@genre.Name">@genre.Name</a>*@
+@*                    <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-Id="@Id" asp-route-Domain="@Domain" asp-route-Name="@Name">@Name</a>*@
+                    <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-Id="@Id" asp-route-Domain="@Domain" asp-route-Name="@Name">@Name</a>
+                </li>
+            }
+
+            <li class="divider"></li>
             <li>
-                <a asp-area="" asp-controller="Store" asp-action="Browse" asp-route-id="@genre.GenreId">@genre.Name</a>
+                <a asp-area="" asp-controller="Store" asp-action="Index" asp-route-Domain="Genres">All Genres...</a>
             </li>
         }
-        <li class="divider"></li>
-        <li>
-            <a asp-area="" asp-controller="Store" asp-action="Index">More...</a>
-        </li>
     </ul>
 </li>

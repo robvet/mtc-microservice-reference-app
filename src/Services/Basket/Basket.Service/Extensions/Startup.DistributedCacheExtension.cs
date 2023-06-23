@@ -1,13 +1,13 @@
-﻿using Basket.API.Contracts;
-using Basket.API.Infrastructure.Repository;
-using Basket.API.TelemetryInitializer;
+﻿using Basket.Service.Contracts;
+using Basket.Service.Infrastructure.Repository;
+using Basket.Service.TelemetryInitializer;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 
-namespace Basket.API.Extensions
+namespace Basket.Service.Extensions
 {
     public static class DistributedCacheExtension
     {

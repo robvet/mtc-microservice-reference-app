@@ -1,4 +1,5 @@
 ﻿@using MusicStore.Properties
+@using MusicStore.Plumbing
 @model List<ProductDto>
 @inject IOptions<AppSettings> AppSettings
 @{
@@ -8,30 +9,55 @@
 @*<div class="jumbotron" class=”divlogocolor”>*@
 @*https://stackoverflow.com/questions/3029422/how-to-auto-resize-an-image-while-maintaining-aspect-ratio*@
 
+
+
 <div class=”divlogocolor”>
-    <h1>@AppSettings.Value.SiteTitle</h1>
-    <img style='height: 100%; width: 100%; object-fit: cover;' src="@Url.Content("~/Images/retro.png")" />
+    <div style="display: flex; ">
+        @*<h1 style="font-family: cursive; font-size:xx-large">@AppSettings.Value.SiteTitle</h1*@
+        <h1 style="font-family: cursive;font-size: 5rem">@AppSettings.Value.SiteTitle</h1>
+    </div>
+    @*<h1>@AppSettings.Value.SiteTitle</h1>*@
+        <img style='height: 100%; width: 100%; object-fit: cover; margin-top: 0px' src="@Url.Content("~/Images/retro.png")" />
+    @*<div style="display: flex; font-size:larger">
+        <h1 style="margin-left: auto;"><i>Music for the Astute Collector...</i></h1>
+    </div>*@
 </div>
 
 <hr />
 
 @if (Model != null)
 {
+
+    <div style="margin-bottom: 10px; margin-top: 20px; text-align:center;">
+        <h1 style="font-family: cursive">
+            <em>Top Selling Collector Items</em>
+        </h1>
+    </div>
+
     <div style="display: flex; justify-content: center;">
         <ul class="row list-unstyled" id="album-list">
-            @foreach (var album in Model)
+            @foreach (var item in Model)
             {
-                <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
-                    <a asp-controller="Store" asp-action="Details" asp-route-id="@album.Id">
-                    @{ var imageLink = $"~/Images/{album.AlbumArtUrl}"; }
-                    <img alt="@album.Title" src="@Url.Content(imageLink)" />
-                    <h4>@album.Title</h4>
+                <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container" style="margin-bottom: 40px;margin-right:40px;">
+                    <a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">
+                    @{
+                        var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(item.MediumName, item.AlbumArtUrl)}";
+                    }
+                    <img alt="@item.Title" src="@Url.Content(imageLink)" title="@item.ArtistName" />
+                    <h3>@item.Title</h3>
                     </a>
                 </li>
             }
         </ul>
     </div>
 }
+else
+{
+    <div style="background-color: lightgrey;border: 15px solid red;padding: 50px;margin: 20px;">
+        <p><strong>There are no albums in the store.</strong></p>
+    </div>
+}
+
 
 
 

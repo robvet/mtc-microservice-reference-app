@@ -2,8 +2,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using MusicStore.Helper;
+using MusicStore.Plumbing;
 using MusicStore.Models;
 using RandomNameGeneratorLibrary;
 
@@ -11,19 +12,26 @@ namespace MusicStore.Controllers
 {
     public class CheckoutController : Controller
     {
-        private const string PromoCode = "FREE";
         private readonly CookieLogic _cookieLogic;
         private readonly IRestClient _IRestClient;
         private readonly ILogger<CheckoutController> _logger;
-        private readonly string baseUrl = "basket/api/Basket";
+        private readonly string _baseUrl;
 
         public CheckoutController(ILogger<CheckoutController> logger,
             CookieLogic cookieLogic,
-            IRestClient iuiRestClient)
+            IRestClient iuiRestClient,
+            IConfiguration configuration)
         {
+            _baseUrl = configuration["basketBaseUri"] ??
+                       throw new ArgumentNullException("basketBaseUri", "Missing value");
             _cookieLogic = cookieLogic;
             _logger = logger;
             _IRestClient = iuiRestClient;
+        }
+
+        public IActionResult OrderPlaced()
+        {
+            return View();
         }
 
         //
@@ -76,13 +84,16 @@ namespace MusicStore.Controllers
                 checkoutDto.Username = $"{checkoutDto.FirstName.Substring(0, 2)}-{checkoutDto.LastName.Substring(0, 3)}";
                 checkoutDto.BasketId = _cookieLogic.GetBasketId();
 
-                var response = await _IRestClient.PostAsync<BasketSummaryDto>($"{baseUrl}/checkout", checkoutDto);
+                var response = await _IRestClient.PostAsync<BasketSummaryDto>($"{_baseUrl}/checkout", checkoutDto);
 
                 if (response.HttpResponseMessage.IsSuccessStatusCode)
+                { 
                     // Order is successful remove shopping basket
                     _cookieLogic.RemoveBasketId();
+                    ViewBag.CartCount = 0;
+                }
 
-                //await _IRestClient.DeleteAsync($"{baseUrl}/{checkoutDto.BasketId}");
+                //await _IRestClient.DeleteAsync($"{_baseUrl}/{checkoutDto.BasketId}");
                 //_cookieLogic.SetBasketId();
 
                 _logger.LogInformation($"User {checkoutDto.Username} started checkout of {checkoutDto.OrderId}.");
@@ -92,7 +103,8 @@ namespace MusicStore.Controllers
                 TempData["CorrelationId"] = response.Data.CorrelationId;
 
                 //return RedirectToAction("index", "Home");
-                return View("OrderPlaced");
+                //return View("OrderPlaced");
+                return RedirectToAction("OrderPlaced");
             }
             catch
             {
