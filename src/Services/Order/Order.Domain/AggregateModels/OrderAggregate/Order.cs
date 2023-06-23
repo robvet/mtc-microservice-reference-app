@@ -17,7 +17,8 @@ namespace order.domain.AggregateModels.OrderAggregate
             string customerSystemId,
             string checkOutSystemId,
             decimal total,
-            string correlationToken)
+            string correlationToken,
+            String basketId)
         //List<OrderDetail> orderDetails)
         {
             OrderSystemId = TokenGenerator.GenerateId(TokenGeneratorEnum.Order);
@@ -27,6 +28,7 @@ namespace order.domain.AggregateModels.OrderAggregate
             CheckOutSystemId = checkOutSystemId;
             Total = total;
             CorrelationToken = correlationToken;
+            BasketId = basketId;
             // Set status to Pending
             OrderStatusId = (int)OrderStatusEnum.Pending;
             OrderDetails = new List<OrderDetail>();
@@ -51,6 +53,7 @@ namespace order.domain.AggregateModels.OrderAggregate
         public decimal Total { get; private set; }
         [NotMapped]
         public string CorrelationToken { get; private set; }
+        public String BasketId { get; set; }
 
         public List<OrderDetail> OrderDetails { get; private set; }
         public Buyer Buyer { get; set; }

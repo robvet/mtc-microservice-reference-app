@@ -14,8 +14,9 @@ namespace Basket.Service.Contracts
         Task<List<Product>> GetAllProducts(string correlationToken);
         Task<Domain.Entities.Basket> AddItemToBasket(Guid basketId, Guid ProductId, string correlationToken);
         Task<BasketItemRemove> RemoveItemFromBasket(Guid basketId, Guid productId, string correlationToken);
-        Task EmptyBasket(Guid basketId, string correlationToken, bool hasOrderBeenCreated);
+        Task<bool> EmptyBasket(Guid basketId, string correlationToken, bool hasOrderBeenCreated);
         Task<Checkout> Checkout(CheckoutDto checkout, string correlationToken);
         Task ProductChanged(ProductDto productEntity, string correlationId);
+        Task DeleteBasket(Guid basketId, string correlationToken);
     }
 }

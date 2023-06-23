@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
+//using System.Reflection.Metadata;
 using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using order.domain.AggregateModels.OrderAggregate;
 using order.domain.Contracts;
+//using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace order.infrastructure.nosql.Repositories
 {
@@ -41,6 +40,18 @@ namespace order.infrastructure.nosql.Repositories
             collectionDefinition.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
             await _client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(_databaseName),
                 collectionDefinition);
+
+
+
+            //// Upsert Code
+            ////Yes, Cosmos DB supports upserts. This can be done using the ReplaceDocumentAsync method with the replaceOrInsert parameter set to true.This operation will attempt to replace the existing document with the one you supply.If the document does not exist, it will insert the new document instead.
+            //var client = new CosmosClient("cosmosEndpoint", "cosmosKey");
+            //var container = client.GetContainer("databaseName", "containerName");
+            //var document = new MyDocument { Id = "myid", Prop1 = "value1" };
+            //await container.ReplaceItemAsync<MyDocument>(document, document.Id, new PartitionKey(document.prop1), new ItemRequestOptions() { IfMatchEtag = "*" }, new Cosmos.Diagnostics.DiagnosticsContext(default));
+
+            //The above example shows how to use the ReplaceItemAsync method to update or insert a MyDocument instance into the container variable.The IfMatchEtag option is set to *, which means that the request should replace any document with the same ID as document, regardless of whether it has previously been modified or not.
+
 
             //return await CreateOrderDocumentIfNotExists(_databaseName, "OrderCollection", entity);
 

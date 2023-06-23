@@ -241,7 +241,10 @@ namespace Basket.Service.Controllers
             Guard.ForValidGuid(basketId, "BasketId");
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
-            await _basketBusinessServices.EmptyBasket(basketId, correlationToken, false);
+            await _basketBusinessServices.DeleteBasket(basketId, correlationToken);
+
+            //await _basketBusinessServices.EmptyBasket(basketId, correlationToken, false);
+            
             return HttpStatusCode.NoContent;
         }
     }

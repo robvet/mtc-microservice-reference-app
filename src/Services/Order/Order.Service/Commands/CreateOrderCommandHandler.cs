@@ -49,7 +49,8 @@ namespace order.service.Commands
                         createOrderCommand.UserName,
                         createOrderCommand.CheckoutId,
                         createOrderCommand.Total,
-                        createOrderCommand.CorrelationToken
+                        createOrderCommand.CorrelationToken,
+                        createOrderCommand.BasketId
                     );
 
                     // Set correlationToken

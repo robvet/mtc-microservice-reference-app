@@ -317,10 +317,40 @@ namespace Basket.Service.Domain.BusinessServices
         /// <param name="basketId">Identifier for BasketEntity</param>
         /// <param name="correlationToken">Tracks request - can be any value</param>
         /// <param name="hasOrderBeenCreated">Flag that indicates is basket emptied for new order</param>
-        public async Task EmptyBasket(Guid basketId, string correlationToken, bool hasOrderBeenCreated)
+        public async Task DeleteBasket(Guid basketId, string correlationToken)
+        {
+            await _distributedCacheRepository.DeleteAsync<Entities.Basket>(basketId, _telemetryClient, correlationToken);
+        }
+
+        /// <summary>
+        ///     Removes entire shopping basket
+        /// </summary>
+        /// <param name="basketId">Identifier for BasketEntity</param>
+        /// <param name="correlationToken">Tracks request - can be any value</param>
+        /// <param name="hasOrderBeenCreated">Flag that indicates is basket emptied for new order</param>
+        public async Task<bool> EmptyBasket(Guid basketId, string correlationToken, bool hasOrderBeenCreated)
         {
             //Empty BasketEntity
-            await _distributedCacheRepository.DeleteAsync<Entities.Basket>(basketId, _telemetryClient, correlationToken);
+            //await _distributedCacheRepository.DeleteAsync<Entities.Basket>(basketId, _telemetryClient, correlationToken);
+
+            // Fetch basket
+            var basket = await _distributedCacheRepository.GetAsync<Entities.Basket>(basketId, _telemetryClient, "GetBasketById", correlationToken);
+
+            if (basket == null)
+            {
+                _logger.LogWarning("Could not locate shopping basket {id} for request {token}", basketId,
+                                       correlationToken);
+                return false;
+            }
+
+            // Set basket to processed
+            basket.Processed = true;
+
+            // update basket
+            await _distributedCacheRepository.UpdateAsync<Entities.Basket>(basket, basketId, correlationToken, _telemetryClient);
+
+            return true;
+            //await _distributedCacheRepository.DeleteAsync<Entities.Basket>(basketId, _telemetryClient, correlationToken);
         }
 
         /// <summary>
