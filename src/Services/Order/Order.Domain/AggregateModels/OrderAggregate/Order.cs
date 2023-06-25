@@ -8,7 +8,7 @@ using SharedUtilities.TokenGenerator;
 
 namespace order.domain.AggregateModels.OrderAggregate
 {
-    public class Order : IAggregateRoot
+    public class Order : Item, IAggregateRoot
     {
         public Order()
         { }
@@ -40,9 +40,9 @@ namespace order.domain.AggregateModels.OrderAggregate
         // the domain class to enforce business rules and validation
 
         //[JsonProperty("orderId")]
-        public int Id { get; private set; }
+        //public int Id { get; private set; }
         public int OrderStatusId { get; private set; }
-        public string OrderId { get; private set; }
+        //public string OrderId { get; private set; }
         // This is the orderid for Cosmos
         [NotMapped]
         //public string orderid { get; private set; }

@@ -7,7 +7,7 @@ using order.domain.AggregateModels.OrderAggregate;
 using order.domain.Contracts;
 //using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
-namespace order.infrastructure.nosql.Repositories
+namespace order.infrastructure.nosql.Persistence.Repositories
 {
     public class OrderRepository : IOrderRepository
     {

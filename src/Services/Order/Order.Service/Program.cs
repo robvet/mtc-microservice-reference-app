@@ -16,7 +16,7 @@ namespace order.service
     {
         // Gets the root Azure Key Vault endpoint from a machine level environment variable
         // that is populated in the DeployToAzure.ps1 script
-        private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT_MICROTUNES", EnvironmentVariableTarget.Machine);
+        //private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT_MICROTUNES", EnvironmentVariableTarget.Machine);
 
         public static void Main(string[] args)
         {

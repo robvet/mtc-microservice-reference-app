@@ -1,12 +1,15 @@
 ﻿using Microsoft.ApplicationInsights;
+using order.domain.AggregateModels.OrderAggregate;
+using order.infrastructure.nosql;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace order.service.Queries
 {
     public interface IOrderQueries
     {
-        Task<dynamic> GetOrder(string orderId, string corrleationId);
+        Task<OrderDto> GetOrder(string orderId, string corrleationId);
 
-        Task<dynamic> GetOrders(string corrleationId);
+        Task<IEnumerable<OrderDto>> GetOrders(string corrleationId);
     }
 }

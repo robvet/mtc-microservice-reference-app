@@ -1,6 +1,6 @@
 ﻿using SharedUtilities.Utilties;
 
-namespace order.infrastructure.nosql.Repositories
+namespace order.infrastructure.nosql.Persistence.Repositories
 {
     public class DataStoreConfiguration
     {

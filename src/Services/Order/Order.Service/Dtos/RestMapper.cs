@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using order.domain.AggregateModels.OrderAggregate;
+using System.Collections.Generic;
 
 namespace order.service.Dtos
 {
     public class RestMapper
     {
-        public static OrderDto MapToOrderDto(dynamic order)
+        public static OrderDto MapToOrderDto(order.infrastructure.nosql.OrderDto order)
         {
             var orderDto = new OrderDto
             {
-                OrderId = order.Id,
+                OrderId = order.OrderId,
                 OrderDate = order.OrderDate,
                 //ShoppingBasketId = order.BasketId,
 
                 // Must add ToString() in order to parse the decimal, otherwise it errors
-                Total = decimal.Parse(order.Total?.ToString()),
-                Username = $"{order.Buyer.FirstName} {order.Buyer.LastName}"
+                Total = order.Total, // decimal.Parse(order.Total.ToString()),
+                //Username = $"{order.Buyer.FirstName} {order.Buyer.LastName}"
             };
 
             foreach (var item in order.OrderDetails)
@@ -22,9 +23,9 @@ namespace order.service.Dtos
                 {
                     //OrderDetailId = item.OrderDetailId,
                     AlbumId = item.AlbumId,
-                    OrderId = order.Id ?? "Not Available",
+                    OrderId = order.OrderId,
                     Quantity = item.Quantity,
-                    UnitPrice = decimal.Parse(item.UnitPrice?.ToString()),
+                    UnitPrice = item.UnitPrice, // decimal.Parse(item.UnitPrice.ToString()),
                     Artist = item.Artist,
                     Title = item.Title
                 });
@@ -32,18 +33,18 @@ namespace order.service.Dtos
             return orderDto;
         }
 
-        public static List<OrdersDto> MapToOrdersDto(List<dynamic> orders)
+        public static List<OrdersDto> MapToOrdersDto(List<order.infrastructure.nosql.OrderDto> orders)
         {
             var ordersDtos = new List<OrdersDto>();
 
             foreach (var order in orders)
                 ordersDtos.Add(new OrdersDto
                 {
-                    Id = order.Id,
+                    Id = order.OrderId,
                     //CustomerId = order.CustomerSystemId?.ToString() ?? "n/a",
-                    //CheckoutId = order.CheckoutId ?? "n/a",
-                    BuyerName = order.CustomerSystemId?.ToString() ?? "n/a",
-                    OrderId = order.OrderSystemId ?? "n/a",
+                    ////CheckoutId = order.CheckoutId ?? "n/a",
+                    //BuyerName = order.CustomerSystemId?.ToString() ?? "n/a",
+                    //OrderId = order.OrderSystemId ?? "n/a",
                     //ShoppingBasketId = order.BasketId ?? "n/a",
                     Total = decimal.Parse(order.Total.ToString()),
                     OrderDate = order.OrderDate
