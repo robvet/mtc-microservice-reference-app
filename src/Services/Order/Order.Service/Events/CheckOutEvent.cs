@@ -15,6 +15,7 @@ namespace order.service.Events
         }
 
         public string BasketId { get; set; }
+        public string CustomerId { get; set; }
         public string CheckoutId { get; set; }
         public decimal Total { get; set; }
         public CheckOutBuyer BuyerInformation { get; set; }

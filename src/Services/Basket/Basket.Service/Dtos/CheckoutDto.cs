@@ -7,6 +7,7 @@ namespace Basket.Service.Dtos
         // Scalar properties (map to database columns)
         //[Required]
         public Guid BasketId { get; set; }
+        public Guid CustomerId { get; set; }
         public int OrderId { get; set; }
         public string PromoCode { get; set; }
         public string Username { get; set; }

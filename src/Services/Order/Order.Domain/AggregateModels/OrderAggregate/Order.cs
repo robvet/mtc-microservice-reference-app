@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using order.domain.AggregateModels.BuyerAggregate;
+﻿using order.domain.AggregateModels.BuyerAggregate;
 using order.domain.Contracts;
-using SharedUtilities.TokenGenerator;
 
 namespace order.domain.AggregateModels.OrderAggregate
 {
@@ -14,24 +9,24 @@ namespace order.domain.AggregateModels.OrderAggregate
         { }
 
         public Order(
-            string customerSystemId,
-            string checkOutSystemId,
+            string customerId,
+            string basketId,
+            string messageId,
             decimal total,
-            string correlationToken,
-            String basketId)
-        //List<OrderDetail> orderDetails)
+            string correlationToken)
         {
-            OrderSystemId = TokenGenerator.GenerateId(TokenGeneratorEnum.Order);
             OrderId = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString();
             OrderDate = DateTime.UtcNow;
-            CustomerSystemId = customerSystemId;
-            CheckOutSystemId = checkOutSystemId;
-            Total = total;
+            CustomerId = customerId;
+            Total = total;  
             CorrelationToken = correlationToken;
             BasketId = basketId;
+            EventBusMessageId = messageId;
+            OrderDetails = new List<OrderDetail>();
+                        
             // Set status to Pending
             OrderStatusId = (int)OrderStatusEnum.Pending;
-            OrderDetails = new List<OrderDetail>();
         }
 
         // DDD Patterns comment
@@ -39,21 +34,19 @@ namespace order.domain.AggregateModels.OrderAggregate
         // The only way to create a Buyer is through the constructor enabling
         // the domain class to enforce business rules and validation
 
+        public string OrderId { get; private set; }
+
         //[JsonProperty("orderId")]
         //public int Id { get; private set; }
         public int OrderStatusId { get; private set; }
         //public string OrderId { get; private set; }
         // This is the orderid for Cosmos
-        [NotMapped]
-        //public string orderid { get; private set; }
-        public string CustomerSystemId { get; private set; }
-        public string OrderSystemId { get; private set; }
-        public string CheckOutSystemId { get; private set; }
+        public string CustomerId { get; private set; }
         public DateTime OrderDate { get; private set; }
         public decimal Total { get; private set; }
-        [NotMapped]
         public string CorrelationToken { get; private set; }
-        public String BasketId { get; set; }
+        public string BasketId { get; set; }
+        public string EventBusMessageId { get; private set; }
 
         public List<OrderDetail> OrderDetails { get; private set; }
         public Buyer Buyer { get; set; }

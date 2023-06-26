@@ -8,8 +8,8 @@ namespace order.service.Queries
 {
     public interface IOrderQueries
     {
-        Task<OrderDto> GetOrder(string orderId, string corrleationId);
+        Task<OrderDto> GetByOrderId(string orderId, string corrleationId);
 
-        Task<IEnumerable<OrderDto>> GetOrders(string corrleationId);
+        Task<IEnumerable<OrderDto>> GetAll(string corrleationId);
     }
 }

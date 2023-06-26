@@ -410,10 +410,10 @@ namespace Basket.Service.Domain.BusinessServices
 
             orderInformationModel.BasketId = basketId;
             // Generate system checkoutId using snowflake
-            orderInformationModel.CheckoutId = Guid.NewGuid();// TokenGenerator.GenerateId(TokenGeneratorEnum.Checkout);
             orderInformationModel.Total = basket.Items.Sum(x => decimal.Parse(x.UnitPrice) * x.Quantity);
             orderInformationModel.Buyer = buyer;
             orderInformationModel.Payment = payment;
+            orderInformationModel.CustomerId = checkout.CustomerId;
 
             foreach (var item in basket.Items)
                 orderInformationModel.LineItems.Add(new OrderInformationModel.LineItem() 
@@ -443,7 +443,6 @@ namespace Basket.Service.Domain.BusinessServices
 
             return (new Checkout
             {
-                CheckoutSystemId = checkoutEvent.OrderInformationModel.CheckoutId,
                 BuyerEmail = checkoutEvent.OrderInformationModel.Buyer.Email,
                 CorrelationId = correlationToken
             });

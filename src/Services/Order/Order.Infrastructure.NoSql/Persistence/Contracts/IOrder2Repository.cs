@@ -19,7 +19,9 @@ namespace order.infrastructure.nosql.Persistence.Contracts
     {
         Task<IEnumerable<OrderDto>> GetAll(string correlationId);
 
-        Task<OrderDto> GetById(string Id, string correlationId);
+        Task<IEnumerable<OrderDto>> GetByOrderId(string Id, string correlationId);
+
+        Task<OrderDto> GetByResourceId(string Id, string correlationId);
         //Task<IEnumerable<Order>> GetEmployeesByDepartmentIdAsync(int departmentId);
         //Task<long> GetEmployeesCountByDepartmentIdAsync(int departmentId);
     }

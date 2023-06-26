@@ -108,7 +108,7 @@ namespace EventBus.Bus
 
                     throw new MissingMemberException(errorMessage);
                 }
-
+                                
                 // Get Event type
                 var eventType = _events[@event];
 
@@ -127,7 +127,7 @@ namespace EventBus.Bus
                 {
                     var body = Encoding.UTF8.GetString(message.Body);
                     eventMessage = JsonConvert.DeserializeObject(body, eventType) as MessageEvent;
-
+                    eventMessage.MessageId = message.MessageId; //CorrelationId
                 }
                 catch (JsonException ex)
                 {

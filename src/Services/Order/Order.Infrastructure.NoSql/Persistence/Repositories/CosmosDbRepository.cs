@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.Azure.Cosmos;
@@ -24,7 +25,7 @@ public abstract class CosmosDbRepository<T> : IRepository<T>, IContainerContext<
         try
         {
             //var response = await _container.CreateItemAsync(item, ResolvePartitionKey(item.Id));
-            var response = await _container.CreateItemAsync(item, ResolvePartitionKey(item.OrderId));
+            var response = await _container.CreateItemAsync(item, ResolvePartitionKey(item.Id));
             return response.Resource;
         }
         catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.Conflict)
@@ -62,7 +63,7 @@ public abstract class CosmosDbRepository<T> : IRepository<T>, IContainerContext<
         try
         {
             //**************************************************
-            //* This is screwy!
+            //* This requires understanding!
             //*
             //* The partition key is not the same as the id
             //* The id refers to the 'id' property of the item
@@ -81,26 +82,14 @@ public abstract class CosmosDbRepository<T> : IRepository<T>, IContainerContext<
 
             // This works because passing separate values for id and partition key
             //var response = await _container.ReadItemAsync<T>("47c01144-b495-4c8a-a609-6254aff04f8b", ResolvePartitionKey(id));
-
-            The ResolvePartitionKey method requires the entire item object to be passed in to properly resolve the partition key value.Without the full item object, the method cannot access the necessary properties to lookup and return the partition key.
-
-
+                    
             var response = await _container.ReadItemAsync<T>(id, ResolvePartitionKey(id));
-
-
-
+            return response.Resource;
 
 
             //// temp
             //var part = ResolvePartitionKey(id);
-
             ////var response = await _container.ReadItemAsync<T>(id, ResolvePartitionKey(id));
-
-            //var response = await _container.ReadItemAsync<T>(id, new PartitionKey(ResolvePartitionKey(id).ToString()));
-
-
-
-            return response.Resource;
         }
         catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
         {
@@ -108,17 +97,18 @@ public abstract class CosmosDbRepository<T> : IRepository<T>, IContainerContext<
         }
     }
 
-    public virtual PartitionKey ResolvePartitionKey(T item) => new PartitionKey(item.OrderId);
-
+    // The ResolvePartitionKey method requires the entire item object to be passed in to properly resolve the partition key value.
+    // Without the full item object, the method cannot access the necessary properties to lookup and return the partition key.
+    //public virtual PartitionKey ResolvePartitionKey(T item) => new PartitionKey(item.OrderId);
     //public virtual PartitionKey ResolvePartitionKey(string itemId) => new PartitionKey(itemId);
-    //public virtual PartitionKey ResolvePartitionKey(string itemId) => new PartitionKey(itemId.Split(':')[0]);
+    public virtual PartitionKey ResolvePartitionKey(string itemId) => new PartitionKey(itemId.Split(':')[0]);
 
     public async Task<T> UpdateAsync(string id, T item)
     {
         try
         {
-            //item.Id = id;
-            item.OrderId = id;
+            item.Id = id;
+            //item.OrderId = id;
             var response = await _container.ReplaceItemAsync(item, id);
             return response.Resource;
         }
@@ -146,17 +136,6 @@ public abstract class CosmosDbRepository<T> : IRepository<T>, IContainerContext<
 
         return results;
     }
-
-    //protected async Task<T> GetItemAsync(string OrderId)
-    //{
-
-    //    var item = _container.ReadItemAsync<T>(OrderId);
-
-
-
-
-    //    return item.Result;
-    //}
 
     protected async Task<TValue> GetScalarValueAsync<TValue>(string query)
     {

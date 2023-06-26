@@ -28,16 +28,27 @@ namespace order.service.Queries
         // Query object allows a simple query against the datastore without having to 
         // adhere to the constraints of the domain Orderaggregate object. The query 
         // bypasses the Order domain object. Note how it uses a dynamic type.
-        public async Task<OrderDto> GetOrder(string orderId,
+        //public async Task<IEnumerable<OrderDto>> GetByOrderId(string orderId,
+        //                                    string corrleationId)
+        //{
+        //    return await _order2Repository.GetByResourceId(orderId, corrleationId);
+        //    //return await _order2Repository.GetByOrderId(orderId, corrleationId);
+        //    //return await _orderRepository.GetById(orderId, corrleationId, _telemetryClient);
+        //}
+
+        public async Task<OrderDto> GetByOrderId(string orderId,
                                             string corrleationId)
         {
-            return await _order2Repository.GetById(orderId, corrleationId);
+            return await _order2Repository.GetByResourceId(orderId, corrleationId);
+            //return await _order2Repository.GetByOrderId(orderId, corrleationId);
             //return await _orderRepository.GetById(orderId, corrleationId, _telemetryClient);
         }
 
+
+
         // adhere to the constraints of the domain Orderaggregate object. The query 
         // bypasses the Order domain object. Note how it uses a dynamic type.
-        public async Task<IEnumerable<OrderDto>> GetOrders(string corrleationId)
+        public async Task<IEnumerable<OrderDto>> GetAll(string corrleationId)
         {
             //return await _order2Repository.GetItemsAsync();
             //return await _order2Repository.GetAll(corrleationId, _telemetryClient);

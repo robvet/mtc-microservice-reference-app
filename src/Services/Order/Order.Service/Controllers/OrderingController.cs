@@ -34,12 +34,12 @@ namespace order.service.Controllers
         [ProducesResponseType(typeof(OrderDto), 200)]
         [HttpGet("v{version:apiVersion}/Order/{orderId}", Name = "GetOrdersRoute")]
         //[HttpGet("v/Order/{orderId}", Title = "GetOrdersRoute")]
-        public async Task<IActionResult> GetOrder(string orderId, [FromHeader(Name = "x-correlationToken")] string correlationToken)
+        public async Task<IActionResult> GetByOrderId(string orderId, [FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(orderId, "orderid");
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
-            var order = await _orderQueries.GetOrder(orderId, correlationToken);
+            var order = await _orderQueries.GetByOrderId(orderId, correlationToken);
 
             if (order == null)
                 return BadRequest("Order does not exist");
@@ -55,14 +55,14 @@ namespace order.service.Controllers
         [ProducesResponseType(typeof(OrderDto), 200)]
         [HttpGet("Orders", Name = "GetAllOrdersRoute")]
         //[HttpGet("v{version:apiVersion}/Orders", Title = "GetAllOrdersRoute")]
-        public async Task<IActionResult> GetOrders([FromHeader(Name = "x-correlationToken")] string correlationToken)
+        public async Task<IActionResult> GetAll([FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             _telemetryClient.TrackEvent(
                 $"Publishing EmptyBasketEvent from CheckOutEventHandler in Ordering.API for Request {correlationToken} ");
 
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
-            var orders = await _orderQueries.GetOrders(correlationToken);
+            var orders = await _orderQueries.GetAll(correlationToken);
 
             if (orders == null || orders.ToList().Count < 1)
                 return BadRequest("Orders do not exist");

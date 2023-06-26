@@ -18,7 +18,8 @@ namespace order.service.Commands
     {
         public CreateOrderCommand(
             string basketId,
-            string checkoutId,
+            string customerId,
+            string messageId, // message id from the event bus
             string userName,
             decimal total,
             string firstName,
@@ -37,7 +38,8 @@ namespace order.service.Commands
             List<OrderDetailDto> orderDetails)
         {
             BasketId = basketId;
-            CheckoutId = checkoutId;
+            CustomerId = customerId;
+            MessageId = messageId;
             Total = total;
             UserName = userName;
             FirstName = firstName;
@@ -58,7 +60,8 @@ namespace order.service.Commands
 
         [DataMember] public string BasketId { get; }
 
-        [DataMember] public string CheckoutId { get; }
+        [DataMember] public string CustomerId { get; }
+        [DataMember] public string MessageId { get; }
 
         [DataMember] public decimal Total { get; }
 

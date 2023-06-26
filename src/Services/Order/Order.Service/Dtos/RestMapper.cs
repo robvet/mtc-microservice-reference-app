@@ -9,7 +9,8 @@ namespace order.service.Dtos
         {
             var orderDto = new OrderDto
             {
-                OrderId = order.OrderId,
+                //OrderId = order.OrderId,
+                OrderId = order.Id,
                 OrderDate = order.OrderDate,
                 //ShoppingBasketId = order.BasketId,
 
@@ -23,7 +24,8 @@ namespace order.service.Dtos
                 {
                     //OrderDetailId = item.OrderDetailId,
                     AlbumId = item.AlbumId,
-                    OrderId = order.OrderId,
+                    //OrderId = order.OrderId,
+                    OrderId = order.Id,
                     Quantity = item.Quantity,
                     UnitPrice = item.UnitPrice, // decimal.Parse(item.UnitPrice.ToString()),
                     Artist = item.Artist,
@@ -40,7 +42,10 @@ namespace order.service.Dtos
             foreach (var order in orders)
                 ordersDtos.Add(new OrdersDto
                 {
-                    Id = order.OrderId,
+                    //Id = order.OrderId,
+
+                    Id = order.Id,
+
                     //CustomerId = order.CustomerSystemId?.ToString() ?? "n/a",
                     ////CheckoutId = order.CheckoutId ?? "n/a",
                     //BuyerName = order.CustomerSystemId?.ToString() ?? "n/a",

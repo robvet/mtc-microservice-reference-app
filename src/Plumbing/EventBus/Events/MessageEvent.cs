@@ -26,5 +26,8 @@ namespace EventBus.Events
 
         [JsonProperty]
         public string CorrelationToken { get; set; }
+
+        [JsonProperty]
+        public string MessageId { get; set; }
     }
 }

@@ -4,9 +4,10 @@ using Newtonsoft.Json;
 
 public abstract class Item
 {
-    //[JsonProperty("id")]
-    [JsonProperty("OrderId")]
-    //public string Id { get; set; }
-    public string OrderId { get; set; }
+    //[JsonProperty("OrderId")]
+    //public string OrderId { get; set; }
+    
+    [JsonProperty(PropertyName = "id")]
+    public string Id { get; set; }
 }
 

@@ -43,15 +43,15 @@ namespace order.service.Events
             try
             {
                 correlationToken = messageEvent.CorrelationToken;
-
-                var checkedOutEvent = messageEvent as CheckOutEvent;
+                
+                var checkOutEvent = messageEvent as CheckOutEvent;
 
                 _logger.LogInformation($"Invoked CheckOutEventHandler in Ordering.API for Request {correlationToken} ");
 
                 _telemetryClient.TrackEvent(
                     $"Event: Invoked CheckOutEventHandler in Ordering.API for Request {correlationToken}");
 
-                if (checkedOutEvent == null)
+                if (checkOutEvent == null)
                 {
                     _logger.LogError(
                         $"Publishing EmptyBasketEvent from CheckOutEventHandler in Ordering.API for Request {correlationToken} ");
@@ -60,29 +60,30 @@ namespace order.service.Events
                 }
 
                 _telemetryClient.TrackEvent(
-                    $"Event: CheckOutEventHandler invoked: BasketID:{checkedOutEvent.OrderInformationModel.BasketId}");
+                    $"Event: CheckOutEventHandler invoked: BasketID:{checkOutEvent.OrderInformationModel.BasketId}");
 
                 var createOrderCommand = new CreateOrderCommand(
-                    checkedOutEvent.OrderInformationModel.BasketId,
-                    checkedOutEvent.OrderInformationModel.CheckoutId,
-                    checkedOutEvent.OrderInformationModel.Buyer.Username,
-                    checkedOutEvent.OrderInformationModel.Total,
-                    checkedOutEvent.OrderInformationModel.Buyer.FirstName,
-                    checkedOutEvent.OrderInformationModel.Buyer.LastName,
-                    checkedOutEvent.OrderInformationModel.Buyer.Address,
-                    checkedOutEvent.OrderInformationModel.Buyer.City,
-                    checkedOutEvent.OrderInformationModel.Buyer.State,
-                    checkedOutEvent.OrderInformationModel.Buyer.PostalCode,
-                    checkedOutEvent.OrderInformationModel.Buyer.Phone,
-                    checkedOutEvent.OrderInformationModel.Buyer.Email,
-                    checkedOutEvent.OrderInformationModel.Payment.CreditCardNumber,
-                    checkedOutEvent.OrderInformationModel.Payment.SecurityCode,
-                    checkedOutEvent.OrderInformationModel.Payment.CardholderName,
-                    checkedOutEvent.OrderInformationModel.Payment.ExpirationDate,
-                    checkedOutEvent.CorrelationToken = correlationToken,
+                    checkOutEvent.OrderInformationModel.BasketId,
+                    checkOutEvent.OrderInformationModel.CustomerId,
+                    checkOutEvent.MessageId,
+                    checkOutEvent.OrderInformationModel.Buyer.Username,
+                    checkOutEvent.OrderInformationModel.Total,
+                    checkOutEvent.OrderInformationModel.Buyer.FirstName,
+                    checkOutEvent.OrderInformationModel.Buyer.LastName,
+                    checkOutEvent.OrderInformationModel.Buyer.Address,
+                    checkOutEvent.OrderInformationModel.Buyer.City,
+                    checkOutEvent.OrderInformationModel.Buyer.State,
+                    checkOutEvent.OrderInformationModel.Buyer.PostalCode,
+                    checkOutEvent.OrderInformationModel.Buyer.Phone,
+                    checkOutEvent.OrderInformationModel.Buyer.Email,
+                    checkOutEvent.OrderInformationModel.Payment.CreditCardNumber,
+                    checkOutEvent.OrderInformationModel.Payment.SecurityCode,
+                    checkOutEvent.OrderInformationModel.Payment.CardholderName,
+                    checkOutEvent.OrderInformationModel.Payment.ExpirationDate,
+                    checkOutEvent.CorrelationToken = correlationToken,
                     // Is this cool Linq? Generated from Resharper. It iterates through lineItem collection and projects an orderDetailDto for each item
                     // Map collection of CheckOutEventLineItems to collection of OderDetailDtos
-                    checkedOutEvent.OrderInformationModel.LineItems.Select(lineItem => new OrderDetailDto
+                    checkOutEvent.OrderInformationModel.LineItems.Select(lineItem => new OrderDetailDto
                     {
                         Artist = lineItem.Artist,
                         Title = lineItem.Title,
@@ -95,7 +96,7 @@ namespace order.service.Events
                 // Invoke Command that creates order
                 var orderId = await _orderCommandHandler.Handle(createOrderCommand);
 
-                checkedOutEvent.OrderInformationModel.OrderSystemId = orderId;
+                //checkedOutEvent.OrderInformationModel.OrderSystemId = orderId;
 
                 _telemetryClient.TrackEvent(
                     $"Event: CheckOutEventHandler: Buyer created:{orderId}");
@@ -104,7 +105,7 @@ namespace order.service.Events
                 // Publish event to clear basket for this order from Basket service
                 var emptyCartEvent = new EmptyBasketEvent
                 {
-                    BasketID = checkedOutEvent.OrderInformationModel.BasketId,
+                    BasketID = checkOutEvent.OrderInformationModel.BasketId,
                     CorrelationToken = correlationToken
                 };
 
