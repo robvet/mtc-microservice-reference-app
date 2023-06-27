@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+using order.domain.AggregateModels.OrderAggregate;
 using order.domain.Contracts;
 
 namespace order.domain.AggregateModels.BuyerAggregate
@@ -6,8 +8,7 @@ namespace order.domain.AggregateModels.BuyerAggregate
     public class PaymentMethod : IAggregateRoot
     {
         public PaymentMethod()
-        {
-        }
+        {}
 
         public PaymentMethod(
             string cardNumber,
@@ -33,12 +34,14 @@ namespace order.domain.AggregateModels.BuyerAggregate
         // Using private fields to encapsulate and carefully manage data.
         // The only way to create an PaymentMethod is through the constructor enabling
         // the domain class to enforce business rules and validation
-        public int Id { get; private set; }
-        public int BuyerId { get; private set; }
+        //public int Id { get; private set; }
         public string CardNumber { get; }
         public string SecurityCode { get; }
         public DateTime ExpirationDate { get; }
         public string CardHolderName { get; }
-        public Buyer Buyer { get; private set; }
+
+        ////[JsonIgnore]
+        //public Order Order { get; private set; }
+        ////public Buyer Buyer { get; private set; }
     }
 }

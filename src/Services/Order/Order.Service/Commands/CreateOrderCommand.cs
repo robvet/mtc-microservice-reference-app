@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using order.service.Dtos;
+﻿using System.Runtime.Serialization;
 
 namespace order.service.Commands
 {
@@ -16,80 +13,6 @@ namespace order.service.Commands
     [DataContract]
     public class CreateOrderCommand
     {
-        public CreateOrderCommand(
-            string basketId,
-            string customerId,
-            string messageId, // message id from the event bus
-            string userName,
-            decimal total,
-            string firstName,
-            string lastName,
-            string address,
-            string city,
-            string state,
-            string postalCode,
-            string phone,
-            string email,
-            string creditCardNumber,
-            string securityCode,
-            string cardholderName,
-            DateTime expirationDate,
-            string correlationToken,
-            List<OrderDetailDto> orderDetails)
-        {
-            BasketId = basketId;
-            CustomerId = customerId;
-            MessageId = messageId;
-            Total = total;
-            UserName = userName;
-            FirstName = firstName;
-            LastName = lastName;
-            Address = address;
-            City = city;
-            State = state;
-            PostalCode = postalCode;
-            Phone = phone;
-            Email = email;
-            CreditCardNumber = creditCardNumber;
-            SecurityCode = securityCode;
-            CardholderName = cardholderName;
-            ExpirationDate = expirationDate;
-            CorrelationToken = correlationToken;
-            OrderDetails = orderDetails;
-        }
-
-        [DataMember] public string BasketId { get; }
-
-        [DataMember] public string CustomerId { get; }
-        [DataMember] public string MessageId { get; }
-
-        [DataMember] public decimal Total { get; }
-
-        [DataMember] public string CorrelationToken { get; }
-
-        [DataMember] public List<OrderDetailDto> OrderDetails { get; }
-
-        [DataMember] public string UserName { get; }
-
-        [DataMember] public string FirstName { get; }
-
-        [DataMember] public string LastName { get; }
-
-        [DataMember] public string Address { get; }
-
-        [DataMember] public string City { get; }
-
-        [DataMember] public string State { get; }
-
-        [DataMember] public string PostalCode { get; }
-
-        [DataMember] public string Phone { get; }
-
-        [DataMember] public string Email { get; }
-
-        public string CreditCardNumber { get; }
-        public string SecurityCode { get; }
-        public string CardholderName { get; }
-        public DateTime ExpirationDate { get; }
+       
     }
 }

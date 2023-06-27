@@ -45,7 +45,9 @@ namespace order.service
             services.AddTransient<IOrderQueries, OrderQueries>();
             services.AddTransient<CreateOrderCommandHandler>();
 
-            services.AddScoped<IOrder2Repository, Order2Repository>();
+            services.AddScoped<IOrderReadRepository, OrderReadRepository>();
+            services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
+
 
 
             // Capture SQL query text in App Insights
@@ -121,36 +123,11 @@ namespace order.service
 
                 var container = factory.GetContainer("OrderCollection");
 
-
-                ////using var scope = webApplication.Services.CreateScope();
-                ////var factory = scope.ServiceProvider.GetRequiredService<ICosmosDbContainerFactory>();
-                ////factory.EnsureDbSetupAsync().Wait();
-
-
-
-
-
-
-
-
-
-                //// Get DataContext and Logger explicitly from DI container
-                //var context = serviceScope.ServiceProvider.GetService<DataContext>();
-
-                //Guard.ForNullObject(context, "DataContext not found in DI container");
-
                 //// Create database and tables, but not populate data
                 //var databaseCreated = context.Database.EnsureCreated();
                 //DataInitializer.InitializeDatabaseAsync(serviceScope).Wait();
-
-
                 //new ProductDatabaseInitializer().InitializeDatabaseAsync(serviceScope).Wait();
             }
-
-
-
-
-            
         }
     }
 }

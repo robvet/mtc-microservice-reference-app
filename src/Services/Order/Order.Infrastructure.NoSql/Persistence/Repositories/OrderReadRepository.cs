@@ -5,9 +5,9 @@ using order.domain.AggregateModels.OrderAggregate;
 using order.infrastructure.nosql;
 using order.infrastructure.nosql.Persistence.Contracts;
 
-public class Order2Repository : CosmosDbRepository<OrderDto>, IOrder2Repository
+public class OrderReadRepository : CosmosDbRepository<OrderDto>, IOrderReadRepository
 {
-    public Order2Repository(ICosmosDbContainerFactory cosmosDbContainerFactory) : base(cosmosDbContainerFactory)
+    public OrderReadRepository(ICosmosDbContainerFactory cosmosDbContainerFactory) : base(cosmosDbContainerFactory)
     {
     }
 

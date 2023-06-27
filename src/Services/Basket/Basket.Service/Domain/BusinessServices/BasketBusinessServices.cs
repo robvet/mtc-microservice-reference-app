@@ -328,7 +328,7 @@ namespace Basket.Service.Domain.BusinessServices
         /// <param name="basketId">Identifier for BasketEntity</param>
         /// <param name="correlationToken">Tracks request - can be any value</param>
         /// <param name="hasOrderBeenCreated">Flag that indicates is basket emptied for new order</param>
-        public async Task<bool> EmptyBasket(Guid basketId, string correlationToken, bool hasOrderBeenCreated)
+        public async Task<bool> MarkBasketProcessed(Guid basketId, string correlationToken, bool hasOrderBeenCreated)
         {
             //Empty BasketEntity
             //await _distributedCacheRepository.DeleteAsync<Entities.Basket>(basketId, _telemetryClient, correlationToken);

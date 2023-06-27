@@ -10,24 +10,19 @@ namespace order.service.Queries
 {
     public class OrderQueries : IOrderQueries
     {
-        private readonly IOrder2Repository _order2Repository;
-        
-        
-        private readonly IOrderRepository _orderRepository;
+        private readonly IOrderReadRepository _orderReadRepository;
         private readonly TelemetryClient _telemetryClient;
 
-        public OrderQueries(IOrder2Repository order2Repository,
-                            IOrderRepository orderRepository,
+        public OrderQueries(IOrderReadRepository orderReadRepository,
                             TelemetryClient telemetryInitializer)
         {
-            _order2Repository = order2Repository;
-            _orderRepository = orderRepository;
+            _orderReadRepository = orderReadRepository;
             _telemetryClient = telemetryInitializer;
         }
 
         // Query object allows a simple query against the datastore without having to 
         // adhere to the constraints of the domain Orderaggregate object. The query 
-        // bypasses the Order domain object. Note how it uses a dynamic type.
+        // bypasses the Order domain object. Note how it uses a OrderDto type.
         //public async Task<IEnumerable<OrderDto>> GetByOrderId(string orderId,
         //                                    string corrleationId)
         //{
@@ -39,7 +34,7 @@ namespace order.service.Queries
         public async Task<OrderDto> GetByOrderId(string orderId,
                                             string corrleationId)
         {
-            return await _order2Repository.GetByResourceId(orderId, corrleationId);
+            return await _orderReadRepository.GetByResourceId(orderId, corrleationId);
             //return await _order2Repository.GetByOrderId(orderId, corrleationId);
             //return await _orderRepository.GetById(orderId, corrleationId, _telemetryClient);
         }
@@ -47,12 +42,12 @@ namespace order.service.Queries
 
 
         // adhere to the constraints of the domain Orderaggregate object. The query 
-        // bypasses the Order domain object. Note how it uses a dynamic type.
+        // bypasses the Order domain object. Note how it uses a OrderDto type.
         public async Task<IEnumerable<OrderDto>> GetAll(string corrleationId)
         {
             //return await _order2Repository.GetItemsAsync();
             //return await _order2Repository.GetAll(corrleationId, _telemetryClient);
-            return await _order2Repository.GetAll(corrleationId);
+            return await _orderReadRepository.GetAll(corrleationId);
         }
     }
 }

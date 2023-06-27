@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using order.domain.Contracts;
 
 namespace order.domain.AggregateModels.OrderAggregate
@@ -16,9 +17,9 @@ namespace order.domain.AggregateModels.OrderAggregate
             StatusDescription = statusDescription;
         }
 
-        public int Id { get; private set; }
         public int StatusId { get; private set; }
         public string StatusDescription { get; private set; }
-        public List<Order> Orders { get; private set; }
+        //[JsonIgnore]
+        //public List<Order> Orders { get; private set; }
     }
 }

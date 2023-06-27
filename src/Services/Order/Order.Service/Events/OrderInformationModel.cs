@@ -14,8 +14,8 @@ namespace order.service.Events
             LineItems = new List<LineItem>();
         }
 
-        public string BasketId { get; set; }
-        public string CustomerId { get; set; }
+        public Guid BasketId { get; set; }
+        public Guid CustomerId { get; set; }
         public string MessageId { get; set; }
         public decimal Total { get; set; }
         public BuyerInformation Buyer { get; set; }

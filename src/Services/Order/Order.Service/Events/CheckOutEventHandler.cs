@@ -62,39 +62,7 @@ namespace order.service.Events
                 _telemetryClient.TrackEvent(
                     $"Event: CheckOutEventHandler invoked: BasketID:{checkOutEvent.OrderInformationModel.BasketId}");
 
-                var createOrderCommand = new CreateOrderCommand(
-                    checkOutEvent.OrderInformationModel.BasketId,
-                    checkOutEvent.OrderInformationModel.CustomerId,
-                    checkOutEvent.MessageId,
-                    checkOutEvent.OrderInformationModel.Buyer.Username,
-                    checkOutEvent.OrderInformationModel.Total,
-                    checkOutEvent.OrderInformationModel.Buyer.FirstName,
-                    checkOutEvent.OrderInformationModel.Buyer.LastName,
-                    checkOutEvent.OrderInformationModel.Buyer.Address,
-                    checkOutEvent.OrderInformationModel.Buyer.City,
-                    checkOutEvent.OrderInformationModel.Buyer.State,
-                    checkOutEvent.OrderInformationModel.Buyer.PostalCode,
-                    checkOutEvent.OrderInformationModel.Buyer.Phone,
-                    checkOutEvent.OrderInformationModel.Buyer.Email,
-                    checkOutEvent.OrderInformationModel.Payment.CreditCardNumber,
-                    checkOutEvent.OrderInformationModel.Payment.SecurityCode,
-                    checkOutEvent.OrderInformationModel.Payment.CardholderName,
-                    checkOutEvent.OrderInformationModel.Payment.ExpirationDate,
-                    checkOutEvent.CorrelationToken = correlationToken,
-                    // Is this cool Linq? Generated from Resharper. It iterates through lineItem collection and projects an orderDetailDto for each item
-                    // Map collection of CheckOutEventLineItems to collection of OderDetailDtos
-                    checkOutEvent.OrderInformationModel.LineItems.Select(lineItem => new OrderDetailDto
-                    {
-                        Artist = lineItem.Artist,
-                        Title = lineItem.Title,
-                        Quantity = lineItem.Quantity,
-                        UnitPrice = decimal.Parse(lineItem.UnitPrice),
-                        AlbumId = lineItem.ProductId
-                    }).ToList()
-                );
-
-                // Invoke Command that creates order
-                var orderId = await _orderCommandHandler.Handle(createOrderCommand);
+                var orderId = await _orderCommandHandler.Handle(checkOutEvent);
 
                 //checkedOutEvent.OrderInformationModel.OrderSystemId = orderId;
 
@@ -102,25 +70,26 @@ namespace order.service.Events
                     $"Event: CheckOutEventHandler: Buyer created:{orderId}");
 
                 //************** Publish Event  *************************
-                // Publish event to clear basket for this order from Basket service
-                var emptyCartEvent = new EmptyBasketEvent
+                // Create event to update shopping basket status
+                var basketProcessedEvent = new BasketProcessedEvent
                 {
                     BasketID = checkOutEvent.OrderInformationModel.BasketId,
                     CorrelationToken = correlationToken
                 };
 
                 _logger.LogInformation(
-                    $"Publishing EmptyBasketEvent from CheckOutEventHandler in Ordering.API for Request {correlationToken} ");
+                    $"Publishing BasketProcessedEvent from CheckOutEventHandler in Ordering.API for Request {correlationToken} ");
 
                 _telemetryClient.TrackEvent(
-                    $"Event: Publishing EmptyBasketEvent from CheckOutEventHandler for orderid:{orderId}");
+                    $"Event: Publishing BasketProcessedEvent from CheckOutEventHandler for orderid:{orderId}");
 
-                await _eventBusPublisher.Publish<EmptyBasketEvent>(emptyCartEvent);
+                // Public event to clear basket for this order from Basket service
+                await _eventBusPublisher.Publish<BasketProcessedEvent>(basketProcessedEvent);
             }
             catch (Exception ex)
             {
                 throw new Exception(
-                    $"Exception in CheckOutEventHandler: {ex.Message} for Request {correlationToken}");
+                    $"Exception in Order Creation process thrown in CheckOutEventHandler: {ex.Message} for Request {correlationToken}");
             }
 
             await Task.CompletedTask;

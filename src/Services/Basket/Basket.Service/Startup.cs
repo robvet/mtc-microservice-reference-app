@@ -51,7 +51,7 @@ namespace Basket.Service
             services.RegisterEventBusSubscriber(Configuration);
 
             // Register concrete dependencies
-            services.AddTransient<EmptyBasketEventHandler>();
+            services.AddTransient<BasketProcessedEventHanlder>();
             services.AddTransient<ProductChangedEventHandler>();
             services.AddTransient<IBasketBusinessServices, BasketBusinessServices>();
             services.AddSingleton<IFindService, FindService>();

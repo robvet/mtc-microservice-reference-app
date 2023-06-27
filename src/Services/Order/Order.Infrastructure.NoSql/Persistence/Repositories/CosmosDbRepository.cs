@@ -1,7 +1,6 @@
 ﻿namespace order.infrastructure.nosql.Persistence.Repositories;
 
 using System;
-using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,6 +25,22 @@ public abstract class CosmosDbRepository<T> : IRepository<T>, IContainerContext<
         {
             //var response = await _container.CreateItemAsync(item, ResolvePartitionKey(item.Id));
             var response = await _container.CreateItemAsync(item, ResolvePartitionKey(item.Id));
+            return response.Resource;
+        }
+        catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.Conflict)
+        {
+            await Console.Out.WriteLineAsync(ex.Message);
+        }
+
+        return default;
+    }
+
+    public async Task<T> UpsertAsync(T item)
+    {
+        try
+        {
+            //var response = await _container.CreateItemAsync(item, ResolvePartitionKey(item.Id));
+            var response = await _container.UpsertItemAsync(item, ResolvePartitionKey(item.Id));
             return response.Resource;
         }
         catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.Conflict)
