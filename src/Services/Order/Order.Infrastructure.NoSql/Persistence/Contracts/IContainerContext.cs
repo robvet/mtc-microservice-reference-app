@@ -1,7 +1,7 @@
 ﻿namespace order.infrastructure.nosql.Persistence.Contracts;
 
 using Microsoft.Azure.Cosmos;
-using order.domain.AggregateModels;
+using order.domain.Models;
 
 public interface IContainerContext<T> where T : Item
 

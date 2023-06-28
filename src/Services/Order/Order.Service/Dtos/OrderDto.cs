@@ -10,10 +10,13 @@ namespace order.service.Dtos
             OrderDetails = new HashSet<OrderDetailDto>();
         }
 
-        public string OrderId { get; set; }
+        public string id { get; set; }
+        public Guid OrderId { get; set; }
         public DateTime OrderDate { get; set; }
-        public string ShoppingBasketId { get; set; }
+        public Guid ShoppingBasketId { get; set; }
         public string Username { get; set; }
+        public Guid CustomerId { get; set; }
+        public string BuyerName { get; set; }
         public decimal Total { get; set; }
 
         public virtual ICollection<OrderDetailDto> OrderDetails { get; set; }

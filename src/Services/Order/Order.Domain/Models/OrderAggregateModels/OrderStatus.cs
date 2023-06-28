@@ -2,7 +2,7 @@
 using System.Text.Json.Serialization;
 using order.domain.Contracts;
 
-namespace order.domain.AggregateModels.OrderAggregate
+namespace order.domain.Models.OrderAggregateModels
 {
     public class OrderStatus : IAggregateRoot
     {

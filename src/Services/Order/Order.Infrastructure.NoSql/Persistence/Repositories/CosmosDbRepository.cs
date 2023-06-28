@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.Azure.Cosmos;
-using order.domain.AggregateModels;
+using order.domain.Models;
 using order.infrastructure.nosql.Persistence.Contracts;
 
 public abstract class CosmosDbRepository<T> : IRepository<T>, IContainerContext<T> where T : Item

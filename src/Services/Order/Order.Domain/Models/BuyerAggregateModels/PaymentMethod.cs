@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Text.Json.Serialization;
-using order.domain.AggregateModels.OrderAggregate;
+using order.domain.Models.OrderAggregateModels;
 using order.domain.Contracts;
 
-namespace order.domain.AggregateModels.BuyerAggregate
+namespace order.domain.Models.BuyerAggregateModels
 {
     public class PaymentMethod : IAggregateRoot
     {
         public PaymentMethod()
-        {}
+        { }
 
         public PaymentMethod(
             string cardNumber,

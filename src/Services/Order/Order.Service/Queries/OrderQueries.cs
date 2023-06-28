@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.ApplicationInsights;
-using order.domain.AggregateModels.OrderAggregate;
-using order.domain.Contracts;
+using order.domain.Models.ReadModels;
 using order.infrastructure.nosql;
 using order.infrastructure.nosql.Persistence.Contracts;
 
@@ -31,10 +30,12 @@ namespace order.service.Queries
         //    //return await _orderRepository.GetById(orderId, corrleationId, _telemetryClient);
         //}
 
-        public async Task<OrderDto> GetByOrderId(string orderId,
-                                            string corrleationId)
+        public async Task<OrderReadModel> GetByOrderId(string orderId, string corrleationId)
         {
-            return await _orderReadRepository.GetByResourceId(orderId, corrleationId);
+            return await _orderReadRepository.GetByOrderId(orderId, corrleationId);
+           
+            
+            
             //return await _order2Repository.GetByOrderId(orderId, corrleationId);
             //return await _orderRepository.GetById(orderId, corrleationId, _telemetryClient);
         }
@@ -43,7 +44,7 @@ namespace order.service.Queries
 
         // adhere to the constraints of the domain Orderaggregate object. The query 
         // bypasses the Order domain object. Note how it uses a OrderDto type.
-        public async Task<IEnumerable<OrderDto>> GetAll(string corrleationId)
+        public async Task<IEnumerable<OrderReadModel>> GetAll(string corrleationId)
         {
             //return await _order2Repository.GetItemsAsync();
             //return await _order2Repository.GetAll(corrleationId, _telemetryClient);

@@ -1,17 +1,17 @@
 ﻿namespace order.infrastructure.nosql.Persistence.Repositories;
 
-using Microsoft.Azure.Documents;
-using order.domain.AggregateModels.OrderAggregate;
-using order.infrastructure.nosql;
 using order.infrastructure.nosql.Persistence.Contracts;
 using Microsoft.Extensions.Logging;
+using order.domain.Models.OrderAggregateModels;
 
 public class OrderWriteRepository : CosmosDbRepository<Order>, IOrderWriteRepository
 {
     public override string ContainerName => "OrderCollection";
     private readonly ILogger<OrderWriteRepository> _logger;
 
-    public OrderWriteRepository(ICosmosDbContainerFactory cosmosDbContainerFactory, ILogger<OrderWriteRepository> logger) : base(cosmosDbContainerFactory)
+    public OrderWriteRepository(ICosmosDbContainerFactory cosmosDbContainerFactory, 
+                                ILogger<OrderWriteRepository> logger) 
+                                        : base(cosmosDbContainerFactory)
     {
         _logger = logger;
     }
@@ -22,8 +22,13 @@ public class OrderWriteRepository : CosmosDbRepository<Order>, IOrderWriteReposi
 
         try
         {
+            // ** Implement Idempotency check **
+            // If the order already exists, don't create it again.'
+            // Based decision on correlationId. If the correlationId already exists, then we've already created the order.
+            // But, we most likely exceeded the Service Bus PeekLock timeout, which is 30 seconds and the message has been
+            // made available again on the queue. So, we need to check if the order already exists in the database.
             var ordersCreateWithCorrelationId = await GetItemsAsync($"SELECT * FROM c where c.CorrelationToken=\"{correlationId}\"");
-                        
+
             if (ordersCreateWithCorrelationId.Count() == 0)
             {
                 newOrder = await AddAsync(order);
@@ -36,7 +41,7 @@ public class OrderWriteRepository : CosmosDbRepository<Order>, IOrderWriteReposi
             _logger.LogError(errorMessage, ex);
             throw new Exception(errorMessage, ex);
         }
-        
+
         if (newOrder != null)
         {
             return new List<Order> { newOrder };
@@ -47,54 +52,6 @@ public class OrderWriteRepository : CosmosDbRepository<Order>, IOrderWriteReposi
             return new List<Order>();
         }
     }
-
-    //public async Task<IEnumerable<Order>> GetByOrderId(string Id, string correlationId)
-    //{
-
-    //    var query = $"SELECT * FROM c where c.OrderId=\"{Id}\"";
-    //    return await GetItemsAsync(query);
-    //    //return await GetItemsAsync(query);
-    //    //return await GetByIdAsync(query);
-    //    //return await GetByIdAsync(query);
-
-
-    //    //return await GetItemsAsync($"SELECT * FROM c where c.Order.id=\"{Id}\"");
-
-    //    //   var query = new SqlQuerySpec(
-    //    //"SELECT * FROM c WHERE c.productId = @productId",
-    //    //new SqlParameterCollection(new[] { new SqlParameter("@productId", Id) }));
-
-    //    //   return await GetItemsAsync(query.QueryText);
-    //}
-
-
-
-    //public async Task<Order> GetByResourceId(string Id, string correlationId)
-    //{
-    //    return await GetByIdAsync(Id);
-
-    //    //var result = await GetByIdAsync(Id);
-    //    //return result;
-
-    //    //var query = $"SELECT * FROM c where c.OrderId=\"{Id}\"";
-    //    //return await GetItemsAsync(query);
-    //    //return await GetByIdAsync(query);
-    //    //return await GetByIdAsync(Id);
-
-
-    //    //return await GetItemsAsync($"SELECT * FROM c where c.Order.id=\"{Id}\"");
-
-    //    //   var query = new SqlQuerySpec(
-    //    //"SELECT * FROM c WHERE c.productId = @productId",
-    //    //new SqlParameterCollection(new[] { new SqlParameter("@productId", Id) }));
-
-    //    //   return await GetItemsAsync(query.QueryText);
-    //}
-
-
-
-    //public async Task<long> GetEmployeesCountByDepartmentIdAsync(int departmentId)
-    //{
-    //    return await GetScalarValueAsync<long>($"SELECT VALUE COUNT(1) FROM c where c.Department.id=\"{departmentId}\"");
-    //}
 }
+
+   

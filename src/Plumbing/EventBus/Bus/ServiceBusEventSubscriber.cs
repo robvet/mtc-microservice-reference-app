@@ -67,7 +67,13 @@ namespace EventBus.Bus
         {
             var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
             {
-                // MaxConcurrentCalls specifies number of messages to process concurrently. By default, this is set to 1, which means that we'll process 1 message off the queue, and only when that has finished will we move onto the next one.  MaxConcurrentCalls applies to just the process that you are running. If for example you had three instances of the Receiver application each listening to the same queue with MaxConcurrentCalls set to 1, then you would process three messages in parallel.
+                // MaxConcurrentCalls specifies number of messages to process concurrently.
+                // By default, this is set to 1, which means that we'll process 1 message
+                // off the queue, and only when that has finished will we move onto the next one.
+                // MaxConcurrentCalls applies to just the process that you are running.
+                // If for example you had three instances of the Receiver application each
+                // listening to the same queue with MaxConcurrentCalls set to 1, then
+                // you would process three messages in parallel.
                 MaxConcurrentCalls = 1,
                 AutoComplete = false, 
             };

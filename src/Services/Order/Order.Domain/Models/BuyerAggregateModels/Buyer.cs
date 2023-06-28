@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using order.domain.AggregateModels.OrderAggregate;
 using order.domain.Contracts;
+using order.domain.Models.OrderAggregateModels;
 
-namespace order.domain.AggregateModels.BuyerAggregate
+namespace order.domain.Models.BuyerAggregateModels
 {
     public class Buyer : IAggregateRoot
     {

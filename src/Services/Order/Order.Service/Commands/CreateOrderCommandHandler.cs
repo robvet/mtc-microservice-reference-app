@@ -3,9 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.ApplicationInsights;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using order.domain.AggregateModels.BuyerAggregate;
-using order.domain.AggregateModels.OrderAggregate;
-using order.domain.Contracts;
+using order.domain.Models.BuyerAggregateModels;
+using order.domain.Models.OrderAggregateModels;
 using order.infrastructure.nosql.Persistence.Contracts;
 using order.service.Events;
 

@@ -1,4 +1,4 @@
-﻿namespace order.domain.AggregateModels;
+﻿namespace order.domain.Models;
 
 using Newtonsoft.Json;
 

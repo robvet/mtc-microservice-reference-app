@@ -1,7 +1,7 @@
-﻿using order.domain.AggregateModels.BuyerAggregate;
-using order.domain.Contracts;
+﻿using order.domain.Contracts;
+using order.domain.Models.BuyerAggregateModels;
 
-namespace order.domain.AggregateModels.OrderAggregate
+namespace order.domain.Models.OrderAggregateModels
 {
     public class Order : Item, IAggregateRoot
     {
@@ -16,15 +16,18 @@ namespace order.domain.AggregateModels.OrderAggregate
             string correlationToken)
         {
             OrderId = Guid.NewGuid(); //.ToString();
-            Id = Guid.NewGuid().ToString();
+            //Id = Guid.NewGuid().ToString();
             OrderDate = DateTime.UtcNow;
             CustomerId = customerId;
-            Total = total;  
+            Total = total;
             CorrelationToken = correlationToken;
             BasketId = basketId;
             EventBusMessageId = messageId;
             OrderDetails = new List<OrderDetail>();
-                        
+            
+            // This value becomes the /id value in the Cosmos Order document
+            Id = Guid.NewGuid().ToString();
+            
             // Set status to Pending
             OrderStatusId = (int)OrderStatusEnum.Pending;
         }
@@ -35,18 +38,14 @@ namespace order.domain.AggregateModels.OrderAggregate
         // the domain class to enforce business rules and validation
 
         public Guid OrderId { get; private set; }
-
-        //[JsonProperty("orderId")]
-        //public int Id { get; private set; }
-        public int OrderStatusId { get; private set; }
-        //public string OrderId { get; private set; }
-        // This is the orderid for Cosmos
         public Guid CustomerId { get; private set; }
-        public DateTime OrderDate { get; private set; }
-        public decimal Total { get; private set; }
-        public string CorrelationToken { get; private set; }
+        public int OrderStatusId { get; private set; }
         public Guid BasketId { get; private set; }
         public string EventBusMessageId { get; private set; }
+        public string CorrelationToken { get; private set; }
+
+        public DateTime OrderDate { get; private set; }
+        public decimal Total { get; private set; }
 
         public List<OrderDetail> OrderDetails { get; private set; }
         public Buyer Buyer { get; set; }
@@ -59,10 +58,10 @@ namespace order.domain.AggregateModels.OrderAggregate
         public void AddOrderItem(string title, string artist, Guid productId, int quantity, string unitPrice)
         {
             OrderDetails.Add(new OrderDetail
-                (title, 
-                artist, 
-                productId, 
-                quantity, 
+                (title,
+                artist,
+                productId,
+                quantity,
                 unitPrice));
         }
 

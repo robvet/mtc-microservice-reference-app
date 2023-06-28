@@ -1,6 +1,4 @@
-﻿using order.domain.AggregateModels;
-using System;
-using System.Collections.Generic;
+﻿using order.domain.Models;
 
 namespace order.infrastructure.nosql
 {

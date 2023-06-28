@@ -1,4 +1,4 @@
-﻿namespace order.domain.AggregateModels.OrderAggregate
+﻿namespace order.domain.Models.OrderAggregateModels
 {
     public enum OrderStatusEnum
     {

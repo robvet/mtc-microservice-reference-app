@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace order.domain.AggregateModels.OrderAggregate
+namespace order.domain.Models.OrderAggregateModels
 {
     public class OrderDetail
     {

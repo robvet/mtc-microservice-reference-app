@@ -1,7 +1,7 @@
 ﻿namespace order.infrastructure.nosql.Persistence.Contracts;
 
+using order.domain.Models;
 using System.Threading.Tasks;
-using order.domain.AggregateModels;
 
 public interface IRepository<T> where T : Item
 

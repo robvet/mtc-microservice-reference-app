@@ -1,6 +1,6 @@
 ﻿namespace order.infrastructure.nosql.Persistence.Contracts
 {
-    using order.domain.AggregateModels.OrderAggregate;
+    using order.domain.Models.OrderAggregateModels;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 

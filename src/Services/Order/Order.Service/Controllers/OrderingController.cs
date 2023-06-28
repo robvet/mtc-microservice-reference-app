@@ -42,7 +42,7 @@ namespace order.service.Controllers
             var order = await _orderQueries.GetByOrderId(orderId, correlationToken);
 
             if (order == null)
-                return BadRequest("Order does not exist");
+                return NotFound($"Order {orderId} does not exist");
 
             return new ObjectResult(RestMapper.MapToOrderDto(order));
         }
