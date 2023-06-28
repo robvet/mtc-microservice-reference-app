@@ -34,13 +34,9 @@ namespace order.service.Queries
         {
             return await _orderReadRepository.GetByOrderId(orderId, corrleationId);
            
-            
-            
             //return await _order2Repository.GetByOrderId(orderId, corrleationId);
             //return await _orderRepository.GetById(orderId, corrleationId, _telemetryClient);
         }
-
-
 
         // adhere to the constraints of the domain Orderaggregate object. The query 
         // bypasses the Order domain object. Note how it uses a OrderDto type.

@@ -67,4 +67,6 @@
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/bamboo-spec.json" /></VisualStudio></ProjectExtensions>
+
 </Project>
