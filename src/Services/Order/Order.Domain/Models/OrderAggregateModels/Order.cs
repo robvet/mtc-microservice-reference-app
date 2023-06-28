@@ -1,37 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using order.domain.AggregateModels.BuyerAggregate;
-using order.domain.Contracts;
-using SharedUtilities.TokenGenerator;
+﻿using order.domain.Contracts;
+using order.domain.Models.BuyerAggregateModels;
 
-namespace order.domain.AggregateModels.OrderAggregate
+namespace order.domain.Models.OrderAggregateModels
 {
-    public class Order : IAggregateRoot
+    public class Order : Item, IAggregateRoot
     {
         public Order()
         { }
 
         public Order(
-            string customerSystemId,
-            string checkOutSystemId,
+            Guid customerId,
+            Guid basketId,
+            string messageId,
             decimal total,
-            string correlationToken,
-            String basketId)
-        //List<OrderDetail> orderDetails)
+            string correlationToken)
         {
-            OrderSystemId = TokenGenerator.GenerateId(TokenGeneratorEnum.Order);
-            OrderId = Guid.NewGuid().ToString();
+            OrderId = Guid.NewGuid(); //.ToString();
+            //Id = Guid.NewGuid().ToString();
             OrderDate = DateTime.UtcNow;
-            CustomerSystemId = customerSystemId;
-            CheckOutSystemId = checkOutSystemId;
+            CustomerId = customerId;
             Total = total;
             CorrelationToken = correlationToken;
             BasketId = basketId;
+            EventBusMessageId = messageId;
+            OrderDetails = new List<OrderDetail>();
+            
+            // This value becomes the /id value in the Cosmos Order document
+            Id = Guid.NewGuid().ToString();
+            
             // Set status to Pending
             OrderStatusId = (int)OrderStatusEnum.Pending;
-            OrderDetails = new List<OrderDetail>();
         }
 
         // DDD Patterns comment
@@ -39,32 +37,32 @@ namespace order.domain.AggregateModels.OrderAggregate
         // The only way to create a Buyer is through the constructor enabling
         // the domain class to enforce business rules and validation
 
-        //[JsonProperty("orderId")]
-        public int Id { get; private set; }
+        public Guid OrderId { get; private set; }
+        public Guid CustomerId { get; private set; }
         public int OrderStatusId { get; private set; }
-        public string OrderId { get; private set; }
-        // This is the orderid for Cosmos
-        [NotMapped]
-        //public string orderid { get; private set; }
-        public string CustomerSystemId { get; private set; }
-        public string OrderSystemId { get; private set; }
-        public string CheckOutSystemId { get; private set; }
+        public Guid BasketId { get; private set; }
+        public string EventBusMessageId { get; private set; }
+        public string CorrelationToken { get; private set; }
+
         public DateTime OrderDate { get; private set; }
         public decimal Total { get; private set; }
-        [NotMapped]
-        public string CorrelationToken { get; private set; }
-        public String BasketId { get; set; }
 
         public List<OrderDetail> OrderDetails { get; private set; }
         public Buyer Buyer { get; set; }
-        public OrderStatus OrderStatus { get; private set; }
+        public OrderStatus OrderStatus { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
 
 
         // DDD Patterns comment:
         // This Order AggregateRoot's method "AddOrderitem()" should be the only way to add Items to the Order. This centralized approach provides consistency to the entire aggregate.
-        public void AddOrderItem(string title, Guid productId, string artist, int quantity, decimal unitPrice)
+        public void AddOrderItem(string title, string artist, Guid productId, int quantity, string unitPrice)
         {
-            OrderDetails.Add(new OrderDetail(title, artist, productId, quantity, unitPrice));
+            OrderDetails.Add(new OrderDetail
+                (title,
+                artist,
+                productId,
+                quantity,
+                unitPrice));
         }
 
         // DDD Patterns comment:

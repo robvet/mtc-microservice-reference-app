@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using order.domain.AggregateModels.OrderAggregate;
 using order.domain.Contracts;
+using order.domain.Models.OrderAggregateModels;
 
-namespace order.domain.AggregateModels.BuyerAggregate
+namespace order.domain.Models.BuyerAggregateModels
 {
     public class Buyer : IAggregateRoot
     {
@@ -37,8 +37,8 @@ namespace order.domain.AggregateModels.BuyerAggregate
         // Using private fields to encapsulate and carefully manage data.
         // The only way to create an Buyer is through the constructor enabling
         // the domain class to enforce business rules and validation
-        public int Id { get; private set; }
-        public int OrderId { get; private set; }
+        //public int Id { get; private set; }
+        //public int OrderId { get; private set; }
         public string UserName { get; private set; }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }

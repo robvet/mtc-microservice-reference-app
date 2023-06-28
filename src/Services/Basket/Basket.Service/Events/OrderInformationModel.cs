@@ -11,8 +11,7 @@ namespace Basket.Service.Events
         }
 
         public Guid BasketId { get; set; }
-        public Guid OrderSystemId { get; set; }
-        public Guid CheckoutId { get; set; }
+        public Guid CustomerId { get; set; }
         public decimal Total { get; set; }
         public BuyerInformation Buyer { get; set; }
         public PaymentInformation Payment { get; set; }
@@ -48,11 +47,6 @@ namespace Basket.Service.Events
             public string CardholderName { get; set; }
             public DateTime ExpirationDate { get; set; }
             public string PaymentConfirmationId { get; set; }
-        }
-
-        public class ShipmentInformation
-        {
-            public string ShipmentId { get; set; }
         }
     }
 }

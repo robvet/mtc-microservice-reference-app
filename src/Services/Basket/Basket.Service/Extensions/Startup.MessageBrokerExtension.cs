@@ -69,12 +69,12 @@ namespace Basket.Service.Extensions
         {
             var eventBus = app.ApplicationServices.GetRequiredService<IEventBusSubscriber>();
             // Get references to eventHandlers
-            var emptyBasketEventHandler = serviceProvider.GetRequiredService<EmptyBasketEventHandler>();
+            var emptyBasketEventHandler = serviceProvider.GetRequiredService<BasketProcessedEventHanlder>();
             var productChangedEventHandler = serviceProvider.GetRequiredService<ProductChangedEventHandler>();
 
             // Register events
             // Pass EventType as generic and EventHandler as parameter
-            eventBus.Subscribe<EmptyBasketEvent>(emptyBasketEventHandler);
+            eventBus.Subscribe<BasketProcessedEvent>(emptyBasketEventHandler);
             eventBus.Subscribe<ProductChangedEvent>(productChangedEventHandler);
 
             return app;

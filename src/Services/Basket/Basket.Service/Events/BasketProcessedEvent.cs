@@ -3,7 +3,7 @@ using System;
 
 namespace Basket.Service.Events
 {
-    public class EmptyBasketEvent : MessageEvent
+    public class BasketProcessedEvent : MessageEvent
 
     {
         public Guid BasketID { get; set; }

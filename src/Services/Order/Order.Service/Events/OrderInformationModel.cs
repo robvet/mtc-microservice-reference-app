@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using Microsoft.Azure.ServiceBus;
 
@@ -13,9 +14,9 @@ namespace order.service.Events
             LineItems = new List<LineItem>();
         }
 
-        public string BasketId { get; set; }
-        public string OrderSystemId { get; set; }
-        public string CheckoutId { get; set; }
+        public Guid BasketId { get; set; }
+        public Guid CustomerId { get; set; }
+        public string MessageId { get; set; }
         public decimal Total { get; set; }
         public BuyerInformation Buyer { get; set; }
         public PaymentInformation Payment { get; set; }
@@ -51,11 +52,6 @@ namespace order.service.Events
             public string CardholderName { get; set; }
             public DateTime ExpirationDate { get; set; }
             public string PaymentConfirmationId { get; set; }
-        }
-
-        public class ShipmentInformation
-        {
-            public string ShipmentId { get; set; }
         }
     }
 }

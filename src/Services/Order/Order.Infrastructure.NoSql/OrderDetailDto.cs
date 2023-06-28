@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace order.service.Dtos
+namespace order.infrastructure.nosql
 {
     public class OrderDetailDto
     {
-        public Guid OrderId { get; set; }
+        public int OrderDetailId { get; set; }
+        public string OrderId { get; set; }
         public Guid AlbumId { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }

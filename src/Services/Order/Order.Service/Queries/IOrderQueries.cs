@@ -1,12 +1,12 @@
-﻿using Microsoft.ApplicationInsights;
+﻿using order.domain.Models.ReadModels;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace order.service.Queries
 {
     public interface IOrderQueries
     {
-        Task<dynamic> GetOrder(string orderId, string corrleationId);
-
-        Task<dynamic> GetOrders(string corrleationId);
+        Task<OrderReadModel> GetByOrderId(string orderId, string corrleationId);
+        Task<IEnumerable<OrderReadModel>> GetAll(string corrleationId);
     }
 }

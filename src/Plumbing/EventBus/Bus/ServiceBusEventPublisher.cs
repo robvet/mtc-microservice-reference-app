@@ -56,7 +56,11 @@ namespace EventBus.Bus
 
                 var message = new Message
                 {
-                    MessageId = new Guid().ToString(),
+                    // Set application-defined value that uniquely identifies the message and its payload
+                    // If enabled, the duplicate detection feature identifies and removes second and
+                    //further submissions of messages with the same MessageId.
+                    MessageId = Guid.NewGuid().ToString(), 
+                    
                     Body = Encoding.UTF8.GetBytes(jsonMessage),
                     UserProperties =
                     {

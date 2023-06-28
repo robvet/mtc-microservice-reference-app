@@ -1,13 +1,15 @@
 ﻿using System;
 using EventBus.Events;
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.ApplicationInsights.DependencyCollector;
-using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using order.infrastructure.nosql.Persistence.Contracts;
+using order.infrastructure.nosql.Persistence.Repositories;
 using order.service.Commands;
 using order.service.Events;
 using order.service.Extensions;
@@ -43,6 +45,11 @@ namespace order.service
             services.AddTransient<IOrderQueries, OrderQueries>();
             services.AddTransient<CreateOrderCommandHandler>();
 
+            services.AddScoped<IOrderReadRepository, OrderReadRepository>();
+            services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
+
+
+
             // Capture SQL query text in App Insights
             // https://docs.microsoft.com/en-us/azure/azure-monitor/app/asp-net-dependencies
             services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
@@ -77,6 +84,7 @@ namespace order.service
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
+        //public void Configure(WebApplication app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
@@ -84,6 +92,8 @@ namespace order.service
             // ServiceLocator-based call that instantiates the RegisterMesageHandler class and invokes its
             // Register() method which sets a callback for underlying ServiceBus Subscription.
             ////serviceProvider.GetService<IRegisterEventHandler>().Register();
+
+            EnsureCosmosDbIscreated(app);
 
             app.UseHttpsRedirection();
 
@@ -102,8 +112,27 @@ namespace order.service
 
             app.ConfigureEventBusListeners(serviceProvider);
         }
+
+        public static void EnsureCosmosDbIscreated(IApplicationBuilder app)
+        //public static void EnsureCosmosDbIscreated(WebApplication webApplication)
+        {
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var factory = serviceScope.ServiceProvider.GetRequiredService<ICosmosDbContainerFactory>();
+                //factory.EnsureDbSetupAsync().Wait();
+
+                var container = factory.GetContainer("OrderCollection");
+
+                //// Create database and tables, but not populate data
+                //var databaseCreated = context.Database.EnsureCreated();
+                //DataInitializer.InitializeDatabaseAsync(serviceScope).Wait();
+                //new ProductDatabaseInitializer().InitializeDatabaseAsync(serviceScope).Wait();
+            }
+        }
     }
 }
+
+
 
 //************************************************
 //* Save for CQRS
