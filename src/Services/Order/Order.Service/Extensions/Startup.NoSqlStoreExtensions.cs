@@ -16,8 +16,9 @@ namespace order.service.Extensions
             IConfiguration configuration)
         {
             // new Cosmos DB Repository Code configuration
+            var connectionString = configuration["cosmosconnection"];
+            CosmosClient client = new CosmosClient(connectionString);
             CosmosDbConfiguration cosmosDbConfig = configuration.GetSection(CosmosDbConfiguration.SectionKey).Get<CosmosDbConfiguration>();
-            CosmosClient client = new CosmosClient(cosmosDbConfig.ConnectionString);
             services.AddSingleton<ICosmosDbContainerFactory>(c => new CosmosDbContainerFactory(client, cosmosDbConfig.DatabaseName, cosmosDbConfig.Containers));
 
             return services;
