@@ -388,11 +388,12 @@ namespace catalog.service.Controllers
 
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        [HttpPost("SeedDatabase", Name = "SeedDataBase")]
+        //[HttpPost("SeedDatabase", Name = "SeedDataBase")]
+        [HttpPost("SeedDataBase")]
         public async Task<IActionResult> SeedDatabase([FromQuery] bool dropDatabase)
+        //public async Task<IActionResult> SeedDatabase()
         {
             await _dataSeedingService.SeedDatabase(dropDatabase);
-
             return StatusCode(StatusCodes.Status204NoContent);
         }
     }

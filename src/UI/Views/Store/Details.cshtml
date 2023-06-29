@@ -16,7 +16,7 @@
 
 <p style="align-content:center">
     @{
-        var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(Model.MediumName, Model.AlbumArtUrl)}";
+        var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(Model.Medium, Model.AlbumArtUrl)}";
     }
     <img alt="@Model.Title" src="@Url.Content(imageLink)" />
 </p>
@@ -26,12 +26,12 @@
 
     <p>
         <em>Artist:</em>
-        @Model.ArtistName
+        @Model.Artist
     </p>
 
     <p>
         <em>Genre:</em>
-        @Model.GenreName
+        @Model.Genre
     </p>
    
     <p>

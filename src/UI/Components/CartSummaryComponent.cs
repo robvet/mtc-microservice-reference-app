@@ -30,21 +30,31 @@ namespace MusicStore.Components
             {
                 var cookie = _cookieLogic.GetBasketId();
 
-
-                var response = await _IRestClient.GetAsync<BasketSummaryDto>($"{baseUrl}/BasketSummary/{cookie}");
-
-                if (response.Data != null)
+                if (cookie != null) 
                 {
-                    //var response =
-                    //    await _IRestClient.GetAsync<BasketDto>($"{_baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
+                    var response = await _IRestClient.GetAsync<BasketSummaryDto>($"{baseUrl}/BasketSummary/{cookie}");
 
-                    ViewBag.CartCount = response.Data.ItemCount;
-                    ViewBag.CartSummary = response.Data.ProductNames;
-                }
-                else
-                {
-                    // If shopping basket ID from cookie has no shopping cart, remove the basket ID
-                    _cookieLogic.RemoveBasketId();
+                    if (response.Data != null)
+                    {
+                        //var response =
+                        //    await _IRestClient.GetAsync<BasketDto>($"{_baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
+
+                        ViewBag.CartCount = response.Data.ItemCount;
+                        ViewBag.CartSummary = response.Data.ProductNames;
+                    }
+                    else
+                    {
+                        // If shopping basket ID from cookie has no shopping cart, remove the basket ID
+
+                        try
+                        {
+                            _cookieLogic.RemoveBasketId();
+                        }
+                        catch (System.Exception)
+                        {
+                            // swallow exception keep going
+                        }
+                    }
                 }
             }
 

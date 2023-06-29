@@ -116,7 +116,7 @@ namespace Basket.Service.Controllers
             var basket = await _basketBusinessServices.GetBasketById(basketId, correlationToken);
 
             if (basket == null)
-                return BadRequest($"BasketEntity {basketId} does not exist for Request {correlationToken}");
+                return NotFound($"BasketEntity {basketId} does not exist for Request {correlationToken}");
 
             return new ObjectResult(new BasketSummaryDto
             {

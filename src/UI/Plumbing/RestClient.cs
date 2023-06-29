@@ -188,13 +188,18 @@ namespace MusicStore.Plumbing
 
                 // if status code 400 or greater, thrown exception so that
                 // exception handler takes care of it
-                if ((int)response.StatusCode >= 400)
+                if ((int)response.StatusCode == 400)
                 {
                     var error = $"{response.StatusCode}:{message}";
                     throw new HttpRequestException(error);
                 }
 
-                return new RestResponse<TReturnMessage>(response, null, string.Empty);
+                if ((int)response.StatusCode == 404)
+                {
+                    //var error = $"{response.StatusCode}:{message}";
+                    //throw new HttpRequestException(error);
+                }
+
 
                 //var ex = new HttpRequestException(
                 //    $"Error: StatusCode: {response.StatusCode} - Message: {response.ReasonPhrase}");
