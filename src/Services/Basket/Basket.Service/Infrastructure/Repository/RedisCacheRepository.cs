@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.ApplicationInsights;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 namespace Basket.Service.Infrastructure.Repository
 {
@@ -170,6 +171,22 @@ namespace Basket.Service.Infrastructure.Repository
 
             return success;
         }
+
+
+        ////var server = cache.Connection.GetServer("localhost");
+        ////var keys = server.Keys(0, "keyValue*");
+
+        ////foreach (var key in keys)
+        ////{
+        ////    var value = cache.StringGetAsync(key).Result; // Querying the value component of Redis Cache
+
+        ////    if (value == "searchValue")
+        ////    {
+        ////        Console.WriteLine($"Key: {key}\nValue: {value}");
+        ////    }
+        ////}
+
+
 
 
         //private async Task<T> GetAsync<T>(Guid id)

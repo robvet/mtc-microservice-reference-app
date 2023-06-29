@@ -63,7 +63,7 @@ namespace catalog.service.Controllers
         [ProducesResponseType(400)]
         [HttpGet("Music/{productId}", Name = "GetMusicRoute")]
         public async Task<IActionResult> GetMusic(Guid productId, [FromHeader(Name = "x-correlationToken")]
-            string correlationToken)
+            string correlationToken = "123")
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             Guard.ForValidGuid(productId, "ProductId");
@@ -85,7 +85,7 @@ namespace catalog.service.Controllers
         [ProducesResponseType(400)]
         [HttpGet("TopSellingMusic/{count}", Name = "GetTopSellingMusicRoute")]
         public async Task<IActionResult> GetTopSellingMusic([FromHeader(Name = "x-correlationToken")]
-            string correlationToken, int count = TopSellingCount)
+            string correlationToken  = "123", int count = TopSellingCount)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             Guard.ForLessEqualZero(count, "count");
@@ -123,7 +123,7 @@ namespace catalog.service.Controllers
         [ProducesResponseType(400)]
         [HttpGet("Genre/{guidId}", Name = "GetGenreRoute")]
         public async Task<IActionResult> GetGenre(Guid guidId, [FromHeader(Name = "x-correlationToken")]
-            string correlationToken)
+            string correlationToken = "123")
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             Guard.ForValidGuid(guidId, "GuidId for Genre");
@@ -144,7 +144,7 @@ namespace catalog.service.Controllers
         [ProducesResponseType(400)]
         [HttpGet("Genres", Name = "GetAllGenreRoute")]
         public async Task<IActionResult> GetAllGenres([FromHeader(Name = "x-correlationToken")]
-            string correlationToken)
+            string correlationToken = "123")
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
@@ -205,7 +205,7 @@ namespace catalog.service.Controllers
         [ProducesResponseType(400)]
         [HttpGet("Medium/{guidId}", Name = "GetMediumRoute")]
         public async Task<IActionResult> GetMedium(Guid guidId, [FromHeader(Name = "x-correlationToken")]
-            string correlationToken)
+            string correlationToken = "123")
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
             Guard.ForValidGuid(guidId, "GuidId for Medium");
@@ -226,7 +226,7 @@ namespace catalog.service.Controllers
         [ProducesResponseType(400)]
         [HttpGet("Mediums", Name = "GetAllMediumRoute")]
         public async Task<IActionResult> GetAllMediums([FromHeader(Name = "x-correlationToken")]
-            string correlationToken)
+            string correlationToken = "123")
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
@@ -275,7 +275,7 @@ namespace catalog.service.Controllers
         [ProducesResponseType(400)]
         [HttpGet("Artists", Name = "GetAllArtistsRoute")]
         public async Task<IActionResult> GetAllArtists([FromHeader(Name = "x-correlationToken")]
-            string correlationToken)
+            string correlationToken = "123")
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
 
@@ -320,7 +320,7 @@ namespace catalog.service.Controllers
         //[ProducesResponseType(typeof(ProductDto), 201)]
         //[HttpPost(Name = "PostMusicRoute")]
         //public async Task<IActionResult> Post([FromBody] Product product, [FromHeader(Name = "x-correlationToken")]
-        //    string correlationToken)
+        //    string correlationToken  = "123")
         //{
         //    var isSuccessful = true;
         //    var errorMessage = string.Empty;
@@ -357,7 +357,7 @@ namespace catalog.service.Controllers
         //[HttpPut]
         //public async Task<IActionResult> Put([FromBody] Product product,
         //    [FromHeader(Name = "x-correlationToken")]
-        //    string correlationToken)
+        //    string correlationToken = "123")
         //{
         //    if (!ModelState.IsValid)
         //        return BadRequest(ModelState);

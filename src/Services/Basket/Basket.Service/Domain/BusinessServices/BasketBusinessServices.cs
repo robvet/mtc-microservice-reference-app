@@ -122,7 +122,7 @@ namespace Basket.Service.Domain.BusinessServices
                 if (productEntity == null)
                     throw new Exception($"Cannot add item to shopping basket: ProductEntity #{productId} does not exist for Request {correlationToken}.  Have you created the ProductEntity Read Model for the Shopping BasketEntity microservice?");
 
-                await _distributedCacheRepository.UpdateAsync<ProductDto>(productEntity, basketId, correlationToken, _telemetryClient);
+                await _distributedCacheRepository.UpdateAsync<ProductDto>(productEntity, productId, correlationToken, _telemetryClient);
 
                 // Transform product into an entity class for table storage
                 //productTableEntity = new ProductTableEntity
