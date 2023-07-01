@@ -40,11 +40,11 @@ namespace catalog.service.Domain.DataInitializationServices
         //const string CONDITION = "conditions.csv";
         //const string ARTIST = "artists.csv";
 
-        const string GENRE = "Genre.csv";
-        const string MEDIUM = "Medium.csv";
-        const string STATUS = "Status.csv";
-        const string CONDITION = "Condition.csv";
-        const string ARTIST = "Artist.csv";
+        const string GENRE = "genre.csv";
+        const string MEDIUM = "medium.csv";
+        const string STATUS = "status.csv";
+        const string CONDITION = "condition.csv";
+        const string ARTIST = "artist.csv";
 
 
         const string PRODUCT = "products2.csv";
@@ -53,7 +53,8 @@ namespace catalog.service.Domain.DataInitializationServices
         public ProductDatabaseInitializer(DataContext context, 
                                           IWebHostEnvironment webHostEnvironment,
                                           bool dropDatabase,
-                                          ConnectionMultiplexer redis)
+                                          ConnectionMultiplexer redis
+                                          )
         {
             _context = context;
 
@@ -115,6 +116,9 @@ namespace catalog.service.Domain.DataInitializationServices
 
                 // File path for lookup data
                 var contentRootPath = _webHostEnvironment.ContentRootPath;
+
+                _logger.LogInformation($"In SeedLookupData, contentRootPath = {contentRootPath}");
+
                 var filePath = Path.Combine(contentRootPath, CONTENT_DIRECTORY, lookupType);
 
                 _logger.LogInformation("Content FilePath is {filePath}", filePath);

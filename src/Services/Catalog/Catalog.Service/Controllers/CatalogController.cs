@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using catalog.service.Contracts;
 using catalog.service.Domain.Entities;
 using catalog.service.Dtos;
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -21,6 +22,7 @@ namespace catalog.service.Controllers
         private const int TopSellingCount = 5;
         private readonly ICatalogBusinessServices _catalogBusinessServices;
         private readonly IDataSeedingServices _dataSeedingService;
+        private readonly ILogger<CatalogController> _logger;
 
         public CatalogController(ICatalogBusinessServices catalogBusinessServices,
             ILogger<CatalogController> logger,
@@ -28,6 +30,34 @@ namespace catalog.service.Controllers
         {
             _catalogBusinessServices = catalogBusinessServices;
             _dataSeedingService = dataSeedingService;
+            _logger = logger;   
+        }
+
+        /// <summary>
+        ///     Get top-selling music items
+        /// </summary>
+        /// <param name="count">Number of items to return</param>
+        /// <returns>List of Top Selling Items</returns>
+        [ProducesResponseType(typeof(ProductDto), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [HttpGet("TopSellingMusic/{count}", Name = "GetTopSellingMusicRoute")]
+        public async Task<IActionResult> GetTopSellingMusic([FromHeader(Name = "x-correlationToken")]
+            string correlationToken  = "123", int count = TopSellingCount)
+        {
+            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
+            Guard.ForLessEqualZero(count, "count");
+
+            var products = await _catalogBusinessServices.GetTopSellingMusic(correlationToken, count);
+
+            if (products == null || products.Count < 1)
+            {
+                _logger.LogError("No products returned from GetTopSellingMusic in Catalog Controller. Is the database empty?");
+                return BadRequest("No products returned from GetTopSellingMusic in Catalog Controller.Is the database empty ?");
+            }
+                
+            else
+                return new ObjectResult(Mapper.MapToMusicDto(products));
         }
 
         /// <summary>
@@ -46,7 +76,7 @@ namespace catalog.service.Controllers
             var products = await _catalogBusinessServices.GetAllMusic(correlationToken);
 
             if (products == null)
-                return BadRequest("Products do not exist");
+                return BadRequest("Products do not exist in GetAllMusic() in CatalogController");
             else if (products.Count < 1)
                 return StatusCode(StatusCodes.Status204NoContent);
             else
@@ -74,45 +104,6 @@ namespace catalog.service.Controllers
                 ? NotFound($"Product {productId} does not exist")
                 : new ObjectResult(Mapper.MapToMusicDto(product));
         }
-
-        /// <summary>
-        ///     Get top-selling music items
-        /// </summary>
-        /// <param name="count">Number of items to return</param>
-        /// <returns>List of Top Selling Items</returns>
-        [ProducesResponseType(typeof(ProductDto), 200)]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
-        [HttpGet("TopSellingMusic/{count}", Name = "GetTopSellingMusicRoute")]
-        public async Task<IActionResult> GetTopSellingMusic([FromHeader(Name = "x-correlationToken")]
-            string correlationToken  = "123", int count = TopSellingCount)
-        {
-            Guard.ForNullOrEmpty(correlationToken, "correlationToken");
-            Guard.ForLessEqualZero(count, "count");
-
-            var products = await _catalogBusinessServices.GetTopSellingMusic(correlationToken, count);
-
-            if (products == null)
-                return BadRequest("Products do not exist");
-            else if (products.Count < 1)
-                return StatusCode(StatusCodes.Status204NoContent);
-            else
-                return new ObjectResult(Mapper.MapToMusicDto(products));
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         /// <summary>
         ///     Get specific Genre for specified Id
@@ -152,7 +143,7 @@ namespace catalog.service.Controllers
 
             //if (genres == null || genres.Count < 1)
             if (genres == null)
-                return BadRequest("Genres do not exist");
+                return BadRequest("Genres do not exist in GetAllGenres() in CatalogController");
             else if (genres.Count < 1)
                 return StatusCode(StatusCodes.Status204NoContent);
             else
@@ -177,24 +168,12 @@ namespace catalog.service.Controllers
             var products = await _catalogBusinessServices.GetMusicForGenre(guidId, correlationToken);
 
             if (products == null)
-                return BadRequest("Products do not exist");
+                return BadRequest("Products do not exist GetMusicForGenere in CatalogController");
             else if (products.Count < 1)
                 return StatusCode(StatusCodes.Status204NoContent);
             else
                 return new ObjectResult(Mapper.MapToMusicDto(products));
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
         /// <summary>
         ///     Get specific Medium for specified Id
@@ -233,7 +212,7 @@ namespace catalog.service.Controllers
             var mediums = await _catalogBusinessServices.GetAllMediums(correlationToken);
 
             if (mediums == null)
-                return BadRequest("Mediums do not exist in Catalog Service");
+                return BadRequest("Mediums do not exist in GetAllMediums() in CatalogController");
             else if (mediums.Count < 1)
                 return StatusCode(StatusCodes.Status204NoContent);
             else
@@ -258,7 +237,7 @@ namespace catalog.service.Controllers
             var products = await _catalogBusinessServices.GetMusicForMedium(guidId, correlationToken);
 
             if (products == null)
-                return BadRequest("Products do not exist");
+                return BadRequest("Products do not exist in GetMusicForMedium() in CatalogController");
             else if (products.Count < 1)
                 return StatusCode(StatusCodes.Status204NoContent);
             else
@@ -282,7 +261,7 @@ namespace catalog.service.Controllers
             var artists = await _catalogBusinessServices.GetAllArtists(correlationToken);
 
             if (artists == null || artists.Count < 1)
-                return BadRequest("Genres do not exist");
+                return BadRequest("Artist do not exist in GetAllArtists() in CatalogController");
 
             return new ObjectResult(Mapper.MapCollectionToDto<Artist, ArtistDto>(artists));
         }
@@ -305,7 +284,7 @@ namespace catalog.service.Controllers
             var products = await _catalogBusinessServices.GetMusicForArtist(guidId, correlationToken);
 
             if (products == null)
-                return BadRequest("Products do not exist");
+                return BadRequest("Products do not exist in GetMusicForArtist() in CatalogController");
             else if (products.Count < 1)
                 return StatusCode(StatusCodes.Status204NoContent);
             else

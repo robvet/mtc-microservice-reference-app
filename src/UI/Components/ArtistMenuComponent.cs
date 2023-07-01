@@ -24,6 +24,14 @@ namespace MusicStore.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            // Don't invoke component if we are in Admin area
+            var areaName = ViewContext.RouteData.Values["area"].ToString();
+
+            if (areaName == "Admin")
+            {
+                return Content("");
+            }
+
             var artists = await _IRestClient.GetAsync<List<ArtistDto>>($"{_baseUrl}/Artists/");
 
             //var artists = await _catalogService.GetAllGenres();

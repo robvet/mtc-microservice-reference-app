@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MusicStore.Plumbing;
 using MusicStore.Models;
+using Microsoft.Extensions.Logging;
 
 namespace MusicStore.Components
 {
@@ -13,22 +14,35 @@ namespace MusicStore.Components
         private const string baseUrl = "basket/api/Basket";
         private readonly CookieLogic _cookieLogic;
         private readonly IRestClient _IRestClient;
+        private readonly ILogger<CartSummaryComponent> _logger;
 
-        public CartSummaryComponent(IRestClient iuiRestClient, CookieLogic cookieLogic)
+        public CartSummaryComponent(IRestClient iuiRestClient, 
+                                    CookieLogic cookieLogic,
+                                    ILogger<CartSummaryComponent> logger)
         {
             _IRestClient = iuiRestClient;
             _cookieLogic = cookieLogic;
+            _logger = logger;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
             BasketDto basket;
 
+            // Don't invoke component if we are in Admin area
+            var areaName = ViewContext.RouteData.Values["area"].ToString();
+
+            if (areaName == "Admin")
+            {
+                return Content("");
+            }
+
             var shoppingCartId = _cookieLogic.GetBasketId();
 
             if (!string.IsNullOrEmpty(shoppingCartId))
             {
                 var cookie = _cookieLogic.GetBasketId();
+
 
                 if (cookie != null) 
                 {

@@ -25,7 +25,9 @@ namespace catalog.service.Filters
             var source = context.Exception.Source;
             var path = context.HttpContext.Request.Path;
             // Capture root exception and all inner exceptions
-            var message = $"{ExceptionHandlingUtilties.TraverseException(context.Exception)} occured in {source}";
+            var message = $"Unhandled exception in CatalogCustomExceptionFilter: {ExceptionHandlingUtilties.TraverseException(context.Exception)} occured in {source}";
+            _logger.LogError(message);
+            
             var stackTrace = context.Exception.StackTrace;
 
             _logger.LogError(new EventId(context.Exception.HResult),
@@ -45,24 +47,28 @@ namespace catalog.service.Filters
             if (exceptionType == typeof(UnauthorizedAccessException))
             {
                 context.Result = new UnauthorizedResult();
+                _logger.LogError($"UnauthorizedResultException in CatalogCustomExceptionFilter");
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 context.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = ServiceName;
             }
             else if (exceptionType == typeof(ForbidResult))
             {
                 context.Result = new ForbidResult(message);
+                _logger.LogError($"ForbidResultException in CatalogCustomExceptionFilter");
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
                 context.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = ServiceName;
             }
             else if (exceptionType == typeof(NotFoundResult))
             {
                 context.Result = new NotFoundResult();
+                _logger.LogError($"NotFoundResult in CatalogCustomExceptionFilter");
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.NotFound;
                 context.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = ServiceName;
             }
             else
             {
                 context.Result = new ObjectResult(jsonErrorResponse);
+                _logger.LogError($"InternalServerError in CatalogCustomExceptionFilter");
                 context.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = message;
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             }

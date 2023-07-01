@@ -75,19 +75,21 @@ namespace MusicStore
             // StatusCode pages to gracefully handle status codes 400-599.
             //app.UseStatusCodePagesWithRedirects("~/Home/StatusCodePage");
 
-            if (env.IsDevelopment())
-                // Display custom error page in production when error occurs
-                // During development use the ErrorPage middleware to display error information in the browser
-                //app.UseStatusCodePagesWithReExecute("/Error/Error/", "? statusCode={0}");
-                //app.UseDeveloperExceptionPage();
-                //app.UseDatabaseErrorPage();
-                //app.UseBrowserLink();
+            //if (env.IsDevelopment())
+            //    // Display custom error page in production when error occurs
+            //    // During development use the ErrorPage middleware to display error information in the browser
+            //    //app.UseStatusCodePagesWithReExecute("/Error/Error/", "? statusCode={0}");
+            //    //app.UseDeveloperExceptionPage();
+            //    //app.UseDatabaseErrorPage();
+            //    //app.UseBrowserLink();
 
-                // redirects to MVC Error View for Home Controller in non-dev environment
-                app.UseExceptionHandler("/Error/Error");
-            else
-                app.UseExceptionHandler("/Home/Error");
+            //    // redirects to MVC Error View for Home Controller in non-dev environment
+            //    app.UseExceptionHandler("/Error/Error");
+            //else
+            //    app.UseExceptionHandler("/Home/Error");
 
+
+            app.UseExceptionHandler("/Error/Error");
 
             // force the en-US culture, so that the app behaves the same even on machines with different default culture
             var supportedCultures = new[] {new CultureInfo("en-US")};

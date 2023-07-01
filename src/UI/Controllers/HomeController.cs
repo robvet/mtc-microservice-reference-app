@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MusicStore.Plumbing;
 using MusicStore.Models;
+using Microsoft.Extensions.Logging;
+using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 
 namespace MusicStore.Controllers
 {
@@ -13,18 +15,27 @@ namespace MusicStore.Controllers
         private readonly string _baseUrl;
         private readonly IRestClient _IRestClient;
         private readonly int count = 6;
+        private ILogger<HomeController> _logger;
 
-        public HomeController(IRestClient uiRestClient, IConfiguration configuration) 
+        public HomeController(IRestClient uiRestClient,
+                              IConfiguration configuration,
+                              ILogger<HomeController> logger) 
         {
             _IRestClient = uiRestClient;
             _baseUrl = configuration["catalogBaseUri"] ??
                        throw new ArgumentNullException("catalogBaseUri", "Missing value");
+            _logger = logger;
         }
 
         // GET: /Home/
         public async Task<IActionResult> Index()
         {
+            _logger.LogInformation("Calling TopSellingMusic from HomeController");
+
             var result = await _IRestClient.GetAsync<List<ProductDto>>($"{_baseUrl}/TopSellingMusic/{count}");
+
+            _logger.LogInformation($"Returned {result.Data.Count} records in TopSellingMusic from HomeController");
+
             return View(result.Data);
         }
 
