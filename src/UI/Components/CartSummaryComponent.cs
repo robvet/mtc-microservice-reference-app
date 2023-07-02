@@ -27,13 +27,17 @@ namespace MusicStore.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            BasketDto basket;
+            //BasketDto basket;
 
             // Don't invoke component if we are in Admin area
-            var areaName = ViewContext.RouteData.Values["area"].ToString();
+            //var areaName = ViewContext.RouteData.Values["area"]?.ToString();
+            var areaName = ViewContext.RouteData.Values["area"];
 
-            if (areaName == "Admin")
+            // Default area returns null
+            // if (areaName != null && areaName.ToString() == "Admin")
+            if (areaName?.ToString() == "Admin")
             {
+                // If we are in Admin area, return content, i.e., skip invoking service and rendering view
                 return Content("");
             }
 
@@ -41,33 +45,27 @@ namespace MusicStore.Components
 
             if (!string.IsNullOrEmpty(shoppingCartId))
             {
-                var cookie = _cookieLogic.GetBasketId();
+                var response = await _IRestClient.GetAsync<BasketSummaryDto>($"{baseUrl}/BasketSummary/{shoppingCartId}").ConfigureAwait(false); ;
 
-
-                if (cookie != null) 
+                if (response.Data != null)
                 {
-                    var response = await _IRestClient.GetAsync<BasketSummaryDto>($"{baseUrl}/BasketSummary/{cookie}");
+                    //var response =
+                    //    await _IRestClient.GetAsync<BasketDto>($"{_baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
 
-                    if (response.Data != null)
+                    ViewBag.CartCount = response.Data.ItemCount;
+                    ViewBag.CartSummary = response.Data.ProductNames;
+                }
+                else
+                {
+                    // If shopping basket ID from cookie has no shopping cart, remove the basket ID
+
+                    try
                     {
-                        //var response =
-                        //    await _IRestClient.GetAsync<BasketDto>($"{_baseUrl}/Basket/{_cookieLogic.GetBasketId()}");
-
-                        ViewBag.CartCount = response.Data.ItemCount;
-                        ViewBag.CartSummary = response.Data.ProductNames;
+                        _cookieLogic.RemoveBasketId();
                     }
-                    else
+                    catch (System.Exception)
                     {
-                        // If shopping basket ID from cookie has no shopping cart, remove the basket ID
-
-                        try
-                        {
-                            _cookieLogic.RemoveBasketId();
-                        }
-                        catch (System.Exception)
-                        {
-                            // swallow exception keep going
-                        }
+                        // swallow exception keep going
                     }
                 }
             }

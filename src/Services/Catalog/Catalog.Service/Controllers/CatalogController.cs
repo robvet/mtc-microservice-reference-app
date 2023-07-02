@@ -55,7 +55,6 @@ namespace catalog.service.Controllers
                 _logger.LogError("No products returned from GetTopSellingMusic in Catalog Controller. Is the database empty?");
                 return BadRequest("No products returned from GetTopSellingMusic in Catalog Controller.Is the database empty ?");
             }
-                
             else
                 return new ObjectResult(Mapper.MapToMusicDto(products));
         }

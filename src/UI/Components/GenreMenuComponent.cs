@@ -37,19 +37,23 @@ namespace MusicStore.Components
             //}
 
             // Don't invoke component if we are in Admin area
-            var areaName = ViewContext.RouteData.Values["area"].ToString();
+            //var areaName = ViewContext.RouteData.Values["area"]?.ToString();
+            var areaName = ViewContext.RouteData.Values["area"];
 
-            if (areaName == "Admin")
+            // Default area returns null
+            // if (areaName != null && areaName.ToString() == "Admin")
+            if (areaName?.ToString() == "Admin")
             {
+                // If we are in Admin area, return content, i.e., skip invoking service and rendering view
                 return Content("");
             }
 
-            var genres = await _IRestClient.GetAsync<List<GenreDto>>($"{_baseUrl}/Genres/");
+            var genres = await _IRestClient.GetAsync<List<GenreDto>>($"{_baseUrl}/Genres/").ConfigureAwait(false); ;
 
             //var genres = await _catalogService.GetAllGenres();
 
             // 3-7-20, robvet - Added check for to trap for Null response
-            //if (genres.Data == null) throw new NullReferenceException("Catalog Service did not return Genres");
+            if (genres.Data == null) throw new NullReferenceException("Genre lookup values not returned in GenreMenuComponent. Are the data stores loaded?");
 
             return View(genres.Data);
         }

@@ -117,9 +117,9 @@ namespace MusicStore.Plumbing
 
                 if ((int)response.StatusCode >= 500)
                 {
-                    _logger.LogError($"Status Code of 500 returned in UI RestClient: {message}");
-                    //var error = $"{response.StatusCode}:{message}";
-                    //throw new HttpRequestException(error);
+                    var errorMessage = $"Status Code of 500 returned in UI RestClient Get(): {message}";
+                    _logger.LogError(errorMessage);
+                    throw new HttpRequestException(errorMessage);
                 }
 
                 return new RestResponse<TReturnMessage>(response, null, string.Empty);
@@ -192,9 +192,9 @@ namespace MusicStore.Plumbing
 
                 if ((int)response.StatusCode >= 500)
                 {
-                    _logger.LogError($"Status Code of 500 returned in UI RestClient: {message}");
-                    //var error = $"{response.StatusCode}:{message}";
-                    //throw new HttpRequestException(error);
+                    var errorMessage = $"Status Code of 500 returned in UI RestClient Post(): {message}";
+                    _logger.LogError(errorMessage);
+                    throw new HttpRequestException(errorMessage);
                 }
 
                 //var ex = new HttpRequestException(
@@ -259,9 +259,9 @@ namespace MusicStore.Plumbing
 
                 if ((int)response.StatusCode >= 500)
                 {
-                    _logger.LogError($"Status Code of 500 returned in UI RestClient: {message}");
-                    //var error = $"{response.StatusCode}:{message}";
-                    //throw new HttpRequestException(error);
+                    var errorMessage = $"Status Code of 500 returned in UI RestClient Put(): {message}";
+                    _logger.LogError(errorMessage);
+                    throw new HttpRequestException(errorMessage);
                 }
 
                 //var ex = new HttpRequestException(

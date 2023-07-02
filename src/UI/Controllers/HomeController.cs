@@ -34,8 +34,6 @@ namespace MusicStore.Controllers
 
             var result = await _IRestClient.GetAsync<List<ProductDto>>($"{_baseUrl}/TopSellingMusic/{count}");
 
-            _logger.LogInformation($"Returned {result.Data.Count} records in TopSellingMusic from HomeController");
-
             return View(result.Data);
         }
 

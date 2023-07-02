@@ -7,19 +7,29 @@
     Layout = "~/Views/Shared/_LayoutError.cshtml";
 }
 
-<h1 class="text-danger">Error...</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger">Something Unexpected...</h1>
+<h2 class="text-danger">An glitch took place while processing your request.</h2>
 
-@if (Model.CorrelationIdPresent)
-{
- <p>
+
+<p style="display: inline-block;">
+    Please report this error to MicroTunes support with the following code:<br />
+    <strong>@Model.ErrorMessage</strong>
+
+    @if (Model.CorrelationIdPresent)
+    {
+        <br />
+        <strong>Request ID:</strong><code>@Model.CorrelationId</code>
+    }
+
+</p>
+
+@{  var imageLink = $"~/Images/error.png"; 
+    <img alt="Error" src="@Url.Content(imageLink)" style="vertical-align: middle; width:40%; margin-left: auto;">
+}
+
+ @*<p>
     Please report this error to RetroTunes support with the following code:<br/>
     <strong>Request ID:</strong><code>@Model.CorrelationId</code>
  </p>
-}
+*@
 
-<h3>Error Information</h3>
-<p>
-    <strong>@Model.ErrorMessage</strong>
-
-</p>

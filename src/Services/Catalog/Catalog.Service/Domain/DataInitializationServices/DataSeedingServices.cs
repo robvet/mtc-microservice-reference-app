@@ -38,7 +38,7 @@ namespace catalog.service.Domain.DataInitializationServices
         {
             try
             {
-                new ProductDatabaseInitializer(_dataContext,
+                 new ProductDatabaseInitializer(_dataContext,
                                                _webHostEnvironment,
                                                //_distributedCacheRepository,
                                                dropDatabase,

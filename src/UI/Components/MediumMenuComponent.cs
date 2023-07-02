@@ -22,25 +22,26 @@ namespace MusicStore.Components
                        throw new ArgumentNullException("catalogBaseUri", "Missing value");
         }
 
-
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task  <IViewComponentResult> InvokeAsync()
         {
             // Don't invoke component if we are in Admin area
-            var areaName = ViewContext.RouteData.Values["area"].ToString();
+            //var areaName = ViewContext.RouteData.Values["area"]?.ToString();
+            var areaName = ViewContext.RouteData.Values["area"];
 
-            if (areaName == "Admin")
+            // Default area returns null
+            // if (areaName != null && areaName.ToString() == "Admin")
+            if (areaName?.ToString() == "Admin")
             {
+                // If we are in Admin area, return content, i.e., skip invoking service and rendering view
                 return Content("");
             }
 
-            var genres = await _IRestClient.GetAsync<List<MediumDto>>($"{_baseUrl}/mediums/");
-
-            //var genres = await _catalogService.GetAllGenres();
+            var mediums = await _IRestClient.GetAsync<List<MediumDto>>($"{_baseUrl}/mediums/").ConfigureAwait(false);
 
             // 3-7-20, robvet - Added check for to trap for Null response
-            //if (genres.Data == null) throw new NullReferenceException("Catalog Service did not return Genres");
+            if (mediums.Data == null) throw new NullReferenceException("Medium lookup values not returned in MediumMenuComponent. Are the data stores loaded?");
 
-            return View(genres.Data);
+            return View(mediums.Data);
         }
     }
 }
