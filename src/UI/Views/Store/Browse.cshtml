@@ -19,13 +19,13 @@
             @foreach (var item in Model.Result)
             {
                 <ul id="album-list" class="list-unstyled">
-                    <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container" style="margin-bottom: 40px;margin-right:30px;">
-                        <a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">
+                    <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container" style="margin-bottom: 70px;margin-right:30px;">
+                        <a asp-controller="Store" asp-action="Details" asp-route-ProductId="@item.ProductId">
                         @*<a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">*@
                             @{
-                                var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(item.MediumName, item.AlbumArtUrl)}";
+                                var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(item.Medium, item.AlbumArtUrl)}";
                             }
-                            <img alt="@item.Title" src="@Url.Content(imageLink)" title="@item.ArtistName" />
+                            <img alt="@item.Title" src="@Url.Content(imageLink)" title="@item.Artist" />
                             <h3 class="control-label">@item.Title</h3>
                         </a>
                     </li>

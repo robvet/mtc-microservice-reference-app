@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using MusicStore.Models;
 using System.Collections.Generic;
 using SharedUtilities.Utilties;
+using Microsoft.Build.Framework;
+using Microsoft.Extensions.Logging;
 
 namespace MusicStore.Controllers
 {
@@ -10,9 +12,22 @@ namespace MusicStore.Controllers
     {
         //https://www.red-gate.com/simple-talk/dotnet/net-development/asp-net-core-3-0-exception-handling/
         //https://chrissainty.com/global-error-handling-aspnet-core-mvc/
+
+        private ILogger<ErrorController> _logger;
+
+        public ErrorController(ILogger<ErrorController> logger)
+        {
+            _logger = logger;   
+        }
+
+
         public IActionResult Error()
         {
+            _logger.LogError($"Error in UI ErrorController");
+            
             var error = HttpContext.Features.Get<IExceptionHandlerFeature>();
+
+            _logger.LogError($"Specifc Error in UI ErrorController: {error}");
 
             //Parse out error message to separate correlationId from error message
             var split = error.Error.Message.Split("with correlationId:");

@@ -18,5 +18,6 @@ namespace Basket.Service.Dtos
         public string Medium { get; set; }
         public DateTime DateCreated { get; set; }
         public string Etag { get; set; }
+        public bool HighValueItem { get; set; }
     }
 }

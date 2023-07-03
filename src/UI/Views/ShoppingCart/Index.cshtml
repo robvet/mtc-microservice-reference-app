@@ -43,64 +43,99 @@
     </script>
 }
 
-<div style="margin-bottom: 30px; margin-top: 40px">
-    <h1 style="font-family: cursive">
-        REVIEW YOUR CART:
-    </h1>
+    <div style="margin-bottom: 30px; margin-top: 60px">
 
-   <div id="cart">
-        <p class="button">
-            <a asp-controller="ShoppingCart" asp-action="RemoveCart">Delete Cart?</a>
-        </p>
+        <div style="margin-bottom: 30px;display:flex; justify-content:space-between;">
+            <h1 style="font-family: cursive;">REVIEW YOUR CART:</h1>
+            @{ var imageLink4 = $"~/Images/music-cart.png"; }
+            <img alt="Music" src="@Url.Content(imageLink4)" style="vertical-align: middle; width:8%; margin-left: auto;">
+        </div>
     </div>
+
+        @*<h1 style="font-family: cursive;display:inline-block;">REVIEW YOUR CART:</h1><img src="@Url.Content("~/images/cart-with-music.png")" style="vertical-align: middle;  ; width:6%;display:inline-block;">*@
+
+    @*    <h1 style="font-family: cursive">
+            REVIEW YOUR CART:
+        </h1>
+
+       <div id="cart">
+            <img src="@Url.Content("~/images/cart-with-music.png")" style="vertical-align: middle;width:30%">
+
+    @*        <p class="button">
+                <a asp-controller="ShoppingCart" asp-action="RemoveCart">Delete Cart?</a>
+            </p>
+        </div>
+    *@
+
     <div id="update-message">
-    </div>
-    <table id="cart-summary" style="font-size:large" class="table table-bordered table-responsive table-hover table-striped">
-    <tr>
-        <th style="font-size:large; text-align:center;">
-                Collection
-            </th>
-        <th style="font-size:large; text-align:center;">
-                Price
-            </th>
-        <th style="font-size:large; text-align:center;">
-                Quantity
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model.CartItems)
-        {
-            <tr id="row-@item.">
-            <td title="@item.Artist">
-                <a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">@item.Title</a>
+        <table id="cart-summary" style="font-size:large" class="table table-bordered table-responsive table-hover table-striped">
+        <tr>
+            <th style="font-size:large; text-align:center;">
+                    Collection
+                </th>
+            <th style="font-size:large; text-align:center;">
+                    Price
+                </th>
+            <th style="font-size:large; text-align:center;">
+                    Quantity
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr id="row-@item.">
+                <td title="@item.Artist">
+                    <a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">@item.Title</a>
+                    </td>
+                    <td style="display:margin:0 auto;width:fit-content;;width:15%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">$@string.Format("{0:0.00}", item.Price)</span>
+                    </td>
+                    <td id="item-count-@item.ProductId" style="text-align:center;width:15%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@item.QuanityOrdered</span>
+                    </td>
+                    <td style="text-align:center; width:20%;vertical-align: middle;">
+                        @{var imageLink3 = $"~/Images/remove-item.jfif";}
+                        <img alt="Checkout" src="@Url.Content(imageLink3)" title="Remove Product" width="30" />
+                        <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.ProductId">&nbsp;Remove Product...</a>
+                    </td>
+                </tr>
+            }
+            @*<tr style="font-size:larger">*@
+            <tr>
+                <td>
+                    Total
                 </td>
-            <td style="display:margin:0 auto;width:fit-content;">
-                <span style="display:block;margin:0 auto;width:fit-content;">$@item.Price</span>
-                    @*$@item.Price*@
+                <td id="cart-total">
+                    <span style="font-weight:bolder;display:block;margin:0 auto;width:fit-content;">$@string.Format("{0:0.00}", @Model.CartTotal)</span>
                 </td>
-            <td id="item-count-@item.ProductId" style="text-align:center;">
-                    @item.QuanityOrdered
+                <td>
+                    <span style="font-weight:bolder;display:block;margin:0 auto;width:fit-content;">@Model.ItemCount</span>
                 </td>
-            <td style="text-align:center;">
-                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.ProductId">Remove...</a>
+                <td style="text-align:center; width:20%; white-space:nowrap;">
+                &nbsp;
                 </td>
             </tr>
-        }
-    <tr style="font-size:larger">
-            <td>
-                Total
-            </td>
-            <td id="cart-total">
-                <span style="font-weight:bolder;display:block;margin:0 auto;width:fit-content;">@Model.CartTotal</span>
-            </td>
-            <td>
-                <span style="font-weight:bolder;display:block;margin:0 auto;width:fit-content;">$@Model.ItemCount</span>
-            </td>
-            <td></td>
-        </tr>
-    </table>
-    <div id="cart">
-        <p class="button" align="right">
-            <a asp-controller="Checkout" asp-action="AddressAndPayment">Checkout >></a>
-        </p>
+        </table>
     </div>
+
+
+
+<div style="display:flex; justify-content:space-between;" class="d-flex">
+    <a asp-controller="ShoppingCart" asp-action="RemoveCart">@{
+            var imageLink = $"~/Images/delete-cart.png";
+        }<img alt="Checkout" src="@Url.Content(imageLink)" title="Remove Cart" width="75" />
+    </a>
+    <a asp-controller="Checkout" asp-action="AddressAndPayment">@{
+            var imageLink2 = $"~/Images/buy.png";
+        }<img alt="Checkout" src="@Url.Content(imageLink2)" title="Checkout" width="100"  />
+    </a>
+</div>
+
+
+
+
+
+        
+        
+    
+

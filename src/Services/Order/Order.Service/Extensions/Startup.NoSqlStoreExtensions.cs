@@ -16,8 +16,14 @@ namespace order.service.Extensions
             IConfiguration configuration)
         {
             // new Cosmos DB Repository Code configuration
-            CosmosDbConfiguration cosmosDbConfig = configuration.GetSection(CosmosDbConfiguration.SectionKey).Get<CosmosDbConfiguration>();
-            CosmosClient client = new CosmosClient(cosmosDbConfig.ConnectionString);
+            var connectionString = configuration["cosmosconnection"] ??
+                                   throw new ArgumentNullException("cosmosconnection", "Cosmos Connection missing");
+
+            CosmosClient client = new CosmosClient(connectionString);
+            
+            CosmosDbConfiguration cosmosDbConfig = configuration.GetSection(CosmosDbConfiguration.SectionKey).Get<CosmosDbConfiguration>() ??
+                                   throw new ArgumentNullException("cosmosDBConfig", "Missing from AppSettings.Json"); ;
+            
             services.AddSingleton<ICosmosDbContainerFactory>(c => new CosmosDbContainerFactory(client, cosmosDbConfig.DatabaseName, cosmosDbConfig.Containers));
 
             return services;

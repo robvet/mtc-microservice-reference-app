@@ -11,24 +11,37 @@ namespace order.service.Dtos
             {
                 //OrderId = order.OrderId,
                 id = order.Id,
-                OrderDate = order.OrderDate,
+                OrderId = order.OrderId,
                 ShoppingBasketId = order.BasketId,
                 CustomerId = order.CustomerId,
-                BuyerName = order.Buyer.UserName,
-                OrderId = order.OrderId,
+                OrderDate = order.OrderDate,
+                UserName = order.Buyer.UserName,
+                BuyerName = $"{order.Buyer.FirstName} {order.Buyer.LastName}",
+                Email = order.Buyer.Email,
+
+                
                 // Must add ToString() in order to parse the decimal, otherwise it errors
-                Total = order.Total, // decimal.Parse(order.Total.ToString()),
-                Username = order.Buyer.UserName
+                Total = order.Total // decimal.Parse(order.Total.ToString()),
             };
 
-            foreach (var item in order.OrderDetails)
+            foreach (var item in order.OrderDetail)
                 orderDto.OrderDetails.Add(new OrderDetailDto
                 {
-                    AlbumId = item.ProductId,
-                    Quantity = item.Quantity,
-                    UnitPrice = item.UnitPrice, // decimal.Parse(item.UnitPrice.ToString()),
+                    ProductId = item.ProductId,
+                    Title = item.Title,
+                    ArtistId = item.ArtistId,
                     Artist = item.Artist,
-                    Title = item.Title
+                    GenreId = item.GenreId,
+                    Genre = item.Genre,
+                    UnitPrice = item.UnitPrice, // decimal.Parse(item.UnitPrice.ToString()),
+                    Quantity = item.Quantity,
+                    Condition = item.Condition,
+                    Status = item.Status,
+                    MediumId = item.MediumId,
+                    Medium = item.Medium,
+                    DateCreated = item.DateCreated,
+                    BackOrdered = item.BackOrdered,
+                    HighValueItem = item.HighValueItem
                 });
 
             return orderDto;
@@ -42,11 +55,13 @@ namespace order.service.Dtos
                 ordersDtos.Add(new OrdersDto
                 {
                     Id = order.Id,
+                    OrderId = order.OrderId,
                     CustomerId = order.CustomerId,
                     ShoppingBasketId = order.BasketId,
-                    BuyerName = order.Buyer.UserName,
-                    OrderId = order.OrderId,
+                    UserName = order.Buyer.UserName,
+                    BuyerName = $"{order.Buyer.FirstName} {order.Buyer.LastName}",
                     Total = decimal.Parse(order.Total.ToString()),
+                    Email = order.Buyer.Email,
                     OrderDate = order.OrderDate
                 });
 

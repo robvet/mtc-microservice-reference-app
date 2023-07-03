@@ -35,7 +35,6 @@ namespace Basket.Service.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [HttpGet("Baskets", Name = "GetAllBasketsRoute")]
-        //public async Task<IActionResult> GetAllBaskets()
         public async Task<IActionResult> GetAllBaskets([FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
@@ -65,7 +64,6 @@ namespace Basket.Service.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [HttpGet("Products", Name = "GetAllProductsRoute")]
-        //public async Task<IActionResult> GetAllBaskets()
         public async Task<IActionResult> GetAllProducts([FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
             Guard.ForNullOrEmpty(correlationToken, "correlationToken");
@@ -86,7 +84,7 @@ namespace Basket.Service.Controllers
         /// <param name="basketId">Identifier for user shopping basket</param>
         /// <returns>List of line items that make up a shopping basket</returns>
         [ProducesResponseType(typeof(List<BasketItemDto>), 200)]
-   [ProducesResponseType(400)]
+        [ProducesResponseType(400)]
         [HttpGet("Basket/{basketId}", Name = "GetbasketRoute")]
         public async Task<IActionResult> GetBasket(Guid basketId, [FromHeader(Name = "x-correlationToken")] string correlationToken)
         {
@@ -116,7 +114,7 @@ namespace Basket.Service.Controllers
             var basket = await _basketBusinessServices.GetBasketById(basketId, correlationToken);
 
             if (basket == null)
-                return BadRequest($"BasketEntity {basketId} does not exist for Request {correlationToken}");
+                return NotFound($"BasketEntity {basketId} does not exist for Request {correlationToken}");
 
             return new ObjectResult(new BasketSummaryDto
             {

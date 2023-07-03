@@ -77,11 +77,14 @@ namespace MusicStore.Areas.Admin.Controllers
 
             var dropDatabaseHelperClass = new DropDatabaseHelperClass();
 
-            //if (cookieLogic.GetBasketId() == null)
+            //if (!string.IsNullOrEmpty(cookieLogic.GetBasketId()))
             //{
             //    dropDatabaseHelperClass.DisableCookeButton = true;
             //}
-
+            //else
+            //{
+            //    dropDatabaseHelperClass.DisableCookeButton = false;
+            //}
 
             return View(dropDatabaseHelperClass);
         }
@@ -93,17 +96,18 @@ namespace MusicStore.Areas.Admin.Controllers
         {
             //var parameter = collection["dropDatabase"];
             var isChecked = dropDatabaseHelperClass.DropDatabase;
-
-
-            var x = await _IRestClient.PostAsync<ProductDto>($"{_baseUrl}/SeedDatabase/{isChecked}");
-          
+            var x = await _IRestClient.PostAsync<ProductDto>($"{_baseUrl}/SeedDatabase?dropDatabase={isChecked}");
             return View("Index");
         }
 
         public IActionResult RemoveBasketCookie([FromServices] CookieLogic cookieLogic)
         {
             cookieLogic.RemoveBasketId();
-            return RedirectToAction("Home");
+
+            // Must get off this page for the cookie to be removed
+            // Route to the home page in the Home controller
+            // Route out of the Admin area
+            return RedirectToAction("Index", "Home", new { area = string.Empty });
         }
 
         // GET: DatabaseManagementController/Details/5

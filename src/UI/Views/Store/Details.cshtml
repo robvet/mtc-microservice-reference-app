@@ -6,62 +6,82 @@
     ViewBag.Title = "Song - " + Model.Title;
 }
 
-<div class="genre" style="margin-bottom: 80px">
+<div class="genre" style="margin-bottom: 40px">
 
-    <div style="margin-bottom: 30px; margin-top: 80px">
+    <div style="margin-bottom: 10px; margin-top: 80px">
         <h1 style="font-family: cursive">
             @Model.Title.ToUpper()
         </h1>
     </div>
-
-<p style="align-content:center">
-    @{
-        var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(Model.MediumName, Model.AlbumArtUrl)}";
-    }
-    <img alt="@Model.Title" src="@Url.Content(imageLink)" />
-</p>
+</div>
 
 
-<div id="album-details" style="font-size:larger">
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    @*Left Column*@
+    <div style=" width:40%" >
 
-    <p>
-        <em>Artist:</em>
-        @Model.ArtistName
-    </p>
-
-    <p>
-        <em>Genre:</em>
-        @Model.GenreName
-    </p>
-   
-    <p>
-        <em>Price:</em>
-        <label>@($"${Model.Price:F2}")</label>
-        @*<label>@Model.Price</label>*@
-    </p>
-
-    <p>
-        <em>Released:</em>
-        @Model.ReleaseYear
-    </p>
-
-    <p>
-        <em>UPC Code:</em>
-        @Model.Upc
-    </p>
-
-    @if (Model.ParentalCaution)
-    {
-            <p style="margin-bottom: 30px; margin-top: 40px">
+        <p>
             @{
-                var imageAdvisory = $"~/Images/advisory2.png";
-                <img alt="@Model.Title" src="@Url.Content(imageAdvisory)" />
-             }
+                var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(Model.Medium, Model.AlbumArtUrl)}";
+            }
+            <img alt="@Model.Title" src="@Url.Content(imageLink)" style="margin-left:35px;" />
         </p>
-    }
 
+        <div id="album-details" style="font-size:larger; margin-top: 40px">
 
-        <p class="button" style="font-size:large; margin-top: 30px">
-        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.ProductId">Add to cart</a>
-    </p>
+            <p>
+                <em>Artist:</em>
+                @Model.Artist
+            </p>
+
+            <p>
+                <em>Genre:</em>
+                @Model.Genre
+            </p>
+
+            <p>
+                <em>Price:</em>
+                <label>@($"${Model.Price:F2}")</label>
+                @*<label>@Model.Price</label>*@
+            </p>
+
+            <p>
+                <em>Released:</em>
+                @Model.ReleaseYear
+            </p>
+
+            <p>
+                <em>UPC Code:</em>
+                @Model.Upc
+            </p>
+
+            @if (Model.ParentalCaution)
+            {
+                <p style="margin-bottom: 30px; margin-top: 40px;">
+                    @{
+                        var imageAdvisory = $"~/Images/advisory.png";
+                        <img alt="@Model.Title" src="@Url.Content(imageAdvisory)" width="125"  style="margin-left:25px;" />
+                    }
+                </p>
+            }
+
+            <div class="d-flex justify-content-start" style="margin-top: 30px">
+                <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.ProductId">
+                    @{
+                        var imageLink2 = $"~/Images/cart-add.png";
+                        <img alt="Checkout" src="@Url.Content(imageLink2)" title="Add to Cart" width="200" style="float: left; margin-right: 20px" />
+                    }
+                </a>
+            </div>
+        </div>
+    </div>
+
+    @*Right Column*@
+    <div style="display:inline-block; ">
+        <p> 
+            <h1>AI Content Goes Here</h1>
+
+        </p>
+
+    </div>
 </div>

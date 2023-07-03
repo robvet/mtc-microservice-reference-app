@@ -54,6 +54,9 @@ namespace MusicStore.Plumbing
             // Only way to remove a cookie is to set it's expiration in the past
             var cookieVaule = _httpContextAccessor.HttpContext.Request.Cookies[CookieName];
 
+            if (cookieVaule == null)
+                return;
+
             var options = new CookieOptions
             {
                 Expires = DateTime.UtcNow.AddDays(-1),

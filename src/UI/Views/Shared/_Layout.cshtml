@@ -46,6 +46,7 @@
                     @await Component.InvokeAsync("ArtistMenu")
                     @await Component.InvokeAsync("MediumMenu")
                     @await Component.InvokeAsync("CartSummary")
+                    <li><a asp-controller="Order" asp-action="Index">Orders</a></li>
                 </ul>
                 @*@await Html.PartialAsync("_LoginPartial")*@
                 <ul class="nav navbar-nav pull-right">
@@ -58,7 +59,7 @@
         @RenderBody()
         <hr />
         <footer class="navbar navbar-fixed-bottom navbar-default text-center">
-            <p><a href="https://serviceshub.microsoft.com/blog/2018/01/25/release-announcement-activate-azure-with-microservices-and-containers/">Developing Cloud-Native Microservices in Azure</a></p>
+            <p><a href="https://serviceshub.microsoft.com/blog/2018/01/25/release-announcement-activate-azure-with-microservices-and-containers/">Microsoft Technology Centers - Architecting Cloud-Native Microservices in Azure</a></p>
             
         </footer>
     </div>

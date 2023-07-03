@@ -26,19 +26,19 @@ namespace catalog.service.Dtos
                     HighValueItem = item.HighValueItem,
                     IsActive = item.IsActive,
 
-                    GenreName = item.Genre?.Name,
+                    Genre = item.Genre?.Name,
                     GenreId = item.GenreId,
 
-                    ArtistName = item.Artist?.Name,
+                    Artist = item.Artist?.Name,
                     ArtistId = item.ArtistId,
 
-                    MediumName = item.Medium?.Name,
+                    Medium = item.Medium?.Name,
                     MediumId = item.MediumId,
 
-                    StatusName = item.Status?.Name,
+                    Status = item.Status?.Name,
                     StatusId = item.StatusId,
 
-                    ConditionName = item.Condition?.Name,
+                    Condition = item.Condition?.Name,
                     ConditionId = item.ConditionId
                 });
 
@@ -61,19 +61,19 @@ namespace catalog.service.Dtos
                 HighValueItem = music.HighValueItem,
                 IsActive = music.IsActive,
 
-                GenreName = music.Genre?.Name,
+                Genre = music.Genre?.Name,
                 GenreId = music.GenreId,
 
-                ArtistName = music.Artist?.Name,
+                Artist = music.Artist?.Name,
                 ArtistId = music.ArtistId,
 
-                MediumName = music.Medium?.Name,
+                Medium = music.Medium?.Name,
                 MediumId = music.MediumId,
 
-                StatusName = music.Status?.Name,
+                Status = music.Status?.Name,
                 StatusId = music.StatusId,
 
-                ConditionName = music.Condition?.Name,
+                Condition = music.Condition?.Name,
                 ConditionId = music.ConditionId
             };
         }

@@ -39,11 +39,11 @@
             @foreach (var item in Model)
             {
                 <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container" style="margin-bottom: 40px;margin-right:40px;">
-                    <a asp-controller="Store" asp-action="Details" asp-route-id="@item.ProductId">
+                    <a asp-controller="Store" asp-action="Details" asp-route-productId="@item.ProductId">
                     @{
-                        var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(item.MediumName, item.AlbumArtUrl)}";
+                        var imageLink = $"~/Images/{MediumImageSelector.SetMediumGraphic(item.Medium, item.AlbumArtUrl)}";
                     }
-                    <img alt="@item.Title" src="@Url.Content(imageLink)" title="@item.ArtistName" />
+                    <img alt="@item.Title" src="@Url.Content(imageLink)" title="@item.Artist" />
                     <h3>@item.Title</h3>
                     </a>
                 </li>
@@ -54,7 +54,7 @@
 else
 {
     <div style="background-color: lightgrey;border: 15px solid red;padding: 50px;margin: 20px;">
-        <p><strong>There are no albums in the store.</strong></p>
+        <p><strong>There is no music loaded in the store. Please run the Data Init process</strong></p>
     </div>
 }
 

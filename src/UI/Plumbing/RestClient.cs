@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using SharedUtilities.Utilties;
 
 namespace MusicStore.Plumbing
 {
@@ -21,7 +20,7 @@ namespace MusicStore.Plumbing
         private readonly string _apiGateway;
 
         // apikey
-        private string _apikey;
+        private readonly string _apikey;
 
         // Create a TimeSpan of 4 minutes so that HTTP Calls do not timeout when debugging
         // Do not do this in production!!!
@@ -30,21 +29,24 @@ namespace MusicStore.Plumbing
         
         static RestClient()
         {
+            // Set Rest Client as static so that it is only created once
             _client = new HttpClient();
         }
 
         public RestClient(IConfiguration config, ILogger<RestClient> logger)
         {
+            Guard.ForNullOrEmpty(config["ApiGateway"], "ApiGateway not set");
             _apiGateway = config["ApiGateway"];
             _client.Timeout = _httpTimeOut;
             _logger = logger;
+            Guard.ForNullOrEmpty(config["apikey"], "ApiKey not set");
             _apikey = config["apikey"];
         }
 
         public async Task<RestResponse<TReturnMessage>> GetAsync<TReturnMessage>(string path)
             where TReturnMessage : class, new()
         {
-            HttpResponseMessage response = null;
+            HttpResponseMessage response;
 
             // robvet, 6-28-18, removed "http" prefix constant as we now get this
             // directly from the configuration file
@@ -61,20 +63,9 @@ namespace MusicStore.Plumbing
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
-
-
-
-
-
-
-            // TODO remove
-            _client.DefaultRequestHeaders.Remove("x-correlationToken");
-            _client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
-
-
-
-
-
+            //// TODO remove
+            //_client.DefaultRequestHeaders.Remove("x-correlationToken");
+            //_client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
 
             try
             {
@@ -85,42 +76,50 @@ namespace MusicStore.Plumbing
                 // Looking for race condition where backend services have not started yet
                 if (ex.Message == "No connection could be made because the target machine actively refused it.")
                 {
-                    _logger.LogInformation($"UIRestClient in UI: Services unavailable: {ex.Message}");
+                    _logger.LogError($"UIRestClient in UI: Services unavailable: {ex.Message}");
 
                     throw new Exception(
                         "Backend services are not available - wait several seconds and refresh browser");
                 }
 
-                _logger.LogInformation($"UIRestClient in UI: HttpRequestExceptionServices: {ex.Message}");
+                _logger.LogError($"UIRestClient in UI: HttpRequestExceptionServices: {ex.Message}");
 
                 throw;
             }
             catch (Exception ex)
             {
-                _logger.LogInformation($"UIRestClient in UI: Generic Exception: {ex.Message}");
+                _logger.LogError($"UIRestClient in UI: Generic Exception: {ex.Message}");
 
                 throw;
             }
 
-            //if (!response.IsSuccessStatusCode || response.StatusCode == HttpStatusCode.NoContent)
-
-
             if (!response.IsSuccessStatusCode)
             {
+
                 var message = await response.Content.ReadAsStringAsync();
+                _logger.LogError($"Bad Status Code returned in UI RestClient: {message}");
 
                 // if status code 400 or greater, thrown exception so that
                 // exception handler takes care of it
                 if ((int) response.StatusCode == 400)
                 {
-                    var error = $"{response.StatusCode}:{message}";
+                    var error = $"Status Code of 400 returned in UI RestClient: {message}";
+                    _logger.LogError(error);
                     throw new HttpRequestException(error);
                 }
 
                 if ((int)response.StatusCode == 404)
                 {
+                    _logger.LogError($"Status Code of 404 returned in UI RestClient: {message}");
                     //var error = $"{response.StatusCode}:{message}";
                     //throw new HttpRequestException(error);
+                }
+
+                if ((int)response.StatusCode >= 500)
+                {
+                    var errorMessage = $"Status Code of 500 returned in UI RestClient Get(): {message}";
+                    _logger.LogError(errorMessage);
+                    throw new HttpRequestException(errorMessage);
                 }
 
                 return new RestResponse<TReturnMessage>(response, null, string.Empty);
@@ -145,22 +144,11 @@ namespace MusicStore.Plumbing
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
-
-
-
-
-
-
             // TODO remove
-            _client.DefaultRequestHeaders.Remove("x-correlationToken");
-            _client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
-
-
+            //_client.DefaultRequestHeaders.Remove("x-correlationToken");
+            //_client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
 
             var content = dataObject == null ? "{}" : JsonConvert.SerializeObject(dataObject);
-
-            
-
             try
             {
 
@@ -188,13 +176,26 @@ namespace MusicStore.Plumbing
 
                 // if status code 400 or greater, thrown exception so that
                 // exception handler takes care of it
-                if ((int)response.StatusCode >= 400)
+                if ((int)response.StatusCode == 400)
                 {
-                    var error = $"{response.StatusCode}:{message}";
+                    var error = $"Status Code of 400 returned in UI RestClient: {message}";
+                    _logger.LogError(error);
                     throw new HttpRequestException(error);
                 }
 
-                return new RestResponse<TReturnMessage>(response, null, string.Empty);
+                if ((int)response.StatusCode == 404)
+                {
+                    _logger.LogError($"Status Code of 404 returned in UI RestClient: {message}");
+                    //var error = $"{response.StatusCode}:{message}";
+                    //throw new HttpRequestException(error);
+                }
+
+                if ((int)response.StatusCode >= 500)
+                {
+                    var errorMessage = $"Status Code of 500 returned in UI RestClient Post(): {message}";
+                    _logger.LogError(errorMessage);
+                    throw new HttpRequestException(errorMessage);
+                }
 
                 //var ex = new HttpRequestException(
                 //    $"Error: StatusCode: {response.StatusCode} - Message: {response.ReasonPhrase}");
@@ -221,9 +222,8 @@ namespace MusicStore.Plumbing
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
-
-            _client.DefaultRequestHeaders.Remove("x-correlationToken");
-            _client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
+            //_client.DefaultRequestHeaders.Remove("x-correlationToken");
+            //_client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
 
             var content = dataObject != null ? JsonConvert.SerializeObject(dataObject) : "{}";
 
@@ -243,13 +243,26 @@ namespace MusicStore.Plumbing
 
                 // if status code 400 or greater, thrown exception so that
                 // exception handler takes care of it
-                if ((int)response.StatusCode >= 400)
+                if ((int)response.StatusCode == 400)
                 {
-                    var error = $"{response.StatusCode}:{message}";
+                    var error = $"Status Code of 400 returned in UI RestClient: {message}";
+                    _logger.LogError(error);
                     throw new HttpRequestException(error);
                 }
 
-                return new RestResponse<TReturnMessage>(response, null, string.Empty);
+                if ((int)response.StatusCode == 404)
+                {
+                    _logger.LogError($"Status Code of 404 returned in UI RestClient: {message}");
+                    //var error = $"{response.StatusCode}:{message}";
+                    //throw new HttpRequestException(error);
+                }
+
+                if ((int)response.StatusCode >= 500)
+                {
+                    var errorMessage = $"Status Code of 500 returned in UI RestClient Put(): {message}";
+                    _logger.LogError(errorMessage);
+                    throw new HttpRequestException(errorMessage);
+                }
 
                 //var ex = new HttpRequestException(
                 //    $"Error: StatusCode: {response.StatusCode} - Message: {response.ReasonPhrase}");
@@ -275,10 +288,8 @@ namespace MusicStore.Plumbing
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
 
-
-            _client.DefaultRequestHeaders.Remove("x-correlationToken");
-            _client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
-
+            //_client.DefaultRequestHeaders.Remove("x-correlationToken");
+            //_client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
 
             try
             {
@@ -307,10 +318,18 @@ namespace MusicStore.Plumbing
 
                 // if status code 400 or greater, thrown exception so that
                 // exception handler takes care of it
-                if ((int)response.StatusCode >= 400)
+                if ((int)response.StatusCode == 400)
                 {
-                    var error = $"{response.StatusCode}:{message}";
+                    var error = $"Status Code of 400 returned in UI RestClient: {message}";
+                    _logger.LogError(error);
                     throw new HttpRequestException(error);
+                }
+
+                if ((int)response.StatusCode >= 500)
+                {
+                    _logger.LogError($"Status Code of 500 returned in UI RestClient: {message}");
+                    //var error = $"{response.StatusCode}:{message}";
+                    //throw new HttpRequestException(error);
                 }
 
                 //var ex = new HttpRequestException(
@@ -322,5 +341,29 @@ namespace MusicStore.Plumbing
 
             return new RestResponse<bool>(response, response.IsSuccessStatusCode, string.Empty);
         }
+
+        //private Uri PrepareCall(string path)
+        //{
+        //    // robvet, 6-28-18, removed "http" prefix constant as we now get this
+        //    // directly from the configuration file
+        //    //var uri = new Uri($"http://{_apiGateway}/{path}");
+        //    ////var uri = new Uri($"{_apiGateway}/{path}");
+        //    var uri = new Uri($"{_apiGateway}/{path}");
+
+        //    _client.DefaultRequestHeaders.Accept.Clear();
+        //    _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+        //    // Pay Attention: Restclient is static, so we need to clear the default request header each time
+        //    // the method is called as the previously-called api keys remain in the header
+        //    _client.DefaultRequestHeaders.Remove("Ocp-Apim-Subscription-Key");
+
+        //    _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
+
+        //    // TODO remove
+        //    _client.DefaultRequestHeaders.Remove("x-correlationToken");
+        //    _client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
+
+        //    return uri;
+        //}
     }
 }

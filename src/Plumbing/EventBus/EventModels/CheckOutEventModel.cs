@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Threading.Tasks;
-using Microsoft.Azure.ServiceBus;
 
-namespace order.service.Events
+namespace EventBus.EventModels
+
 {
-    public class OrderInformationModel
+    public class CheckOutEventModel
     {
-        public OrderInformationModel()
+        public CheckOutEventModel()
         {
             LineItems = new List<LineItem>();
         }
@@ -26,10 +23,18 @@ namespace order.service.Events
         {
             public Guid ProductId { get; set; }
             public string Title { get; set; }
+            public Guid ArtistId { get; set; }
             public string Artist { get; set; }
+            public Guid GenreId { get; set; }
             public string Genre { get; set; }
             public string UnitPrice { get; set; }
             public int Quantity { get; set; }
+            public string Condition { get; set; }
+            public string Status { get; set; }
+            public Guid MediumId { get; set; }
+            public string Medium { get; set; }
+            public DateTime DateCreated { get; set; }
+            public bool HighValueItem { get; set; }
         }
 
         public class BuyerInformation

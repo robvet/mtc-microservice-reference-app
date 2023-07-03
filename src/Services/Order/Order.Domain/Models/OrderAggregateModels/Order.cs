@@ -23,7 +23,7 @@ namespace order.domain.Models.OrderAggregateModels
             CorrelationToken = correlationToken;
             BasketId = basketId;
             EventBusMessageId = messageId;
-            OrderDetails = new List<OrderDetail>();
+            OrderDetail = new List<OrderDetail>();
             
             // This value becomes the /id value in the Cosmos Order document
             Id = Guid.NewGuid().ToString();
@@ -47,23 +47,56 @@ namespace order.domain.Models.OrderAggregateModels
         public DateTime OrderDate { get; private set; }
         public decimal Total { get; private set; }
 
-        public List<OrderDetail> OrderDetails { get; private set; }
+        public List<OrderDetail> OrderDetail { get; private set; }
         public Buyer Buyer { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
 
-
         // DDD Patterns comment:
         // This Order AggregateRoot's method "AddOrderitem()" should be the only way to add Items to the Order. This centralized approach provides consistency to the entire aggregate.
-        public void AddOrderItem(string title, string artist, Guid productId, int quantity, string unitPrice)
+        public void AddOrderItem(Guid productId,
+                                 string title, 
+                                 Guid artistId,
+                                 string artist,
+                                 Guid genreId, 
+                                 string genre,
+                                 string unitPrice,
+                                 int quantity, 
+                                 string condition, 
+                                 string status,
+                                 Guid mediumId,
+                                 string medium,
+                                 DateTime dateCreated,
+                                 bool highValueItem)
         {
-            OrderDetails.Add(new OrderDetail
-                (title,
-                artist,
-                productId,
-                quantity,
-                unitPrice));
+            OrderDetail.Add(new OrderDetail(productId,
+                                            title,
+                                            artistId,
+                                            artist,
+                                            genreId,
+                                            genre,
+                                            unitPrice,
+                                            quantity,
+                                            condition,
+                                            status,
+                                            mediumId,
+                                            medium,
+                                            dateCreated,
+                                            highValueItem));
         }
+
+
+
+
+        //public void AddOrderItem(string title, string artist, Guid productId, int quantity, string unitPrice)
+        //{
+        //    OrderDetail.Add(new OrderDetail
+        //        (title,
+        //        artist,
+        //        productId,
+        //        quantity,
+        //        unitPrice));
+        //}
 
         // DDD Patterns comment:
         // Any behavior(discounts, etc.) and validations are controlled by the Aggregate Root
@@ -72,7 +105,7 @@ namespace order.domain.Models.OrderAggregateModels
         // of items for an Order.;   
         public int GetLineItemCount()
         {
-            return OrderDetails.Count;
+            return OrderDetail.Count;
         }
 
         // This Order AggregateRoot's method "GetOrderTotalPrice" is the only way to obtain
@@ -93,14 +126,14 @@ namespace order.domain.Models.OrderAggregateModels
         // number of products backorderd for an order.  
         public int ProductsBackOrdered()
         {
-            return OrderDetails.Count(x => x.BackOrdered);
+            return OrderDetail.Count(x => x.BackOrdered);
         }
 
         // This Order AggregateRoot's method "GetUnitsForOrder" is the only way to return the number
         // of units for an order.  
         public int GetUnitsForOrder()
         {
-            return OrderDetails.Sum(x => x.Quantity);
+            return OrderDetail.Sum(x => x.Quantity);
         }
 
         // This Order AggregateRoot's method "GetOrderDetailsForOrder" is the only way to return the number

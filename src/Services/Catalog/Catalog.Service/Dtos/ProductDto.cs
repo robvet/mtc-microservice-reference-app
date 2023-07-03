@@ -24,19 +24,19 @@ namespace catalog.service.Dtos
 
         public bool HighValueItem { get; set; }
 
-        public string ArtistName { get; set; }
+        public string Artist { get; set; }
         public int ArtistId { get; set; }
 
-        public string GenreName { get; set; }
+        public string Genre { get; set; }
         public int GenreId { get; set; }
 
-        public string MediumName { get; set; }
+        public string Medium { get; set; }
         public int MediumId { get; set; }
 
-        public string StatusName { get; set; }
+        public string Status { get; set; }
         public int StatusId { get; set; }
 
-        public string ConditionName { get; set; }
+        public string Condition { get; set; }
         public int ConditionId { get; set; }
 
         public bool IsActive { get; set; }

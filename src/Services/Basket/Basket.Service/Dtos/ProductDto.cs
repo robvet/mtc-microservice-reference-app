@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Basket.Service.Domain.Entities
+namespace basket.service.Dtos
 {
     public class ProductDto
     {
@@ -13,5 +13,6 @@ namespace Basket.Service.Domain.Entities
         public string Condition { get; set; }
         public string Medium { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool HighValueItem { get; set; }
     }
 }

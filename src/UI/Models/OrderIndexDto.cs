@@ -11,7 +11,6 @@ namespace MusicStore.Models
         public string OrderId { get; set; }
         [DisplayName("Order Date")]
         public DateTime OrderDate { get; set; }
-        public string CheckoutId { get; set; }
         [DisplayName("User")]
         public string Username { get; set; }
         public decimal Total { get; set; }

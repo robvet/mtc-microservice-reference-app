@@ -13,6 +13,7 @@ using catalog.service.Infrastructure.DataStore;
 using catalog.service.Contracts;
 using StackExchange.Redis;
 using Newtonsoft.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace catalog.service.Domain.DataInitializationServices
 
@@ -27,8 +28,8 @@ namespace catalog.service.Domain.DataInitializationServices
         private IDatabase _redisDatabase;
 
         // Price generation
-        private readonly int _lowPrice = 5000; // $50.00
-        private readonly int _highPrice = 25000; // $250.00
+        private readonly int _lowPrice = 2500; // $25.00
+        private readonly int _highPrice = 15000; // $150.00
         private readonly decimal _highValuePercentage = 0.75m; // 75%
         private readonly decimal highValuePrice; 
         private readonly bool _dropDatabase;
@@ -40,11 +41,11 @@ namespace catalog.service.Domain.DataInitializationServices
         //const string CONDITION = "conditions.csv";
         //const string ARTIST = "artists.csv";
 
-        const string GENRE = "Genre.csv";
-        const string MEDIUM = "Medium.csv";
-        const string STATUS = "Status.csv";
-        const string CONDITION = "Condition.csv";
-        const string ARTIST = "Artist.csv";
+        const string GENRE = "genre.csv";
+        const string MEDIUM = "medium.csv";
+        const string STATUS = "status.csv";
+        const string CONDITION = "condition.csv";
+        const string ARTIST = "artist.csv";
 
 
         const string PRODUCT = "products2.csv";
@@ -53,7 +54,8 @@ namespace catalog.service.Domain.DataInitializationServices
         public ProductDatabaseInitializer(DataContext context, 
                                           IWebHostEnvironment webHostEnvironment,
                                           bool dropDatabase,
-                                          ConnectionMultiplexer redis)
+                                          ConnectionMultiplexer redis
+                                          )
         {
             _context = context;
 
@@ -93,6 +95,32 @@ namespace catalog.service.Domain.DataInitializationServices
 
             await ClearData(_dropDatabase);
 
+            // Ensure that all CSV files have lowercase names - if not, throw exception
+            // Otherwise, SeedLookupData will fail 
+            var contentRootPath = _webHostEnvironment.ContentRootPath;
+            var filePaths = Directory.GetFiles(Path.Combine(contentRootPath, CONTENT_DIRECTORY));
+            var fileNames = Directory.GetFiles(Path.Combine(contentRootPath, CONTENT_DIRECTORY)).Select(path => Path.GetFileName(path));
+            var incorrectFileNames = new List<string>();    
+
+            foreach (var file in fileNames)
+            {
+                var fileName = Path.GetFileName(file);
+                var lowerCaseFileName = fileName.ToLower();
+
+                if (fileName != lowerCaseFileName)
+                {
+                    incorrectFileNames.Add(fileName);
+                }
+            }
+
+            if (incorrectFileNames.Count > 0)
+            {
+                var flattenedNames = string.Join(", ", incorrectFileNames);
+                var fileNameErrors = $"The following files have uppercase naming {flattenedNames}. Please rename file to all lowercase. Caught in ProductDatabaseInitializer";
+                _logger.LogError(fileNameErrors);
+                throw new Exception(fileNameErrors);
+            }
+
             // Seed lookup data
             await SeedLookupData<Artist>(ARTIST);
             await SeedLookupData<Genre>(GENRE);
@@ -115,12 +143,32 @@ namespace catalog.service.Domain.DataInitializationServices
 
                 // File path for lookup data
                 var contentRootPath = _webHostEnvironment.ContentRootPath;
-                var filePath = Path.Combine(contentRootPath, CONTENT_DIRECTORY, lookupType);
 
+                _logger.LogInformation($"In SeedLookupData, contentRootPath = {contentRootPath}");
+
+                // Force lowercase for lookupType
+                var filePath = Path.Combine(contentRootPath, CONTENT_DIRECTORY, lookupType.ToLower());
+
+                
                 _logger.LogInformation("Content FilePath is {filePath}", filePath);
 
-                // Skip header row from CSV File
-                var lines = File.ReadAllLines(filePath).Skip(1);
+                IEnumerable<string> lines;
+
+                try
+                {
+                    // Skip(1) skills first row which is header row from CSV File
+                    lines = File.ReadAllLines(filePath).Skip(1);
+                }
+                catch (Exception ex)
+                {
+                    // You can use the String method "ToLower()" to convert the string value to lowercase
+                    // If the resulting string is equal to the original string, then the original string was already lowercase.
+                    var errorMessage = $"Error reading file {lookupType} in {filePath}: {ex.Message}; CHECK FOR CASE. FILE NAME MUST BE ALL LOWERCASE";
+                    _logger.LogError(errorMessage);
+                    throw new Exception(errorMessage, ex);
+                }
+
+                _logger.LogInformation($"Found lookup file {lookupType}");
 
                 foreach (var line in lines)
                 {
@@ -243,13 +291,17 @@ namespace catalog.service.Domain.DataInitializationServices
                     productReadModel = new ProductReadModel
                     {
                         ProductId = product.ProductId,
+                        ArtistId = product.Artist.GuidId,
                         Artist = product.Artist.Name,
+                        GenreId = product.Genre.GuidId,
                         Genre= product.Genre.Name,
+                        MediumId = product.Medium.GuidId,
                         Medium = product.Medium.Name,
                         Status = product.Status.Name,
                         Condition = product.Condition.Name,
                         Title = product.Title,
                         Price = product.Price,
+                        HighValueItem = product.HighValueItem
                     };
 
                     // Add items to the list

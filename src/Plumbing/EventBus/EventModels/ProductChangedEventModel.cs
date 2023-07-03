@@ -1,9 +1,9 @@
 ﻿using System;
 using EventBus.Events;
 
-namespace Basket.Service.Events
+namespace EventBus.EventModels
 {
-    public class ProductChangedEvent : MessageEvent
+    public class ProductChangedEventModel : MessageEvent
     {
         public int Id { get; set; }
         public string Title { get; set; }

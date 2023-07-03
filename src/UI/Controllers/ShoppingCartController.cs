@@ -72,6 +72,7 @@ namespace MusicStore.Controllers
 
             viewModel.CartItems = basket.CartItems;
             viewModel.CartTotal = basket.CartTotal;
+            viewModel.ItemCount = basket.ItemCount;
 
             // Return the view
             return View(viewModel);
