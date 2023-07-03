@@ -12,7 +12,7 @@
         public DateTime OrderDate { get; set; }
         public decimal Total { get; set; }
 
-        public List<OrderDetailReadModel> OrderDetails { get; set; }
+        public List<OrderDetailReadModel> OrderDetail { get; set; }
         public BuyerReadModel Buyer { get; set; }
         public OrderStatusReadModel OrderStatus { get; set; }
         public PaymentMethodReadModel PaymentMethod { get; set; }

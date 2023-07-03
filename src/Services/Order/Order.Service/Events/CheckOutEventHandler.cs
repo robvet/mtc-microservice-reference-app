@@ -36,6 +36,7 @@ namespace order.service.Events
             {
                 Name = "CheckOutEventHandler invoked from EventBus"
             };
+
             _telemetryClient.TrackRequest(requestTelemetry);
 
             string correlationToken = null;
@@ -62,9 +63,9 @@ namespace order.service.Events
                 _telemetryClient.TrackEvent(
                     $"Event: CheckOutEventHandler invoked: BasketID:{checkOutEvent.OrderInformationModel.BasketId}");
 
+                // ************** Create Order  *************************
+                // Down stream call to create order in Order service
                 var orderId = await _orderCommandHandler.Handle(checkOutEvent);
-
-                //checkedOutEvent.OrderInformationModel.OrderSystemId = orderId;
 
                 _telemetryClient.TrackEvent(
                     $"Event: CheckOutEventHandler: Buyer created:{orderId}");

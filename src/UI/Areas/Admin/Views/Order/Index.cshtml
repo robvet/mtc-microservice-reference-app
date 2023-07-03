@@ -1,60 +1,79 @@
 ﻿@using MusicStore.Models
 @model List<OrderDto>
 
+<div style="margin-bottom: 0px; margin-top: 40px">
 
-<h2>Orders</h2>
+    <div style="margin-bottom: 10px;display:flex; justify-content: center; align-items: center;">
+        <h1 style="font-family: cursive;">REVIEW ORDERS:</h1>
+        @{
+            var imageLink4 = $"~/Images/music-delivery.png";
+        }
+        <img alt="Music" src="@Url.Content(imageLink4)" style="vertical-align: middle; width:12%; margin-left: auto;">
+    </div>
+</div>
 
-@if (Model == null)
+
+@if (Model != null)
 {
-    <table class="table">
-        <tr>
-            <th>
-                <h1>Sorry, but no orders exist</h1>
-            </th>
-        </tr>
-    </table>
+    <div id="update-message">
+        <table id="cart-summary" style="font-size:large" class="table table-bordered table-responsive table-hover table-striped">
+            <tr>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.First().BuyerName)
+                </th>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.First().Email)
+                </th>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.First().OrderDate)
+                </th>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.First().Total)
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="display:margin:0 auto;width:fit-content;;width:25%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.BuyerName)</span>
+                    </td>
+                    <td style="text-align:center;width:30%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Email)</span>
+                    </td>
+                    <td style="text-align:center;width:20%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.OrderDate)</span>
+                    </td>
+                    <td style="text-align:center;width:15%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Total)</span>
+                    </td>
+                    <td style="text-align:center; width:10%;vertical-align: middle;">
+                        @if (item.OrderId != "Empty")
+                        {
+                            <a asp-controller="Order" asp-action="Details" asp-route-orderId="@item.OrderId">View</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 }
 else
 {
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.First().OrderId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().OrderDate)
-            </th>
-            <th>
-                @Html.DisplayName("Buyer")
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Total)
-            </th>
-            <th></th>
-        </tr>
+    <div style="margin-bottom: 10px; margin-top: 50px;">
+        <h1 style="font-family: cursive">
+            <em>Sorry, No Orders Found!</em>
+        </h1>
+    </div>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => item.OrderId)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.OrderDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.BuyerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Total)
-                </td>
-                <td>
-                    @if(item.OrderId != "Empty")
-                    {
-                         <a asp-controller="Order" asp-action="Details" asp-route-orderId="@item.Id">View</a>
-                    }
-                </td>
-            </tr>
-        }
-    </table>
+    <div>
+        <a asp-controller="Order" asp-action="Index">
+            @{
+                var imageLink = $"~/Images/not-found2.jfif";
+                <img alt="Error" src="@Url.Content(imageLink)" style="vertical-align: middle; width:75%; margin-left: auto;">
+            }
+        </a>
+    </div>
 }

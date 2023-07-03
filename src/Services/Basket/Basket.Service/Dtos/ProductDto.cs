@@ -13,5 +13,6 @@ namespace Basket.Service.Domain.Entities
         public string Condition { get; set; }
         public string Medium { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool HighValueItem { get; set; }
     }
 }

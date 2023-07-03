@@ -298,6 +298,7 @@ namespace catalog.service.Domain.DataInitializationServices
                         Condition = product.Condition.Name,
                         Title = product.Title,
                         Price = product.Price,
+                        HighValueItem = product.HighValueItem
                     };
 
                     // Add items to the list

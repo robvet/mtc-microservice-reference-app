@@ -423,7 +423,12 @@ namespace Basket.Service.Domain.BusinessServices
                     Artist = item.Artist,
                     Genre = item.Genre,
                     UnitPrice = item.UnitPrice,
-                    Quantity = item.Quantity
+                    Quantity = item.Quantity,
+                    Condition = item.Condition,
+                    Status = item.Status,
+                    Medium = item.Medium,
+                    DateCreated = item.DateCreated,
+                    HighValueItem = item.HighValueItem
                 });
 
             var checkoutEvent = new CheckOutEvent

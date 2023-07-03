@@ -1,69 +1,104 @@
-﻿@model OrderIndexDto
+﻿@model OrderDto
 
+<div style="margin-bottom: 0px; margin-top: 50px">
 
-<h2>Order Details</h2>
-
-<div class="container-fluid">
-    <div class="row">
-        <label class="col-md-2 control-label text-right" asp-for="OrderDate"></label>
-        @Model.OrderDate.ToShortDateString()
-    </div>
-    <div class="row">
-        <label class="col-md-2 control-label text-right" asp-for="OrderId"></label>
-        @Model.OrderId
-    </div>
-    <div class="row">
-        <label class="col-md-2 control-label text-right" asp-for="Username"></label>
-        @Model.Username
-    </div>
-    <div class="row">
-        <label class="col-md-2 control-label text-right" asp-for="Total"></label>
-        @Model.Total
-    </div>
-
-
-    <table class="table">
-        <tr>
-            <th></th>
-            <th>
-                <label asp-for="OrderDetails.First().Title"></label>
-            </th>
-            <th>
-                <label asp-for="OrderDetails.First().Artist"></label>
-            </th>
-            <th>
-                <label asp-for="OrderDetails.First().Quantity"></label>
-            </th>
-            <th>
-                <label asp-for="OrderDetails.First().UnitPrice"></label>
-            </th>
-
-        </tr>
-        @foreach (var item in Model.OrderDetails)
-        {
-            <tr>
-                <td>
-                    <img src="@item.AlbumArtUrl" />
-                </td>
-                <td>
-                    @item.Title
-                </td>
-                <td>
-                    @item.Artist
-                </td>
-                <td>
-                    @item.Quantity
-                </td>
-                <td>
-                    @item.UnitPrice
-                </td>
-            </tr>
+    <div style="margin-bottom: 10px;display:flex; justify-content: center; align-items: center;">
+        <h1 style="font-family: cursive;">ORDER DETAILS:</h1>
+        @{
+            var imageLink4 = $"~/Images/order-delivery.png";
         }
-    </table>
-
-
-
-
-
-
+        <img alt="Music" src="@Url.Content(imageLink4)" style="vertical-align: middle; width:8%; margin-left: auto;">
+    </div>
 </div>
+
+@if (Model != null)
+{
+    <div id="album-details" style="font-size:larger; margin-top: 40px">
+
+        <p>
+            <em>Order Date:</em>
+            @Model.OrderDate.ToShortDateString()
+        </p>
+
+        <p>
+            <em>Order ID:</em>
+            @Model.OrderId
+        </p>
+
+        <p>
+            <em>Released:</em>
+            @Model.BuyerName
+        </p>
+
+        <p>
+            <em>Price:</em>
+            <label>@($"${Model.Total:F2}")</label>
+        </p>
+    </div>
+
+    <div id="update-message">
+        <table id="cart-summary" style="font-size:large" class="table table-bordered table-responsive table-hover table-striped">
+            <tr>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.OrderDetails.First().Title)
+                </th>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.OrderDetails.First().Artist)
+                </th>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.OrderDetails.First().Genre)
+                </th>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.OrderDetails.First().Medium)
+                </th>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.OrderDetails.First().Quantity)
+                </th>
+                <th style="font-size:large; text-align:center;">
+                    @Html.DisplayNameFor(model => model.OrderDetails.First().UnitPrice)
+                </th>
+            </tr>
+            @foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td style="display:margin:0 auto;width:fit-content;;width:25%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Title)</span>
+                    </td>
+                    <td style="text-align:center;width:30%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Artist)</span>
+                    </td>
+                    <td style="text-align:center;width:20%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Genre)</span>
+                    </td>
+                    <td style="text-align:center;width:15%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Medium)</span>
+                    </td>
+                    <td style="text-align:center;width:15%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Quantity)</span>
+                    </td>
+                    <td style="text-align:center;width:15%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.UnitPrice)</span>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+ 
+}
+else
+{
+    <div style="margin-bottom: 10px; margin-top: 50px;">
+        <h1 style="font-family: cursive">
+            <em>Sorry, Order Not Found!</em>
+        </h1>
+    </div>
+    
+    <div>
+        <a asp-controller="Order" asp-action="Index">
+            @{
+                var imageLink = $"~/Images/not-found2.jfif";
+                <img alt="Error" src="@Url.Content(imageLink)" style="vertical-align: middle; width:75%; margin-left: auto;">
+            }
+        </a>
+    </div>
+}

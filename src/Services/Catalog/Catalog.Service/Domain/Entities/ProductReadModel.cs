@@ -12,5 +12,6 @@ namespace catalog.service.Domain.Entities
         public  string Status { get; set; }
         public string Condition { get; set; }
         public string Medium { get; set; }
+        public bool HighValueItem { get; set; }
     }
 }
