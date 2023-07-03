@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
+using basket.service.Dtos;
 using Basket.Service.Domain.Entities;
 
 namespace Basket.Service.Dtos
@@ -90,7 +91,7 @@ namespace Basket.Service.Dtos
             return basketDtos;
         }
 
-        public static List<ProductDto> MapToProductDto(List<Product> productEntity)
+        public static List<ProductDto> MapToProductDto(List<ProductReadModel> productEntity)
         {
             var productDtos = new List<ProductDto>();
 

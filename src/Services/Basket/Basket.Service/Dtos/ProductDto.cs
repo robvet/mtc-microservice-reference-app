@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Basket.Service.Domain.Entities
+namespace basket.service.Dtos
 {
     public class ProductDto
     {

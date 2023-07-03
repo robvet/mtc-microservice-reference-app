@@ -1,11 +1,10 @@
-﻿using EventBus.Events;
-using System;
+﻿using EventBus.EventModels;
+using EventBus.Events;
 
-namespace Basket.Service.Events
+namespace basket.service.Events
 {
     public class BasketProcessedEvent : MessageEvent
-
     {
-        public Guid BasketID { get; set; }
+        public BasketProcessedEventModel basketProcessedEventModel { get; set; }
     }
 }

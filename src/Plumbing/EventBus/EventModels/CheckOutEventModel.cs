@@ -1,32 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Basket.Service.Events
+namespace EventBus.EventModels
+
 {
-    public class OrderInformationModel
+    public class CheckOutEventModel
     {
-        public OrderInformationModel()
+        public CheckOutEventModel()
         {
             LineItems = new List<LineItem>();
         }
 
         public Guid BasketId { get; set; }
         public Guid CustomerId { get; set; }
+        public string MessageId { get; set; }
         public decimal Total { get; set; }
         public BuyerInformation Buyer { get; set; }
         public PaymentInformation Payment { get; set; }
         public List<LineItem> LineItems { get; set; }
-    
+
         public class LineItem
         {
             public Guid ProductId { get; set; }
             public string Title { get; set; }
+            public Guid ArtistId { get; set; }
             public string Artist { get; set; }
+            public Guid GenreId { get; set; }
             public string Genre { get; set; }
             public string UnitPrice { get; set; }
             public int Quantity { get; set; }
             public string Condition { get; set; }
             public string Status { get; set; }
+            public Guid MediumId { get; set; }
             public string Medium { get; set; }
             public DateTime DateCreated { get; set; }
             public bool HighValueItem { get; set; }
@@ -55,3 +60,4 @@ namespace Basket.Service.Events
         }
     }
 }
+

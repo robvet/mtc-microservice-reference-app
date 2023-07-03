@@ -46,10 +46,10 @@ namespace order.service.Commands
                     //https://github.com/mjrousos/MultiThreadedEFCoreSam
 
                     // Create Order domain aggregate
-                    var order = new Order(checkOutEvent.OrderInformationModel.CustomerId,
-                                          checkOutEvent.OrderInformationModel.BasketId,
+                    var order = new Order(checkOutEvent.checkOutEventModel.CustomerId,
+                                          checkOutEvent.checkOutEventModel.BasketId,
                                           checkOutEvent.MessageId,
-                                          checkOutEvent.OrderInformationModel.Total,
+                                          checkOutEvent.checkOutEventModel.Total,
                                           checkOutEvent.CorrelationToken
                     );
 
@@ -60,37 +60,40 @@ namespace order.service.Commands
                     //foreach (var item in createOrderCommand.OrderDetails)
                     //    order.AddOrderItem(item.Title, item.AlbumId, item.Artist, item.Quantity, item.UnitPrice);
 
-                    foreach (var item in checkOutEvent.OrderInformationModel.LineItems)
+                    foreach (var item in checkOutEvent.checkOutEventModel.LineItems)
                         order.AddOrderItem(item.ProductId,
                                            item.Title,
+                                           item.ArtistId,
                                            item.Artist,
+                                           item.GenreId,
                                            item.Genre,
                                            item.UnitPrice,
                                            item.Quantity,
                                            item.Condition,
                                            item.Status,
+                                           item.MediumId,
                                            item.Medium,
                                            item.DateCreated,
                                            item.HighValueItem
                     );
 
                     // Create Buyer domain aggregate
-                    var buyer = new Buyer(checkOutEvent.OrderInformationModel.Buyer.Username,
-                                          checkOutEvent.OrderInformationModel.Buyer.FirstName,
-                                          checkOutEvent.OrderInformationModel.Buyer.LastName,    
-                                          checkOutEvent.OrderInformationModel.Buyer.Address, 
-                                          checkOutEvent.OrderInformationModel.Buyer.City,    
-                                          checkOutEvent.OrderInformationModel.Buyer.State,   
-                                          checkOutEvent.OrderInformationModel.Buyer.PostalCode,  
-                                          checkOutEvent.OrderInformationModel.Buyer.Phone,   
-                                          checkOutEvent.OrderInformationModel.Buyer.Email
+                    var buyer = new Buyer(checkOutEvent.checkOutEventModel.Buyer.Username,
+                                          checkOutEvent.checkOutEventModel.Buyer.FirstName,
+                                          checkOutEvent.checkOutEventModel.Buyer.LastName,    
+                                          checkOutEvent.checkOutEventModel.Buyer.Address, 
+                                          checkOutEvent.checkOutEventModel.Buyer.City,    
+                                          checkOutEvent.checkOutEventModel.Buyer.State,   
+                                          checkOutEvent.checkOutEventModel.Buyer.PostalCode,  
+                                          checkOutEvent.checkOutEventModel.Buyer.Phone,   
+                                          checkOutEvent.checkOutEventModel.Buyer.Email
                     );
 
                     // Add payment method for Buyer
-                    var payment = new PaymentMethod(checkOutEvent.OrderInformationModel.Payment.CreditCardNumber,
-                                          checkOutEvent.OrderInformationModel.Payment.SecurityCode,
-                                          checkOutEvent.OrderInformationModel.Payment.CardholderName,
-                                          checkOutEvent.OrderInformationModel.Payment.ExpirationDate
+                    var payment = new PaymentMethod(checkOutEvent.checkOutEventModel.Payment.CreditCardNumber,
+                                          checkOutEvent.checkOutEventModel.Payment.SecurityCode,
+                                          checkOutEvent.checkOutEventModel.Payment.CardholderName,
+                                          checkOutEvent.checkOutEventModel.Payment.ExpirationDate
                     );
                     
                     var orderStatus = new OrderStatus(

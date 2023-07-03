@@ -9,8 +9,11 @@ using Basket.Service.Events;
 using EventBus.Bus;
 using Microsoft.ApplicationInsights;
 using Microsoft.Extensions.Logging;
+using SharedUtilities.Models;
 using RestCommunicator;
 using ServiceLocator;
+using EventBus.EventModels;
+using basket.service.Dtos;
 
 namespace Basket.Service.Domain.BusinessServices
 {
@@ -57,10 +60,10 @@ namespace Basket.Service.Domain.BusinessServices
         /// </summary>
         /// <param name="correlationToken">Tracks request - can be any value</param>
         ///// <returns>BasketItemEntity</returns>
-        public async Task<List<Product>> GetAllProducts(string correlationToken)
+        public async Task<List<ProductReadModel>> GetAllProducts(string correlationToken)
         {
             //return await _distributedCacheRepository.GetAllBaskets(correlationToken, _telemetryClient);
-            return await _distributedCacheRepository.GetAll<Product>(correlationToken, _telemetryClient);
+            return await _distributedCacheRepository.GetAll<ProductReadModel>(correlationToken, _telemetryClient);
         }
 
         /// <summary>
@@ -87,12 +90,12 @@ namespace Basket.Service.Domain.BusinessServices
             //* Fetch product entity data from a read-only store contained in shopping basket service.
             //* ProductEntity ID is row key in underlying Azure table.
             //* Returns a ProductTableEntity class
-            ProductDto productEntity;
+            ProductReadModel productEntity;
 
             // Query Catalog Read store (materialized view) for information about the selected product
             try
             {
-                productEntity = await _distributedCacheRepository.GetAsync<ProductDto>(productId, _telemetryClient, "AddItemToBasket", correlationToken);
+                productEntity = await _distributedCacheRepository.GetAsync<ProductReadModel>(productId, _telemetryClient, "AddItemToBasket", correlationToken);
             }
             catch (Exception ex)
             {
@@ -109,7 +112,7 @@ namespace Basket.Service.Domain.BusinessServices
                 try
                 {
                     _logger.LogInformation($"Product {productId} not found in local read store. Making direct call to Catalog with CorrelationToken {correlationToken}");
-                    var response = await _restClient.GetAsync<ProductDto>(ServiceEnum.Catalog, $"api/Catalog/Music/{productId}", correlationToken);
+                    var response = await _restClient.GetAsync<ProductReadModel>(ServiceEnum.Catalog, $"api/Catalog/Music/{productId}", correlationToken);
                     productEntity = response.Data;
                 }
                 catch (Exception)
@@ -122,7 +125,7 @@ namespace Basket.Service.Domain.BusinessServices
                 if (productEntity == null)
                     throw new Exception($"Cannot add item to shopping basket: ProductEntity #{productId} does not exist for Request {correlationToken}.  Have you created the ProductEntity Read Model for the Shopping BasketEntity microservice?");
 
-                await _distributedCacheRepository.UpdateAsync<ProductDto>(productEntity, productId, correlationToken, _telemetryClient);
+                await _distributedCacheRepository.UpdateAsync<ProductReadModel>(productEntity, productId, correlationToken, _telemetryClient);
 
                 // Transform product into an entity class for table storage
                 //productTableEntity = new ProductTableEntity
@@ -179,13 +182,16 @@ namespace Basket.Service.Domain.BusinessServices
                             DateCreated = DateTime.Now,
                             Title = productEntity.Title,
                             UnitPrice = productEntity.Price.ToString(),
+                            ArtistId = productEntity.ArtistId,
                             Artist = productEntity.Artist,
+                            GenreId = productEntity.GenreId,
                             Genre = productEntity.Genre,
                             Condition = productEntity.Condition,
+                            MediumId = productEntity.MediumId,
                             Medium = productEntity.Medium,
                             Status = productEntity.Status,
                             Quantity = 1,
-                            ProductId = productId,
+                            ProductId = productId
                         }
                     }
                 };
@@ -380,10 +386,10 @@ namespace Basket.Service.Domain.BusinessServices
             }
 
             // Create the OrderInformationModel
-            var orderInformationModel = new OrderInformationModel();
+            var checkOutEventModel = new CheckOutEventModel();
 
             // Create buyer information object
-            var buyer = new OrderInformationModel.BuyerInformation()
+            var buyer = new CheckOutEventModel.BuyerInformation()
             {
                 Username = checkout.Username,
                 FirstName = checkout.FirstName,
@@ -397,7 +403,7 @@ namespace Basket.Service.Domain.BusinessServices
             };
 
             // Create payment information object
-            var payment = new OrderInformationModel.PaymentInformation()
+            var payment = new CheckOutEventModel.PaymentInformation()
             {
                 CreditCardNumber = checkout.CreditCardNumber,
                 SecurityCode = checkout.SecurityCode,
@@ -408,24 +414,27 @@ namespace Basket.Service.Domain.BusinessServices
             // Create event class that will contain shopping basket, buyer, and payment information
             // to create a new order.
 
-            orderInformationModel.BasketId = basketId;
+            checkOutEventModel.BasketId = basketId;
             // Generate system checkoutId using snowflake
-            orderInformationModel.Total = basket.Items.Sum(x => decimal.Parse(x.UnitPrice) * x.Quantity);
-            orderInformationModel.Buyer = buyer;
-            orderInformationModel.Payment = payment;
-            orderInformationModel.CustomerId = checkout.CustomerId;
+            checkOutEventModel.Total = basket.Items.Sum(x => decimal.Parse(x.UnitPrice) * x.Quantity);
+            checkOutEventModel.Buyer = buyer;
+            checkOutEventModel.Payment = payment;
+            checkOutEventModel.CustomerId = checkout.CustomerId;
 
             foreach (var item in basket.Items)
-                orderInformationModel.LineItems.Add(new OrderInformationModel.LineItem() 
+                checkOutEventModel.LineItems.Add(new CheckOutEventModel.LineItem() 
                 {
                     ProductId = item.ProductId,
                     Title = item.Title,
+                    ArtistId = item.ArtistId,
                     Artist = item.Artist,
+                    GenreId = item.GenreId,
                     Genre = item.Genre,
                     UnitPrice = item.UnitPrice,
                     Quantity = item.Quantity,
                     Condition = item.Condition,
                     Status = item.Status,
+                    MediumId = item.MediumId,
                     Medium = item.Medium,
                     DateCreated = item.DateCreated,
                     HighValueItem = item.HighValueItem
@@ -433,10 +442,9 @@ namespace Basket.Service.Domain.BusinessServices
 
             var checkoutEvent = new CheckOutEvent
             {
-                OrderInformationModel = orderInformationModel,
+                checkOutEventModel = checkOutEventModel,
                 CorrelationToken = correlationToken
             };
-       
 
             _logger.LogInformation($"Check-out operation invoked for shopping basket {basketId} for Request {correlationToken}");
 
@@ -448,7 +456,7 @@ namespace Basket.Service.Domain.BusinessServices
 
             return (new Checkout
             {
-                BuyerEmail = checkoutEvent.OrderInformationModel.Buyer.Email,
+                BuyerEmail = checkoutEvent.checkOutEventModel.Buyer.Email,
                 CorrelationId = correlationToken
             });
         }
@@ -460,7 +468,7 @@ namespace Basket.Service.Domain.BusinessServices
         /// <param name="productEntity">ProductEntity Information</param>
         /// <param name="correlationId">Tracks request - can be any value</param>
         /// <returns></returns>
-        public async Task ProductChanged(ProductDto productEntity, string correlationId)
+        public async Task ProductChanged(ProductReadModel productEntity, string correlationId)
         {
             //if (productEntity == null)
             //{

@@ -1,10 +1,11 @@
-﻿using EventBus.Events;
+﻿using EventBus.EventModels;
+using EventBus.Events;
 
 
 namespace order.service.Events
 {
     public class CheckOutEvent : MessageEvent
     {
-        public OrderInformationModel OrderInformationModel { get; set; }
+        public CheckOutEventModel checkOutEventModel { get; set; }
     }
 }

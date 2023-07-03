@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace MusicStore.Models
 {
-    public class MediumDto
+    public class GenreDto
     {
-        public int MediumId { get; set; }
+        public int GenreId { get; set; }
         public Guid GuidId { get; set; }
         public string Name { get; set; }
     }

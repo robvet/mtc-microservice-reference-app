@@ -2,6 +2,7 @@
 using System.Reflection;
 using Basket.Service.Events;
 using EventBus.Bus;
+using EventBus.EventModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -74,8 +75,8 @@ namespace Basket.Service.Extensions
 
             // Register events
             // Pass EventType as generic and EventHandler as parameter
-            eventBus.Subscribe<BasketProcessedEvent>(emptyBasketEventHandler);
-            eventBus.Subscribe<ProductChangedEvent>(productChangedEventHandler);
+            eventBus.Subscribe<BasketProcessedEventModel>(emptyBasketEventHandler);
+            eventBus.Subscribe<ProductChangedEventModel>(productChangedEventHandler);
 
             return app;
         }

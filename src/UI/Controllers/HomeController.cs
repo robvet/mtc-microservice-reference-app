@@ -6,7 +6,8 @@ using Microsoft.Extensions.Configuration;
 using MusicStore.Plumbing;
 using MusicStore.Models;
 using Microsoft.Extensions.Logging;
-using Microsoft.CodeAnalysis.Elfie.Diagnostics;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MusicStore.Controllers
 {
@@ -16,15 +17,18 @@ namespace MusicStore.Controllers
         private readonly IRestClient _IRestClient;
         private readonly int count = 6;
         private ILogger<HomeController> _logger;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
         public HomeController(IRestClient uiRestClient,
                               IConfiguration configuration,
-                              ILogger<HomeController> logger) 
+                              ILogger<HomeController> logger,
+                              IWebHostEnvironment hostingEnvironment) 
         {
             _IRestClient = uiRestClient;
             _baseUrl = configuration["catalogBaseUri"] ??
                        throw new ArgumentNullException("catalogBaseUri", "Missing value");
             _logger = logger;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: /Home/
@@ -35,6 +39,25 @@ namespace MusicStore.Controllers
             var result = await _IRestClient.GetAsync<List<ProductDto>>($"{_baseUrl}/TopSellingMusic/{count}");
 
             return View(result.Data);
+        }
+
+        public async Task<IActionResult> MarkdownPage()
+        {
+            //string markdownFilePath = @"~/wwwroot/markdown/file.md"; // @"C:\path\to\markdown\file.md";
+            string filePath = string.Empty;
+
+            var wwwrootPath = _hostingEnvironment.WebRootPath;
+            filePath = Path.Combine(wwwrootPath, "Markdown", "azure-caching.md");
+
+
+            string markdownContent = await System.IO.File.ReadAllTextAsync(filePath);
+
+
+            return View(markdownContent);
+
+
+
+            //return View(new MarkdownModel { Content = markdownContent });
         }
 
         public IActionResult StatusCodePage()
@@ -53,5 +76,10 @@ namespace MusicStore.Controllers
             cookieLogic.RemoveBasketId();
             return RedirectToAction("Index");
         }
+    }
+
+    public class MarkdownModel
+    {
+        public string Content { get; set; }
     }
 }

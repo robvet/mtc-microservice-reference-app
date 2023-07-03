@@ -82,11 +82,10 @@ namespace MusicStore.Controllers
             return View(model);
         }
 
-        //public async Task<IActionResult> Details(int id)
-        public async Task<IActionResult> Details(Guid Id)
+        public async Task<IActionResult> Details(Guid productId)
         {
             //var result = await _IRestClient.GetAsync<ProductDto>($"{_baseUrl}/Music/{id} ");
-            var result = await _IRestClient.GetAsync<ProductDto>($"{_baseUrl}/Music/{Id}");
+            var result = await _IRestClient.GetAsync<ProductDto>($"{_baseUrl}/Music/{productId}");
 
             //if (album == null)
             //{

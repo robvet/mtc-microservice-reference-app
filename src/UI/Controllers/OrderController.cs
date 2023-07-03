@@ -8,9 +8,8 @@ using MusicStore.Models;
 using System.Net.Http;
 using Microsoft.Extensions.Logging;
 
-namespace MusicStore.Areas.Admin.Controllers
+namespace MusicStore.Controllers
 {
-    [Area("Admin")]
     public class OrderController : Controller
     {
         private readonly IRestClient _IRestClient;

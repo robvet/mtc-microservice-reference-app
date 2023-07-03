@@ -4,10 +4,9 @@ using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using order.service.Commands;
-using order.service.Dtos;
+using EventBus.EventModels;
 
 namespace order.service.Events
 {
@@ -61,7 +60,7 @@ namespace order.service.Events
                 }
 
                 _telemetryClient.TrackEvent(
-                    $"Event: CheckOutEventHandler invoked: BasketID:{checkOutEvent.OrderInformationModel.BasketId}");
+                    $"Event: CheckOutEventHandler invoked: BasketID:{checkOutEvent.checkOutEventModel.BasketId}");
 
                 // ************** Create Order  *************************
                 // Down stream call to create order in Order service
@@ -74,7 +73,10 @@ namespace order.service.Events
                 // Create event to update shopping basket status
                 var basketProcessedEvent = new BasketProcessedEvent
                 {
-                    BasketID = checkOutEvent.OrderInformationModel.BasketId,
+                    basketProcessedEventModel = new BasketProcessedEventModel
+                    {
+                        BasketID = checkOutEvent.checkOutEventModel.BasketId
+                    },
                     CorrelationToken = correlationToken
                 };
 
@@ -85,7 +87,7 @@ namespace order.service.Events
                     $"Event: Publishing BasketProcessedEvent from CheckOutEventHandler for orderid:{orderId}");
 
                 // Public event to clear basket for this order from Basket service
-                await _eventBusPublisher.Publish<BasketProcessedEvent>(basketProcessedEvent);
+                await _eventBusPublisher.Publish<BasketProcessedEventModel>(basketProcessedEvent);
             }
             catch (Exception ex)
             {

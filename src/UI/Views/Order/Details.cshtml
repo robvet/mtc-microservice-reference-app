@@ -61,19 +61,36 @@
             @foreach (var item in Model.OrderDetails)
             {
                 <tr>
-                    <td style="display:margin:0 auto;width:fit-content;;width:25%">
-                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Title)</span>
+                    <td style="display:margin:0 auto;width:fit-content;;width:35%">
+                        @*<span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Title)</span>*@
+                        <span style="display:block;margin:0 auto;width:fit-content;">
+                            <a asp-controller="Store" asp-action="Details" asp-route-productId="@item.ProductId">
+                                @Html.DisplayFor(model => item.Title)
+                            </a>
+                        </span>
                     </td>
                     <td style="text-align:center;width:30%">
-                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Artist)</span>
-                    </td>
-                    <td style="text-align:center;width:20%">
-                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Genre)</span>
-                    </td>
-                    <td style="text-align:center;width:15%">
-                        <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Medium)</span>
+                        <span style="display:block;margin:0 auto;width:fit-content;">
+                                <a asp-controller="Store" asp-action="Browse" asp-route-Id="@item.ArtistId" asp-route-Domain="Artist" asp-route-Name="@item.Artist">
+                                @Html.DisplayFor(model => item.Artist)
+                            </a>
+                        </span>
                     </td>
                     <td style="text-align:center;width:15%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">
+                            <a asp-controller="Store" asp-action="Browse" asp-route-Id="@item.GenreId" asp-route-Domain="Genre" asp-route-Name="@item.Genre">
+                                @Html.DisplayFor(model => item.Genre)
+                            </a>
+                         </span>
+                    </td>
+                    <td style="text-align:center;width:8%">
+                        <span style="display:block;margin:0 auto;width:fit-content;">
+                            <a asp-controller="Store" asp-action="Browse" asp-route-Id="@item.MediumId" asp-route-Domain="Medium" asp-route-Name="@item.Medium">
+                                @Html.DisplayFor(model => item.Medium)
+                            </a>
+                         </span>
+                    </td>
+                    <td style="text-align:center;width:8%">
                         <span style="display:block;margin:0 auto;width:fit-content;">@Html.DisplayFor(model => item.Quantity)</span>
                     </td>
                     <td style="text-align:center;width:15%">

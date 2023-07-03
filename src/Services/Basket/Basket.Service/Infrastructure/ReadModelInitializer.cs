@@ -2,7 +2,8 @@
 using System.Linq;
 using System.IO;
 using SharedUtilities.Utilties;
-using Microsoft.Extensions.Logging;using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.Diagnostics.Metrics;
 using StackExchange.Redis;
 
-namespace catalog.service.Infrastructure.DataStore
+namespace basket.service.Infrastructure
 
 {
     //public class ReadModelInitializer
@@ -45,7 +46,7 @@ namespace catalog.service.Infrastructure.DataStore
     //        _redis = redis;
     //        _database = redis.GetDatabase();
     //    }
-            
+
     //    public async Task InitializeDatabaseAsync()   
     //    {
     //        Guard.ForNullObject(_logger, "Logger not instantiated for ReadModelInitializer");
@@ -159,15 +160,15 @@ namespace catalog.service.Infrastructure.DataStore
 
     //                    // Inline validation for missing 'ReleaseYear' value
     //                    ReleaseYear = values[3].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Release Year' on record {counter}") : values[3],
-                        
+
     //                    // Inline validation to ensure Medium lookup value exist -
     //                    // -- Use SingleOrDefault to return null if not found
     //                    // -- Use NoCommaValidation to remove any commas from the value, which would cause an error
     //                    // -- Use ?? to throw exception if null
     //                    Medium = _context.Mediums.SingleOrDefault(g => g.Name == NoCommaValidation(values[6])) ?? throw new Exception($"Missing lookup value from 'Medium' {values[6]} on record {counter}"),
-                                                
+
     //                    Single = values[1].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Single' on record {counter}") : values[1],
-                        
+
     //                    Upc = GenerateUpc(),
 
     //                    // Inline validation for Missing 'Title' value
@@ -188,7 +189,7 @@ namespace catalog.service.Infrastructure.DataStore
     //                // Round cost to 2 decimal places
     //                product.Cost = GenerateCost(product.Price);
     //                product.AlbumArtUrl = SetMediumGraphic(product.Medium.Name);
-                    
+
     //                products.Add(product);
     //                _context.Products.Add(product);
     //                counter++;

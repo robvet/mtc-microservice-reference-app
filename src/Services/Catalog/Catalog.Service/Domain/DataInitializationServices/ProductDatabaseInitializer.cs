@@ -291,8 +291,11 @@ namespace catalog.service.Domain.DataInitializationServices
                     productReadModel = new ProductReadModel
                     {
                         ProductId = product.ProductId,
+                        ArtistId = product.Artist.GuidId,
                         Artist = product.Artist.Name,
+                        GenreId = product.Genre.GuidId,
                         Genre= product.Genre.Name,
+                        MediumId = product.Medium.GuidId,
                         Medium = product.Medium.Name,
                         Status = product.Status.Name,
                         Condition = product.Condition.Name,

@@ -11,12 +11,15 @@ namespace order.domain.Models.OrderAggregateModels
 
         public OrderDetail(Guid productId,
                            string title,
+                           Guid artistId,
                            string artist,
+                           Guid genreId,
                            string genre,
                            string unitPrice,
                            int quantity,
                            string condition,
                            string status,
+                           Guid mediumId,
                            string medium,
                            DateTime dateCreated,
                            bool highValueItem)
@@ -35,26 +38,31 @@ namespace order.domain.Models.OrderAggregateModels
 
             ProductId = productId;
             Title = title;
+            ArtistId = artistId;
             Artist = artist;
+            GenreId = genreId;
             Genre = genre;
             UnitPrice = unitPriceDecimal;
             Quantity = quantity;
             Condition = condition;
             Status = status;
+            MediumId = mediumId;
             Medium = medium;
             DateCreated = dateCreated;
             HighValueItem = highValueItem;
         }
 
-
         public Guid ProductId { get; set; }
         public string Title { get; private set; }
+        public Guid ArtistId { get; private set; }
         public string Artist { get; private set; }
+        public Guid GenreId { get; private set; }
         public string Genre { get; private set; }
         public decimal UnitPrice { get; private set; }
         public int Quantity { get; private set; }
         public string Condition { get; private set; }
         public string Status { get; private set; }
+        public Guid MediumId { get; private set; }
         public string Medium { get; private set; }
         public DateTime DateCreated { get; private set; }
         public bool BackOrdered { get; private set; }

@@ -9,13 +9,17 @@ namespace MusicStore.Models
        
         public Guid ProductId { get; set; }
 
+        public Guid ArtistId { get; set; }
+
         [Display(Name="Artist")]
         public string Artist { get; set; }
+
+        public Guid GenreId { get; set; }
 
         [Display(Name = "Genre")]
         public string Genre { get; set; }
         
-        [Display(Name="Song")]
+        [Display(Name="Collection")]
         public string Title { get; set; }
 
         public int Quantity { get; set; }
@@ -23,6 +27,8 @@ namespace MusicStore.Models
         [Display(Name ="Price")]
         [DataType(DataType.Currency)]
         public decimal UnitPrice { get; set; }
+
+        public Guid MediumId { get; set; }
 
         [Display(Name = "Medium")]
         public string Medium { get; set; }
