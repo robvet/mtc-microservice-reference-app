@@ -11,12 +11,14 @@
     },
     "databaseName": {
       "type": "string",
+      "defaultValue": "microtunes-azsqldb",
       "metadata": {
         "description": "The name of the new Azure SQL Database."
       }
     },
     "serverName": {
       "type": "string",
+      "defaultValue": "microtunes-azsqlserver",
       "metadata": {
         "description": "The name of the Azure SQL Server."
       }
@@ -35,27 +37,28 @@
     },
     "cacheName": {
       "type": "string",
+      "defaultValue": "microtunes-redis",
       "metadata": {
         "description": "The name of the new Azure Cache for Redis."
       }
     },
-    "cacheSize": {
-      "type": "string",
-      "defaultValue": "C0",
+    "cacheCapacity": {
+      "type": "int",
+      "defaultValue": 0,
       "allowedValues": [
-        "C0",
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6"
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
       ],
       "metadata": {
         "description": "The size of the Azure Cache for Redis."
       }
     },
-    "skuFamily": {
+    "cacheFamily": {
       "type": "string",
       "defaultValue": "C",
       "allowedValues": [
@@ -66,9 +69,9 @@
         "description": "The SKU family of the Azure Cache for Redis."
       }
     },
-    "skuName": {
+    "cacheSKU": {
       "type": "string",
-      "defaultValue": "Basic",
+      "defaultValue": "Standard",
       "allowedValues": [
         "Basic",
         "Standard",
@@ -80,18 +83,21 @@
     },
     "VnetName": {
       "type": "string",
+      "defaultValue": "microtunes-vnet",
       "metadata": {
         "description": "The name of the virtual network."
       }
     },
     "VnetPrefix": {
       "type": "string",
+      "defaultValue": "10.0.0.0/16",
       "metadata": {
         "description": "The address prefix for the virtual network."
       }
     },
     "storageAccountName": {
       "type": "string",
+      "defaultValue": "microtunesstorage",
       "metadata": {
         "description": "The name of the new Azure Storage Account."
       }
@@ -109,34 +115,104 @@
         "description": "The type of the Azure Storage Account."
       }
     },
-    "accountName": {
+    "cosmosdbName": {
       "type": "string",
+      "defaultValue": "microtunes-cosmosdb",
       "metadata": {
         "description": "The name of the new Azure Cosmos DB account."
       }
     },
     "cosmosdatabaseName": {
       "type": "string",
+      "defaultValue": "microtunes-db",
       "metadata": {
         "description": "The name of the new Cosmos database to be created."
       }
     },
-    "containerName": {
+    "cosmoscontainerName": {
       "type": "string",
+      "defaultValue": "microtunes-container",
       "metadata": {
         "description": "The name of the new container to be created."
       }
     },
-    "partitionKeyPath": {
+    "cosmospendpointName": {
       "type": "string",
+      "defaultValue": "cosmosdb-pendpoint",
       "metadata": {
-        "description": "The partition key path for the new container."
+        "description": "The name of the new Cosmos DB account private endpoint."
+      }
+    },
+    "servicebusnamespaceName": {
+      "type": "string",
+      "defaultValue": "microtunes-namespace",
+      "metadata": {
+        "description": "The name of the new Azure Service Bus namespace."
+      }
+    },
+    "serviceBusSku": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
+      ],
+      "metadata": {
+        "description": "The SKU of the Azure Service Bus namespace."
+      }
+    },
+    "workspaceName": {
+      "type": "string",
+      "defaultValue": "microtunes-law",
+      "metadata": {
+        "description": "The name of the new Azure Log Analytics workspace."
+      }
+    },
+    "lawsku": {
+      "type": "string",
+      "defaultValue": "PerGB2018",
+      "allowedValues": [
+        "Free",
+        "Standalone",
+        "CapacityReservation",
+        "PerGB2018"
+      ],
+      "metadata": {
+        "description": "The SKU of the Azure Log Analytics workspace."
+      }
+    },
+    "registryName": {
+      "type": "string",
+      "defaultValue": "microtunesacaacr",
+      "metadata": {
+        "description": "The name of the new Azure Container Registry."
+      }
+    },
+    "acrsku": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
+      ],
+      "metadata": {
+        "description": "The SKU of the Azure Container Registry."
+      }
+    },
+    "aca_cae_name": {
+      "defaultValue": "microtunes-aca-cae",
+      "type": "String",
+      "metadata": {
+        "description": "The name of the Azure Container App Environment"
       }
     }
   },
   "variables": {
     "VnetName": "[parameters('VnetName')]",
     "VnetPrefix": "[parameters('VnetPrefix')]",
+    "subnetName": "privendpoints",
     "databaseCollation": "SQL_Latin1_General_CP1_CI_AS"
   },
   "resources": [
@@ -152,8 +228,15 @@
             "[variables('VnetPrefix')]"
           ]
         },
-        "enableDdosProtection": false,
-        "enableVmProtection": false
+        "subnets": [
+          {
+            "name": "[variables('subnetName')]",
+            "properties": {
+              "addressPrefix": "10.0.0.0/24",
+              "privateEndpointNetworkPolicies": "Disabled"
+            }
+          }
+        ]
       }
     },
     {
@@ -193,8 +276,9 @@
       "location": "[parameters('location')]",
       "properties": {
         "sku": {
-          "name": "[parameters('skuName')]",
-          "family": "[parameters('skuFamily')]"
+          "capacity": "[parameters('cacheCapacity')]",
+          "name": "[parameters('cacheSku')]",
+          "family": "[parameters('cacheFamily')]"
         },
         "redisConfiguration": {
           "maxclients": "10000"
@@ -224,34 +308,105 @@
       }
     },
     {
-      "comments": "Azure Cosmos DB",
+      "comments": "Azure Cosmos DB Account",
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "apiVersion": "2023-04-15",
-      "name": "[parameters('accountName')]",
+      "name": "[parameters('cosmosdbName')]",
       "location": "[parameters('location')]",
-      "kind": "GlobalDocumentDB",
+      "tags": {
+        "displayname": "CosmosDB"
+      },
       "properties": {
+        "name": "[parameters('cosmosdbName')]",
         "databaseAccountOfferType": "Standard",
         "consistencyPolicy": {
           "defaultConsistencyLevel": "Session"
         }
-      },
-      "resources": [
-        {
-          "comments": "Azure Cosmos DB Account",
-          "type": "databases",
-          "name": "[parameters('cosmosdatabaseName')]",
-          "apiVersion": "2023-04-15",
-          "dependsOn": [
-            "[concat('Microsoft.DocumentDB/databaseAccounts/', parameters('accountName'))]"
-          ],
-          "properties": {
-            "resource": {
-              "id": "[parameters('cosmosdatabaseName')]"
+      }
+    },
+     {
+      "comments": "Azure Cosmos DB Account Private Endpoint Connection",
+      "type": "Microsoft.Network/privateEndpoints",
+      "apiVersion": "2021-08-01",
+      "name": "[parameters('cosmospendpointName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "subnet": {
+          "id": "[resourceId('Microsoft.Network/VirtualNetworks/subnets', parameters('VnetName'), variables('subnetName'))]"
+        },
+        "privateLinkServiceConnections": [
+          {
+            "name": "MyConnection",
+            "properties": {
+              "privateLinkServiceId": "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosdbName'))]",
+              "groupIds": [
+                "Sql"
+              ]
             }
           }
-        }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosdbName'))]"
       ]
+    },
+    {
+      "comments": "Azure Service Bus Namespace",
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-10-01-preview",
+      "name": "[parameters('servicebusnamespaceName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('serviceBusSku')]"
+      },
+      "properties": {
+        "zoneRedundant": false
+      }
+    },
+    {
+      "comments": "Azure Log Analytics Workspace",
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2022-10-01",
+      "name": "[parameters('workspaceName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "name": "[parameters('lawsku')]"
+        }
+      }
+    },
+    {
+      "comments": "Azure Container Registry",
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2023-01-01-preview",
+      "name": "[parameters('registryName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('acrsku')]"
+      },
+      "properties": {}
+    },
+    {
+      "comments": "Azure Container Apps Environment",
+      "type": "Microsoft.App/managedEnvironments",
+      "apiVersion": "2023-04-01-preview",
+      "name": "[parameters('aca_cae_name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Consumption"
+      },
+      "properties": {
+        "appLogsConfiguration": {
+          "destination": "log-analytics",
+          "logAnalyticsConfiguration": {
+            "customerId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))).customerId]",
+            "sharedKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2022-10-01').primarySharedKey]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
+        ]
     }
   ],
   "outputs": {
@@ -277,7 +432,7 @@
     },
     "accountName": {
       "type": "string",
-      "value": "[parameters('accountName')]"
+      "value": "[parameters('cosmosdbName')]"
     },
     "cosmosdatabaseName": {
       "type": "string",
@@ -285,7 +440,31 @@
     },
     "containerName": {
       "type": "string",
-      "value": "[parameters('containerName')]"
+      "value": "[parameters('cosmoscontainerName')]"
+    },
+    "workspaceId": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2022-03-01').customerId]"
+    },
+    "workspaceKey": {
+      "type": "securestring",
+      "value": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2022-03-01').primarySharedKey]"
+    },
+    "namespaceConnectionString": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.ServiceBus/namespaces', parameters('servicebusnamespaceName')), '2017-04-01').primaryConnectionString]"
+    },
+    "registryLoginServer": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerRegistry/registries', parameters('registryName')), '2022-07-01-preview').loginServer]"
+    },
+    "registryUsername": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.ContainerRegistry/registries', parameters('registryName')), '2022-07-01-preview').username]"
+    },
+    "registryPassword": {
+      "type": "securestring",
+      "value": "[listKeys(resourceId('Microsoft.ContainerRegistry/registries', parameters('registryName')), '2022-07-01-preview').passwords[0].value]"
     }
   }
 }
