@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using SharedUtilities.Utilties;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace MusicStore.Plumbing
 {
@@ -15,7 +16,7 @@ namespace MusicStore.Plumbing
         //// Best pracitce: Make HttpClient static and reuse.
         //// Creating a new instance for each request is an antipattern that can
         //// result in socket exhaustion.
-        private static readonly HttpClient _client;
+        private static readonly HttpClient _client = new HttpClient();
         //private readonly HttpClient _client = new HttpClient();
         private readonly string _apiGateway;
 
@@ -62,10 +63,6 @@ namespace MusicStore.Plumbing
             _client.DefaultRequestHeaders.Remove("Ocp-Apim-Subscription-Key");
 
             _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apikey);
-
-            //// TODO remove
-            //_client.DefaultRequestHeaders.Remove("x-correlationToken");
-            //_client.DefaultRequestHeaders.Add("x-correlationToken", Guid.NewGuid().ToString());
 
             try
             {

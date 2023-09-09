@@ -1,9 +1,9 @@
 ﻿@if (ViewBag.CartCount > 0)
 {
     <li>
-        <a asp-area="" asp-controller="ShoppingCart" asp-action="Index" title="@ViewBag.CartSummary">
-            <span class="glyphicon glyphicon-shopping-cart"></span>
-            <span id="cart-status">
+        <a asp-area="" asp-controller="ShoppingCart" asp-action="Index" title="@ViewBag.CartSummary" style="font-size:1.5em">
+            <span class="glyphicon glyphicon-shopping-cart" style="vertical-align: middle; margin-bottom: 10px;"></span>
+            <span id="cart-status" >
                 @ViewBag.CartCount
             </span>
         </a>

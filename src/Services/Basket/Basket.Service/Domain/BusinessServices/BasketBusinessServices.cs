@@ -115,10 +115,11 @@ namespace Basket.Service.Domain.BusinessServices
                     var response = await _restClient.GetAsync<ProductReadModel>(ServiceEnum.Catalog, $"api/Catalog/Music/{productId}", correlationToken);
                     productEntity = response.Data;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-                    throw;
+                    var errorMessage = $"Exception throw in AddItemToBasket() in BasketBusinessServices with CorrelationToken {correlationToken}: {ex.Message}";
+                    _logger.LogError(ex.Message, errorMessage);
+                    throw new Exception($"{errorMessage} : {ex.Message}");
                 }
                 
                 // Check if product exists

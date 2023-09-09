@@ -30,32 +30,32 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
+        <div @* class="container" *@>
+            @* <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">@AppSettings.Value.SiteTitle</a>
-            </div>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="font-size:2em">@AppSettings.Value.SiteTitle</a>
+            </div> *@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index" style="font-size:1.5em">Home</a></li>
                     @await Component.InvokeAsync("GenreMenu")
                     @await Component.InvokeAsync("ArtistMenu")
                     @await Component.InvokeAsync("MediumMenu")
                     @await Component.InvokeAsync("CartSummary")
-                    <li><a asp-controller="Order" asp-action="Index">Orders</a></li>
+                    <li><a asp-controller="Order" asp-action="Index" style="font-size:1.5em">Orders</a></li>
                 </ul>
-                @*@await Html.PartialAsync("_LoginPartial")*@
                 <ul class="nav navbar-nav pull-right">
                     @Html.Partial("_AdminMenu")
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    @* <div class="container body-content"> *@
+    <div class="body-content">
         @RenderBody()
         <hr />
         <footer class="navbar navbar-fixed-bottom navbar-default text-center">
