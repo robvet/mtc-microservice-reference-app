@@ -14,27 +14,33 @@
 <div class=”divlogocolor”>
     <div style="display: flex; ">
         @*<h1 style="font-family: cursive; font-size:xx-large">@AppSettings.Value.SiteTitle</h1*@
-        <h1 style="font-family: cursive;font-size: 5rem">@AppSettings.Value.SiteTitle</h1>
+        @* <h1 style="font-family: cursive;font-size: 5rem">@AppSettings.Value.SiteTitle</h1> *@
     </div>
     @*<h1>@AppSettings.Value.SiteTitle</h1>*@
-        <img style='height: 100%; width: 100%; object-fit: cover; margin-top: 0px' src="@Url.Content("~/Images/retro.png")" />
+        @* <img style='height: 100%; width: 100%; object-fit: cover; margin-top: 0px' src="@Url.Content("~/Images/retro.png")" /> *@
+
+    <img style='height: 100%; width: 100%; object-fit: cover; margin-top: 0px' src="@Url.Content("~/Images/new-home-candidate1.gif")" />
+
+    <hr />
+
     @*<div style="display: flex; font-size:larger">
         <h1 style="margin-left: auto;"><i>Music for the Astute Collector...</i></h1>
     </div>*@
 </div>
 
-<hr />
+
 
 @if (Model != null)
 {
 
-    <div style="margin-bottom: 10px; margin-top: 20px; text-align:center;">
+    <div style="margin-bottom: 10px; margin-top: 0px; text-align:center;">
+        <div style="border-top: 5px solid lightgrey;"></div>
         <h1 style="font-family: cursive">
             <em>Top Selling Collector Items</em>
         </h1>
     </div>
 
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center;margin-top: 20px;">
         <ul class="row list-unstyled" id="album-list">
             @foreach (var item in Model)
             {
