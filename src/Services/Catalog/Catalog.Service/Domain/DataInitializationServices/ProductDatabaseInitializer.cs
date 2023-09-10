@@ -1,19 +1,17 @@
-﻿using System.Linq;
-using System.IO;
-using SharedUtilities.Utilties;
+﻿using catalog.service.Domain.Entities;
+using catalog.service.Infrastructure.DataStore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using SharedUtilities.Utilties;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
-using catalog.service.Domain.Entities;
-using catalog.service.Infrastructure.DataStore;
-using catalog.service.Contracts;
-using StackExchange.Redis;
-using Newtonsoft.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace catalog.service.Domain.DataInitializationServices
 
@@ -347,7 +345,7 @@ namespace catalog.service.Domain.DataInitializationServices
 
                 try
                 {
-                    // Capture error, report it, but continue
+                    // Default redis method SetStringAync - appends each key/value pair to the Redis database
                     await _redisDatabase.StringSetAsync(keyValuePairs.ToArray());
                 }
                 catch (Exception ex)

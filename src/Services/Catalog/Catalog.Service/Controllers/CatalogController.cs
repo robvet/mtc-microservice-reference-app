@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using catalog.service.Contracts;
+﻿using catalog.service.Contracts;
 using catalog.service.Domain.Entities;
 using catalog.service.Dtos;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SharedUtilities.Utilties;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace catalog.service.Controllers
 {

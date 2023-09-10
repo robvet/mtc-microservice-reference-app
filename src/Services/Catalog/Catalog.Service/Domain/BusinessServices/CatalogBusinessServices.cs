@@ -1,36 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using catalog.service.Contracts;
+﻿using catalog.service.Contracts;
 using catalog.service.Domain.Entities;
 using EventBus.Bus;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.ApplicationInsights;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace catalog.service.Domain.BusinessServices
 {
     public class CatalogBusinessServices : ICatalogBusinessServices
     {
+        private readonly IDistributedCacheRepository _distributedCacheRepository;
         private readonly IArtistRepository _artistRepository;
         private readonly IGenreRepository _genreRepository;
         private readonly IMediumRepository _mediumRepository;
         private readonly ILogger<CatalogBusinessServices> _logger;
         private readonly IProductRepository _ProductRepository;
         private readonly IEventBusPublisher _eventBusPublisher;
+        private readonly TelemetryClient _telemetryClient;
+
+        private const string _redisGenreCollectionKey = "genreCollection";
+        private const string _redisArtistCollectionKey = "artistCollection";
+        private const string _redisMediumCollectionKey = "mediumCollection";
+
 
         public CatalogBusinessServices(IProductRepository ProductRepository,
             IGenreRepository genreRepository,
             IArtistRepository artistRepository,
             IMediumRepository mediumRepository,
             IEventBusPublisher eventBusPublisher,
-            ILogger<CatalogBusinessServices> logger)
+            ILogger<CatalogBusinessServices> logger,
+            IDistributedCacheRepository distributedCacheRepository,
+            TelemetryClient telemetryClient)
         {
             _ProductRepository = ProductRepository;
             _genreRepository = genreRepository;
             _mediumRepository = mediumRepository;
             _artistRepository = artistRepository;
             _eventBusPublisher = eventBusPublisher;
+            _telemetryClient = telemetryClient;
             _logger = logger;
+            _distributedCacheRepository = distributedCacheRepository;
         }
 
         public async Task<List<Product>> GetAllMusic(string correlationToken)
@@ -50,7 +61,17 @@ namespace catalog.service.Domain.BusinessServices
 
         public async Task<List<Genre>> GetAllGenres(string correlationToken)
         {
-            return await _genreRepository.GetAll(correlationToken);
+            // Implement Cache Read-Thru Pattern
+            var items = await _distributedCacheRepository.GetCollectionAsync<Genre>(_redisGenreCollectionKey, correlationToken, _telemetryClient);
+
+            // If cache miss, fetch from database and populate cache
+            if (items == null)
+            {
+                items = await _genreRepository.GetAll(correlationToken);
+                await _distributedCacheRepository.SetCollectionAsync<Genre>(_redisGenreCollectionKey, items, correlationToken, _telemetryClient);
+            }
+
+            return items;
         }
 
         public async Task<List<Product>> GetMusicForGenre(Guid guidId, string correlationToken)
@@ -63,9 +84,20 @@ namespace catalog.service.Domain.BusinessServices
             return await _genreRepository.GetById(guidId, correlationToken);
         }
 
+               
         public async Task<List<Artist>> GetAllArtists(string correlationToken)
         {
-            return await _artistRepository.GetAll(correlationToken);
+            // Implement Cache Read-Thru Pattern
+            var items = await _distributedCacheRepository.GetCollectionAsync<Artist>(_redisArtistCollectionKey, correlationToken, _telemetryClient);
+
+            // If cache miss, fetch from database and populate cache
+            if (items == null)
+            {
+                items = await _artistRepository.GetAll(correlationToken);
+                await _distributedCacheRepository.SetCollectionAsync<Artist>(_redisArtistCollectionKey, items, correlationToken, _telemetryClient);
+            }
+
+            return items;
         }
 
         public async Task<Artist> GetArtist(Guid guidId, string correlationToken)
@@ -80,7 +112,17 @@ namespace catalog.service.Domain.BusinessServices
 
         public async Task<List<Medium>> GetAllMediums(string correlationToken)
         {
-            return await _mediumRepository.GetAll(correlationToken);
+            // Implement Cache Read-Thru Pattern
+            var items = await _distributedCacheRepository.GetCollectionAsync<Medium>(_redisMediumCollectionKey, correlationToken, _telemetryClient);
+
+            // If cache miss, fetch from database and populate cache
+            if (items == null)
+            {
+                items = await _mediumRepository.GetAll(correlationToken);
+                await _distributedCacheRepository.SetCollectionAsync<Medium>(_redisMediumCollectionKey, items, correlationToken, _telemetryClient);
+            }
+
+            return items;
         }
 
         public async Task<Medium> GetMedium(Guid guidId, string correlationToken)
