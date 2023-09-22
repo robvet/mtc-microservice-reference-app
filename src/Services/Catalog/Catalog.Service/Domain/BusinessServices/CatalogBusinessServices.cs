@@ -20,6 +20,9 @@ namespace catalog.service.Domain.BusinessServices
         private readonly IEventBusPublisher _eventBusPublisher;
         private readonly TelemetryClient _telemetryClient;
 
+        // Redis Cache Key for all product data
+        private const string _redisProductCollectionKey = "productCollection";
+        // Redis Cache Key for individual produect data
         private const string _redisGenreCollectionKey = "genreCollection";
         private const string _redisArtistCollectionKey = "artistCollection";
         private const string _redisMediumCollectionKey = "mediumCollection";
@@ -44,6 +47,29 @@ namespace catalog.service.Domain.BusinessServices
             _distributedCacheRepository = distributedCacheRepository;
         }
 
+        
+        
+        
+        // **** WIP this is a test method to return all product data (artists, genres, mediums) in single request
+        public async Task<List<Genre>> GetProductLookupData(string correlationToken)
+        {
+            // Implement Cache Read-Thru Pattern
+            var items = await _distributedCacheRepository.GetCollectionAsync<Genre>(_redisProductCollectionKey, correlationToken, _telemetryClient);
+
+            // If cache miss, fetch from database and populate cache
+            if (items == null)
+            {
+                items = await _genreRepository.GetAll(correlationToken);
+                await _distributedCacheRepository.SetCollectionAsync<Genre>(_redisProductCollectionKey, items, correlationToken, _telemetryClient);
+            }
+
+            return items;
+        }
+
+
+
+
+
         public async Task<List<Product>> GetAllMusic(string correlationToken)
         {
             return await _ProductRepository.GetAll(correlationToken);
@@ -58,6 +84,10 @@ namespace catalog.service.Domain.BusinessServices
         {
             return await _ProductRepository.GetTopSellers(count, correlationToken);
         }
+
+
+
+
 
         public async Task<List<Genre>> GetAllGenres(string correlationToken)
         {
