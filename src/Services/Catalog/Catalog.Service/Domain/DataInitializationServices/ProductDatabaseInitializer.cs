@@ -243,12 +243,12 @@ namespace catalog.service.Domain.DataInitializationServices
                     product = new Product
                     {
                         // Inline validation for missing 'ProductId' value
-                        ProductId =  itemValues[9].IsNullOrEmpty() ? throw new Exception($"Missing value from 'ProductId' on record {counter}") : new Guid(itemValues[9]),
+                        //ProductId =  itemValues[9].IsNullOrEmpty() ? throw new Exception($"Missing value from 'ProductId' on record {counter}") : new Guid(itemValues[9]),
 
                         ParentalCaution = SetParentalCaution(),
 
-                        // Inline validation for missing 'ReleaseYear' value
-                        ReleaseYear = itemValues[3].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Release Year' on record {counter}") : itemValues[3],
+                        ProductId = string.IsNullOrEmpty(itemValues[9]) ? throw new Exception($"Missing value from 'ProductId' on record {counter}") : new Guid(itemValues[9]),
+                        //ReleaseYear = itemValues[3].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Release Year' on record {counter}") : itemValues[3],
 
                         // Inline validation to ensure Medium lookup value exist -
                         // -- Use SingleOrDefault to return null if not found
@@ -256,12 +256,12 @@ namespace catalog.service.Domain.DataInitializationServices
                         // -- Use ?? to throw exception if null
                         Medium = _context.Mediums.SingleOrDefault(g => g.Name == NoCommaValidation(itemValues[6])) ?? throw new Exception($"Missing lookup value from 'Medium' {itemValues[6]} on record {counter}"),
 
-                        Single = itemValues[1].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Single' on record {counter}") : itemValues[1],
+                        Single = string.IsNullOrEmpty(itemValues[1]) ? throw new Exception($"Missing value from 'Single' on record {counter}") : itemValues[1],
 
                         Upc = GenerateUpc(),
 
                         // Inline validation for Missing 'Title' value
-                        Title = itemValues[2].IsNullOrEmpty() ? throw new Exception($"Missing value from 'Title' on record {counter}") : itemValues[2],
+                        Title = string.IsNullOrEmpty(itemValues[2]) ? throw new Exception($"Missing value from 'Title' on record {counter}") : itemValues[2],
 
                         AlbumArtUrl = null, // SetMediumGraphic(product.Medium.Name);
 
