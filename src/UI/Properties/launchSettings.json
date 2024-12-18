@@ -16,3 +16,41 @@
     }
   }
 }
+
+//{
+//  "profiles": {
+//    "MusicStore": {
+//      "commandName": "Project",
+//      "launchBrowser": true,
+//      "environmentVariables": {
+//        "ASPNETCORE_ENVIRONMENT": "Development"
+//      },
+//      //"applicationUrl": "http://localhost:8089/"
+//      "applicationUrl": "http://localhost:32768/"
+//    },
+//    "Docker": {
+//      //"commandName": "Docker",
+//      //"launchBrowser": true,
+//      //"launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+//      //"publishAllPorts": true
+
+//      "commandName": "Docker",
+//      "launchBrowser": true,
+//      "applicationUrl": "http://localhost/",
+//      "launchUrl": "http://localhost/",
+//      //"launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+//      "publishAllPorts": false,
+//      "additionalDockerRunArgs": "-p 32768:80"
+
+
+
+//      //"commandName": "Docker",
+//      //"launchBrowser": true,
+//      //"applicationUrl": "http://localhost:8089/",
+//      //"launchUrl": "http://localhost:8089/",
+//      ////"launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+//      //"publishAllPorts": false,
+//      //"additionalDockerRunArgs": "-p 8089:80"
+//    }
+//  }
+//}

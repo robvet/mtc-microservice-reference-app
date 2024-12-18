@@ -26,7 +26,17 @@ namespace MusicStore
                 {
                     webBuilder.UseStartup<Startup>();
                     //webBuilder.UseUrls("http://localhost:51934");
+                    //webBuilder.UseKestrel();
+
                     webBuilder.UseKestrel();
+
+                    //webBuilder.UseKestrel(options =>
+                    //{
+                    //    // Ensure Kestrel listens on all network interfaces (0.0.0.0)
+                    //    options.ListenAnyIP(8080); // Change the port as needed (e.g., 8080, 8089)
+                    //});
+
+
                     webBuilder.CaptureStartupErrors(true);
                     //webBuilder.ConfigureAppConfiguration((builderContext, config) =>
                     //{
